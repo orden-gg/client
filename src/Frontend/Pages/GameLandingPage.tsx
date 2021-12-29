@@ -364,6 +364,10 @@ export function GameLandingPage() {
           WHITELIST_CONTRACT_ADDRESS,
           loadWhitelistContract
         );
+
+        console.log(`whitelist contract - ${WHITELIST_CONTRACT_ADDRESS}`);
+        
+
         const isWhitelisted = await whitelist.isWhitelisted(address);
 
         terminal.current?.println('');

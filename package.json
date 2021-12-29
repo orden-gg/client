@@ -59,7 +59,8 @@
     "clean": "del-cli dist node_modules declarations",
     "docs": "typedoc && yarn format",
     "deploy": "netlify build && netlify deploy",
-    "deploy:prod": "netlify build && netlify deploy --prod"
+    "deploy:netlify": "netlify build && netlify deploy --prod",
+    "deploy:gcloud": "gcloud builds submit --tag gcr.io/ghst-gg-client/df"
   },
   "browserslist": {
     "production": [

@@ -41,7 +41,7 @@ export default function LandingPage() {
             <EmSpacer height={1.5} />
 
             <p>
-              <White>Dark Forest</White>
+              <White>OrdenGG Dark Forest</White>
               <br />
               <Text>zkSNARK space warfare</Text>
               <br />
