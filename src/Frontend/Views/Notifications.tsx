@@ -123,11 +123,13 @@ export function NotificationsPane({ isTerminalVisible }: {isTerminalVisible: boo
         notificationsDictionaryCopy[dictionaryKey].notifications.unshift(notif);
 
         if (notif.type === NotificationType.Tx) {
+          let indexToRemove: number;
+
           switch (notif.txStatus) {
             case EthTxStatus.Submit:
-              const initIndexToRemove = notificationsDictionaryCopy[`${NotificationType.Tx}${EthTxStatus.Init}`]
+              indexToRemove = notificationsDictionaryCopy[`${NotificationType.Tx}${EthTxStatus.Init}`]
                 .notifications.findIndex(notification => notification.id === notif.id);
-              notificationsDictionaryCopy[`${NotificationType.Tx}${EthTxStatus.Init}`].notifications.splice(initIndexToRemove, 1);
+              notificationsDictionaryCopy[`${NotificationType.Tx}${EthTxStatus.Init}`].notifications.splice(indexToRemove, 1);
 
               if (notificationsDictionaryCopy[`${NotificationType.Tx}${EthTxStatus.Init}`].notifications.length === 0) {
                 delete notificationsDictionaryCopy[`${NotificationType.Tx}${EthTxStatus.Init}`]
@@ -135,9 +137,9 @@ export function NotificationsPane({ isTerminalVisible }: {isTerminalVisible: boo
 
               break;
             case EthTxStatus.Confirm:
-              const submitIndexToRemove = notificationsDictionaryCopy[`${NotificationType.Tx}${EthTxStatus.Submit}`]
+              indexToRemove = notificationsDictionaryCopy[`${NotificationType.Tx}${EthTxStatus.Submit}`]
                 .notifications.findIndex(notification => notification.id === notif.id);
-              notificationsDictionaryCopy[`${NotificationType.Tx}${EthTxStatus.Submit}`].notifications.splice(submitIndexToRemove, 1);
+              notificationsDictionaryCopy[`${NotificationType.Tx}${EthTxStatus.Submit}`].notifications.splice(indexToRemove, 1);
 
               if (notificationsDictionaryCopy[`${NotificationType.Tx}${EthTxStatus.Submit}`].notifications.length === 0) {
                 delete notificationsDictionaryCopy[`${NotificationType.Tx}${EthTxStatus.Submit}`]
@@ -146,9 +148,9 @@ export function NotificationsPane({ isTerminalVisible }: {isTerminalVisible: boo
               break;
 
             case EthTxStatus.Fail:
-              const failIndexToRemove = notificationsDictionaryCopy[`${NotificationType.Tx}${EthTxStatus.Init}`]
+              indexToRemove = notificationsDictionaryCopy[`${NotificationType.Tx}${EthTxStatus.Init}`]
                 .notifications.findIndex(notification => notification.id === notif.id);
-              notificationsDictionaryCopy[`${NotificationType.Tx}${EthTxStatus.Init}`].notifications.splice(failIndexToRemove, 1);
+              notificationsDictionaryCopy[`${NotificationType.Tx}${EthTxStatus.Init}`].notifications.splice(indexToRemove, 1);
 
               if (notificationsDictionaryCopy[`${NotificationType.Tx}${EthTxStatus.Init}`].notifications.length === 0) {
                 delete notificationsDictionaryCopy[`${NotificationType.Tx}${EthTxStatus.Init}`]
