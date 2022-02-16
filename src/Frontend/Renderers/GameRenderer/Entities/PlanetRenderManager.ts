@@ -356,6 +356,7 @@ export default class PlanetRenderManager {
     alpha: number
   ) {
     const { gameUIManager: uiManager, textRenderer: tR } = this.renderer;
+    const gameManager = uiManager.getGameManager();
     const energy = planet ? Math.ceil(planet.energy) : 0;
     const lockedEnergy = this.getLockedEnergy(planet);
 
@@ -377,6 +378,11 @@ export default class PlanetRenderManager {
     // now display atk string
     const fromPlanet = uiManager.getMouseDownPlanet();
     const toPlanet = uiManager.getHoveringOverPlanet();
+    let arrivalTime: number = 0;
+
+    if (fromPlanet && toPlanet) {
+      arrivalTime = Math.ceil(gameManager.getTimeForMove(fromPlanet?.locationId, toPlanet?.locationId));
+    }
 
     const myAtk = this.getMouseAtk();
 
@@ -392,6 +398,10 @@ export default class PlanetRenderManager {
         atkString += ` (+${formatNumber(myAtk)})`;
       } else {
         atkString += ` (-${formatNumber((myAtk * 100) / toPlanet.defense)})`;
+      }
+
+      if (Boolean(arrivalTime)) {
+        atkString += ` ${arrivalTime}s`
       }
 
       tR.queueTextWorld(atkString, textLoc, color, 1);
