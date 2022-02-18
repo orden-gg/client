@@ -1,4 +1,5 @@
 import { WorldCoords } from '@darkforest_eth/types';
+
 import { CanvasCoords } from '../../../../Backend/Utils/Coordinates';
 import Viewport from '../../../Game/Viewport';
 import { engineConsts } from '../EngineConsts';
@@ -13,8 +14,6 @@ export default class CircleRenderer extends GenericRenderer<typeof CIRCLE_PROGRA
   quadBuffer: number[];
 
   viewport: Viewport;
-
-  isAllie: boolean = false;
 
   constructor(manager: GameGLManager) {
     super(manager, CIRCLE_PROGRAM_DEFINITION);
@@ -74,11 +73,21 @@ export default class CircleRenderer extends GenericRenderer<typeof CIRCLE_PROGRA
     angle = 1,
     dashed = false
   ) {
-    const { allies } = getOrdenSettings();
     const centerCanvas = this.viewport.worldToCanvasCoords(center);
     const rCanvas = this.viewport.worldToCanvasDist(radius);
-    const updatedColor: RGBAVec = this.isAllie && allies ? [100, 100, 100, 255] : color;
-    this.queueCircle(centerCanvas, rCanvas, updatedColor, stroke, angle, dashed);
+    
+    this.queueCircle(centerCanvas, rCanvas, color, stroke, angle, dashed);
+  }
+
+  public queueCircleBonus(
+    center: WorldCoords,
+    radius: number, // world coords
+    color: RGBAVec = [255, 0, 0, 255],
+    stroke = -1
+  ) {
+    const centerCanvas = this.viewport.worldToCanvasCoords(center);
+    const rCanvas = this.viewport.worldToCanvasDist(radius);
+    this.queueCircle(centerCanvas, rCanvas, color, stroke, 1);
   }
 
   // only convert center to world coords

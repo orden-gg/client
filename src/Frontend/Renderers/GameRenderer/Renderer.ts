@@ -24,7 +24,7 @@ import { UIRenderer } from './UIRenderer';
 import { GameGLManager } from './WebGL/GameGLManager';
 
 import { getOrdenSettings, setOrdenSettings } from '../../Utils/OrdenUtils';
- 
+
 class Renderer {
   static instance: Renderer | null;
 
@@ -142,10 +142,30 @@ class Renderer {
 
     if (Object.keys(ordenSettings).length === 0) {
       setOrdenSettings({
-        'allies': true,
-        'double range': true,
-        'double defence': true,
-        'double energy': true
+        allies: {
+          text: 'Show Allies',
+          isShow: true
+        },
+        range: {
+          text: 'Show 2x Range',
+          isShow: true
+        },
+        energyGro: {
+          text: 'Show 2x Energy',
+          isShow: true
+        },
+        energyCap: {
+          text: 'Show 2x Energy Cap',
+          isShow: true
+        },
+        defense: {
+          text: 'Show 2x Defence',
+          isShow: true
+        },
+        speed: {
+          text: 'Show 2x Speed',
+          isShow: true
+        }
       });
     }
 
