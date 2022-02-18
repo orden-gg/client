@@ -21,13 +21,16 @@ import { engineConsts } from '../EngineConsts';
 import { TextAlign, TextAnchor } from '../EngineTypes';
 import Renderer from '../Renderer';
 
-const { whiteA, barbsA, gold } = engineConsts.colors;
+import { getOrdenSettings } from '../../../Utils/OrdenUtils';
+
+const { whiteA, barbsA, gold, alliesA } = engineConsts.colors;
 const { maxRadius } = engineConsts.planet;
 
 /**
  * this guy is always going to call things in worldcoords, we'll convert them
  * to CanvasCoords. responsible for rendering planets by calling primitive renderers
  */
+
 export default class PlanetRenderManager {
   renderer: Renderer;
 
@@ -47,6 +50,7 @@ export default class PlanetRenderManager {
     const renderAtReducedQuality = renderInfo.radii.radiusPixels <= 5 && highPerfMode;
     const isHovering = uiManager.getHoveringOverPlanet()?.locationId === planet.locationId;
     const isSelected = uiManager.getSelectedPlanet()?.locationId === planet.locationId;
+    const { allies } = getOrdenSettings();
 
     let textAlpha = 255;
     if (renderInfo.radii.radiusPixels < 2 * maxRadius) {
@@ -57,7 +61,11 @@ export default class PlanetRenderManager {
     const artifacts = uiManager
       .getArtifactsWithIds(planet.heldArtifactIds)
       .filter((a) => !!a) as Artifact[];
-    const color = uiManager.isOwnedByMe(planet) ? whiteA : ProcgenUtils.getOwnerColorVec(planet);
+
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    const isAllie = ORDEN_ALLIES.some((allie: any) => allie.address === planet.owner);
+    const color = uiManager.isOwnedByMe(planet) ?
+      whiteA : isAllie && allies.isShow ? alliesA : ProcgenUtils.getOwnerColorVec(planet);
 
     // draw planet body
     this.queuePlanetBody(planet, planet.location.coords, renderInfo.radii.radiusWorld);
@@ -87,8 +95,6 @@ export default class PlanetRenderManager {
 
     if (hasOwner(planet)) {
       color[3] = cA * 120;
-      // eslint-disable-next-line @typescript-eslint/no-explicit-any
-      cR.isAllie = ORDEN_ALLIES.some((allie: any) => allie.address === planet.owner);
       cR.queueCircleWorld(planet.location.coords, renderInfo.radii.radiusWorld * 1.1, color, 0.5);
       const pct = planet.energy / planet.energyCap;
       color[3] = cA * 255;
@@ -298,24 +304,31 @@ export default class PlanetRenderManager {
   }
 
   private queueAsteroids(planet: Planet, center: WorldCoords, radius: number) {
-    const { asteroidRenderer: aR } = this.renderer;
+    const { asteroidRenderer: aR, circleRenderer: cR } = this.renderer;
+
+    const { range, energyGro, energyCap, defense, speed } = getOrdenSettings();
 
     const { bonus } = engineConsts.colors;
 
     if (planet.bonus[0]) {
       aR.queueAsteroid(planet, center, radius, bonus.energyCap);
+      if(energyCap.isShow) cR.queueCircleBonus(center, radius * 1.3, [...bonus.energyCap, 255], 1);
     }
     if (planet.bonus[1]) {
       aR.queueAsteroid(planet, center, radius, bonus.energyGro);
+      if(energyGro.isShow) cR.queueCircleBonus(center, radius * 1.6, [...bonus.energyGro, 255], 1);
     }
     if (planet.bonus[2]) {
       aR.queueAsteroid(planet, center, radius, bonus.range);
+      if(range.isShow) cR.queueCircleBonus(center, radius * 1.9, [...bonus.range, 255], 1);
     }
     if (planet.bonus[3]) {
       aR.queueAsteroid(planet, center, radius, bonus.speed);
+      if(speed.isShow) cR.queueCircleBonus(center, radius * 2.2, [...bonus.speed, 255], 1);
     }
     if (planet.bonus[4]) {
       aR.queueAsteroid(planet, center, radius, bonus.defense);
+      if(defense.isShow) cR.queueCircleBonus(center, radius * 2.5, [...bonus.defense, 255], 1);
     }
   }
 
