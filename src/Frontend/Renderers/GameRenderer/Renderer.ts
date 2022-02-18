@@ -141,38 +141,32 @@ class Renderer {
     const ordenSettings = getOrdenSettings();
 
     if (Object.keys(ordenSettings).length === 0) {
-      setOrdenSettings([
-        {
-          key: 'allies',
+      setOrdenSettings({
+        allies: {
           text: 'Show Allies',
           isShow: true
         },
-        {
-          key: 'range',
+        range: {
           text: 'Show 2x Range',
           isShow: true
         },
-        {
-          key: 'energy',
+        energyGro: {
           text: 'Show 2x Energy',
           isShow: true
         },
-        {
-          key: 'energy cap',
+        energyCap: {
           text: 'Show 2x Energy Cap',
           isShow: true
         },
-        {
-          key: 'defence',
+        defense: {
           text: 'Show 2x Defence',
           isShow: true
         },
-        {
-          key: 'speed',
+        speed: {
           text: 'Show 2x Speed',
           isShow: true
         }
-      ]);
+      });
     }
 
     const canvasRenderer = new Renderer(canvas, glCanvas, bufferCanvas, gameUIManager);
@@ -234,8 +228,6 @@ class Renderer {
 
     // queue wormhole calls
     this.wormholeRenderManager.queueWormholes();
-    
-    let ordenSettings = getOrdenSettings();
 
     // queue planets
     this.planetRenderManager.queuePlanets(
@@ -243,8 +235,7 @@ class Renderer {
       this.now,
       isHighPerfMode,
       disableEmojis,
-      disableHats,
-      ordenSettings
+      disableHats
     );
 
     // flush all - ordering matters! (they get drawn bottom-up)

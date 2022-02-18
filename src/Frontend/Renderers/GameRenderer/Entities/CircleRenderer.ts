@@ -15,8 +15,6 @@ export default class CircleRenderer extends GenericRenderer<typeof CIRCLE_PROGRA
 
   viewport: Viewport;
 
-  isAllie: boolean = false;
-
   constructor(manager: GameGLManager) {
     super(manager, CIRCLE_PROGRAM_DEFINITION);
     this.viewport = Viewport.getInstance();
@@ -75,13 +73,10 @@ export default class CircleRenderer extends GenericRenderer<typeof CIRCLE_PROGRA
     angle = 1,
     dashed = false
   ) {
-    const ordenSettings = getOrdenSettings();
     const centerCanvas = this.viewport.worldToCanvasCoords(center);
     const rCanvas = this.viewport.worldToCanvasDist(radius);
-    const allies = ordenSettings.find(item => item.key === 'allies');
     
-    const updatedColor: RGBAVec = this.isAllie && allies ? [100, 100, 100, 255] : color;
-    this.queueCircle(centerCanvas, rCanvas, updatedColor, stroke, angle, dashed);
+    this.queueCircle(centerCanvas, rCanvas, color, stroke, angle, dashed);
   }
 
   public queueCircleBonus(

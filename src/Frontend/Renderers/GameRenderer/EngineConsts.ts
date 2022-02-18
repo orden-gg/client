@@ -24,6 +24,7 @@ export const engineConsts = {
     barbsA: [153, 102, 102, 255] as RGBAVec,
     white: [255, 255, 255] as RGBVec,
     whiteA: [255, 255, 255, 255] as RGBAVec,
+    alliesA: [100, 100, 100, 255] as RGBAVec,
     purpleA: [255, 0, 255, 255] as RGBAVec,
     purple: [255, 0, 255] as RGBVec,
     red: [255, 0, 0] as RGBVec,

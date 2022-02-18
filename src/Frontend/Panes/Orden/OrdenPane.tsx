@@ -23,10 +23,10 @@ const CheckboxGroup = styled(Padded)`
 export function OrdenPane({ hook }: { hook: ModalHook }) {
   const [settings, setSettings] = useState(getOrdenSettings());
 
-  const handleSettingChange = (id: number) => {
-    const updatedSettings = [...settings];
-
-    updatedSettings[id].isShow = !settings[id].isShow;
+  const handleSettingChange = (settingName: string, isSettingChecked: boolean) => {
+    const updatedSettings = {...settings};
+    
+    updatedSettings[settingName].isShow = !isSettingChecked;
     
     setSettings(updatedSettings);
     setOrdenSettings(updatedSettings);
@@ -36,11 +36,17 @@ export function OrdenPane({ hook }: { hook: ModalHook }) {
     <ModalPane hook={hook} title='Orden Pane' name={ModalName.OrdenPane}>
       <HelpContent>
         {
-          settings.map((item, index) => (
-            <CheckboxGroup key={index}>
-              {item.text} <input type='checkbox' checked={item.isShow} onChange={() => handleSettingChange(index)} />
-            </CheckboxGroup>
-          ))
+          Object.keys(settings).map((name, index) => {
+            const item = settings[name];
+            
+            return (
+              <CheckboxGroup key={index}>
+                <label>
+                  { item.text } <input type='checkbox' checked={item.isShow} onChange={() => handleSettingChange(name, item.isShow)} />
+                </label>
+              </CheckboxGroup>
+            )
+          })
         }
       </HelpContent>
     </ModalPane>
