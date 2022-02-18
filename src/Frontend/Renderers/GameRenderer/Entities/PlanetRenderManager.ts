@@ -396,11 +396,6 @@ export default class PlanetRenderManager {
     // now display atk string
     const fromPlanet = uiManager.getMouseDownPlanet();
     const toPlanet = uiManager.getHoveringOverPlanet();
-    let arrivalTime: number = 0;
-
-    if (fromPlanet && toPlanet) {
-      arrivalTime = Math.ceil(gameManager.getTimeForMove(fromPlanet?.locationId, toPlanet?.locationId));
-    }
 
     const myAtk = this.getMouseAtk();
 
@@ -418,8 +413,13 @@ export default class PlanetRenderManager {
         atkString += ` (-${formatNumber((myAtk * 100) / toPlanet.defense)})`;
       }
 
-      if (Boolean(arrivalTime)) {
-        atkString += ` ${arrivalTime}s`
+      const { arrivalTime } = getOrdenSettings();
+      if (arrivalTime.isShow) {
+        if (fromPlanet && toPlanet) {
+          const arrivalTimeInSeconds = Math.ceil(gameManager.getTimeForMove(fromPlanet?.locationId, toPlanet?.locationId));
+
+          atkString += ` ${arrivalTimeInSeconds}s`;
+        }
       }
 
       tR.queueTextWorld(atkString, textLoc, color, 1);
