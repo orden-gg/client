@@ -1,0 +1,3 @@
+[submodule "orden-plugins"]
+	path = orden-plugins
+	url = https://github.com/orden-gg/orden-plugins.git
