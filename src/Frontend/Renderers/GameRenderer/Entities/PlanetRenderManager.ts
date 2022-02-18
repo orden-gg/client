@@ -62,6 +62,7 @@ export default class PlanetRenderManager {
       .getArtifactsWithIds(planet.heldArtifactIds)
       .filter((a) => !!a) as Artifact[];
 
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     const isAllie = ORDEN_ALLIES.some((allie: any) => allie.address === planet.owner);
     const color = uiManager.isOwnedByMe(planet) ?
       whiteA : isAllie && allies.isShow ? alliesA : ProcgenUtils.getOwnerColorVec(planet);
@@ -94,7 +95,6 @@ export default class PlanetRenderManager {
 
     if (hasOwner(planet)) {
       color[3] = cA * 120;
-      // eslint-disable-next-line @typescript-eslint/no-explicit-any
       cR.queueCircleWorld(planet.location.coords, renderInfo.radii.radiusWorld * 1.1, color, 0.5);
       const pct = planet.energy / planet.energyCap;
       color[3] = cA * 255;
