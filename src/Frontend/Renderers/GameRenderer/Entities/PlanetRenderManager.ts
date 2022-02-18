@@ -7,6 +7,9 @@ import {
   PlanetType,
   WorldCoords,
 } from '@darkforest_eth/types';
+// @ts-ignore
+import { ORDEN_ALLIES } from '@ordenGG/allies/orden-allies';
+
 import { getRange } from '../../../../Backend/GameLogic/ArrivalUtils';
 import { PlanetRenderInfo } from '../../../../Backend/GameLogic/ViewportEntities';
 import { ProcgenUtils } from '../../../../Backend/Procedural/ProcgenUtils';
@@ -88,6 +91,8 @@ export default class PlanetRenderManager {
 
     if (hasOwner(planet)) {
       color[3] = cA * 120;
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
+      cR.isAllie = ORDEN_ALLIES.some((allie: any) => allie.address === planet.owner);
       cR.queueCircleWorld(planet.location.coords, renderInfo.radii.radiusWorld * 1.1, color, 0.5);
       const pct = planet.energy / planet.energyCap;
       color[3] = cA * 255;

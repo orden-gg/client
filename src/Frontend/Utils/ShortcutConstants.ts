@@ -8,6 +8,7 @@ export const TOGGLE_HELP_PANE = 'j';
 export const TOGGLE_PLUGINS_PANE = 'k';
 export const TOGGLE_YOUR_ARTIFACTS_PANE = 'l';
 export const TOGGLE_YOUR_PLANETS_DEX_PANE = ';';
+export const TOGGLE_YOUR_ORDEN_PLANET_PANE = 'o';
 
 // planet context pane shortcuts
 export const TOGGLE_PLANET_ARTIFACTS_PANE = 's';
@@ -16,7 +17,6 @@ export const TOGGLE_BROADCAST_PANE = 'z';
 export const TOGGLE_UPGRADES_PANE = 'a';
 export const TOGGLE_SEND = 'q';
 export const EXIT_PANE = SpecialKey.Escape;
-export const TOGGLE_CLAIM_PLANET_PANE = 'c';
 
 // global shortcuts
 export const TOGGLE_DIAGNOSTICS_PANE = 'i';
