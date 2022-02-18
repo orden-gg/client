@@ -36,17 +36,14 @@ export function OrdenPane({ hook }: { hook: ModalHook }) {
     <ModalPane hook={hook} title='Orden Pane' name={ModalName.OrdenPane}>
       <HelpContent>
         {
-          Object.keys(settings).map((name, index) => {
-            const item = settings[name];
-            
-            return (
-              <CheckboxGroup key={index}>
+          Object.entries(settings).map(([key, item]) =>(
+              <CheckboxGroup key={key}>
                 <label>
-                  { item.text } <input type='checkbox' checked={item.isShow} onChange={() => handleSettingChange(name, item.isShow)} />
+                  { item.text } <input type='checkbox' checked={item.isShow} onChange={() => handleSettingChange(key, item.isShow)} />
                 </label>
               </CheckboxGroup>
             )
-          })
+          )
         }
       </HelpContent>
     </ModalPane>

@@ -43,14 +43,13 @@ export default class PlanetRenderManager {
     now: number,
     highPerfMode: boolean,
     disableEmojis: boolean,
-    disableHats: boolean,
+    disableHats: boolean
   ): void {
     const { gameUIManager: uiManager, circleRenderer: cR } = this.renderer;
     const planet = renderInfo.planet;
     const renderAtReducedQuality = renderInfo.radii.radiusPixels <= 5 && highPerfMode;
     const isHovering = uiManager.getHoveringOverPlanet()?.locationId === planet.locationId;
     const isSelected = uiManager.getSelectedPlanet()?.locationId === planet.locationId;
-
     const { allies } = getOrdenSettings();
 
     let textAlpha = 255;
@@ -63,12 +62,9 @@ export default class PlanetRenderManager {
       .getArtifactsWithIds(planet.heldArtifactIds)
       .filter((a) => !!a) as Artifact[];
 
-    const alliesIsShow = allies.isShow;
     const isAllie = ORDEN_ALLIES.some((allie: any) => allie.address === planet.owner);
-    
-    const color = uiManager.isOwnedByMe(planet) ? whiteA :
-                  isAllie && alliesIsShow ? alliesA : ProcgenUtils.getOwnerColorVec(planet);
-    
+    const color = uiManager.isOwnedByMe(planet) ?
+      whiteA : isAllie && allies.isShow ? alliesA : ProcgenUtils.getOwnerColorVec(planet);
 
     // draw planet body
     this.queuePlanetBody(planet, planet.location.coords, renderInfo.radii.radiusWorld);
@@ -480,7 +476,7 @@ export default class PlanetRenderManager {
     now: number,
     highPerfMode: boolean,
     disableEmojis: boolean,
-    disableHats: boolean,
+    disableHats: boolean
   ): void {
     for (const entry of cachedPlanets.entries()) {
       this.queueLocation(entry[1], now, highPerfMode, disableEmojis, disableHats);

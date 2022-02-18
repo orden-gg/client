@@ -83,12 +83,8 @@ export default class CircleRenderer extends GenericRenderer<typeof CIRCLE_PROGRA
     center: WorldCoords,
     radius: number, // world coords
     color: RGBAVec = [255, 0, 0, 255],
-    stroke = -1,
-    name: string = 'double'
+    stroke = -1
   ) {
-    const ordenSettings = getOrdenSettings();
-    // if(!ordenSettings[name]) return;
-
     const centerCanvas = this.viewport.worldToCanvasCoords(center);
     const rCanvas = this.viewport.worldToCanvasDist(radius);
     this.queueCircle(centerCanvas, rCanvas, color, stroke, 1);
