@@ -18,6 +18,8 @@ import { engineConsts } from '../EngineConsts';
 import { TextAlign, TextAnchor } from '../EngineTypes';
 import Renderer from '../Renderer';
 
+import { OrdenSettings } from '../../../Utils/OrdenUtils';
+
 const { whiteA, barbsA, gold } = engineConsts.colors;
 const { maxRadius } = engineConsts.planet;
 
@@ -25,6 +27,7 @@ const { maxRadius } = engineConsts.planet;
  * this guy is always going to call things in worldcoords, we'll convert them
  * to CanvasCoords. responsible for rendering planets by calling primitive renderers
  */
+
 export default class PlanetRenderManager {
   renderer: Renderer;
 
@@ -37,7 +40,8 @@ export default class PlanetRenderManager {
     now: number,
     highPerfMode: boolean,
     disableEmojis: boolean,
-    disableHats: boolean
+    disableHats: boolean,
+    ordenSettings: Array<OrdenSettings>
   ): void {
     const { gameUIManager: uiManager, circleRenderer: cR } = this.renderer;
     const planet = renderInfo.planet;
@@ -293,24 +297,29 @@ export default class PlanetRenderManager {
   }
 
   private queueAsteroids(planet: Planet, center: WorldCoords, radius: number) {
-    const { asteroidRenderer: aR } = this.renderer;
+    const { asteroidRenderer: aR, circleRenderer: cR } = this.renderer;
 
     const { bonus } = engineConsts.colors;
 
     if (planet.bonus[0]) {
       aR.queueAsteroid(planet, center, radius, bonus.energyCap);
+      cR.queueCircleBonus(center, radius * 1.3, [...bonus.energyCap, 255], 1);
     }
     if (planet.bonus[1]) {
       aR.queueAsteroid(planet, center, radius, bonus.energyGro);
+      cR.queueCircleBonus(center, radius * 1.6, [...bonus.energyGro, 255], 1);
     }
     if (planet.bonus[2]) {
       aR.queueAsteroid(planet, center, radius, bonus.range);
+      cR.queueCircleBonus(center, radius * 1.9, [...bonus.range, 255], 1);
     }
     if (planet.bonus[3]) {
       aR.queueAsteroid(planet, center, radius, bonus.speed);
+      cR.queueCircleBonus(center, radius * 2.2, [...bonus.speed, 255], 1);
     }
     if (planet.bonus[4]) {
       aR.queueAsteroid(planet, center, radius, bonus.defense);
+      cR.queueCircleBonus(center, radius * 2.5, [...bonus.defense, 255], 1);
     }
   }
 
@@ -458,10 +467,11 @@ export default class PlanetRenderManager {
     now: number,
     highPerfMode: boolean,
     disableEmojis: boolean,
-    disableHats: boolean
+    disableHats: boolean,
+    ordenSettings: Array<OrdenSettings>
   ): void {
     for (const entry of cachedPlanets.entries()) {
-      this.queueLocation(entry[1], now, highPerfMode, disableEmojis, disableHats);
+      this.queueLocation(entry[1], now, highPerfMode, disableEmojis, disableHats, ordenSettings);
     }
   }
 

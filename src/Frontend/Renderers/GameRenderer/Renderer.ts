@@ -23,6 +23,8 @@ import Overlay2DRenderer from './Overlay2DRenderer';
 import { UIRenderer } from './UIRenderer';
 import { GameGLManager } from './WebGL/GameGLManager';
 
+import { getOrdenSettings, setOrdenSettings } from '../../Utils/OrdenUtils';
+
 class Renderer {
   static instance: Renderer | null;
 
@@ -136,6 +138,43 @@ class Renderer {
     bufferCanvas: HTMLCanvasElement,
     gameUIManager: GameUIManager
   ) {
+    const ordenSettings = getOrdenSettings();
+
+    if (Object.keys(ordenSettings).length === 0) {
+      setOrdenSettings([
+        {
+          key: 'allies',
+          text: 'Show Allies',
+          isShow: true
+        },
+        {
+          key: 'range',
+          text: 'Show 2x Range',
+          isShow: true
+        },
+        {
+          key: 'energy',
+          text: 'Show 2x Energy',
+          isShow: true
+        },
+        {
+          key: 'energy cap',
+          text: 'Show 2x Energy Cap',
+          isShow: true
+        },
+        {
+          key: 'defence',
+          text: 'Show 2x Defence',
+          isShow: true
+        },
+        {
+          key: 'speed',
+          text: 'Show 2x Speed',
+          isShow: true
+        }
+      ]);
+    }
+
     const canvasRenderer = new Renderer(canvas, glCanvas, bufferCanvas, gameUIManager);
     Renderer.instance = canvasRenderer;
 
@@ -195,6 +234,8 @@ class Renderer {
 
     // queue wormhole calls
     this.wormholeRenderManager.queueWormholes();
+    
+    let ordenSettings = getOrdenSettings();
 
     // queue planets
     this.planetRenderManager.queuePlanets(
@@ -202,7 +243,8 @@ class Renderer {
       this.now,
       isHighPerfMode,
       disableEmojis,
-      disableHats
+      disableHats,
+      ordenSettings
     );
 
     // flush all - ordering matters! (they get drawn bottom-up)
