@@ -10,7 +10,6 @@ export interface OrdenSettings {
     text: string;
     isShow: boolean;
   }
-
 }
 
 export const setOrdenSettings = (settings: OrdenSettings) => {
