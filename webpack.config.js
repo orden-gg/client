@@ -41,13 +41,13 @@ module.exports = {
       // because otherwise the module can't be imported in PluginManager
       {
         test: /\.[jt]sx?$/,
-        include: /embedded_plugins/,
+        include: /(embedded_plugins|orden-plugins)/,
         type: 'javascript/auto',
         use: ['raw-loader', 'ts-loader'],
       },
       {
         test: /\.ts(x?)$/,
-        exclude: /(node_modules|embedded_plugins|plugins)/,
+        exclude: /(node_modules|embedded_plugins|orden-plugins)/,
         loader: 'ts-loader',
         options: {
           getCustomTransformers: () => ({
