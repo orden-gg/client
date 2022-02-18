@@ -165,6 +165,10 @@ class Renderer {
         speed: {
           text: 'Show 2x Speed',
           isShow: true
+        },
+        arrivalTime: {
+          text: 'Show arrival time',
+          isShow: true
         }
       });
     }
