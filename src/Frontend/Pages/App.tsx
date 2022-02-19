@@ -13,6 +13,7 @@ import { TestArtifactImages } from './TestArtifactImages';
 import { TxConfirmPopup } from './TxConfirmPopup';
 import UnsubscribePage from './UnsubscribePage';
 import { ValhallaPage } from './ValhallaPage';
+import WhitelistPage from './Whitelist';
 
 const isProd = process.env.NODE_ENV === 'production';
 
@@ -29,6 +30,7 @@ function App() {
           <Route path='/wallet/:addr/:actionId/:balance/:method' component={TxConfirmPopup} />
           <Route path='/unsubscribe' component={UnsubscribePage} />
           <Route path='/valhalla' component={ValhallaPage} />
+          <Route path='/whitelist' component={WhitelistPage} />
           {!isProd && <Route path='/images' component={TestArtifactImages} />}
           {!isProd && <Route path='/preview' component={PreviewPage} />}
           {!isProd && <Route path='/gifs' component={GifMaker} />}
