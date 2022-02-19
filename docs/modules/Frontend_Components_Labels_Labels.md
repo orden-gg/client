@@ -21,6 +21,10 @@
 | `__namedParameters.ethAddress?`                 | `EthAddress`    |
 | `__namedParameters.includeAddressIfHasTwitter?` | `boolean`       |
 | `__namedParameters.style?`                      | `CSSProperties` |
+<<<<<<< HEAD
+=======
+| `__namedParameters.width?`                      | `string`        |
+>>>>>>> slytherin
 
 #### Returns
 

@@ -38,6 +38,7 @@ export interface InitialGameState {
   planetVoyageIdMap: Map<LocationId, VoyageId[]>;
   arrivals: Map<VoyageId, QueuedArrival>;
   twitters: AddressTwitterMap;
+  paused: boolean;
 }
 
 export class InitialGameStateDownloader {
@@ -164,11 +165,12 @@ export class InitialGameStateDownloader {
       artifactsOnPlanetsLoadingBar
     );
     const myArtifacts = contractsAPI.getPlayerArtifacts(
-      contractsAPI.getAccount(),
+      contractsAPI.getAddress(),
       yourArtifactsLoadingBar
     );
 
     const twitters = await tryGetAllTwitters();
+    const paused = contractsAPI.getIsPaused();
 
     const initialState: InitialGameState = {
       contractConstants: await contractConstants,
@@ -187,6 +189,7 @@ export class InitialGameStateDownloader {
       planetVoyageIdMap,
       arrivals,
       twitters,
+      paused: await paused,
     };
 
     return initialState;

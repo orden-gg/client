@@ -6,9 +6,16 @@
 
 - [EmailResponse](../enums/Backend_Network_UtilityServerAPI.EmailResponse.md)
 
+<<<<<<< HEAD
+=======
+### Type aliases
+
+- [RegisterConfirmationResponse](Backend_Network_UtilityServerAPI.md#registerconfirmationresponse)
+
+>>>>>>> slytherin
 ### Functions
 
-- [callRegisterUntilWhitelisted](Backend_Network_UtilityServerAPI.md#callregisteruntilwhitelisted)
+- [callRegisterAndWaitForConfirmation](Backend_Network_UtilityServerAPI.md#callregisterandwaitforconfirmation)
 - [disconnectTwitter](Backend_Network_UtilityServerAPI.md#disconnecttwitter)
 - [getAllTwitters](Backend_Network_UtilityServerAPI.md#getalltwitters)
 - [requestDevFaucet](Backend_Network_UtilityServerAPI.md#requestdevfaucet)
@@ -18,18 +25,34 @@
 - [submitWhitelistKey](Backend_Network_UtilityServerAPI.md#submitwhitelistkey)
 - [tryGetAllTwitters](Backend_Network_UtilityServerAPI.md#trygetalltwitters)
 - [verifyTwitterHandle](Backend_Network_UtilityServerAPI.md#verifytwitterhandle)
+- [whitelistStatus](Backend_Network_UtilityServerAPI.md#whiteliststatus)
+
+<<<<<<< HEAD
+## Functions
+=======
+## Type aliases
+
+### RegisterConfirmationResponse
+
+Ƭ **RegisterConfirmationResponse**: `Object`
+
+#### Type declaration
+
+| Name            | Type      | Description                                                                                              |
+| :-------------- | :-------- | :------------------------------------------------------------------------------------------------------- |
+| `canRetry?`     | `boolean` | If the whitelist registration is unsuccessful, this is true if the client is able to retry registration. |
+| `errorMessage?` | `string`  | If the whitelist registration is unsuccessful, this is populated with the error message explaining why.  |
+| `txHash?`       | `string`  | If the whitelist registration is successful, this is populated with the hash of the transaction.         |
+>>>>>>> slytherin
 
 ## Functions
 
-### callRegisterUntilWhitelisted
+### callRegisterAndWaitForConfirmation
 
-▸ **callRegisterUntilWhitelisted**(`key`, `address`, `terminal`): `Promise`<`string` \| `undefined`\>
+▸ **callRegisterAndWaitForConfirmation**(`key`, `address`, `terminal`): `Promise`<[`RegisterConfirmationResponse`](Backend_Network_UtilityServerAPI.md#registerconfirmationresponse)\>
 
-Attempts to register the given player into the game.
-
-- if the key is invalid, returns `undefined`
-- if there is an error submitting the whitelist key, indicated by a null response, or if the
-  response is not successful, tries again, until it succeeds.
+Starts the registration process for the user then
+polls for success.
 
 #### Parameters
 
@@ -41,7 +64,7 @@ Attempts to register the given player into the game.
 
 #### Returns
 
-`Promise`<`string` \| `undefined`\>
+`Promise`<[`RegisterConfirmationResponse`](Backend_Network_UtilityServerAPI.md#registerconfirmationresponse)\>
 
 ---
 
@@ -181,3 +204,19 @@ returan empty map.
 #### Returns
 
 `Promise`<`boolean`\>
+
+---
+
+### whitelistStatus
+
+▸ `Const` **whitelistStatus**(`address`): `Promise`<`null` \| `WhitelistStatusResponse`\>
+
+#### Parameters
+
+| Name      | Type         |
+| :-------- | :----------- |
+| `address` | `EthAddress` |
+
+#### Returns
+
+`Promise`<`null` \| `WhitelistStatusResponse`\>

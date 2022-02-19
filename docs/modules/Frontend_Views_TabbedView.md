@@ -21,6 +21,10 @@ related information to the user.
 | Name                            | Type                                  |
 | :------------------------------ | :------------------------------------ |
 | `__namedParameters`             | `Object`                              |
+<<<<<<< HEAD
+=======
+| `__namedParameters.style?`      | `CSSProperties`                       |
+>>>>>>> slytherin
 | `__namedParameters.tabTitles`   | `string`[]                            |
 | `__namedParameters.tabContents` | (`tabIndex`: `number`) => `ReactNode` |
 

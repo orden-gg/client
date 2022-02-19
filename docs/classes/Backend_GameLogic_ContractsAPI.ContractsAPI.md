@@ -21,6 +21,7 @@ reading and writing to and from the blockchain.
 
 ### Properties
 
+- [contractAddress](Backend_GameLogic_ContractsAPI.ContractsAPI.md#contractaddress)
 - [contractCaller](Backend_GameLogic_ContractsAPI.ContractsAPI.md#contractcaller)
 - [ethConnection](Backend_GameLogic_ContractsAPI.ContractsAPI.md#ethconnection)
 - [txExecutor](Backend_GameLogic_ContractsAPI.ContractsAPI.md#txexecutor)
@@ -28,25 +29,33 @@ reading and writing to and from the blockchain.
 
 ### Accessors
 
+<<<<<<< HEAD
 - [coreContract](Backend_GameLogic_ContractsAPI.ContractsAPI.md#corecontract)
 - [gettersContract](Backend_GameLogic_ContractsAPI.ContractsAPI.md#getterscontract)
 - [tokensContract](Backend_GameLogic_ContractsAPI.ContractsAPI.md#tokenscontract)
 - [whitelistContract](Backend_GameLogic_ContractsAPI.ContractsAPI.md#whitelistcontract)
+=======
+- [contract](Backend_GameLogic_ContractsAPI.ContractsAPI.md#contract)
+>>>>>>> slytherin
 
 ### Methods
 
-- [activateArtifact](Backend_GameLogic_ContractsAPI.ContractsAPI.md#activateartifact)
 - [afterTransaction](Backend_GameLogic_ContractsAPI.ContractsAPI.md#aftertransaction)
+- [beforeQueued](Backend_GameLogic_ContractsAPI.ContractsAPI.md#beforequeued)
 - [beforeTransaction](Backend_GameLogic_ContractsAPI.ContractsAPI.md#beforetransaction)
 - [bulkGetArtifacts](Backend_GameLogic_ContractsAPI.ContractsAPI.md#bulkgetartifacts)
 - [bulkGetArtifactsOnPlanets](Backend_GameLogic_ContractsAPI.ContractsAPI.md#bulkgetartifactsonplanets)
 - [bulkGetPlanets](Backend_GameLogic_ContractsAPI.ContractsAPI.md#bulkgetplanets)
+<<<<<<< HEAD
 - [buyHat](Backend_GameLogic_ContractsAPI.ContractsAPI.md#buyhat)
 - [deactivateArtifact](Backend_GameLogic_ContractsAPI.ContractsAPI.md#deactivateartifact)
 - [depositArtifact](Backend_GameLogic_ContractsAPI.ContractsAPI.md#depositartifact)
+=======
+- [cancelTransaction](Backend_GameLogic_ContractsAPI.ContractsAPI.md#canceltransaction)
+>>>>>>> slytherin
 - [destroy](Backend_GameLogic_ContractsAPI.ContractsAPI.md#destroy)
-- [findArtifact](Backend_GameLogic_ContractsAPI.ContractsAPI.md#findartifact)
-- [getAccount](Backend_GameLogic_ContractsAPI.ContractsAPI.md#getaccount)
+- [emitTransactionEvents](Backend_GameLogic_ContractsAPI.ContractsAPI.md#emittransactionevents)
+- [getAddress](Backend_GameLogic_ContractsAPI.ContractsAPI.md#getaddress)
 - [getAllArrivals](Backend_GameLogic_ContractsAPI.ContractsAPI.md#getallarrivals)
 - [getArrival](Backend_GameLogic_ContractsAPI.ContractsAPI.md#getarrival)
 - [getArrivalsForPlanet](Backend_GameLogic_ContractsAPI.ContractsAPI.md#getarrivalsforplanet)
@@ -54,6 +63,7 @@ reading and writing to and from the blockchain.
 - [getConstants](Backend_GameLogic_ContractsAPI.ContractsAPI.md#getconstants)
 - [getContractAddress](Backend_GameLogic_ContractsAPI.ContractsAPI.md#getcontractaddress)
 - [getGasFeeForTransaction](Backend_GameLogic_ContractsAPI.ContractsAPI.md#getgasfeefortransaction)
+- [getIsPaused](Backend_GameLogic_ContractsAPI.ContractsAPI.md#getispaused)
 - [getPlanetById](Backend_GameLogic_ContractsAPI.ContractsAPI.md#getplanetbyid)
 - [getPlayerArtifacts](Backend_GameLogic_ContractsAPI.ContractsAPI.md#getplayerartifacts)
 - [getPlayerById](Backend_GameLogic_ContractsAPI.ContractsAPI.md#getplayerbyid)
@@ -63,38 +73,38 @@ reading and writing to and from the blockchain.
 - [getTokenMintEndTimestamp](Backend_GameLogic_ContractsAPI.ContractsAPI.md#gettokenmintendtimestamp)
 - [getTouchedPlanetIds](Backend_GameLogic_ContractsAPI.ContractsAPI.md#gettouchedplanetids)
 - [getWorldRadius](Backend_GameLogic_ContractsAPI.ContractsAPI.md#getworldradius)
-- [hasAccount](Backend_GameLogic_ContractsAPI.ContractsAPI.md#hasaccount)
-- [initializePlayer](Backend_GameLogic_ContractsAPI.ContractsAPI.md#initializeplayer)
 - [makeCall](Backend_GameLogic_ContractsAPI.ContractsAPI.md#makecall)
-- [move](Backend_GameLogic_ContractsAPI.ContractsAPI.md#move)
-- [prospectPlanet](Backend_GameLogic_ContractsAPI.ContractsAPI.md#prospectplanet)
+- [prioritizeTransaction](Backend_GameLogic_ContractsAPI.ContractsAPI.md#prioritizetransaction)
 - [removeEventListeners](Backend_GameLogic_ContractsAPI.ContractsAPI.md#removeeventlisteners)
-- [reveal](Backend_GameLogic_ContractsAPI.ContractsAPI.md#reveal)
 - [setDiagnosticUpdater](Backend_GameLogic_ContractsAPI.ContractsAPI.md#setdiagnosticupdater)
 - [setupEventListeners](Backend_GameLogic_ContractsAPI.ContractsAPI.md#setupeventlisteners)
-- [transferOwnership](Backend_GameLogic_ContractsAPI.ContractsAPI.md#transferownership)
-- [upgradePlanet](Backend_GameLogic_ContractsAPI.ContractsAPI.md#upgradeplanet)
-- [waitFor](Backend_GameLogic_ContractsAPI.ContractsAPI.md#waitfor)
-- [withdrawArtifact](Backend_GameLogic_ContractsAPI.ContractsAPI.md#withdrawartifact)
-- [withdrawSilver](Backend_GameLogic_ContractsAPI.ContractsAPI.md#withdrawsilver)
+- [submitTransaction](Backend_GameLogic_ContractsAPI.ContractsAPI.md#submittransaction)
 
 ## Constructors
 
 ### constructor
 
-• **new ContractsAPI**(`ethConnection`)
+• **new ContractsAPI**(`__namedParameters`)
 
 #### Parameters
 
-| Name            | Type            |
-| :-------------- | :-------------- |
-| `ethConnection` | `EthConnection` |
+| Name                | Type                 |
+| :------------------ | :------------------- |
+| `__namedParameters` | `ContractsApiConfig` |
 
 #### Overrides
 
 EventEmitter.constructor
 
 ## Properties
+
+### contractAddress
+
+• `Private` **contractAddress**: `EthAddress`
+
+The contract address is saved on the object upon construction
+
+---
 
 ### contractCaller
 
@@ -106,7 +116,7 @@ Instrumented {@link ThrottledConcurrentQueue} for blockchain reads.
 
 ### ethConnection
 
-• `Private` **ethConnection**: `EthConnection`
+• `Readonly` **ethConnection**: `EthConnection`
 
 Our connection to the blockchain. In charge of low level networking, and also of the burner
 wallet.
@@ -115,7 +125,7 @@ wallet.
 
 ### txExecutor
 
-• `Private` `Readonly` **txExecutor**: `undefined` \| `TxExecutor`
+• `Readonly` **txExecutor**: `TxExecutor`
 
 Instrumented {@link ThrottledConcurrentQueue} for blockchain writes.
 
@@ -129,6 +139,7 @@ Don't allow users to submit txs if balance falls below this amount/
 
 ## Accessors
 
+<<<<<<< HEAD
 ### coreContract
 
 • `get` **coreContract**(): `DarkForestCore`
@@ -152,38 +163,17 @@ Don't allow users to submit txs if balance falls below this amount/
 ### tokensContract
 
 • `get` **tokensContract**(): `DarkForestTokens`
+=======
+### contract
+
+• `get` **contract**(): `DarkForest`
+>>>>>>> slytherin
 
 #### Returns
 
-`DarkForestTokens`
-
----
-
-### whitelistContract
-
-• `get` **whitelistContract**(): `Whitelist`
-
-#### Returns
-
-`Whitelist`
+`DarkForest`
 
 ## Methods
-
-### activateArtifact
-
-▸ **activateArtifact**(`action`): `Promise`<`void` \| `TransactionReceipt`\>
-
-#### Parameters
-
-| Name     | Type                          |
-| :------- | :---------------------------- |
-| `action` | `UnconfirmedActivateArtifact` |
-
-#### Returns
-
-`Promise`<`void` \| `TransactionReceipt`\>
-
----
 
 ### afterTransaction
 
@@ -191,10 +181,34 @@ Don't allow users to submit txs if balance falls below this amount/
 
 #### Parameters
 
-| Name               | Type                |
-| :----------------- | :------------------ |
-| `_txRequest`       | `QueuedTransaction` |
-| `txDiagnosticInfo` | `unknown`           |
+| Name               | Type                       |
+| :----------------- | :------------------------- |
+| `_txRequest`       | `Transaction`<`TxIntent`\> |
+| `txDiagnosticInfo` | `unknown`                  |
+
+#### Returns
+
+`Promise`<`void`\>
+
+---
+
+### beforeQueued
+
+▸ `Private` **beforeQueued**(`id`, `intent`, `overrides?`): `Promise`<`void`\>
+
+This function is called by {@link TxExecutor} before a transaction is queued.
+It gives the client an opportunity to prevent a transaction from being queued based
+on business logic or user interaction.
+
+Reject the promise to prevent the queued transaction from being queued.
+
+#### Parameters
+
+| Name         | Type                 |
+| :----------- | :------------------- |
+| `id`         | `number`             |
+| `intent`     | `TxIntent`           |
+| `overrides?` | `TransactionRequest` |
 
 #### Returns
 
@@ -204,7 +218,7 @@ Don't allow users to submit txs if balance falls below this amount/
 
 ### beforeTransaction
 
-▸ `Private` **beforeTransaction**(`txRequest`): `Promise`<`void`\>
+▸ `Private` **beforeTransaction**(`tx`): `Promise`<`void`\>
 
 This function is called by {@link TxExecutor} before each transaction. It gives the client an
 opportunity to prevent a transaction from going through based on business logic or user
@@ -212,9 +226,9 @@ interaction. To prevent the queued transaction from being submitted, throw an Er
 
 #### Parameters
 
-| Name        | Type                |
-| :---------- | :------------------ |
-| `txRequest` | `QueuedTransaction` |
+| Name | Type                       |
+| :--- | :------------------------- |
+| `tx` | `Transaction`<`TxIntent`\> |
 
 #### Returns
 
@@ -274,6 +288,7 @@ interaction. To prevent the queued transaction from being submitted, throw an Er
 
 ---
 
+<<<<<<< HEAD
 ### buyHat
 
 ▸ **buyHat**(`planetIdDecStr`, `currentHatLevel`, `actionId`): `Promise`<`void` \| `TransactionReceipt`\>
@@ -293,34 +308,23 @@ interaction. To prevent the queued transaction from being submitted, throw an Er
 ---
 
 ### deactivateArtifact
+=======
+### cancelTransaction
+>>>>>>> slytherin
 
-▸ **deactivateArtifact**(`action`): `Promise`<`void` \| `TransactionReceipt`\>
+▸ **cancelTransaction**(`tx`): `void`
 
-#### Parameters
-
-| Name     | Type                            |
-| :------- | :------------------------------ |
-| `action` | `UnconfirmedDeactivateArtifact` |
-
-#### Returns
-
-`Promise`<`void` \| `TransactionReceipt`\>
-
----
-
-### depositArtifact
-
-▸ **depositArtifact**(`action`): `Promise`<`void` \| `TransactionReceipt`\>
+Remove a transaction from the queue.
 
 #### Parameters
 
-| Name     | Type                         |
-| :------- | :--------------------------- |
-| `action` | `UnconfirmedDepositArtifact` |
+| Name | Type                       |
+| :--- | :------------------------- |
+| `tx` | `Transaction`<`TxIntent`\> |
 
 #### Returns
 
-`Promise`<`void` \| `TransactionReceipt`\>
+`void`
 
 ---
 
@@ -334,27 +338,29 @@ interaction. To prevent the queued transaction from being submitted, throw an Er
 
 ---
 
-### findArtifact
+### emitTransactionEvents
 
-▸ **findArtifact**(`location`, `biomeSnarkArgs`, `actionId`): `Promise`<`void` \| `TransactionReceipt`\>
+▸ **emitTransactionEvents**(`tx`): `void`
+
+This is a strange interface between the transaction queue system and the rest of the game. The
+strange thing about it is that introduces another way by which transactions are pushed into the
+game - these {@code ContractsAPIEvent} events.
 
 #### Parameters
 
-| Name             | Type                             |
-| :--------------- | :------------------------------- |
-| `location`       | `WorldLocation`                  |
-| `biomeSnarkArgs` | `BiomebaseSnarkContractCallArgs` |
-| `actionId`       | `string`                         |
+| Name | Type                       |
+| :--- | :------------------------- |
+| `tx` | `Transaction`<`TxIntent`\> |
 
 #### Returns
 
-`Promise`<`void` \| `TransactionReceipt`\>
+`void`
 
 ---
 
-### getAccount
+### getAddress
 
-▸ **getAccount**(): `undefined` \| `EthAddress`
+▸ **getAddress**(): `undefined` \| `EthAddress`
 
 #### Returns
 
@@ -457,13 +463,23 @@ a string representing that we want to use an auto gas setting.
 
 #### Parameters
 
-| Name | Type                |
-| :--- | :------------------ |
-| `tx` | `QueuedTransaction` |
+| Name | Type                       |
+| :--- | :------------------------- |
+| `tx` | `Transaction`<`TxIntent`\> |
 
 #### Returns
 
 `string` \| `AutoGasSetting`
+
+---
+
+### getIsPaused
+
+▸ **getIsPaused**(): `Promise`<`boolean`\>
+
+#### Returns
+
+`Promise`<`boolean`\>
 
 ---
 
@@ -603,33 +619,6 @@ a string representing that we want to use an auto gas setting.
 
 ---
 
-### hasAccount
-
-▸ **hasAccount**(): `boolean`
-
-#### Returns
-
-`boolean`
-
----
-
-### initializePlayer
-
-▸ **initializePlayer**(`args`, `action`): `Promise`<`void` \| `TransactionReceipt`\>
-
-#### Parameters
-
-| Name     | Type                        |
-| :------- | :-------------------------- |
-| `args`   | `InitSnarkContractCallArgs` |
-| `action` | `UnconfirmedInit`           |
-
-#### Returns
-
-`Promise`<`void` \| `TransactionReceipt`\>
-
----
-
 ### makeCall
 
 ▸ `Private` **makeCall**<`T`\>(`contractViewFunction`, `args?`): `Promise`<`T`\>
@@ -653,40 +642,21 @@ a string representing that we want to use an auto gas setting.
 
 ---
 
-### move
+### prioritizeTransaction
 
-▸ **move**(`actionId`, `snarkArgs`, `shipsMoved`, `silverMoved`, `artifactMoved?`): `Promise`<`void` \| `TransactionReceipt`\>
+▸ **prioritizeTransaction**(`tx`): `void`
 
-#### Parameters
-
-| Name             | Type                        |
-| :--------------- | :-------------------------- |
-| `actionId`       | `string`                    |
-| `snarkArgs`      | `MoveSnarkContractCallArgs` |
-| `shipsMoved`     | `number`                    |
-| `silverMoved`    | `number`                    |
-| `artifactMoved?` | `ArtifactId`                |
-
-#### Returns
-
-`Promise`<`void` \| `TransactionReceipt`\>
-
----
-
-### prospectPlanet
-
-▸ **prospectPlanet**(`planetId`, `actionId`): `Promise`<`void` \| `TransactionReceipt`\>
+Make sure this transaction is the next to be executed.
 
 #### Parameters
 
-| Name       | Type         |
-| :--------- | :----------- |
-| `planetId` | `LocationId` |
-| `actionId` | `string`     |
+| Name | Type                       |
+| :--- | :------------------------- |
+| `tx` | `Transaction`<`TxIntent`\> |
 
 #### Returns
 
-`Promise`<`void` \| `TransactionReceipt`\>
+`void`
 
 ---
 
@@ -697,23 +667,6 @@ a string representing that we want to use an auto gas setting.
 #### Returns
 
 `void`
-
----
-
-### reveal
-
-▸ **reveal**(`args`, `action`): `Promise`<`void` \| `TransactionReceipt`\>
-
-#### Parameters
-
-| Name     | Type                          |
-| :------- | :---------------------------- |
-| `args`   | `RevealSnarkContractCallArgs` |
-| `action` | `UnconfirmedReveal`           |
-
-#### Returns
-
-`Promise`<`void` \| `TransactionReceipt`\>
 
 ---
 
@@ -743,18 +696,11 @@ a string representing that we want to use an auto gas setting.
 
 ---
 
-### transferOwnership
+### submitTransaction
 
-▸ **transferOwnership**(`planetId`, `newOwner`, `actionId`): `Promise`<`void` \| `TransactionReceipt`\>
+▸ **submitTransaction**<`T`\>(`txIntent`, `overrides?`): `Promise`<`Transaction`<`T`\>\>
 
-#### Parameters
-
-| Name       | Type         |
-| :--------- | :----------- |
-| `planetId` | `LocationId` |
-| `newOwner` | `EthAddress` |
-| `actionId` | `string`     |
-
+<<<<<<< HEAD
 #### Returns
 
 `Promise`<`void` \| `TransactionReceipt`\>
@@ -815,15 +761,21 @@ Given an unconfirmed (but submitted) transaction, emits the appropriate
 ---
 
 ### withdrawSilver
+=======
+#### Type parameters
+>>>>>>> slytherin
 
-▸ **withdrawSilver**(`action`): `Promise`<`void` \| `TransactionReceipt`\>
+| Name | Type               |
+| :--- | :----------------- |
+| `T`  | extends `TxIntent` |
 
 #### Parameters
 
-| Name     | Type                        |
-| :------- | :-------------------------- |
-| `action` | `UnconfirmedWithdrawSilver` |
+| Name         | Type                 |
+| :----------- | :------------------- |
+| `txIntent`   | `T`                  |
+| `overrides?` | `TransactionRequest` |
 
 #### Returns
 
-`Promise`<`void` \| `TransactionReceipt`\>
+`Promise`<`Transaction`<`T`\>\>

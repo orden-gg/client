@@ -18,6 +18,7 @@ Useful for loading temporary modals from ANYWHERE in the UI, not just
 
 #### Parameters
 
+<<<<<<< HEAD
 | Name                          | Type                                                                |
 | :---------------------------- | :------------------------------------------------------------------ |
 | `__namedParameters`           | `Object`                                                            |
@@ -25,6 +26,11 @@ Useful for loading temporary modals from ANYWHERE in the UI, not just
 | `__namedParameters.container` | `Element`                                                           |
 | `__namedParameters.hook`      | [`boolean`, (`set`: `boolean`) => `void`]                           |
 | `__namedParameters.title`     | `string`                                                            |
+=======
+| Name                | Type                           |
+| :------------------ | :----------------------------- |
+| `__namedParameters` | `PropsWithChildren`<`Object`\> |
+>>>>>>> slytherin
 
 #### Returns
 

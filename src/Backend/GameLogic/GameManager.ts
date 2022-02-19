@@ -1,5 +1,22 @@
+<<<<<<< HEAD
 import { BLOCK_EXPLORER_URL, MIN_PLANET_LEVEL } from '@darkforest_eth/constants';
+=======
+import {
+  BLOCK_EXPLORER_URL,
+  CONTRACT_PRECISION,
+  EMPTY_ADDRESS,
+  MIN_PLANET_LEVEL,
+} from '@darkforest_eth/constants';
+import type { DarkForest } from '@darkforest_eth/contracts/typechain';
+>>>>>>> slytherin
 import { monomitter, Monomitter, Subscription } from '@darkforest_eth/events';
+import {
+  getRange,
+  isActivated,
+  isLocatable,
+  isSpaceShip,
+  timeUntilNextBroadcastAvailable,
+} from '@darkforest_eth/gamelogic';
 import { fakeHash, mimcHash, perlin } from '@darkforest_eth/hashing';
 import {
   createContract,
@@ -8,12 +25,32 @@ import {
   verifySignature,
   weiToEth,
 } from '@darkforest_eth/network';
-import { locationIdFromBigInt, locationIdToDecStr } from '@darkforest_eth/serde';
+import { getPlanetName } from '@darkforest_eth/procedural';
+import {
+  artifactIdToDecStr,
+  isUnconfirmedActivateArtifactTx,
+  isUnconfirmedBuyHatTx,
+  isUnconfirmedCapturePlanetTx,
+  isUnconfirmedDeactivateArtifactTx,
+  isUnconfirmedDepositArtifactTx,
+  isUnconfirmedFindArtifactTx,
+  isUnconfirmedInitTx,
+  isUnconfirmedInvadePlanetTx,
+  isUnconfirmedMoveTx,
+  isUnconfirmedProspectPlanetTx,
+  isUnconfirmedRevealTx,
+  isUnconfirmedUpgradeTx,
+  isUnconfirmedWithdrawArtifactTx,
+  isUnconfirmedWithdrawSilverTx,
+  locationIdFromBigInt,
+  locationIdToDecStr,
+} from '@darkforest_eth/serde';
 import {
   Artifact,
   ArtifactId,
   ArtifactRarity,
   ArtifactType,
+  Chunk,
   ClaimedCoords,
   ClaimedLocation,
   ContractMethodName,
@@ -28,17 +65,26 @@ import {
   PlanetType,
   Player,
   QueuedArrival,
+  Radii,
+  Rectangle,
   RevealedCoords,
   RevealedLocation,
+  Setting,
   SignedMessage,
   SpaceType,
-  SubmittedTx,
+  Transaction,
   TxIntent,
   UnconfirmedActivateArtifact,
+<<<<<<< HEAD
+=======
+  UnconfirmedBuyHat,
+  UnconfirmedCapturePlanet,
+>>>>>>> slytherin
   UnconfirmedDeactivateArtifact,
   UnconfirmedDepositArtifact,
   UnconfirmedFindArtifact,
   UnconfirmedInit,
+  UnconfirmedInvadePlanet,
   UnconfirmedMove,
   UnconfirmedPlanetTransfer,
   UnconfirmedProspectPlanet,
@@ -50,10 +96,11 @@ import {
   VoyageId,
   WorldCoords,
   WorldLocation,
+  Wormhole,
 } from '@darkforest_eth/types';
-import { BigInteger } from 'big-integer';
+import bigInt, { BigInteger } from 'big-integer';
 import delay from 'delay';
-import { BigNumber, Contract, ContractInterface } from 'ethers';
+import { BigNumber, Contract, ContractInterface, providers } from 'ethers';
 import { EventEmitter } from 'events';
 import NotificationManager from '../../Frontend/Game/NotificationManager';
 import { MIN_CHUNK_SIZE } from '../../Frontend/Utils/constants';
@@ -64,7 +111,6 @@ import {
   pollSetting,
   setBooleanSetting,
   setSetting,
-  Setting,
   settingChanged$,
 } from '../../Frontend/Utils/SettingsHooks';
 import { TerminalTextStyle } from '../../Frontend/Utils/TerminalTypes';
@@ -73,9 +119,12 @@ import { TerminalHandle } from '../../Frontend/Views/Terminal';
 import {
   ContractConstants,
   ContractsAPIEvent,
-  UpgradeArgs,
+  MoveArgIdxs,
+  MoveArgs,
+  ZKArgIdx,
 } from '../../_types/darkforest/api/ContractsAPITypes';
 import { AddressTwitterMap } from '../../_types/darkforest/api/UtilityServerAPITypes';
+<<<<<<< HEAD
 import {
   Chunk,
   HashConfig,
@@ -84,6 +133,9 @@ import {
   RevealCountdownInfo,
   Wormhole,
 } from '../../_types/global/GlobalTypes';
+=======
+import { HashConfig, RevealCountdownInfo } from '../../_types/global/GlobalTypes';
+>>>>>>> slytherin
 import MinerManager, { HomePlanetMinerChunkStore, MinerManagerEvent } from '../Miner/MinerManager';
 import {
   MiningPattern,
@@ -102,10 +154,10 @@ import {
   verifyTwitterHandle,
 } from '../Network/UtilityServerAPI';
 import { SerializedPlugin } from '../Plugins/SerializedPlugin';
-import { ProcgenUtils } from '../Procedural/ProcgenUtils';
 import PersistentChunkStore from '../Storage/PersistentChunkStore';
 import { easeInAnimation, emojiEaseOutAnimation } from '../Utils/Animation';
 import SnarkArgsHelper from '../Utils/SnarkArgsHelper';
+<<<<<<< HEAD
 import {
   isUnconfirmedActivateArtifact,
   isUnconfirmedBuyHat,
@@ -123,10 +175,14 @@ import {
 import { getRandomActionId, hexifyBigIntNestedArray } from '../Utils/Utils';
 import { getEmojiMessage, getRange } from './ArrivalUtils';
 import { isActivated } from './ArtifactUtils';
+=======
+import { hexifyBigIntNestedArray } from '../Utils/Utils';
+import { getEmojiMessage } from './ArrivalUtils';
+import { CaptureZoneGenerator } from './CaptureZoneGenerator';
+>>>>>>> slytherin
 import { ContractsAPI, makeContractsAPI } from './ContractsAPI';
 import { GameObjects } from './GameObjects';
 import { InitialGameStateDownloader } from './InitialGameStateDownloader';
-import { Radii } from './ViewportEntities';
 
 export enum GameManagerEvent {
   PlanetUpdate = 'PlanetUpdate',
@@ -211,6 +267,8 @@ class GameManager extends EventEmitter {
    * @todo move this into a separate `GameConfiguration` class.
    */
   private readonly contractConstants: ContractConstants;
+
+  private paused: boolean;
 
   /**
    * @todo change this to the correct timestamp each round.
@@ -306,6 +364,8 @@ class GameManager extends EventEmitter {
    */
   public networkHealth$: Monomitter<NetworkHealthSummary>;
 
+  public paused$: Monomitter<boolean>;
+
   /**
    * Diagnostic information about the game.
    */
@@ -316,9 +376,21 @@ class GameManager extends EventEmitter {
    */
   private settingsSubscription: Subscription | undefined;
 
+  /**
+   * Setting to allow players to start game without plugins that were running during the previous
+   * run of the game client. By default, the game launches plugins that were running that were
+   * running when the game was last closed.
+   */
+  private safeMode: boolean;
+
   public get planetRarity(): number {
     return this.contractConstants.PLANET_RARITY;
   }
+
+  /**
+   * Generates capture zones.
+   */
+  private captureZoneGenerator: CaptureZoneGenerator;
 
   private constructor(
     terminal: React.MutableRefObject<TerminalHandle | undefined>,
@@ -338,7 +410,12 @@ class GameManager extends EventEmitter {
     homeLocation: WorldLocation | undefined,
     useMockHash: boolean,
     artifacts: Map<ArtifactId, Artifact>,
+<<<<<<< HEAD
     ethConnection: EthConnection
+=======
+    ethConnection: EthConnection,
+    paused: boolean
+>>>>>>> slytherin
   ) {
     super();
 
@@ -362,7 +439,20 @@ class GameManager extends EventEmitter {
     this.players = players;
     this.worldRadius = worldRadius;
     this.networkHealth$ = monomitter(true);
+<<<<<<< HEAD
     this.playersUpdated$ = monomitter();
+=======
+    this.paused$ = monomitter(true);
+    this.playersUpdated$ = monomitter();
+
+    if (contractConstants.CAPTURE_ZONES_ENABLED) {
+      this.captureZoneGenerator = new CaptureZoneGenerator(
+        this,
+        contractConstants.GAME_START_BLOCK,
+        contractConstants.CAPTURE_ZONE_CHANGE_BLOCK_INTERVAL
+      );
+    }
+>>>>>>> slytherin
 
     this.hashConfig = {
       planetHashKey: contractConstants.PLANETHASH_KEY,
@@ -371,8 +461,11 @@ class GameManager extends EventEmitter {
       perlinLengthScale: contractConstants.PERLIN_LENGTH_SCALE,
       perlinMirrorX: contractConstants.PERLIN_MIRROR_X,
       perlinMirrorY: contractConstants.PERLIN_MIRROR_Y,
+      planetRarity: contractConstants.PLANET_RARITY,
     };
-    this.planetHashMimc = useMockHash ? fakeHash : mimcHash(this.hashConfig.planetHashKey);
+    this.planetHashMimc = useMockHash
+      ? fakeHash(this.hashConfig.planetRarity)
+      : mimcHash(this.hashConfig.planetHashKey);
 
     this.contractConstants = contractConstants;
     this.homeLocation = homeLocation;
@@ -429,6 +522,7 @@ class GameManager extends EventEmitter {
     this.persistentChunkStore = persistentChunkStore;
     this.snarkHelper = snarkHelper;
     this.useMockHash = useMockHash;
+    this.paused = paused;
 
     this.ethConnection = ethConnection;
 
@@ -447,7 +541,11 @@ class GameManager extends EventEmitter {
     this.settingsSubscription = settingChanged$.subscribe((setting: Setting) => {
       if (setting === Setting.MiningCores) {
         if (this.minerManager) {
-          const cores = getNumberSetting(this.account, Setting.MiningCores);
+          const config = {
+            contractAddress: this.getContractAddress(),
+            account: this.account,
+          };
+          const cores = getNumberSetting(config, Setting.MiningCores);
           this.minerManager.setCores(cores);
         }
       }
@@ -455,6 +553,9 @@ class GameManager extends EventEmitter {
 
     this.refreshScoreboard();
     this.refreshNetworkHealth();
+    this.getSpaceships();
+
+    this.safeMode = false;
   }
 
   private async uploadDiagnostics() {
@@ -509,26 +610,31 @@ class GameManager extends EventEmitter {
     this.settingsSubscription?.unsubscribe();
   }
 
-  static async create(
-    ethConnection: EthConnection,
-    terminal: React.MutableRefObject<TerminalHandle | undefined>
-  ): Promise<GameManager> {
+  static async create({
+    connection,
+    terminal,
+    contractAddress,
+  }: {
+    connection: EthConnection;
+    terminal: React.MutableRefObject<TerminalHandle | undefined>;
+    contractAddress: EthAddress;
+  }): Promise<GameManager> {
     if (!terminal.current) {
       throw new Error('you must pass in a handle to a terminal');
     }
 
-    const account = ethConnection.getAddress();
+    const account = connection.getAddress();
 
     if (!account) {
       throw new Error('no account on eth connection');
     }
 
     const gameStateDownloader = new InitialGameStateDownloader(terminal.current);
-    const contractsAPI = await makeContractsAPI(ethConnection);
+    const contractsAPI = await makeContractsAPI({ connection, contractAddress });
 
     terminal.current?.println('Loading game data from disk...');
 
-    const persistentChunkStore = await PersistentChunkStore.create(account);
+    const persistentChunkStore = await PersistentChunkStore.create({ account, contractAddress });
 
     terminal.current?.println('Downloading data from Ethereum blockchain...');
     terminal.current?.println('(the contract is very big. this may take a while)');
@@ -584,6 +690,7 @@ class GameManager extends EventEmitter {
       perlinLengthScale: initialState.contractConstants.PERLIN_LENGTH_SCALE,
       perlinMirrorX: initialState.contractConstants.PERLIN_MIRROR_X,
       perlinMirrorY: initialState.contractConstants.PERLIN_MIRROR_Y,
+      planetRarity: initialState.contractConstants.PLANET_RARITY,
     };
 
     const useMockHash = initialState.contractConstants.DISABLE_ZK_CHECKS;
@@ -609,12 +716,21 @@ class GameManager extends EventEmitter {
       homeLocation,
       useMockHash,
       knownArtifacts,
+<<<<<<< HEAD
       ethConnection
+=======
+      connection,
+      initialState.paused
+>>>>>>> slytherin
     );
 
     gameManager.setPlayerTwitters(initialState.twitters);
 
-    pollSetting(gameManager.getAccount(), Setting.AutoApproveNonPurchaseTransactions);
+    const config = {
+      contractAddress,
+      account: gameManager.getAccount(),
+    };
+    pollSetting(config, Setting.AutoApproveNonPurchaseTransactions);
 
     persistentChunkStore.setDiagnosticUpdater(gameManager);
     contractsAPI.setDiagnosticUpdater(gameManager);
@@ -626,6 +742,8 @@ class GameManager extends EventEmitter {
 
     // get twitter handles
     gameManager.refreshTwitters();
+
+    gameManager.listenForNewBlock();
 
     // set up listeners: whenever ContractsAPI reports some game state update, do some logic
     gameManager.contractsAPI
@@ -646,6 +764,10 @@ class GameManager extends EventEmitter {
       )
       .on(ContractsAPIEvent.PlayerUpdate, async (playerId: EthAddress) => {
         await gameManager.hardRefreshPlayer(playerId);
+      })
+      .on(ContractsAPIEvent.PauseStateChanged, async (paused: boolean) => {
+        gameManager.paused = paused;
+        gameManager.paused$.publish(paused);
       })
       .on(ContractsAPIEvent.PlanetUpdate, async (planetId: LocationId) => {
         // don't reload planets that you don't have in your map. once a planet
@@ -675,19 +797,30 @@ class GameManager extends EventEmitter {
           gameManager.emit(GameManagerEvent.PlanetUpdate);
         }
       )
+<<<<<<< HEAD
       .on(ContractsAPIEvent.TxSubmitted, (unconfirmedTx: SubmittedTx) => {
         gameManager.persistentChunkStore.onEthTxSubmit(unconfirmedTx);
         gameManager.onTxSubmit(unconfirmedTx);
+=======
+      .on(ContractsAPIEvent.TxQueued, (tx: Transaction) => {
+        gameManager.entityStore.onTxIntent(tx);
       })
-      .on(ContractsAPIEvent.TxConfirmed, async (unconfirmedTx: SubmittedTx) => {
-        gameManager.persistentChunkStore.onEthTxComplete(unconfirmedTx.txHash);
-        if (isUnconfirmedReveal(unconfirmedTx)) {
-          await gameManager.hardRefreshPlanet(unconfirmedTx.locationId);
-        } else if (isUnconfirmedInit(unconfirmedTx)) {
+      .on(ContractsAPIEvent.TxSubmitted, (tx: Transaction) => {
+        gameManager.persistentChunkStore.onEthTxSubmit(tx);
+        gameManager.onTxSubmit(tx);
+>>>>>>> slytherin
+      })
+      .on(ContractsAPIEvent.TxConfirmed, async (tx: Transaction) => {
+        if (!tx.hash) return; // this should never happen
+        gameManager.persistentChunkStore.onEthTxComplete(tx.hash);
+
+        if (isUnconfirmedRevealTx(tx)) {
+          await gameManager.hardRefreshPlanet(tx.intent.locationId);
+        } else if (isUnconfirmedInitTx(tx)) {
           terminal.current?.println('Loading Home Planet from Blockchain...');
           const retries = 5;
           for (let i = 0; i < retries; i++) {
-            const planet = await gameManager.contractsAPI.getPlanetById(unconfirmedTx.locationId);
+            const planet = await gameManager.contractsAPI.getPlanetById(tx.intent.locationId);
             if (planet) {
               break;
             } else if (i === retries - 1) {
@@ -696,59 +829,76 @@ class GameManager extends EventEmitter {
               await delay(2000);
             }
           }
-          await gameManager.hardRefreshPlanet(unconfirmedTx.locationId);
-          gameManager.emit(GameManagerEvent.InitializedPlayer);
+          await gameManager.hardRefreshPlanet(tx.intent.locationId);
           // mining manager should be initialized already via joinGame, but just in case...
-          gameManager.initMiningManager(unconfirmedTx.location.coords, 4);
-        } else if (isUnconfirmedMove(unconfirmedTx)) {
-          const promises = [
-            gameManager.bulkHardRefreshPlanets([unconfirmedTx.from, unconfirmedTx.to]),
-          ];
-          if (unconfirmedTx.artifact) {
-            promises.push(gameManager.hardRefreshArtifact(unconfirmedTx.artifact));
+          gameManager.initMiningManager(tx.intent.location.coords, 4);
+        } else if (isUnconfirmedMoveTx(tx)) {
+          const promises = [gameManager.bulkHardRefreshPlanets([tx.intent.from, tx.intent.to])];
+          if (tx.intent.artifact) {
+            promises.push(gameManager.hardRefreshArtifact(tx.intent.artifact));
           }
           await Promise.all(promises);
-        } else if (isUnconfirmedUpgrade(unconfirmedTx)) {
-          await gameManager.hardRefreshPlanet(unconfirmedTx.locationId);
-        } else if (isUnconfirmedBuyHat(unconfirmedTx)) {
-          await gameManager.hardRefreshPlanet(unconfirmedTx.locationId);
-        } else if (isUnconfirmedInit(unconfirmedTx)) {
-          await gameManager.hardRefreshPlanet(unconfirmedTx.locationId);
-        } else if (isUnconfirmedFindArtifact(unconfirmedTx)) {
-          await gameManager.hardRefreshPlanet(unconfirmedTx.planetId);
-        } else if (isUnconfirmedDepositArtifact(unconfirmedTx)) {
+        } else if (isUnconfirmedUpgradeTx(tx)) {
+          await gameManager.hardRefreshPlanet(tx.intent.locationId);
+        } else if (isUnconfirmedBuyHatTx(tx)) {
+          await gameManager.hardRefreshPlanet(tx.intent.locationId);
+        } else if (isUnconfirmedInitTx(tx)) {
+          await gameManager.hardRefreshPlanet(tx.intent.locationId);
+        } else if (isUnconfirmedFindArtifactTx(tx)) {
+          await gameManager.hardRefreshPlanet(tx.intent.planetId);
+        } else if (isUnconfirmedDepositArtifactTx(tx)) {
           await Promise.all([
-            gameManager.hardRefreshPlanet(unconfirmedTx.locationId),
-            gameManager.hardRefreshArtifact(unconfirmedTx.artifactId),
+            gameManager.hardRefreshPlanet(tx.intent.locationId),
+            gameManager.hardRefreshArtifact(tx.intent.artifactId),
           ]);
-        } else if (isUnconfirmedWithdrawArtifact(unconfirmedTx)) {
+        } else if (isUnconfirmedWithdrawArtifactTx(tx)) {
           await Promise.all([
-            await gameManager.hardRefreshPlanet(unconfirmedTx.locationId),
-            await gameManager.hardRefreshArtifact(unconfirmedTx.artifactId),
+            await gameManager.hardRefreshPlanet(tx.intent.locationId),
+            await gameManager.hardRefreshArtifact(tx.intent.artifactId),
           ]);
-        } else if (isUnconfirmedProspectPlanet(unconfirmedTx)) {
-          await gameManager.softRefreshPlanet(unconfirmedTx.planetId);
-        } else if (isUnconfirmedActivateArtifact(unconfirmedTx)) {
+        } else if (isUnconfirmedProspectPlanetTx(tx)) {
+          await gameManager.softRefreshPlanet(tx.intent.planetId);
+        } else if (isUnconfirmedActivateArtifactTx(tx)) {
           await Promise.all([
-            gameManager.hardRefreshPlanet(unconfirmedTx.locationId),
-            gameManager.hardRefreshArtifact(unconfirmedTx.artifactId),
+            gameManager.hardRefreshPlanet(tx.intent.locationId),
+            gameManager.hardRefreshArtifact(tx.intent.artifactId),
           ]);
-        } else if (isUnconfirmedDeactivateArtifact(unconfirmedTx)) {
+        } else if (isUnconfirmedDeactivateArtifactTx(tx)) {
           await Promise.all([
-            gameManager.hardRefreshPlanet(unconfirmedTx.locationId),
-            gameManager.hardRefreshArtifact(unconfirmedTx.artifactId),
+            gameManager.hardRefreshPlanet(tx.intent.locationId),
+            gameManager.hardRefreshArtifact(tx.intent.artifactId),
           ]);
+        } else if (isUnconfirmedWithdrawSilverTx(tx)) {
+          await gameManager.softRefreshPlanet(tx.intent.locationId);
+        } else if (isUnconfirmedCapturePlanetTx(tx)) {
+          await Promise.all([
+            gameManager.hardRefreshPlayer(gameManager.getAccount()),
+            gameManager.hardRefreshPlanet(tx.intent.locationId),
+          ]);
+        } else if (isUnconfirmedInvadePlanetTx(tx)) {
+          await Promise.all([
+            gameManager.hardRefreshPlayer(gameManager.getAccount()),
+            gameManager.hardRefreshPlanet(tx.intent.locationId),
+          ]);
+<<<<<<< HEAD
         } else if (isUnconfirmedWithdrawSilver(unconfirmedTx)) {
           await gameManager.softRefreshPlanet(unconfirmedTx.locationId);
+=======
+>>>>>>> slytherin
         }
 
-        gameManager.entityStore.clearUnconfirmedTxIntent(unconfirmedTx);
-        gameManager.onTxConfirmed(unconfirmedTx);
+        gameManager.entityStore.clearUnconfirmedTxIntent(tx);
+        gameManager.onTxConfirmed(tx);
       })
-      .on(ContractsAPIEvent.TxReverted, async (unconfirmedTx: SubmittedTx) => {
-        gameManager.entityStore.clearUnconfirmedTxIntent(unconfirmedTx);
-        gameManager.persistentChunkStore.onEthTxComplete(unconfirmedTx.txHash);
-        gameManager.onTxReverted(unconfirmedTx);
+      .on(ContractsAPIEvent.TxErrored, async (tx: Transaction) => {
+        gameManager.entityStore.clearUnconfirmedTxIntent(tx);
+        if (tx.hash) {
+          gameManager.persistentChunkStore.onEthTxComplete(tx.hash);
+        }
+        gameManager.onTxReverted(tx);
+      })
+      .on(ContractsAPIEvent.TxCancelled, async (tx: Transaction) => {
+        gameManager.onTxCancelled(tx);
       })
       .on(ContractsAPIEvent.RadiusUpdated, async () => {
         const newRadius = await gameManager.contractsAPI.getWorldRadius();
@@ -763,11 +913,11 @@ class GameManager extends EventEmitter {
     });
 
     for (const unconfirmedTx of unconfirmedTxs) {
-      // recommits the tx to storage but whatever
-      gameManager.contractsAPI.waitFor(
-        unconfirmedTx,
-        confirmationQueue.add(() => ethConnection.waitForTransaction(unconfirmedTx.txHash))
-      );
+      confirmationQueue.add(async () => {
+        const tx = gameManager.contractsAPI.txExecutor.waitForTransaction(unconfirmedTx);
+        gameManager.contractsAPI.emitTransactionEvents(tx);
+        return tx.confirmedPromise;
+      });
     }
 
     // we only want to initialize the mining manager if the player has already joined the game
@@ -779,7 +929,8 @@ class GameManager extends EventEmitter {
     return gameManager;
   }
 
-  private async hardRefreshPlayer(address: EthAddress): Promise<void> {
+  private async hardRefreshPlayer(address?: EthAddress): Promise<void> {
+    if (!address) return;
     const playerFromBlockchain = await this.contractsAPI.getPlayerById(address);
     if (!playerFromBlockchain) return;
 
@@ -800,7 +951,7 @@ class GameManager extends EventEmitter {
     this.entityStore.replacePlanetFromContractData(planet);
   }
 
-  private async hardRefreshPlanet(planetId: LocationId): Promise<void> {
+  public async hardRefreshPlanet(planetId: LocationId): Promise<void> {
     const planet = await this.contractsAPI.getPlanetById(planetId);
     if (!planet) return;
     const arrivals = await this.contractsAPI.getArrivalsForPlanet(planetId);
@@ -883,81 +1034,68 @@ class GameManager extends EventEmitter {
     this.entityStore.replaceArtifactFromContractData(artifact);
   }
 
+<<<<<<< HEAD
   private onTxSubmit(unminedTx: SubmittedTx): void {
     this.terminal.current?.print(`${unminedTx.methodName} transaction (`, TerminalTextStyle.Blue);
+=======
+  private onTxSubmit(tx: Transaction): void {
+    this.terminal.current?.print(`${tx.intent.methodName} transaction (`, TerminalTextStyle.Blue);
+>>>>>>> slytherin
     this.terminal.current?.printLink(
-      `${unminedTx.txHash.slice(0, 6)}`,
+      `${tx.hash?.slice(0, 6) ?? ''}`,
       () => {
-        window.open(`${BLOCK_EXPLORER_URL}/${unminedTx.txHash}`);
+        window.open(`${BLOCK_EXPLORER_URL}/${tx.hash ?? ''}`);
       },
       TerminalTextStyle.White
     );
     this.terminal.current?.println(`) submitted`, TerminalTextStyle.Blue);
-
-    NotificationManager.getInstance().txSubmit(unminedTx);
   }
 
-  private onTxConfirmed(unminedTx: SubmittedTx) {
-    const notifManager = NotificationManager.getInstance();
-    this.terminal.current?.print(`${unminedTx.methodName} transaction (`, TerminalTextStyle.Green);
+  private onTxConfirmed(tx: Transaction) {
+    this.terminal.current?.print(`${tx.intent.methodName} transaction (`, TerminalTextStyle.Green);
     this.terminal.current?.printLink(
-      `${unminedTx.txHash.slice(0, 6)}`,
+      `${tx.hash?.slice(0, 6) ?? ''}`,
       () => {
-        window.open(`${BLOCK_EXPLORER_URL}/${unminedTx.txHash}`);
+        window.open(`${BLOCK_EXPLORER_URL}/${tx.hash ?? ''}`);
       },
       TerminalTextStyle.White
     );
     this.terminal.current?.println(`) confirmed`, TerminalTextStyle.Green);
-
-    NotificationManager.getInstance().txConfirm(unminedTx);
-
-    const autoClearConfirmAfter = getNumberSetting(
-      this.account,
-      Setting.AutoClearConfirmedTransactionsAfterSeconds
-    );
-
-    if (autoClearConfirmAfter >= 0) {
-      setTimeout(() => {
-        notifManager.clearNotification(unminedTx.actionId);
-      }, autoClearConfirmAfter * 1000);
-    }
   }
 
-  private onTxReverted(unminedTx: SubmittedTx) {
-    const notifManager = NotificationManager.getInstance();
-    this.terminal.current?.print(`${unminedTx.methodName} transaction (`, TerminalTextStyle.Red);
+  private onTxReverted(tx: Transaction) {
+    this.terminal.current?.print(`${tx.intent.methodName} transaction (`, TerminalTextStyle.Red);
     this.terminal.current?.printLink(
-      `${unminedTx.txHash.slice(0, 6)}`,
+      `${tx.hash?.slice(0, 6) ?? ''}`,
       () => {
-        window.open(`${BLOCK_EXPLORER_URL}/${unminedTx.txHash}`);
+        window.open(`${BLOCK_EXPLORER_URL}/${tx.hash ?? ''}`);
       },
       TerminalTextStyle.White
     );
 
     this.terminal.current?.println(`) reverted`, TerminalTextStyle.Red);
-    notifManager.txRevert(unminedTx);
   }
 
-  private onTxIntentFail(txIntent: TxIntent, e: Error): void {
-    const notifManager = NotificationManager.getInstance();
-    notifManager.unsubmittedTxFail(txIntent, e);
-
-    this.terminal.current?.println(
-      `[TX ERROR]: ${e.message.slice(0, 10000)}`,
-      TerminalTextStyle.Red
-    );
-    this.entityStore.clearUnconfirmedTxIntent(txIntent);
-
-    const autoClearRejectAfter = getNumberSetting(
-      this.account,
-      Setting.AutoClearRejectedTransactionsAfterSeconds
+  private onTxCancelled(tx: Transaction) {
+    this.entityStore.clearUnconfirmedTxIntent(tx);
+    this.terminal.current?.print(`${tx.intent.methodName} transaction (`, TerminalTextStyle.Red);
+    this.terminal.current?.printLink(
+      `${tx.hash?.slice(0, 6) ?? ''}`,
+      () => {
+        window.open(`${BLOCK_EXPLORER_URL}/${tx.hash ?? ''}`);
+      },
+      TerminalTextStyle.White
     );
 
+<<<<<<< HEAD
     if (autoClearRejectAfter >= 0) {
       setTimeout(() => {
         notifManager.clearNotification(txIntent.actionId);
       }, autoClearRejectAfter * 1000);
     }
+=======
+    this.terminal.current?.println(`) cancelled`, TerminalTextStyle.Red);
+>>>>>>> slytherin
   }
 
   /**
@@ -968,8 +1106,14 @@ class GameManager extends EventEmitter {
   }
 
   /**
-   * Gets the address of the `DarkForestCore` contract, which is essentially
-   * the 'backend' of the game.
+   * Get the thing that handles contract interaction.
+   */
+  public getContractAPI(): ContractsAPI {
+    return this.contractsAPI;
+  }
+
+  /**
+   * Gets the address of the `DarkForest` contract, which is the 'backend' of the game.
    */
   public getContractAddress(): EthAddress {
     return this.contractsAPI.getContractAddress();
@@ -1149,6 +1293,20 @@ class GameManager extends EventEmitter {
     return player?.score;
   }
 
+  public getPlayerSpaceJunk(addr: EthAddress): number | undefined {
+    const player = this.players.get(addr);
+    return player?.spaceJunk;
+  }
+
+  public getPlayerSpaceJunkLimit(addr: EthAddress): number | undefined {
+    const player = this.players.get(addr);
+    return player?.spaceJunkLimit;
+  }
+
+  public getDefaultSpaceJunkForPlanetLevel(level: number) {
+    return this.contractConstants.PLANET_LEVEL_JUNK[level];
+  }
+
   private initMiningManager(homeCoords: WorldCoords, cores?: number): void {
     if (this.minerManager) return;
 
@@ -1163,7 +1321,12 @@ class GameManager extends EventEmitter {
       this.useMockHash
     );
 
-    this.minerManager.setCores(cores || getNumberSetting(this.account, Setting.MiningCores));
+    const config = {
+      contractAddress: this.getContractAddress(),
+      account: this.account,
+    };
+
+    this.minerManager.setCores(cores || getNumberSetting(config, Setting.MiningCores));
 
     this.minerManager.on(
       MinerManagerEvent.DiscoveredNewChunk,
@@ -1174,7 +1337,7 @@ class GameManager extends EventEmitter {
       }
     );
 
-    const isMining = getBooleanSetting(this.account, Setting.IsMining);
+    const isMining = getBooleanSetting(config, Setting.IsMining);
     if (isMining) {
       this.minerManager.startExplore();
     }
@@ -1201,7 +1364,11 @@ class GameManager extends EventEmitter {
    * Set the amount of cores to mine the universe with. More cores equals faster!
    */
   setMinerCores(nCores: number): void {
-    setSetting(this.account, Setting.MiningCores, nCores + '');
+    const config = {
+      contractAddress: this.getContractAddress(),
+      account: this.account,
+    };
+    setSetting(config, Setting.MiningCores, nCores + '');
   }
 
   /**
@@ -1246,7 +1413,7 @@ class GameManager extends EventEmitter {
     const myLastRevealTimestamp = this.players.get(this.account)?.lastRevealTimestamp;
     return {
       myLastRevealTimestamp: myLastRevealTimestamp || undefined,
-      currentlyRevealing: !!this.entityStore.getUnconfirmedReveal(),
+      currentlyRevealing: this.entityStore.transactions.hasTransaction(isUnconfirmedRevealTx),
       revealCooldownTime: this.contractConstants.LOCATION_REVEAL_COOLDOWN,
     };
   }
@@ -1257,7 +1424,12 @@ class GameManager extends EventEmitter {
   getMyArtifacts(): Artifact[] {
     if (!this.account) return [];
     const ownedByMe = this.entityStore.getArtifactsOwnedBy(this.account);
-    const onPlanetsOwnedByMe = this.entityStore.getArtifactsOnPlanetsOwnedBy(this.account);
+    const onPlanetsOwnedByMe = this.entityStore
+      .getArtifactsOnPlanetsOwnedBy(this.account)
+      // filter out space ships because they always show up
+      // in the `ownedByMe` array.
+      .filter((a) => !isSpaceShip(a.artifactType));
+
     return [...ownedByMe, ...onPlanetsOwnedByMe];
   }
 
@@ -1305,7 +1477,7 @@ class GameManager extends EventEmitter {
   /**
    * Gets the artifact with the given id. Null if no artifact with id exists.
    */
-  getArtifactWithId(artifactId: ArtifactId): Artifact | undefined {
+  getArtifactWithId(artifactId?: ArtifactId): Artifact | undefined {
     return this.entityStore.getArtifactById(artifactId);
   }
 
@@ -1313,7 +1485,7 @@ class GameManager extends EventEmitter {
    * Gets the artifacts with the given ids, including ones we know exist but haven't been loaded,
    * represented by `undefined`.
    */
-  getArtifactsWithIds(artifactIds: ArtifactId[]): Array<Artifact | undefined> {
+  getArtifactsWithIds(artifactIds: ArtifactId[] = []): Array<Artifact | undefined> {
     return artifactIds.map((id) => this.getArtifactWithId(id));
   }
 
@@ -1410,11 +1582,18 @@ class GameManager extends EventEmitter {
   }
 
   /**
-   * Gets the balance of the account
+   * Gets the balance of the account measured in Eth (i.e. in full units of the chain).
    */
   getMyBalanceEth(): number {
     if (!this.account) return 0;
-    return weiToEth(this.ethConnection.getMyBalance() || BigNumber.from('0'));
+    return weiToEth(this.getMyBalance());
+  }
+
+  /**
+   * Gets the balance of the account
+   */
+  getMyBalance(): BigNumber {
+    return this.ethConnection.getMyBalance() || BigNumber.from('0');
   }
 
   /**
@@ -1428,24 +1607,22 @@ class GameManager extends EventEmitter {
    * Gets all moves that this client has queued to be uploaded to the contract, but
    * have not been successfully confirmed yet.
    */
-  getUnconfirmedMoves(): UnconfirmedMove[] {
-    return this.entityStore.getUnconfirmedMoves();
+  getUnconfirmedMoves(): Transaction<UnconfirmedMove>[] {
+    return this.entityStore.transactions.getTransactions(isUnconfirmedMoveTx);
   }
 
   /**
    * Gets all upgrades that this client has queued to be uploaded to the contract, but
    * have not been successfully confirmed yet.
    */
-  getUnconfirmedUpgrades(): UnconfirmedUpgrade[] {
-    return this.entityStore.getUnconfirmedUpgrades();
+  getUnconfirmedUpgrades(): Transaction<UnconfirmedUpgrade>[] {
+    return this.entityStore.transactions.getTransactions(isUnconfirmedUpgradeTx);
   }
 
-  getUnconfirmedWormholeActivations(): UnconfirmedActivateArtifact[] {
-    return this.entityStore.getUnconfirmedWormholeActivations();
-  }
-
-  getWormholes(): Iterable<Wormhole> {
-    return this.entityStore.getWormholes();
+  getUnconfirmedWormholeActivations(): Transaction<UnconfirmedActivateArtifact>[] {
+    return this.entityStore.transactions
+      .getTransactions(isUnconfirmedActivateArtifactTx)
+      .filter((tx) => tx.intent.wormholeTo !== undefined);
   }
 
   /**
@@ -1507,7 +1684,11 @@ class GameManager extends EventEmitter {
    */
   startExplore(): void {
     if (this.minerManager) {
-      setBooleanSetting(this.account, Setting.IsMining, true);
+      const config = {
+        contractAddress: this.getContractAddress(),
+        account: this.account,
+      };
+      setBooleanSetting(config, Setting.IsMining, true);
       this.minerManager.startExplore();
     }
   }
@@ -1517,7 +1698,11 @@ class GameManager extends EventEmitter {
    */
   stopExplore(): void {
     if (this.minerManager) {
-      setBooleanSetting(this.account, Setting.IsMining, false);
+      const config = {
+        contractAddress: this.getContractAddress(),
+        account: this.account,
+      };
+      setBooleanSetting(config, Setting.IsMining, false);
       this.hashRate = 0;
       this.minerManager.stopExplore();
     }
@@ -1569,17 +1754,23 @@ class GameManager extends EventEmitter {
    * Gets the timestamp (ms) of the next time that we can broadcast the coordinates of a planet.
    */
   public getNextBroadcastAvailableTimestamp() {
+    return Date.now() + this.timeUntilNextBroadcastAvailable();
+  }
+
+  /**
+   * Gets the amount of time (ms) until the next time the current player can broadcast a planet.
+   */
+  public timeUntilNextBroadcastAvailable() {
     if (!this.account) {
       throw new Error('no account set');
     }
+
     const myLastRevealTimestamp = this.players.get(this.account)?.lastRevealTimestamp;
 
-    if (!myLastRevealTimestamp) {
-      return Date.now();
-    }
-
-    // both the variables in the next line are denominated in seconds
-    return (myLastRevealTimestamp + this.contractConstants.LOCATION_REVEAL_COOLDOWN) * 1000;
+    return timeUntilNextBroadcastAvailable(
+      myLastRevealTimestamp,
+      this.contractConstants.LOCATION_REVEAL_COOLDOWN
+    );
   }
 
   /**
@@ -1602,149 +1793,296 @@ class GameManager extends EventEmitter {
     return (myLastClaimTimestamp + this.contractConstants.CLAIM_PLANET_COOLDOWN) * 1000;
   }
 
+<<<<<<< HEAD
   /**
    * Reveals a planet's location on-chain.
    */
   public revealLocation(planetId: LocationId): GameManager {
     if (this.checkGameHasEnded()) return this;
+=======
+  public getCaptureZones() {
+    return this.captureZoneGenerator.getZones();
+  }
 
-    if (!this.account) {
-      throw new Error('no account set');
-    }
+  /**
+   * Reveals a planet's location on-chain.
+   */
+  public async revealLocation(planetId: LocationId): Promise<Transaction<UnconfirmedReveal>> {
+    try {
+      if (!this.account) {
+        throw new Error('no account set');
+      }
 
-    const planet = this.entityStore.getPlanetWithId(planetId);
+      const planet = this.entityStore.getPlanetWithId(planetId);
 
-    if (!planet) {
-      throw new Error("you can't reveal a planet you haven't discovered");
-    }
+      if (!planet) {
+        throw new Error("you can't reveal a planet you haven't discovered");
+      }
 
-    if (!isLocatable(planet)) {
-      throw new Error("you can't reveal a planet whose coordinates you don't know");
-    }
+      if (!isLocatable(planet)) {
+        throw new Error("you can't reveal a planet whose coordinates you don't know");
+      }
 
-    if (planet.coordsRevealed) {
-      throw new Error("this planet's location is already revealed");
-    }
+      if (planet.coordsRevealed) {
+        throw new Error("this planet's location is already revealed");
+      }
 
-    if (planet.unconfirmedReveal) {
-      throw new Error("you're already revealing this planet's location");
-    }
+      if (planet.transactions?.hasTransaction(isUnconfirmedRevealTx)) {
+        throw new Error("you're already revealing this planet's location");
+      }
 
-    if (!!this.entityStore.getUnconfirmedReveal()) {
-      throw new Error("you're already broadcasting coordinates");
-    }
-    const myLastRevealTimestamp = this.players.get(this.account)?.lastRevealTimestamp;
-    if (myLastRevealTimestamp && Date.now() < this.getNextBroadcastAvailableTimestamp()) {
-      throw new Error('still on cooldown for broadcasting');
-    }
+      if (this.entityStore.transactions.hasTransaction(isUnconfirmedRevealTx)) {
+        throw new Error("you're already broadcasting coordinates");
+      }
 
-    // this is shitty. used for the popup window
-    localStorage.setItem(`${this.getAccount()?.toLowerCase()}-revealLocationId`, planetId);
+      const myLastRevealTimestamp = this.players.get(this.account)?.lastRevealTimestamp;
+      if (myLastRevealTimestamp && Date.now() < this.getNextBroadcastAvailableTimestamp()) {
+        throw new Error('still on cooldown for broadcasting');
+      }
 
-    const actionId = getRandomActionId();
-    const txIntent: UnconfirmedReveal = {
-      actionId,
-      methodName: ContractMethodName.REVEAL_LOCATION,
-      locationId: planetId,
-      location: planet.location,
-    };
+      // this is shitty. used for the popup window
+      localStorage.setItem(`${this.getAccount()?.toLowerCase()}-revealLocationId`, planetId);
 
-    this.handleTxIntent(txIntent);
+      const getArgs = async () => {
+        const revealArgs = await this.snarkHelper.getRevealArgs(
+          planet.location.coords.x,
+          planet.location.coords.y
+        );
 
-    this.snarkHelper
-      .getRevealArgs(planet.location.coords.x, planet.location.coords.y)
-      .then((snarkArgs) => {
         this.terminal.current?.println(
           'REVEAL: calculated SNARK with args:',
           TerminalTextStyle.Sub
         );
         this.terminal.current?.println(
-          JSON.stringify(hexifyBigIntNestedArray(snarkArgs.slice(0, 3))),
+          JSON.stringify(hexifyBigIntNestedArray(revealArgs.slice(0, 3))),
           TerminalTextStyle.Sub
         );
         this.terminal.current?.newline();
 
-        return this.contractsAPI.reveal(snarkArgs, txIntent);
-      })
-      .catch((err) => {
-        this.onTxIntentFail(txIntent, err);
-      });
+        return revealArgs;
+      };
+>>>>>>> slytherin
 
-    return this;
+      const txIntent: UnconfirmedReveal = {
+        methodName: ContractMethodName.REVEAL_LOCATION,
+        contract: this.contractsAPI.contract,
+        locationId: planetId,
+        location: planet.location,
+        args: getArgs(),
+      };
+
+      // Always await the submitTransaction so we can catch rejections
+      const tx = await this.contractsAPI.submitTransaction(txIntent);
+
+      return tx;
+    } catch (e) {
+      this.getNotificationsManager().txInitError(ContractMethodName.REVEAL_LOCATION, e.message);
+      throw e;
+    }
+  }
+
+  public async invadePlanet(locationId: LocationId) {
+    try {
+      const planet = this.entityStore.getPlanetWithId(locationId);
+
+      if (!planet || !isLocatable(planet)) {
+        throw new Error("you can't invade a planet you haven't discovered");
+      }
+
+      if (planet.destroyed) {
+        throw new Error("you can't invade destroyed planets");
+      }
+
+      if (planet.capturer !== EMPTY_ADDRESS) {
+        throw new Error("you can't invade planets that have already been captured");
+      }
+
+      if (planet.owner !== this.account) {
+        throw new Error('you can only invade planets you own');
+      }
+
+      if (!this.captureZoneGenerator.isInZone(planet.locationId)) {
+        throw new Error("you can't invade planets that are not in a capture zone");
+      }
+
+      localStorage.setItem(`${this.getAccount()?.toLowerCase()}-invadePlanet`, locationId);
+
+      const getArgs = async () => {
+        const revealArgs = await this.snarkHelper.getRevealArgs(
+          planet.location.coords.x,
+          planet.location.coords.y
+        );
+
+        this.terminal.current?.println(
+          'REVEAL: calculated SNARK with args:',
+          TerminalTextStyle.Sub
+        );
+        this.terminal.current?.println(
+          JSON.stringify(hexifyBigIntNestedArray(revealArgs.slice(0, 3))),
+          TerminalTextStyle.Sub
+        );
+        this.terminal.current?.newline();
+
+        return revealArgs;
+      };
+
+      const txIntent: UnconfirmedInvadePlanet = {
+        methodName: ContractMethodName.INVADE_PLANET,
+        contract: this.contractsAPI.contract,
+        locationId,
+        args: getArgs(),
+      };
+
+      const tx = await this.contractsAPI.submitTransaction(txIntent);
+      return tx;
+    } catch (e) {
+      this.getNotificationsManager().txInitError(ContractMethodName.INVADE_PLANET, e.message);
+      throw e;
+    }
+  }
+
+  public async capturePlanet(locationId: LocationId) {
+    try {
+      const planet = this.entityStore.getPlanetWithId(locationId);
+
+      if (!planet) {
+        throw new Error('planet is not loaded');
+      }
+
+      if (planet.destroyed) {
+        throw new Error("you can't capture destroyed planets");
+      }
+
+      if (planet.capturer !== EMPTY_ADDRESS) {
+        throw new Error("you can't capture planets that have already been captured");
+      }
+
+      if (planet.owner !== this.account) {
+        throw new Error('you can only capture planets you own');
+      }
+
+      if (planet.energy < planet.energyCap * 0.8) {
+        throw new Error('the planet needs >80% energy before capturing');
+      }
+
+      if (
+        !planet.invadeStartBlock ||
+        this.ethConnection.getCurrentBlockNumber() <
+          planet.invadeStartBlock + this.contractConstants.CAPTURE_ZONE_HOLD_BLOCKS_REQUIRED
+      ) {
+        throw new Error(
+          `you need to hold a planet for ${this.contractConstants.CAPTURE_ZONE_HOLD_BLOCKS_REQUIRED} blocks before capturing`
+        );
+      }
+
+      localStorage.setItem(`${this.getAccount()?.toLowerCase()}-capturePlanet`, locationId);
+
+      const txIntent: UnconfirmedCapturePlanet = {
+        methodName: ContractMethodName.CAPTURE_PLANET,
+        contract: this.contractsAPI.contract,
+        locationId,
+        args: Promise.resolve([locationIdToDecStr(locationId)]),
+      };
+
+      const tx = await this.contractsAPI.submitTransaction(txIntent);
+      return tx;
+    } catch (e) {
+      this.getNotificationsManager().txInitError(ContractMethodName.CAPTURE_PLANET, e.message);
+      throw e;
+    }
   }
 
   /**
    * Attempts to join the game. Should not be called once you've already joined.
    */
-  joinGame(beforeRetry: (e: Error) => Promise<boolean>): GameManager {
-    if (this.checkGameHasEnded()) return this;
-    let actionId: string;
-    let txIntent: UnconfirmedInit;
-    this.findRandomHomePlanet()
-      .then(async (planet) => {
-        this.homeLocation = planet.location;
-        this.terminal.current?.println('');
-        this.terminal.current?.println(
-          `Found Suitable Home Planet: ${ProcgenUtils.getPlanetName(planet)} `
-        );
-        // @todo: add planet preview render here, the planet procedural generation text, etc.
-        this.terminal.current?.println(
-          `Its coordinates are: (${planet.location.coords.x}, ${planet.location.coords.y})`
-        );
-        this.terminal.current?.println('');
+  public async joinGame(beforeRetry: (e: Error) => Promise<boolean>): Promise<void> {
+    try {
+      if (this.checkGameHasEnded()) {
+        throw new Error('game has ended');
+      }
 
-        await this.persistentChunkStore.addHomeLocation(planet.location);
+      const planet = await this.findRandomHomePlanet();
+      this.homeLocation = planet.location;
+      this.terminal.current?.println('');
+      this.terminal.current?.println(`Found Suitable Home Planet: ${getPlanetName(planet)} `);
+      this.terminal.current?.println(
+        `Its coordinates are: (${planet.location.coords.x}, ${planet.location.coords.y})`
+      );
+      this.terminal.current?.println('');
 
-        actionId = getRandomActionId();
-        txIntent = {
-          actionId,
-          methodName: ContractMethodName.INIT,
-          locationId: planet.location.hash,
-          location: planet.location,
-        };
-        this.handleTxIntent(txIntent as TxIntent);
-        this.terminal.current?.println('INIT: proving that planet exists', TerminalTextStyle.Sub);
-        const callArgs = await this.snarkHelper.getInitArgs(
+      await this.persistentChunkStore.addHomeLocation(planet.location);
+
+      const getArgs = async () => {
+        const args = await this.snarkHelper.getInitArgs(
           planet.location.coords.x,
           planet.location.coords.y,
           Math.floor(Math.sqrt(planet.location.coords.x ** 2 + planet.location.coords.y ** 2)) + 1 // floor(sqrt(x^2 + y^2)) + 1
         );
-        this.initMiningManager(planet.location.coords); // get an early start
+        this.terminal.current?.println('INIT: calculated SNARK with args:', TerminalTextStyle.Sub);
+        this.terminal.current?.println(
+          JSON.stringify(hexifyBigIntNestedArray(args.slice(0, 3) as unknown as string[])),
+          TerminalTextStyle.Sub
+        );
+        this.terminal.current?.newline();
+        return args;
+      };
 
-        // if player initialization causes an error, give the caller an opportunity
-        // to resolve that error. if the asynchronous `beforeRetry` function returns
-        // true, retry initializing the player. if it returns false, or if the
-        // `beforeRetry` is undefined, then don't retry and throw an exception.
-        while (true) {
-          try {
-            this.terminal.current?.println(
-              'INIT: calculated SNARK with args:',
-              TerminalTextStyle.Sub
-            );
-            this.terminal.current?.println(
-              JSON.stringify(hexifyBigIntNestedArray(callArgs.slice(0, 3))),
-              TerminalTextStyle.Sub
-            );
-            this.terminal.current?.newline();
-            await this.contractsAPI.initializePlayer(callArgs, txIntent);
-            break;
-          } catch (e) {
-            if (beforeRetry) {
-              if (await beforeRetry(e)) {
-                continue;
-              }
-            } else {
-              throw e;
+      const txIntent: UnconfirmedInit = {
+        methodName: ContractMethodName.INIT,
+        contract: this.contractsAPI.contract,
+        locationId: planet.location.hash,
+        location: planet.location,
+        args: getArgs(),
+      };
+
+      this.terminal.current?.println('INIT: proving that planet exists', TerminalTextStyle.Sub);
+
+      this.initMiningManager(planet.location.coords); // get an early start
+
+      // if player initialization causes an error, give the caller an opportunity
+      // to resolve that error. if the asynchronous `beforeRetry` function returns
+      // true, retry initializing the player. if it returns false, or if the
+      // `beforeRetry` is undefined, then don't retry and throw an exception.
+      while (true) {
+        try {
+          const tx = await this.contractsAPI.submitTransaction(txIntent);
+          await tx.confirmedPromise;
+          break;
+        } catch (e) {
+          if (beforeRetry) {
+            if (await beforeRetry(e)) {
+              continue;
             }
+          } else {
+            throw e;
           }
         }
-      })
-      .catch((err) => {
-        this.onTxIntentFail(txIntent, err);
-        this.emit(GameManagerEvent.InitializedPlayerError, err);
-      });
+      }
 
-    return this;
+      await this.getSpaceships();
+      await this.hardRefreshPlanet(planet.locationId);
+
+      this.emit(GameManagerEvent.InitializedPlayer);
+    } catch (e) {
+      this.getNotificationsManager().txInitError(ContractMethodName.INIT, e.message);
+      throw e;
+    }
+  }
+
+  private async getSpaceships() {
+    if (!this.account || !this.homeLocation?.hash) return;
+
+    const player = await this.contractsAPI.getPlayerById(this.account);
+    if (player?.claimedShips) return;
+
+    if (this.getGameObjects().isGettingSpaceships()) return;
+    const tx = await this.contractsAPI.submitTransaction({
+      methodName: ContractMethodName.GET_SHIPS,
+      contract: this.contractsAPI.contract,
+      args: Promise.resolve(['0x' + this.homeLocation?.hash]),
+    });
+    await tx.confirmedPromise;
+    this.hardRefreshPlanet(this.homeLocation?.hash);
   }
 
   // this is slow, do not call in i.e. render/draw loop
@@ -1912,146 +2250,142 @@ class GameManager extends EventEmitter {
     });
   }
 
-  public async prospectPlanet(planetId: LocationId, bypassChecks = false) {
+  public async prospectPlanet(
+    planetId: LocationId,
+    bypassChecks = false
+  ): Promise<Transaction<UnconfirmedProspectPlanet>> {
     const planet = this.entityStore.getPlanetWithId(planetId);
-    if (!planet || !isLocatable(planet)) {
-      throw new Error("you can't prospect a planet you haven't discovered");
-    }
 
-    if (!bypassChecks) {
-      if (this.checkGameHasEnded()) return this;
-
-      if (!planet) {
+    try {
+      if (!planet || !isLocatable(planet)) {
         throw new Error("you can't prospect a planet you haven't discovered");
       }
 
-      if (planet.owner !== this.getAccount()) {
-        throw new Error("you can't prospect a planet you don't own");
+      if (!bypassChecks) {
+        if (this.checkGameHasEnded()) throw new Error('game ended');
+
+        if (!planet) {
+          throw new Error("you can't prospect a planet you haven't discovered");
+        }
+
+        if (planet.owner !== this.getAccount()) {
+          throw new Error("you can't prospect a planet you don't own");
+        }
+
+        if (!isLocatable(planet)) {
+          throw new Error("you don't know this planet's location");
+        }
+
+        if (planet.prospectedBlockNumber !== undefined) {
+          throw new Error('someone already prospected this planet');
+        }
+
+        if (planet.transactions?.hasTransaction(isUnconfirmedProspectPlanetTx)) {
+          throw new Error("you're already looking bro...");
+        }
+
+        if (planet.planetType !== PlanetType.RUINS) {
+          throw new Error("this planet doesn't have an artifact on it.");
+        }
       }
 
-      if (!isLocatable(planet)) {
-        throw new Error("you don't know this planet's location");
-      }
+      localStorage.setItem(`${this.getAccount()?.toLowerCase()}-prospectPlanet`, planetId);
 
-      if (planet.prospectedBlockNumber !== undefined) {
-        throw new Error('someone already prospected this planet');
-      }
+      const txIntent: UnconfirmedProspectPlanet = {
+        methodName: ContractMethodName.PROSPECT_PLANET,
+        contract: this.contractsAPI.contract,
+        planetId: planetId,
+        args: Promise.resolve([locationIdToDecStr(planetId)]),
+      };
 
-      if (planet.unconfirmedFindArtifact) {
-        throw new Error("you're already looking bro...");
-      }
+      const tx = await this.contractsAPI.submitTransaction(txIntent);
 
-      if (planet.planetType !== PlanetType.RUINS) {
-        throw new Error("this planet doesn't have an artifact on it.");
-      }
+      tx.confirmedPromise.then(() =>
+        NotificationManager.getInstance().artifactProspected(planet as LocatablePlanet)
+      );
 
-      if (planet.energy < planet.energyCap * 0.95) {
-        throw new Error('you can only prospect planets that are 95% to the energy cap');
-      }
+      return tx;
+    } catch (e) {
+      this.getNotificationsManager().txInitError(ContractMethodName.PROSPECT_PLANET, e.message);
+      throw e;
     }
-
-    localStorage.setItem(`${this.getAccount()?.toLowerCase()}-prospectPlanet`, planetId);
-
-    const actionId = getRandomActionId();
-    const txIntent: UnconfirmedProspectPlanet = {
-      actionId,
-      methodName: ContractMethodName.PROSPECT_PLANET,
-      planetId: planetId,
-    };
-
-    this.handleTxIntent(txIntent);
-
-    await this.contractsAPI
-      .prospectPlanet(planetId, actionId)
-      .then(() => {
-        const notifManager = NotificationManager.getInstance();
-        notifManager.artifactProspected(planet as LocatablePlanet);
-      })
-      .catch((err) => {
-        this.onTxIntentFail(txIntent, err);
-      });
   }
 
   /**
    * Calls the contract to find an artifact on the given planet.
    */
-  public findArtifact(planetId: LocationId, bypassChecks = false): GameManager {
+  public async findArtifact(
+    planetId: LocationId,
+    bypassChecks = false
+  ): Promise<Transaction<UnconfirmedFindArtifact>> {
     const planet = this.entityStore.getPlanetWithId(planetId);
 
-    if (!planet) {
-      throw new Error("you can't find artifacts on a planet you haven't discovered");
+    try {
+      if (!planet) {
+        throw new Error("you can't find artifacts on a planet you haven't discovered");
+      }
+
+      if (!isLocatable(planet)) {
+        throw new Error("you don't know the biome of this planet");
+      }
+
+      if (!bypassChecks) {
+        if (this.checkGameHasEnded()) {
+          throw new Error('game has ended');
+        }
+
+        if (planet.owner !== this.getAccount()) {
+          throw new Error("you can't find artifacts on planets you don't own");
+        }
+
+        if (planet.hasTriedFindingArtifact) {
+          throw new Error('someone already tried finding an artifact on this planet');
+        }
+
+        if (planet.transactions?.hasTransaction(isUnconfirmedFindArtifactTx)) {
+          throw new Error("you're already looking bro...");
+        }
+
+        if (planet.planetType !== PlanetType.RUINS) {
+          throw new Error("this planet doesn't have an artifact on it.");
+        }
+      }
+
+      // this is shitty. used for the popup window
+      localStorage.setItem(`${this.getAccount()?.toLowerCase()}-findArtifactOnPlanet`, planetId);
+
+      const txIntent: UnconfirmedFindArtifact = {
+        methodName: ContractMethodName.FIND_ARTIFACT,
+        contract: this.contractsAPI.contract,
+        planetId: planet.locationId,
+        args: this.snarkHelper.getFindArtifactArgs(
+          planet.location.coords.x,
+          planet.location.coords.y
+        ),
+      };
+
+      const tx = await this.contractsAPI.submitTransaction<UnconfirmedFindArtifact>(txIntent);
+
+      tx.confirmedPromise
+        .then(() => {
+          return this.waitForPlanet<Artifact>(planet.locationId, ({ current }: Diff<Planet>) => {
+            return current.heldArtifactIds
+              .map(this.getArtifactWithId.bind(this))
+              .find((a: Artifact) => a?.planetDiscoveredOn === planet.locationId) as Artifact;
+          }).then((foundArtifact) => {
+            if (!foundArtifact) throw new Error('Artifact not found?');
+            const notifManager = NotificationManager.getInstance();
+
+            notifManager.artifactFound(planet as LocatablePlanet, foundArtifact);
+          });
+        })
+        .catch(console.log);
+
+      return tx;
+    } catch (e) {
+      this.getNotificationsManager().txInitError(ContractMethodName.FIND_ARTIFACT, e.message);
+      throw e;
     }
-
-    if (!isLocatable(planet)) {
-      throw new Error("you don't know the biome of this planet");
-    }
-
-    if (!bypassChecks) {
-      if (this.checkGameHasEnded()) {
-        throw new Error('game has ended');
-      }
-
-      if (planet.owner !== this.getAccount()) {
-        throw new Error("you can't find artifacts on planets you don't own");
-      }
-
-      if (planet.hasTriedFindingArtifact) {
-        throw new Error('someone already tried finding an artifact on this planet');
-      }
-
-      if (planet.unconfirmedFindArtifact) {
-        throw new Error("you're already looking bro...");
-      }
-
-      if (planet.planetType !== PlanetType.RUINS) {
-        throw new Error("this planet doesn't have an artifact on it.");
-      }
-    }
-
-    // this is shitty. used for the popup window
-    localStorage.setItem(`${this.getAccount()?.toLowerCase()}-findArtifactOnPlanet`, planetId);
-
-    const actionId = getRandomActionId();
-    const txIntent: UnconfirmedFindArtifact = {
-      actionId,
-      methodName: ContractMethodName.FIND_ARTIFACT,
-      planetId,
-    };
-
-    this.handleTxIntent(txIntent);
-
-    this.snarkHelper
-      .getFindArtifactArgs(planet.location.coords.x, planet.location.coords.y)
-      .then((snarkArgs) => {
-        this.terminal.current?.println(
-          'ARTIFACT: calculated SNARK with args:',
-          TerminalTextStyle.Sub
-        );
-        this.terminal.current?.println(
-          JSON.stringify(hexifyBigIntNestedArray(snarkArgs.slice(0, 3))),
-          TerminalTextStyle.Sub
-        );
-        this.terminal.current?.newline();
-
-        return this.contractsAPI.findArtifact(planet.location, snarkArgs, actionId);
-      })
-      .then(() => {
-        return this.waitForPlanet<Artifact>(planet.locationId, ({ current }: Diff<Planet>) => {
-          return current.heldArtifactIds
-            .map(this.getArtifactWithId.bind(this))
-            .find((a: Artifact) => a?.planetDiscoveredOn === planet.locationId) as Artifact;
-        }).then((foundArtifact) => {
-          if (!foundArtifact) throw new Error('Artifact not found?');
-          const notifManager = NotificationManager.getInstance();
-
-          notifManager.artifactFound(planet as LocatablePlanet, foundArtifact);
-        });
-      })
-      .catch((err) => {
-        this.onTxIntentFail(txIntent, err);
-      });
-
-    return this;
   }
 
   getContractConstants(): ContractConstants {
@@ -2062,189 +2396,234 @@ class GameManager extends EventEmitter {
    * Submits a transaction to the blockchain to deposit an artifact on a given planet.
    * You must own the planet and you must own the artifact directly (can't be locked in contract)
    */
-  depositArtifact(
+  public async depositArtifact(
     locationId: LocationId,
-    artifactId: ArtifactId,
-    bypassChecks = true
-  ): GameManager {
-    if (!bypassChecks) {
-      if (this.checkGameHasEnded()) return this;
+    artifactId: ArtifactId
+  ): Promise<Transaction<UnconfirmedDepositArtifact>> {
+    try {
+      localStorage.setItem(`${this.getAccount()?.toLowerCase()}-depositPlanet`, locationId);
+      localStorage.setItem(`${this.getAccount()?.toLowerCase()}-depositArtifact`, artifactId);
+
+      if (this.checkGameHasEnded()) {
+        const error = new Error('game has ended');
+        this.getNotificationsManager().txInitError(
+          ContractMethodName.DEPOSIT_ARTIFACT,
+          error.message
+        );
+        throw error;
+      }
+
+      const txIntent: UnconfirmedDepositArtifact = {
+        methodName: ContractMethodName.DEPOSIT_ARTIFACT,
+        contract: this.contractsAPI.contract,
+        locationId,
+        artifactId,
+        args: Promise.resolve([locationIdToDecStr(locationId), artifactIdToDecStr(artifactId)]),
+      };
+
+      const tx = await this.contractsAPI.submitTransaction(txIntent);
+
+      tx.confirmedPromise.then(() =>
+        this.getGameObjects().updateArtifact(artifactId, (a) => (a.onPlanetId = locationId))
+      );
+
+      return tx;
+    } catch (e) {
+      this.getNotificationsManager().txInitError(ContractMethodName.DEPOSIT_ARTIFACT, e.message);
+      throw e;
     }
-    // this is shitty. used for the popup window
-    localStorage.setItem(`${this.getAccount()?.toLowerCase()}-depositPlanet`, locationId);
-    localStorage.setItem(`${this.getAccount()?.toLowerCase()}-depositArtifact`, artifactId);
-
-    const actionId = getRandomActionId();
-    const txIntent: UnconfirmedDepositArtifact = {
-      actionId,
-      methodName: ContractMethodName.DEPOSIT_ARTIFACT,
-      locationId,
-      artifactId,
-    };
-    this.handleTxIntent(txIntent);
-
-    this.terminal.current?.println(
-      'DEPOSIT_ARTIFACT: sending deposit to blockchain',
-      TerminalTextStyle.Sub
-    );
-    this.terminal.current?.newline();
-    this.contractsAPI.depositArtifact(txIntent).catch((e) => this.onTxIntentFail(txIntent, e));
-    return this;
   }
 
   /**
    * Withdraws the artifact that is locked up on the given planet.
    */
-  withdrawArtifact(
+  public async withdrawArtifact(
     locationId: LocationId,
     artifactId: ArtifactId,
     bypassChecks = true
-  ): GameManager {
-    if (!bypassChecks) {
-      if (this.checkGameHasEnded()) return this;
-
-      const planet = this.entityStore.getPlanetWithId(locationId);
-      if (!planet) {
-        console.error('tried to withdraw from unknown planet');
-        return this;
+  ): Promise<Transaction<UnconfirmedWithdrawArtifact>> {
+    try {
+      if (!bypassChecks) {
+        if (this.checkGameHasEnded()) {
+          throw new Error('game has ended');
+        }
+        const planet = this.entityStore.getPlanetWithId(locationId);
+        if (!planet) {
+          throw new Error('tried to withdraw from unknown planet');
+        }
+        if (!artifactId) {
+          throw new Error('must supply an artifact id');
+        }
       }
-      if (!artifactId) {
-        console.error('must supply an artifact id');
-        return this;
-      }
+
+      // this is shitty. used for the popup window
+      localStorage.setItem(`${this.getAccount()?.toLowerCase()}-withdrawPlanet`, locationId);
+      localStorage.setItem(`${this.getAccount()?.toLowerCase()}-withdrawArtifact`, artifactId);
+
+      const txIntent: UnconfirmedWithdrawArtifact = {
+        methodName: ContractMethodName.WITHDRAW_ARTIFACT,
+        contract: this.contractsAPI.contract,
+        args: Promise.resolve([locationIdToDecStr(locationId), artifactIdToDecStr(artifactId)]),
+        locationId,
+        artifactId,
+      };
+
+      this.terminal.current?.println(
+        'WITHDRAW_ARTIFACT: sending withdrawal to blockchain',
+        TerminalTextStyle.Sub
+      );
+      this.terminal.current?.newline();
+
+      const tx = await this.contractsAPI.submitTransaction(txIntent);
+
+      tx.confirmedPromise.then(() =>
+        this.getGameObjects().updateArtifact(artifactId, (a) => (a.onPlanetId = undefined))
+      );
+
+      return tx;
+    } catch (e) {
+      this.getNotificationsManager().txInitError(ContractMethodName.WITHDRAW_ARTIFACT, e.message);
+      throw e;
     }
-
-    // this is shitty. used for the popup window
-    localStorage.setItem(`${this.getAccount()?.toLowerCase()}-withdrawPlanet`, locationId);
-    localStorage.setItem(`${this.getAccount()?.toLowerCase()}-withdrawArtifact`, artifactId);
-
-    if (Date.now() / 1000 > this.endTimeSeconds) {
-      this.terminal.current?.println('[ERROR] Game has ended.');
-      return this;
-    }
-
-    const actionId = getRandomActionId();
-    const txIntent: UnconfirmedWithdrawArtifact = {
-      actionId,
-      methodName: ContractMethodName.WITHDRAW_ARTIFACT,
-      locationId,
-      artifactId,
-    };
-
-    this.handleTxIntent(txIntent);
-
-    this.terminal.current?.println(
-      'WITHDRAW_ARTIFACT: sending withdrawal to blockchain',
-      TerminalTextStyle.Sub
-    );
-    this.terminal.current?.newline();
-
-    this.contractsAPI.withdrawArtifact(txIntent).catch((e) => this.onTxIntentFail(txIntent, e));
-    return this;
   }
 
-  activateArtifact(
+  public async activateArtifact(
     locationId: LocationId,
     artifactId: ArtifactId,
     wormholeTo: LocationId | undefined,
     bypassChecks = false
-  ) {
-    if (!bypassChecks) {
-      if (this.checkGameHasEnded()) return this;
-
-      const planet = this.entityStore.getPlanetWithId(locationId);
-
-      if (!planet) {
-        throw new Error('tried to activate on an unknown planet');
+  ): Promise<Transaction<UnconfirmedActivateArtifact>> {
+    try {
+      if (this.checkGameHasEnded()) {
+        throw new Error('game has ended');
       }
-      if (!artifactId) {
-        throw new Error('must supply an artifact id');
+      if (!bypassChecks) {
+        const planet = this.entityStore.getPlanetWithId(locationId);
+        if (this.checkGameHasEnded()) {
+          throw new Error('game has ended');
+        }
+
+        if (!planet) {
+          throw new Error('tried to activate on an unknown planet');
+        }
+        if (!artifactId) {
+          throw new Error('must supply an artifact id');
+        }
       }
+
+      localStorage.setItem(`${this.getAccount()?.toLowerCase()}-activatePlanet`, locationId);
+      localStorage.setItem(`${this.getAccount()?.toLowerCase()}-activateArtifact`, artifactId);
+
+      const txIntent: UnconfirmedActivateArtifact = {
+        methodName: ContractMethodName.ACTIVATE_ARTIFACT,
+        contract: this.contractsAPI.contract,
+        args: Promise.resolve([
+          locationIdToDecStr(locationId),
+          artifactIdToDecStr(artifactId),
+          wormholeTo ? locationIdToDecStr(wormholeTo) : '0',
+        ]),
+        locationId,
+        artifactId,
+        wormholeTo,
+      };
+
+      // Always await the submitTransaction so we can catch rejections
+      const tx = await this.contractsAPI.submitTransaction(txIntent);
+
+      return tx;
+    } catch (e) {
+      this.getNotificationsManager().txInitError(ContractMethodName.ACTIVATE_ARTIFACT, e.message);
+      throw e;
     }
-
-    localStorage.setItem(`${this.getAccount()?.toLowerCase()}-activatePlanet`, locationId);
-    localStorage.setItem(`${this.getAccount()?.toLowerCase()}-activateArtifact`, artifactId);
-
-    const actionId = getRandomActionId();
-    const txIntent: UnconfirmedActivateArtifact = {
-      actionId,
-      methodName: ContractMethodName.ACTIVATE_ARTIFACT,
-      locationId,
-      artifactId,
-      wormholeTo,
-    };
-
-    this.handleTxIntent(txIntent);
-    this.contractsAPI.activateArtifact(txIntent).catch((e) => this.onTxIntentFail(txIntent, e));
-    return this;
   }
 
-  deactivateArtifact(locationId: LocationId, artifactId: ArtifactId, bypassChecks = false) {
-    if (!bypassChecks) {
-      if (this.checkGameHasEnded()) return this;
-
-      const planet = this.entityStore.getPlanetWithId(locationId);
-      if (!planet) {
-        throw new Error('tried to deactivate on an unknown planet');
+  public async deactivateArtifact(
+    locationId: LocationId,
+    artifactId: ArtifactId,
+    bypassChecks = false
+  ): Promise<Transaction<UnconfirmedDeactivateArtifact>> {
+    try {
+      if (!bypassChecks) {
+        const planet = this.entityStore.getPlanetWithId(locationId);
+        if (!planet) {
+          throw new Error('tried to deactivate on an unknown planet');
+        }
       }
+
+      localStorage.setItem(`${this.getAccount()?.toLowerCase()}-deactivatePlanet`, locationId);
+      localStorage.setItem(`${this.getAccount()?.toLowerCase()}-deactivateArtifact`, artifactId);
+
+      const txIntent: UnconfirmedDeactivateArtifact = {
+        methodName: ContractMethodName.DEACTIVATE_ARTIFACT,
+        contract: this.contractsAPI.contract,
+        args: Promise.resolve([locationIdToDecStr(locationId)]),
+        locationId,
+        artifactId,
+      };
+
+      // Always await the submitTransaction so we can catch rejections
+      const tx = await this.contractsAPI.submitTransaction(txIntent);
+
+      return tx;
+    } catch (e) {
+      this.getNotificationsManager().txInitError(ContractMethodName.DEACTIVATE_ARTIFACT, e.message);
+      throw e;
     }
-
-    localStorage.setItem(`${this.getAccount()?.toLowerCase()}-deactivatePlanet`, locationId);
-    localStorage.setItem(`${this.getAccount()?.toLowerCase()}-deactivateArtifact`, artifactId);
-
-    const actionId = getRandomActionId();
-    const txIntent: UnconfirmedDeactivateArtifact = {
-      actionId,
-      methodName: ContractMethodName.DEACTIVATE_ARTIFACT,
-      locationId,
-      artifactId,
-    };
-
-    this.handleTxIntent(txIntent);
-    this.contractsAPI.deactivateArtifact(txIntent).catch((e) => this.onTxIntentFail(txIntent, e));
   }
 
-  withdrawSilver(locationId: LocationId, amount: number, bypassChecks = false) {
-    if (!bypassChecks) {
-      if (this.checkGameHasEnded()) return this;
-      if (!this.account) return this;
+  public async withdrawSilver(
+    locationId: LocationId,
+    amount: number,
+    bypassChecks = false
+  ): Promise<Transaction<UnconfirmedWithdrawSilver>> {
+    try {
+      if (!bypassChecks) {
+        if (!this.account) throw new Error('no account');
+        if (this.checkGameHasEnded()) {
+          throw new Error('game has ended');
+        }
+        const planet = this.entityStore.getPlanetWithId(locationId);
+        if (!planet) {
+          throw new Error('tried to withdraw silver from an unknown planet');
+        }
+        if (planet.planetType !== PlanetType.TRADING_POST) {
+          throw new Error('can only withdraw silver from spacetime rips');
+        }
+        if (planet.owner !== this.account) {
+          throw new Error('can only withdraw silver from a planet you own');
+        }
+        if (planet.transactions?.hasTransaction(isUnconfirmedWithdrawSilverTx)) {
+          throw new Error('a withdraw silver action is already in progress for this planet');
+        }
+        if (amount > planet.silver) {
+          throw new Error('not enough silver to withdraw!');
+        }
+        if (amount === 0) {
+          throw new Error('must withdraw more than 0 silver!');
+        }
+        if (planet.destroyed) {
+          throw new Error("can't withdraw silver from a destroyed planet");
+        }
+      }
 
-      const planet = this.entityStore.getPlanetWithId(locationId);
-      if (!planet) {
-        throw new Error('tried to withdraw silver from an unknown planet');
-      }
-      if (planet.planetType !== PlanetType.TRADING_POST) {
-        throw new Error('can only withdraw silver from spacetime rips');
-      }
-      if (planet.owner !== this.account) {
-        throw new Error('can only withdraw silver from a planet you own');
-      }
-      if (planet.unconfirmedWithdrawSilver) {
-        throw new Error('a withdraw silver action is already in progress for this planet');
-      }
-      if (amount > planet.silver) {
-        throw new Error('not enough silver to withdraw!');
-      }
-      if (amount === 0) {
-        throw new Error('must withdraw more than 0 silver!');
-      }
-      if (planet.destroyed) {
-        throw new Error("can't withdraw silver from a destroyed planet");
-      }
+      localStorage.setItem(`${this.getAccount()?.toLowerCase()}-withdrawSilverPlanet`, locationId);
+
+      const txIntent: UnconfirmedWithdrawSilver = {
+        methodName: ContractMethodName.WITHDRAW_SILVER,
+        contract: this.contractsAPI.contract,
+        args: Promise.resolve([locationIdToDecStr(locationId), amount * CONTRACT_PRECISION]),
+        locationId,
+        amount,
+      };
+
+      // Always await the submitTransaction so we can catch rejections
+      const tx = await this.contractsAPI.submitTransaction(txIntent);
+
+      return tx;
+    } catch (e) {
+      this.getNotificationsManager().txInitError(ContractMethodName.WITHDRAW_SILVER, e.message);
+      throw e;
     }
-
-    localStorage.setItem(`${this.getAccount()?.toLowerCase()}-withdrawSilverPlanet`, locationId);
-
-    const actionId = getRandomActionId();
-    const txIntent: UnconfirmedWithdrawSilver = {
-      actionId,
-      methodName: ContractMethodName.WITHDRAW_SILVER,
-      locationId,
-      amount,
-    };
-
-    this.handleTxIntent(txIntent);
-    this.contractsAPI.withdrawSilver(txIntent).catch((e) => this.onTxIntentFail(txIntent, e));
   }
 
   /**
@@ -2395,106 +2774,144 @@ class GameManager extends EventEmitter {
   private async verifyMessage(message: SignedMessage<unknown>): Promise<boolean> {
     const preSigned = JSON.stringify(message.message);
 
-    return verifySignature(preSigned, message.signature as string, message.sender as EthAddress);
+    return verifySignature(preSigned, message.signature as string, message.sender);
   }
 
   /**
    * Submits a transaction to the blockchain to move the given amount of resources from
    * the given planet to the given planet.
    */
-  move(
+  public async move(
     from: LocationId,
     to: LocationId,
     forces: number,
     silver: number,
     artifactMoved?: ArtifactId,
+    abandoning = false,
     bypassChecks = false
-  ): GameManager {
-    if (this.checkGameHasEnded()) return this;
+  ): Promise<Transaction<UnconfirmedMove>> {
     localStorage.setItem(`${this.getAccount()?.toLowerCase()}-fromPlanet`, from);
     localStorage.setItem(`${this.getAccount()?.toLowerCase()}-toPlanet`, to);
 
-    if (!bypassChecks && Date.now() / 1000 > this.endTimeSeconds) {
-      this.terminal.current?.println('[ERROR] Game has ended.');
-      return this;
-    }
-
-    const oldLocation = this.entityStore.getLocationOfPlanet(from);
-    const newLocation = this.entityStore.getLocationOfPlanet(to);
-    if (!oldLocation) {
-      console.error('tried to move from planet that does not exist');
-      return this;
-    }
-    if (!newLocation) {
-      console.error('tried to move from planet that does not exist');
-      return this;
-    }
-
-    const oldX = oldLocation.coords.x;
-    const oldY = oldLocation.coords.y;
-    const newX = newLocation.coords.x;
-    const newY = newLocation.coords.y;
-    const xDiff = newX - oldX;
-    const yDiff = newY - oldY;
-
-    const distMax = Math.ceil(Math.sqrt(xDiff ** 2 + yDiff ** 2));
-
-    const shipsMoved = forces;
-    const silverMoved = silver;
-
-    if (newX ** 2 + newY ** 2 >= this.worldRadius ** 2) {
-      throw new Error('attempted to move out of bounds');
-    }
-
-    const oldPlanet = this.entityStore.getPlanetWithLocation(oldLocation);
-
-    if ((!bypassChecks && !this.account) || !oldPlanet || oldPlanet.owner !== this.account) {
-      throw new Error('attempted to move from a planet not owned by player');
-    }
-    const actionId = getRandomActionId();
-    const txIntent: UnconfirmedMove = {
-      actionId,
-      methodName: ContractMethodName.MOVE,
-      from: oldLocation.hash,
-      to: newLocation.hash,
-      forces: shipsMoved,
-      silver: silverMoved,
-    };
-
-    if (artifactMoved) {
-      const artifact = this.entityStore.getArtifactById(artifactMoved);
-      if (!bypassChecks) {
-        if (!artifact) {
-          throw new Error("couldn't find this artifact");
-        }
-        if (isActivated(artifact)) {
-          throw new Error("can't move an activated artifact");
-        }
-        if (!oldPlanet.heldArtifactIds.includes(artifactMoved)) {
-          throw new Error("that artifact isn't on this planet!");
-        }
+    try {
+      if (!bypassChecks && this.checkGameHasEnded()) {
+        throw new Error('game has ended');
       }
-      txIntent.artifact = artifactMoved;
-    }
 
-    this.handleTxIntent(txIntent);
+      const arrivalsToOriginPlanet = this.entityStore.getArrivalIdsForLocation(from);
+      const hasIncomingVoyage = arrivalsToOriginPlanet && arrivalsToOriginPlanet.length > 0;
+      if (abandoning && hasIncomingVoyage) {
+        throw new Error('cannot abandon a planet that has incoming voyages');
+      }
 
-    this.snarkHelper
-      .getMoveArgs(oldX, oldY, newX, newY, this.worldRadius, distMax)
-      .then((callArgs) => {
+      const oldLocation = this.entityStore.getLocationOfPlanet(from);
+      const newLocation = this.entityStore.getLocationOfPlanet(to);
+      if (!oldLocation) {
+        throw new Error('tried to move from planet that does not exist');
+      }
+      if (!newLocation) {
+        throw new Error('tried to move from planet that does not exist');
+      }
+
+      const oldX = oldLocation.coords.x;
+      const oldY = oldLocation.coords.y;
+      const newX = newLocation.coords.x;
+      const newY = newLocation.coords.y;
+      const xDiff = newX - oldX;
+      const yDiff = newY - oldY;
+
+      const distMax = Math.ceil(Math.sqrt(xDiff ** 2 + yDiff ** 2));
+
+      // Contract will automatically send full forces/silver on abandon
+      const shipsMoved = !abandoning ? forces : 0;
+      const silverMoved = !abandoning ? silver : 0;
+
+      if (newX ** 2 + newY ** 2 >= this.worldRadius ** 2) {
+        throw new Error('attempted to move out of bounds');
+      }
+
+      const oldPlanet = this.entityStore.getPlanetWithLocation(oldLocation);
+
+      if (
+        ((!bypassChecks && !this.account) || !oldPlanet || oldPlanet.owner !== this.account) &&
+        !isSpaceShip(this.getArtifactWithId(artifactMoved)?.artifactType)
+      ) {
+        throw new Error('attempted to move from a planet not owned by player');
+      }
+
+      const getArgs = async (): Promise<unknown[]> => {
+        const snarkArgs = await this.snarkHelper.getMoveArgs(
+          oldX,
+          oldY,
+          newX,
+          newY,
+          this.worldRadius,
+          distMax
+        );
+
+        const args: MoveArgs = [
+          snarkArgs[ZKArgIdx.PROOF_A],
+          snarkArgs[ZKArgIdx.PROOF_B],
+          snarkArgs[ZKArgIdx.PROOF_C],
+          [
+            ...snarkArgs[ZKArgIdx.DATA],
+            (shipsMoved * CONTRACT_PRECISION).toString(),
+            (silverMoved * CONTRACT_PRECISION).toString(),
+            '0',
+            abandoning ? '1' : '0',
+          ],
+        ] as MoveArgs;
+
         this.terminal.current?.println('MOVE: calculated SNARK with args:', TerminalTextStyle.Sub);
         this.terminal.current?.println(
-          JSON.stringify(hexifyBigIntNestedArray(callArgs)),
+          JSON.stringify(hexifyBigIntNestedArray(args)),
           TerminalTextStyle.Sub
         );
         this.terminal.current?.newline();
 
-        return this.contractsAPI.move(actionId, callArgs, shipsMoved, silverMoved, artifactMoved);
-      })
-      .catch((err) => {
-        this.onTxIntentFail(txIntent, err);
-      });
-    return this;
+        if (artifactMoved) {
+          args[ZKArgIdx.DATA][MoveArgIdxs.ARTIFACT_SENT] = artifactIdToDecStr(artifactMoved);
+        }
+
+        return args;
+      };
+
+      const txIntent: UnconfirmedMove = {
+        methodName: ContractMethodName.MOVE,
+        contract: this.contractsAPI.contract,
+        args: getArgs(),
+        from: oldLocation.hash,
+        to: newLocation.hash,
+        forces: shipsMoved,
+        silver: silverMoved,
+        artifact: artifactMoved,
+        abandoning,
+      };
+
+      if (artifactMoved) {
+        const artifact = this.entityStore.getArtifactById(artifactMoved);
+
+        if (!bypassChecks) {
+          if (!artifact) {
+            throw new Error("couldn't find this artifact");
+          }
+          if (isActivated(artifact)) {
+            throw new Error("can't move an activated artifact");
+          }
+          if (!oldPlanet?.heldArtifactIds?.includes(artifactMoved)) {
+            throw new Error("that artifact isn't on this planet!");
+          }
+        }
+      }
+
+      // Always await the submitTransaction so we can catch rejections
+      const tx = await this.contractsAPI.submitTransaction(txIntent);
+
+      return tx;
+    } catch (e) {
+      this.getNotificationsManager().txInitError(ContractMethodName.MOVE, e.message);
+      throw e;
+    }
   }
 
   /**
@@ -2502,113 +2919,132 @@ class GameManager extends EventEmitter {
    * upgrade branch. You must own the planet, and have enough silver on it to complete
    * the upgrade.
    */
-  upgrade(planetId: LocationId, branch: number, _bypassChecks = false): GameManager {
-    if (this.checkGameHasEnded()) return this;
-    // this is shitty
-    localStorage.setItem(`${this.getAccount()?.toLowerCase()}-upPlanet`, planetId);
-    localStorage.setItem(`${this.getAccount()?.toLowerCase()}-branch`, branch.toString());
+  public async upgrade(
+    planetId: LocationId,
+    branch: number,
+    _bypassChecks = false
+  ): Promise<Transaction<UnconfirmedUpgrade>> {
+    try {
+      // this is shitty
+      localStorage.setItem(`${this.getAccount()?.toLowerCase()}-upPlanet`, planetId);
+      localStorage.setItem(`${this.getAccount()?.toLowerCase()}-branch`, branch.toString());
 
-    const upgradeArgs: UpgradeArgs = [locationIdToDecStr(planetId), branch.toString()];
-    const actionId = getRandomActionId();
-    const txIntent = {
-      actionId,
-      methodName: ContractMethodName.UPGRADE,
-      locationId: planetId,
-      upgradeBranch: branch,
-    };
-    this.handleTxIntent(txIntent);
+      const txIntent: UnconfirmedUpgrade = {
+        methodName: ContractMethodName.UPGRADE,
+        contract: this.contractsAPI.contract,
+        args: Promise.resolve([locationIdToDecStr(planetId), branch.toString()]),
+        locationId: planetId,
+        upgradeBranch: branch,
+      };
 
-    this.terminal.current?.println('UPGRADE: sending upgrade to blockchain', TerminalTextStyle.Sub);
-    this.terminal.current?.newline();
-    this.contractsAPI
-      .upgradePlanet(upgradeArgs, actionId)
-      .catch((e) => this.onTxIntentFail(txIntent, e));
+      // Always await the submitTransaction so we can catch rejections
+      const tx = await this.contractsAPI.submitTransaction(txIntent);
 
-    return this;
+      return tx;
+    } catch (e) {
+      this.getNotificationsManager().txInitError(ContractMethodName.UPGRADE, e.message);
+      throw e;
+    }
   }
 
   /**
-   * Submits a transaction to the blockchain to buy a hat for the given planet. You
-   * must own the planet. Warning costs real xdai. Hats are permanently locked to a
-   * planet. They are purely cosmetic and a great way to BM your opponents or just
-   * look your best. Just like in the real world, more money means more hat.
+   * Submits a transaction to the blockchain to buy a hat for the given planet. You must own the
+   * planet. Warning costs real xdai. Hats are permanently locked to a planet. They are purely
+   * cosmetic and a great way to BM your opponents or just look your best. Just like in the real
+   * world, more money means more hat.
    */
-  buyHat(planetId: LocationId, _bypassChecks = false): GameManager {
-    if (this.checkGameHasEnded()) return this;
-
+  public async buyHat(
+    planetId: LocationId,
+    _bypassChecks = false
+  ): Promise<Transaction<UnconfirmedBuyHat>> {
     const planetLoc = this.entityStore.getLocationOfPlanet(planetId);
-    if (!planetLoc) {
-      console.error('planet not found');
-      this.terminal.current?.println('[TX ERROR] Planet not found');
-      return this;
-    }
     const planet = this.entityStore.getPlanetWithLocation(planetLoc);
-    if (!planet) {
-      console.error('planet not found');
-      this.terminal.current?.println('[TX ERROR] Planet not found');
-      return this;
-    }
 
-    localStorage.setItem(`${this.getAccount()?.toLowerCase()}-hatPlanet`, planetId);
-    localStorage.setItem(
-      `${this.getAccount()?.toLowerCase()}-hatLevel`,
-      planet.hatLevel.toString()
-    );
-
-    const actionId = getRandomActionId();
-    const txIntent = {
-      actionId,
-      methodName: ContractMethodName.BUY_HAT,
-      locationId: planetId,
-    };
-    this.handleTxIntent(txIntent);
-
-    this.terminal.current?.println('BUY HAT: sending request to blockchain', TerminalTextStyle.Sub);
-    this.terminal.current?.newline();
-
-    this.contractsAPI.buyHat(locationIdToDecStr(planetId), planet.hatLevel, actionId).catch((e) => {
-      this.onTxIntentFail(txIntent, e);
-    });
-    return this;
-  }
-
-  transferOwnership(planetId: LocationId, newOwner: EthAddress, bypassChecks = false): GameManager {
-    if (!bypassChecks) {
-      if (this.checkGameHasEnded()) return this;
-      const planetLoc = this.entityStore.getLocationOfPlanet(planetId);
+    try {
       if (!planetLoc) {
         console.error('planet not found');
-        this.terminal.current?.println('[TX ERROR] Planet not found');
-        return this;
+        throw new Error('[TX ERROR] Planet not found');
       }
-      const planet = this.entityStore.getPlanetWithLocation(planetLoc);
       if (!planet) {
         console.error('planet not found');
-        this.terminal.current?.println('[TX ERROR] Planet not found');
-        return this;
+        throw new Error('[TX ERROR] Planet not found');
       }
-    }
 
-    localStorage.setItem(`${this.getAccount()?.toLowerCase()}-transferPlanet`, planetId);
-    localStorage.setItem(`${this.getAccount()?.toLowerCase()}-transferOwner`, newOwner);
+      localStorage.setItem(`${this.getAccount()?.toLowerCase()}-hatPlanet`, planetId);
+      localStorage.setItem(
+        `${this.getAccount()?.toLowerCase()}-hatLevel`,
+        planet.hatLevel.toString()
+      );
 
-    const actionId = getRandomActionId();
-    const txIntent: UnconfirmedPlanetTransfer = {
-      actionId,
-      methodName: ContractMethodName.PLANET_TRANSFER,
-      planetId,
-      newOwner,
-    };
-    this.handleTxIntent(txIntent);
-
-    this.contractsAPI
-      .transferOwnership(planetId, newOwner, actionId)
-      .catch((e) => this.onTxIntentFail(txIntent, e));
-    return this;
-  }
-
+<<<<<<< HEAD
   private handleTxIntent(txIntent: TxIntent) {
     this.entityStore.onTxIntent(txIntent);
+=======
+      const txIntent: UnconfirmedBuyHat = {
+        methodName: ContractMethodName.BUY_HAT,
+        contract: this.contractsAPI.contract,
+        args: Promise.resolve([locationIdToDecStr(planetId)]),
+        locationId: planetId,
+      };
+
+      // Always await the submitTransaction so we can catch rejections
+      const tx = await this.contractsAPI.submitTransaction(txIntent, {
+        gasLimit: 500000,
+        value: bigInt(1000000000000000000)
+          .multiply(2 ** planet.hatLevel)
+          .toString(),
+      });
+
+      return tx;
+    } catch (e) {
+      this.getNotificationsManager().txInitError(ContractMethodName.BUY_HAT, e.message);
+      throw e;
+    }
+  }
+
+  // TODO: Change this to transferPlanet in a breaking release
+  public async transferOwnership(
+    planetId: LocationId,
+    newOwner: EthAddress,
+    bypassChecks = false
+  ): Promise<Transaction<UnconfirmedPlanetTransfer>> {
+    try {
+      if (!bypassChecks) {
+        if (this.checkGameHasEnded()) {
+          throw new Error('game has ended');
+        }
+        const planetLoc = this.entityStore.getLocationOfPlanet(planetId);
+        if (!planetLoc) {
+          console.error('planet not found');
+          throw new Error('[TX ERROR] Planet not found');
+        }
+        const planet = this.entityStore.getPlanetWithLocation(planetLoc);
+        if (!planet) {
+          console.error('planet not found');
+          throw new Error('[TX ERROR] Planet not found');
+        }
+      }
+
+      localStorage.setItem(`${this.getAccount()?.toLowerCase()}-transferPlanet`, planetId);
+      localStorage.setItem(`${this.getAccount()?.toLowerCase()}-transferOwner`, newOwner);
+
+      const txIntent: UnconfirmedPlanetTransfer = {
+        methodName: ContractMethodName.PLANET_TRANSFER,
+        contract: this.contractsAPI.contract,
+        args: Promise.resolve([locationIdToDecStr(planetId), newOwner]),
+        planetId,
+        newOwner,
+      };
+
+      // Always await the submitTransaction so we can catch rejections
+      const tx = await this.contractsAPI.submitTransaction(txIntent);
+
+      return tx;
+    } catch (e) {
+      this.getNotificationsManager().txInitError(ContractMethodName.PLANET_TRANSFER, e.message);
+      throw e;
+    }
+>>>>>>> slytherin
   }
 
   /**
@@ -2626,6 +3062,14 @@ class GameManager extends EventEmitter {
       }
     }
     return this;
+  }
+
+  listenForNewBlock() {
+    this.getEthConnection().blockNumber$.subscribe((blockNumber) => {
+      if (this.captureZoneGenerator) {
+        this.captureZoneGenerator.generate(blockNumber);
+      }
+    });
   }
 
   /**
@@ -2727,11 +3171,17 @@ class GameManager extends EventEmitter {
    * Gets the amount of energy needed in order for a voyage from the given to the given
    * planet to arrive with your desired amount of energy.
    */
-  getEnergyNeededForMove(fromId: LocationId, toId: LocationId, arrivingEnergy: number): number {
+  getEnergyNeededForMove(
+    fromId: LocationId,
+    toId: LocationId,
+    arrivingEnergy: number,
+    abandoning = false
+  ): number {
     const from = this.getPlanetWithId(fromId);
     if (!from) throw new Error('origin planet unknown');
     const dist = this.getDist(fromId, toId);
-    const rangeSteps = dist / from.range;
+    const range = from.range * this.getRangeBuff(abandoning);
+    const rangeSteps = dist / range;
 
     const arrivingProp = arrivingEnergy / from.energyCap + 0.05;
 
@@ -2747,7 +3197,8 @@ class GameManager extends EventEmitter {
     fromId: LocationId,
     toId: LocationId | undefined,
     distance: number | undefined,
-    sentEnergy: number
+    sentEnergy: number,
+    abandoning = false
   ) {
     const from = this.getPlanetWithId(fromId);
     const to = this.getPlanetWithId(toId);
@@ -2767,7 +3218,8 @@ class GameManager extends EventEmitter {
       }
     }
 
-    const scale = (1 / 2) ** (dist / from.range);
+    const range = from.range * this.getRangeBuff(abandoning);
+    const scale = (1 / 2) ** (dist / range);
     let ret = scale * sentEnergy - 0.05 * from.energyCap;
     if (ret < 0) ret = 0;
 
@@ -2833,11 +3285,13 @@ class GameManager extends EventEmitter {
    * Gets the amount of time, in seconds that a voyage between from the first to the
    * second planet would take.
    */
-  getTimeForMove(fromId: LocationId, toId: LocationId): number {
+  getTimeForMove(fromId: LocationId, toId: LocationId, abandoning = false): number {
     const from = this.getPlanetWithId(fromId);
     if (!from) throw new Error('origin planet unknown');
     const dist = this.getDist(fromId, toId);
-    return dist / (from.speed / 100);
+
+    const speed = from.speed * this.getSpeedBuff(abandoning);
+    return dist / (speed / 100);
   }
 
   /**
@@ -2911,21 +3365,29 @@ class GameManager extends EventEmitter {
   }
 
   /**
-   * Helpful functions for getting the names, descriptions, and colors of in-game entities.
-   */
-  public getProcgenUtils() {
-    return ProcgenUtils;
-  }
-
-  /**
    * Helpful for listening to user input events.
    */
   public getUIEventEmitter() {
     return UIEmitter.getInstance();
   }
 
+  public getCaptureZoneGenerator() {
+    return this.captureZoneGenerator;
+  }
+
+  /**
+   * Emits when new capture zones are generated.
+   */
+  public get captureZoneGeneratedEmitter() {
+    return this.captureZoneGenerator.generated$;
+  }
+
   public getNotificationsManager() {
     return NotificationManager.getInstance();
+  }
+
+  getWormholes(): Iterable<Wormhole> {
+    return this.entityStore.getWormholes();
   }
 
   /** Return a reference to the planet map */
@@ -2993,6 +3455,10 @@ class GameManager extends EventEmitter {
     return this.entityStore;
   }
 
+  public forceTick(locationId: LocationId) {
+    this.getGameObjects().forceTick(locationId);
+  }
+
   /**
    * Gets some diagnostic information about the game. Returns a copy, you can't modify it.
    */
@@ -3047,6 +3513,70 @@ class GameManager extends EventEmitter {
         }
       });
     });
+  }
+
+  public getSafeMode() {
+    return this.safeMode;
+  }
+
+  public setSafeMode(safeMode: boolean) {
+    this.safeMode = safeMode;
+  }
+
+  public getAddress() {
+    return this.ethConnection.getAddress();
+  }
+
+  public isAdmin(): boolean {
+    return this.getAddress() === this.contractConstants.adminAddress;
+  }
+
+  /**
+   * Right now the only buffs supported in this way are
+   * speed/range buffs from Abandoning a planet.
+   *
+   * The abandoning argument is used when interacting with
+   * this function programmatically.
+   */
+  public getSpeedBuff(abandoning: boolean): number {
+    const { SPACE_JUNK_ENABLED, ABANDON_SPEED_CHANGE_PERCENT } = this.contractConstants;
+    if (SPACE_JUNK_ENABLED && abandoning) {
+      return ABANDON_SPEED_CHANGE_PERCENT / 100;
+    }
+
+    return 1;
+  }
+
+  public getRangeBuff(abandoning: boolean): number {
+    const { SPACE_JUNK_ENABLED, ABANDON_RANGE_CHANGE_PERCENT } = this.contractConstants;
+    if (SPACE_JUNK_ENABLED && abandoning) {
+      return ABANDON_RANGE_CHANGE_PERCENT / 100;
+    }
+
+    return 1;
+  }
+
+  public getSnarkHelper(): SnarkArgsHelper {
+    return this.snarkHelper;
+  }
+
+  public async submitTransaction<T extends TxIntent>(
+    txIntent: T,
+    overrides?: providers.TransactionRequest
+  ): Promise<Transaction<T>> {
+    return this.contractsAPI.submitTransaction(txIntent, overrides);
+  }
+
+  public getContract(): DarkForest {
+    return this.contractsAPI.contract;
+  }
+
+  public getPaused(): boolean {
+    return this.paused;
+  }
+
+  public getPaused$(): Monomitter<boolean> {
+    return this.paused$;
   }
 }
 

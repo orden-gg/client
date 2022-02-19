@@ -19,6 +19,7 @@ plugin id is provided, assumes we're editing a new plugin.
 
 #### Parameters
 
+<<<<<<< HEAD
 | Name                            | Type                                                                                                                                      |
 | :------------------------------ | :---------------------------------------------------------------------------------------------------------------------------------------- |
 | `__namedParameters`             | `Object`                                                                                                                                  |
@@ -26,6 +27,15 @@ plugin id is provided, assumes we're editing a new plugin.
 | `__namedParameters.pluginId?`   | [`PluginId`](Backend_Plugins_SerializedPlugin.md#pluginid)                                                                                |
 | `__namedParameters.overwrite`   | (`newPluginName`: `string`, `newPluginCode`: `string`, `pluginId?`: [`PluginId`](Backend_Plugins_SerializedPlugin.md#pluginid)) => `void` |
 | `__namedParameters.setIsOpen`   | (`open`: `boolean`) => `void`                                                                                                             |
+=======
+| Name                            | Type                                                                                      |
+| :------------------------------ | :---------------------------------------------------------------------------------------- |
+| `__namedParameters`             | `Object`                                                                                  |
+| `__namedParameters.pluginHost?` | `null` \| [`PluginManager`](../classes/Backend_GameLogic_PluginManager.PluginManager.md)  |
+| `__namedParameters.pluginId?`   | `PluginId`                                                                                |
+| `__namedParameters.overwrite`   | (`newPluginName`: `string`, `newPluginCode`: `string`, `pluginId?`: `PluginId`) => `void` |
+| `__namedParameters.setIsOpen`   | (`open`: `boolean`) => `void`                                                             |
+>>>>>>> slytherin
 
 #### Returns
 

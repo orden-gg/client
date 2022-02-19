@@ -10,7 +10,11 @@
 
 ### getPlanetLocations
 
+<<<<<<< HEAD
 ▸ `Const` **getPlanetLocations**(`spaceTypeKey`, `biomebaseKey`, `perlinLengthScale`, `perlinMirrorX`, `perlinMirrorY`): (`chunkFootprint`: [`Rectangle`](../interfaces/types_global_GlobalTypes.Rectangle.md), `planetRarity`: `number`) => `WorldLocation`[]
+=======
+▸ `Const` **getPlanetLocations**(`spaceTypeKey`, `biomebaseKey`, `perlinLengthScale`, `perlinMirrorX`, `perlinMirrorY`): (`chunkFootprint`: `Rectangle`, `planetRarity`: `number`) => `WorldLocation`[]
+>>>>>>> slytherin
 
 #### Parameters
 
@@ -30,10 +34,17 @@
 
 ##### Parameters
 
+<<<<<<< HEAD
 | Name             | Type                                                               |
 | :--------------- | :----------------------------------------------------------------- |
 | `chunkFootprint` | [`Rectangle`](../interfaces/types_global_GlobalTypes.Rectangle.md) |
 | `planetRarity`   | `number`                                                           |
+=======
+| Name             | Type        |
+| :--------------- | :---------- |
+| `chunkFootprint` | `Rectangle` |
+| `planetRarity`   | `number`    |
+>>>>>>> slytherin
 
 ##### Returns
 

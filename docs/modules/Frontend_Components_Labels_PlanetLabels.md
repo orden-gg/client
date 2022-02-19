@@ -8,6 +8,8 @@
 - [EnergyCapText](Frontend_Components_Labels_PlanetLabels.md#energycaptext)
 - [EnergyGrowthText](Frontend_Components_Labels_PlanetLabels.md#energygrowthtext)
 - [EnergyText](Frontend_Components_Labels_PlanetLabels.md#energytext)
+- [GrowthText](Frontend_Components_Labels_PlanetLabels.md#growthtext)
+- [JunkText](Frontend_Components_Labels_PlanetLabels.md#junktext)
 - [LevelRankText](Frontend_Components_Labels_PlanetLabels.md#levelranktext)
 - [LevelRankTextEm](Frontend_Components_Labels_PlanetLabels.md#levelranktextem)
 - [PlanetBiomeTypeLabelAnim](Frontend_Components_Labels_PlanetLabels.md#planetbiometypelabelanim)
@@ -82,6 +84,42 @@
 ### EnergyText
 
 ▸ `Const` **EnergyText**(`__namedParameters`): `Element`
+
+#### Parameters
+
+| Name                       | Type                    |
+| :------------------------- | :---------------------- |
+| `__namedParameters`        | `Object`                |
+| `__namedParameters.planet` | `undefined` \| `Planet` |
+
+#### Returns
+
+`Element`
+
+---
+
+### GrowthText
+
+▸ **GrowthText**(`__namedParameters`): `Element`
+
+#### Parameters
+
+| Name                        | Type                        |
+| :-------------------------- | :-------------------------- |
+| `__namedParameters`         | `Object`                    |
+| `__namedParameters.planet`  | `undefined` \| `Planet`     |
+| `__namedParameters.style?`  | `CSSProperties`             |
+| `__namedParameters.getStat` | (`p`: `Planet`) => `number` |
+
+#### Returns
+
+`Element`
+
+---
+
+### JunkText
+
+▸ `Const` **JunkText**(`__namedParameters`): `Element`
 
 #### Parameters
 
@@ -298,6 +336,7 @@ Either 'yours' in green text,
 | Name                       | Type                    |
 | :------------------------- | :---------------------- |
 | `__namedParameters`        | `Object`                |
+| `__namedParameters.buff?`  | `number`                |
 | `__namedParameters.planet` | `undefined` \| `Planet` |
 
 #### Returns
@@ -366,6 +405,7 @@ Either 'yours' in green text,
 | Name                       | Type                    |
 | :------------------------- | :---------------------- |
 | `__namedParameters`        | `Object`                |
+| `__namedParameters.buff?`  | `number`                |
 | `__namedParameters.planet` | `undefined` \| `Planet` |
 
 #### Returns
@@ -383,6 +423,10 @@ Either 'yours' in green text,
 | Name                        | Type                        |
 | :-------------------------- | :-------------------------- |
 | `__namedParameters`         | `Object`                    |
+<<<<<<< HEAD
+=======
+| `__namedParameters.buff?`   | `number`                    |
+>>>>>>> slytherin
 | `__namedParameters.planet`  | `undefined` \| `Planet`     |
 | `__namedParameters.style?`  | `CSSProperties`             |
 | `__namedParameters.getStat` | (`p`: `Planet`) => `number` |

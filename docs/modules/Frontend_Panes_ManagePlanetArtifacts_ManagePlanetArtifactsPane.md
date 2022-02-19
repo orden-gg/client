@@ -6,6 +6,7 @@
 
 - [ManagePlanetArtifactsHelpContent](Frontend_Panes_ManagePlanetArtifacts_ManagePlanetArtifactsPane.md#manageplanetartifactshelpcontent)
 - [ManagePlanetArtifactsPane](Frontend_Panes_ManagePlanetArtifacts_ManagePlanetArtifactsPane.md#manageplanetartifactspane)
+- [PlanetInfoHelpContent](Frontend_Panes_ManagePlanetArtifacts_ManagePlanetArtifactsPane.md#planetinfohelpcontent)
 
 ## Functions
 
@@ -34,6 +35,16 @@ activating, and deactivating artifacts.
 | `__namedParameters`                 | `Object`                                                               |
 | `__namedParameters.initialPlanetId` | `undefined` \| `LocationId`                                            |
 | `__namedParameters.modal`           | [`ModalHandle`](../interfaces/Frontend_Views_ModalPane.ModalHandle.md) |
+
+#### Returns
+
+`Element`
+
+---
+
+### PlanetInfoHelpContent
+
+▸ **PlanetInfoHelpContent**(): `Element`
 
 #### Returns
 

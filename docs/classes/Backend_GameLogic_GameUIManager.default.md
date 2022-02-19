@@ -16,15 +16,21 @@
 
 ### Properties
 
+- [abandoning](Backend_GameLogic_GameUIManager.default.md#abandoning)
 - [artifactSending](Backend_GameLogic_GameUIManager.default.md#artifactsending)
 - [extraMinerLocations](Backend_GameLogic_GameUIManager.default.md#extraminerlocations)
 - [forcesSending](Backend_GameLogic_GameUIManager.default.md#forcessending)
 - [gameManager](Backend_GameLogic_GameUIManager.default.md#gamemanager)
+- [hoverArtifact$](Backend_GameLogic_GameUIManager.default.md#hoverartifact$)
+- [hoverArtifactId$](Backend_GameLogic_GameUIManager.default.md#hoverartifactid$)
 - [hoverPlanet$](Backend_GameLogic_GameUIManager.default.md#hoverplanet$)
 - [hoverPlanetId$](Backend_GameLogic_GameUIManager.default.md#hoverplanetid$)
+- [isAbandoning$](Backend_GameLogic_GameUIManager.default.md#isabandoning$)
 - [isChoosingTargetPlanet](Backend_GameLogic_GameUIManager.default.md#ischoosingtargetplanet)
 - [isSending](Backend_GameLogic_GameUIManager.default.md#issending)
+- [isSending$](Backend_GameLogic_GameUIManager.default.md#issending$)
 - [minerLocation](Backend_GameLogic_GameUIManager.default.md#minerlocation)
+- [modalManager](Backend_GameLogic_GameUIManager.default.md#modalmanager)
 - [mouseDownOverCoords](Backend_GameLogic_GameUIManager.default.md#mousedownovercoords)
 - [mouseDownOverPlanet](Backend_GameLogic_GameUIManager.default.md#mousedownoverplanet)
 - [mouseHoveringOverCoords](Backend_GameLogic_GameUIManager.default.md#mousehoveringovercoords)
@@ -32,20 +38,23 @@
 - [myArtifacts$](Backend_GameLogic_GameUIManager.default.md#myartifacts$)
 - [onChooseTargetPlanet](Backend_GameLogic_GameUIManager.default.md#onchoosetargetplanet)
 - [overlayContainer](Backend_GameLogic_GameUIManager.default.md#overlaycontainer)
+- [planetHoveringInRenderer](Backend_GameLogic_GameUIManager.default.md#planethoveringinrenderer)
 - [plugins](Backend_GameLogic_GameUIManager.default.md#plugins)
-- [previousSelectedPlanet](Backend_GameLogic_GameUIManager.default.md#previousselectedplanet)
+- [previousSelectedPlanetId](Backend_GameLogic_GameUIManager.default.md#previousselectedplanetid)
 - [radiusMap](Backend_GameLogic_GameUIManager.default.md#radiusmap)
-- [selectedArtifact$](Backend_GameLogic_GameUIManager.default.md#selectedartifact$)
-- [selectedArtifactId$](Backend_GameLogic_GameUIManager.default.md#selectedartifactid$)
 - [selectedCoords](Backend_GameLogic_GameUIManager.default.md#selectedcoords)
-- [selectedPlanet](Backend_GameLogic_GameUIManager.default.md#selectedplanet)
-- [selectedPlanet$](Backend_GameLogic_GameUIManager.default.md#selectedplanet$)
+- [selectedPlanetId](Backend_GameLogic_GameUIManager.default.md#selectedplanetid)
 - [selectedPlanetId$](Backend_GameLogic_GameUIManager.default.md#selectedplanetid$)
 - [sendingCoords](Backend_GameLogic_GameUIManager.default.md#sendingcoords)
 - [sendingPlanet](Backend_GameLogic_GameUIManager.default.md#sendingplanet)
 - [silverSending](Backend_GameLogic_GameUIManager.default.md#silversending)
 - [terminal](Backend_GameLogic_GameUIManager.default.md#terminal)
 - [viewportEntities](Backend_GameLogic_GameUIManager.default.md#viewportentities)
+
+### Accessors
+
+- [captureZonesEnabled](Backend_GameLogic_GameUIManager.default.md#capturezonesenabled)
+- [contractConstants](Backend_GameLogic_GameUIManager.default.md#contractconstants)
 
 ### Methods
 
@@ -62,8 +71,11 @@
 - [destroy](Backend_GameLogic_GameUIManager.default.md#destroy)
 - [disconnectTwitter](Backend_GameLogic_GameUIManager.default.md#disconnecttwitter)
 - [discoverBiome](Backend_GameLogic_GameUIManager.default.md#discoverbiome)
+- [drawAllRunningPlugins](Backend_GameLogic_GameUIManager.default.md#drawallrunningplugins)
 - [findArtifact](Backend_GameLogic_GameUIManager.default.md#findartifact)
 - [generateVerificationTweet](Backend_GameLogic_GameUIManager.default.md#generateverificationtweet)
+- [getAbandonRangeChangePercent](Backend_GameLogic_GameUIManager.default.md#getabandonrangechangepercent)
+- [getAbandonSpeedChangePercent](Backend_GameLogic_GameUIManager.default.md#getabandonspeedchangepercent)
 - [getAccount](Backend_GameLogic_GameUIManager.default.md#getaccount)
 - [getAllMinerLocations](Backend_GameLogic_GameUIManager.default.md#getallminerlocations)
 - [getAllOwnedPlanets](Backend_GameLogic_GameUIManager.default.md#getallownedplanets)
@@ -71,15 +83,23 @@
 - [getAllVoyages](Backend_GameLogic_GameUIManager.default.md#getallvoyages)
 - [getArtifactMap](Backend_GameLogic_GameUIManager.default.md#getartifactmap)
 - [getArtifactPlanet](Backend_GameLogic_GameUIManager.default.md#getartifactplanet)
+- [getArtifactPointValues](Backend_GameLogic_GameUIManager.default.md#getartifactpointvalues)
 - [getArtifactSending](Backend_GameLogic_GameUIManager.default.md#getartifactsending)
 - [getArtifactWithId](Backend_GameLogic_GameUIManager.default.md#getartifactwithid)
 - [getArtifactsWithIds](Backend_GameLogic_GameUIManager.default.md#getartifactswithids)
 - [getBiomeKey](Backend_GameLogic_GameUIManager.default.md#getbiomekey)
 - [getBiomePerlin](Backend_GameLogic_GameUIManager.default.md#getbiomeperlin)
 - [getBooleanSetting](Backend_GameLogic_GameUIManager.default.md#getbooleansetting)
+- [getCaptureZoneGenerator](Backend_GameLogic_GameUIManager.default.md#getcapturezonegenerator)
+- [getCaptureZonePointValues](Backend_GameLogic_GameUIManager.default.md#getcapturezonepointvalues)
+- [getCaptureZones](Backend_GameLogic_GameUIManager.default.md#getcapturezones)
 - [getChunk](Backend_GameLogic_GameUIManager.default.md#getchunk)
 - [getContractAddress](Backend_GameLogic_GameUIManager.default.md#getcontractaddress)
+<<<<<<< HEAD
 - [getContractConstants](Backend_GameLogic_GameUIManager.default.md#getcontractconstants)
+=======
+- [getDefaultSpaceJunkForPlanetLevel](Backend_GameLogic_GameUIManager.default.md#getdefaultspacejunkforplanetlevel)
+>>>>>>> slytherin
 - [getDiagnostics](Backend_GameLogic_GameUIManager.default.md#getdiagnostics)
 - [getDiscoverBiomeName](Backend_GameLogic_GameUIManager.default.md#getdiscoverbiomename)
 - [getDistCoords](Backend_GameLogic_GameUIManager.default.md#getdistcoords)
@@ -105,6 +125,7 @@
 - [getLocationsAndChunks](Backend_GameLogic_GameUIManager.default.md#getlocationsandchunks)
 - [getMinerLocation](Backend_GameLogic_GameUIManager.default.md#getminerlocation)
 - [getMiningPattern](Backend_GameLogic_GameUIManager.default.md#getminingpattern)
+- [getModalManager](Backend_GameLogic_GameUIManager.default.md#getmodalmanager)
 - [getMouseDownCoords](Backend_GameLogic_GameUIManager.default.md#getmousedowncoords)
 - [getMouseDownPlanet](Backend_GameLogic_GameUIManager.default.md#getmousedownplanet)
 - [getMyArtifactMap](Backend_GameLogic_GameUIManager.default.md#getmyartifactmap)
@@ -112,12 +133,16 @@
 - [getMyArtifactsNotOnPlanet](Backend_GameLogic_GameUIManager.default.md#getmyartifactsnotonplanet)
 - [getMyBalance](Backend_GameLogic_GameUIManager.default.md#getmybalance)
 - [getMyBalance$](Backend_GameLogic_GameUIManager.default.md#getmybalance$)
+- [getMyBalanceBn](Backend_GameLogic_GameUIManager.default.md#getmybalancebn)
 - [getMyPlanetMap](Backend_GameLogic_GameUIManager.default.md#getmyplanetmap)
 - [getMyScore](Backend_GameLogic_GameUIManager.default.md#getmyscore)
 - [getNextBroadcastAvailableTimestamp](Backend_GameLogic_GameUIManager.default.md#getnextbroadcastavailabletimestamp)
 - [getOverlayContainer](Backend_GameLogic_GameUIManager.default.md#getoverlaycontainer)
+- [getPaused](Backend_GameLogic_GameUIManager.default.md#getpaused)
+- [getPaused$](Backend_GameLogic_GameUIManager.default.md#getpaused$)
 - [getPerlinConfig](Backend_GameLogic_GameUIManager.default.md#getperlinconfig)
 - [getPerlinThresholds](Backend_GameLogic_GameUIManager.default.md#getperlinthresholds)
+- [getPlanetHoveringInRenderer](Backend_GameLogic_GameUIManager.default.md#getplanethoveringinrenderer)
 - [getPlanetLevel](Backend_GameLogic_GameUIManager.default.md#getplanetlevel)
 - [getPlanetMap](Backend_GameLogic_GameUIManager.default.md#getplanetmap)
 - [getPlanetWithCoords](Backend_GameLogic_GameUIManager.default.md#getplanetwithcoords)
@@ -129,12 +154,17 @@
 - [getPreviousSelectedPlanet](Backend_GameLogic_GameUIManager.default.md#getpreviousselectedplanet)
 - [getPrivateKey](Backend_GameLogic_GameUIManager.default.md#getprivatekey)
 - [getRadiusOfPlanetLevel](Backend_GameLogic_GameUIManager.default.md#getradiusofplanetlevel)
+- [getRangeBuff](Backend_GameLogic_GameUIManager.default.md#getrangebuff)
+- [getRenderer](Backend_GameLogic_GameUIManager.default.md#getrenderer)
 - [getSelectedCoords](Backend_GameLogic_GameUIManager.default.md#getselectedcoords)
 - [getSelectedPlanet](Backend_GameLogic_GameUIManager.default.md#getselectedplanet)
 - [getSilverCurveAtPercent](Backend_GameLogic_GameUIManager.default.md#getsilvercurveatpercent)
 - [getSilverOfPlayer](Backend_GameLogic_GameUIManager.default.md#getsilverofplayer)
+- [getSilverScoreValue](Backend_GameLogic_GameUIManager.default.md#getsilverscorevalue)
 - [getSilverSending](Backend_GameLogic_GameUIManager.default.md#getsilversending)
+- [getSpaceJunkEnabled](Backend_GameLogic_GameUIManager.default.md#getspacejunkenabled)
 - [getSpaceTypePerlin](Backend_GameLogic_GameUIManager.default.md#getspacetypeperlin)
+- [getSpeedBuff](Backend_GameLogic_GameUIManager.default.md#getspeedbuff)
 - [getStringSetting](Backend_GameLogic_GameUIManager.default.md#getstringsetting)
 - [getTerminal](Backend_GameLogic_GameUIManager.default.md#getterminal)
 - [getTwitter](Backend_GameLogic_GameUIManager.default.md#gettwitter)
@@ -148,11 +178,18 @@
 - [getWorldSilver](Backend_GameLogic_GameUIManager.default.md#getworldsilver)
 - [getWormholes](Backend_GameLogic_GameUIManager.default.md#getwormholes)
 - [hasMinedChunk](Backend_GameLogic_GameUIManager.default.md#hasminedchunk)
+<<<<<<< HEAD
+=======
+- [isAbandoning](Backend_GameLogic_GameUIManager.default.md#isabandoning)
+- [isAdmin](Backend_GameLogic_GameUIManager.default.md#isadmin)
+>>>>>>> slytherin
 - [isCurrentlyRevealing](Backend_GameLogic_GameUIManager.default.md#iscurrentlyrevealing)
 - [isMining](Backend_GameLogic_GameUIManager.default.md#ismining)
 - [isOverOwnPlanet](Backend_GameLogic_GameUIManager.default.md#isoverownplanet)
 - [isOwnedByMe](Backend_GameLogic_GameUIManager.default.md#isownedbyme)
 - [isRoundOver](Backend_GameLogic_GameUIManager.default.md#isroundover)
+- [isSendingForces](Backend_GameLogic_GameUIManager.default.md#issendingforces)
+- [isSendingShip](Backend_GameLogic_GameUIManager.default.md#issendingship)
 - [joinGame](Backend_GameLogic_GameUIManager.default.md#joingame)
 - [onDiscoveredChunk](Backend_GameLogic_GameUIManager.default.md#ondiscoveredchunk)
 - [onEmitInitializedPlayer](Backend_GameLogic_GameUIManager.default.md#onemitinitializedplayer)
@@ -163,23 +200,30 @@
 - [onMouseOut](Backend_GameLogic_GameUIManager.default.md#onmouseout)
 - [onMouseUp](Backend_GameLogic_GameUIManager.default.md#onmouseup)
 - [onSendCancel](Backend_GameLogic_GameUIManager.default.md#onsendcancel)
+- [onSendComplete](Backend_GameLogic_GameUIManager.default.md#onsendcomplete)
 - [onSendInit](Backend_GameLogic_GameUIManager.default.md#onsendinit)
+- [potentialCaptureScore](Backend_GameLogic_GameUIManager.default.md#potentialcapturescore)
 - [prospectPlanet](Backend_GameLogic_GameUIManager.default.md#prospectplanet)
 - [removeExtraMinerLocation](Backend_GameLogic_GameUIManager.default.md#removeextraminerlocation)
 - [revealLocation](Backend_GameLogic_GameUIManager.default.md#reveallocation)
+- [setAbandoning](Backend_GameLogic_GameUIManager.default.md#setabandoning)
 - [setArtifactSending](Backend_GameLogic_GameUIManager.default.md#setartifactsending)
 - [setExtraMinerLocation](Backend_GameLogic_GameUIManager.default.md#setextraminerlocation)
 - [setForcesSending](Backend_GameLogic_GameUIManager.default.md#setforcessending)
+- [setHoveringOverArtifact](Backend_GameLogic_GameUIManager.default.md#sethoveringoverartifact)
 - [setHoveringOverPlanet](Backend_GameLogic_GameUIManager.default.md#sethoveringoverplanet)
 - [setMiningPattern](Backend_GameLogic_GameUIManager.default.md#setminingpattern)
+- [setModalManager](Backend_GameLogic_GameUIManager.default.md#setmodalmanager)
 - [setOverlayContainer](Backend_GameLogic_GameUIManager.default.md#setoverlaycontainer)
 - [setSelectedId](Backend_GameLogic_GameUIManager.default.md#setselectedid)
 - [setSelectedPlanet](Backend_GameLogic_GameUIManager.default.md#setselectedplanet)
+- [setSending](Backend_GameLogic_GameUIManager.default.md#setsending)
 - [setSilverSending](Backend_GameLogic_GameUIManager.default.md#setsilversending)
 - [spaceTypeFromPerlin](Backend_GameLogic_GameUIManager.default.md#spacetypefromperlin)
 - [startExplore](Backend_GameLogic_GameUIManager.default.md#startexplore)
 - [startWormholeFrom](Backend_GameLogic_GameUIManager.default.md#startwormholefrom)
 - [stopExplore](Backend_GameLogic_GameUIManager.default.md#stopexplore)
+- [timeUntilNextBroadcastAvailable](Backend_GameLogic_GameUIManager.default.md#timeuntilnextbroadcastavailable)
 - [toggleExplore](Backend_GameLogic_GameUIManager.default.md#toggleexplore)
 - [toggleTargettingExplorer](Backend_GameLogic_GameUIManager.default.md#toggletargettingexplorer)
 - [updateDiagnostics](Backend_GameLogic_GameUIManager.default.md#updatediagnostics)
@@ -209,6 +253,12 @@
 EventEmitter.constructor
 
 ## Properties
+
+### abandoning
+
+• `Private` **abandoning**: `boolean` = `false`
+
+---
 
 ### artifactSending
 
@@ -242,6 +292,18 @@ EventEmitter.constructor
 
 ---
 
+### hoverArtifact$
+
+• `Readonly` **hoverArtifact$**: `Monomitter`<`undefined` \| `Artifact`\>
+
+---
+
+### hoverArtifactId$
+
+• `Readonly` **hoverArtifactId$**: `Monomitter`<`undefined` \| `ArtifactId`\>
+
+---
+
 ### hoverPlanet$
 
 • `Readonly` **hoverPlanet$**: `Monomitter`<`undefined` \| `Planet`\>
@@ -251,6 +313,12 @@ EventEmitter.constructor
 ### hoverPlanetId$
 
 • `Readonly` **hoverPlanetId$**: `Monomitter`<`undefined` \| `LocationId`\>
+
+---
+
+### isAbandoning$
+
+• `Readonly` **isAbandoning$**: `Monomitter`<`boolean`\>
 
 ---
 
@@ -269,9 +337,21 @@ indicates whether or not the player is currently selecting a target planet.
 
 ---
 
+### isSending$
+
+• `Readonly` **isSending$**: `Monomitter`<`boolean`\>
+
+---
+
 ### minerLocation
 
 • `Private` **minerLocation**: `undefined` \| `WorldCoords`
+
+---
+
+### modalManager
+
+• `Private` **modalManager**: [`default`](Frontend_Game_ModalManager.default.md)
 
 ---
 
@@ -327,11 +407,17 @@ indicates whether or not the player is currently selecting a target planet.
 
 ### overlayContainer
 
-• `Private` **overlayContainer**: `MutableRefObject`<`null` \| `HTMLDivElement`\>
+• `Private` `Optional` **overlayContainer**: `HTMLDivElement`
 
 In order to render React on top of the game, we need to insert React nodes into an overlay
 container. We keep a reference to this container, so that our React components can optionally
 choose to render themselves into this overlay container using React Portals.
+
+---
+
+### planetHoveringInRenderer
+
+• `Private` **planetHoveringInRenderer**: `boolean` = `false`
 
 ---
 
@@ -341,9 +427,9 @@ choose to render themselves into this overlay container using React Portals.
 
 ---
 
-### previousSelectedPlanet
+### previousSelectedPlanetId
 
-• `Private` **previousSelectedPlanet**: `undefined` \| `Planet`
+• `Private` **previousSelectedPlanetId**: `undefined` \| `LocationId`
 
 ---
 
@@ -357,33 +443,15 @@ choose to render themselves into this overlay container using React Portals.
 
 ---
 
-### selectedArtifact$
-
-• `Readonly` **selectedArtifact$**: `Monomitter`<`undefined` \| `Artifact`\>
-
----
-
-### selectedArtifactId$
-
-• `Readonly` **selectedArtifactId$**: `Monomitter`<`undefined` \| `ArtifactId`\>
-
----
-
 ### selectedCoords
 
 • `Private` **selectedCoords**: `undefined` \| `WorldCoords`
 
 ---
 
-### selectedPlanet
+### selectedPlanetId
 
-• `Private` **selectedPlanet**: `undefined` \| `LocatablePlanet`
-
----
-
-### selectedPlanet$
-
-• `Readonly` **selectedPlanet$**: `Monomitter`<`undefined` \| `Planet`\>
+• `Private` **selectedPlanetId**: `undefined` \| `LocationId`
 
 ---
 
@@ -424,6 +492,26 @@ choose to render themselves into this overlay container using React Portals.
 ### viewportEntities
 
 • `Private` **viewportEntities**: [`ViewportEntities`](Backend_GameLogic_ViewportEntities.ViewportEntities.md)
+
+## Accessors
+
+### captureZonesEnabled
+
+• `get` **captureZonesEnabled**(): `boolean`
+
+#### Returns
+
+`boolean`
+
+---
+
+### contractConstants
+
+• `get` **contractConstants**(): [`ContractConstants`](../interfaces/types_darkforest_api_ContractsAPITypes.ContractConstants.md)
+
+#### Returns
+
+[`ContractConstants`](../interfaces/types_darkforest_api_ContractsAPITypes.ContractConstants.md)
 
 ## Methods
 
@@ -467,9 +555,15 @@ choose to render themselves into this overlay container using React Portals.
 
 #### Parameters
 
+<<<<<<< HEAD
 | Name    | Type                                         |
 | :------ | :------------------------------------------- |
 | `chunk` | [`Chunk`](types_global_GlobalTypes.Chunk.md) |
+=======
+| Name    | Type    |
+| :------ | :------ |
+| `chunk` | `Chunk` |
+>>>>>>> slytherin
 
 #### Returns
 
@@ -483,9 +577,15 @@ choose to render themselves into this overlay container using React Portals.
 
 #### Parameters
 
+<<<<<<< HEAD
 | Name     | Type                                           |
 | :------- | :--------------------------------------------- |
 | `chunks` | [`Chunk`](types_global_GlobalTypes.Chunk.md)[] |
+=======
+| Name     | Type      |
+| :------- | :-------- |
+| `chunks` | `Chunk`[] |
+>>>>>>> slytherin
 
 #### Returns
 
@@ -633,6 +733,22 @@ choose to render themselves into this overlay container using React Portals.
 
 ---
 
+### drawAllRunningPlugins
+
+▸ **drawAllRunningPlugins**(`ctx`): `void`
+
+#### Parameters
+
+| Name  | Type                       |
+| :---- | :------------------------- |
+| `ctx` | `CanvasRenderingContext2D` |
+
+#### Returns
+
+`void`
+
+---
+
 ### findArtifact
 
 ▸ **findArtifact**(`planetId`): `void`
@@ -662,6 +778,26 @@ choose to render themselves into this overlay container using React Portals.
 #### Returns
 
 `Promise`<`string`\>
+
+---
+
+### getAbandonRangeChangePercent
+
+▸ **getAbandonRangeChangePercent**(): `number`
+
+#### Returns
+
+`number`
+
+---
+
+### getAbandonSpeedChangePercent
+
+▸ **getAbandonSpeedChangePercent**(): `number`
+
+#### Returns
+
+`number`
 
 ---
 
@@ -741,15 +877,25 @@ choose to render themselves into this overlay container using React Portals.
 
 ---
 
+### getArtifactPointValues
+
+▸ **getArtifactPointValues**(): `ArtifactPointValues`
+
+#### Returns
+
+`ArtifactPointValues`
+
+---
+
 ### getArtifactSending
 
-▸ **getArtifactSending**(`planetId`): `undefined` \| `Artifact`
+▸ **getArtifactSending**(`planetId?`): `undefined` \| `Artifact`
 
 #### Parameters
 
-| Name       | Type         |
-| :--------- | :----------- |
-| `planetId` | `LocationId` |
+| Name        | Type         |
+| :---------- | :----------- |
+| `planetId?` | `LocationId` |
 
 #### Returns
 
@@ -763,9 +909,9 @@ choose to render themselves into this overlay container using React Portals.
 
 #### Parameters
 
-| Name         | Type         |
-| :----------- | :----------- |
-| `artifactId` | `ArtifactId` |
+| Name         | Type                        |
+| :----------- | :-------------------------- |
+| `artifactId` | `undefined` \| `ArtifactId` |
 
 #### Returns
 
@@ -775,13 +921,13 @@ choose to render themselves into this overlay container using React Portals.
 
 ### getArtifactsWithIds
 
-▸ **getArtifactsWithIds**(`artifactIds`): (`undefined` \| `Artifact`)[]
+▸ **getArtifactsWithIds**(`artifactIds?`): (`undefined` \| `Artifact`)[]
 
 #### Parameters
 
-| Name          | Type           |
-| :------------ | :------------- |
-| `artifactIds` | `ArtifactId`[] |
+| Name           | Type           |
+| :------------- | :------------- |
+| `artifactIds?` | `ArtifactId`[] |
 
 #### Returns
 
@@ -828,9 +974,9 @@ choose to render themselves into this overlay container using React Portals.
 
 #### Parameters
 
-| Name      | Type                                                          |
-| :-------- | :------------------------------------------------------------ |
-| `setting` | [`Setting`](../enums/Frontend_Utils_SettingsHooks.Setting.md) |
+| Name      | Type      |
+| :-------- | :-------- |
+| `setting` | `Setting` |
 
 #### Returns
 
@@ -838,12 +984,19 @@ choose to render themselves into this overlay container using React Portals.
 
 ---
 
-### getChunk
+### getCaptureZoneGenerator
 
+<<<<<<< HEAD
 ▸ **getChunk**(`chunkFootprint`): `undefined` \| [`Chunk`](types_global_GlobalTypes.Chunk.md)
+=======
+▸ **getCaptureZoneGenerator**(): [`CaptureZoneGenerator`](Backend_GameLogic_CaptureZoneGenerator.CaptureZoneGenerator.md)
+>>>>>>> slytherin
 
-#### Parameters
+#### Returns
 
+[`CaptureZoneGenerator`](Backend_GameLogic_CaptureZoneGenerator.CaptureZoneGenerator.md)
+
+<<<<<<< HEAD
 | Name             | Type                                                               |
 | :--------------- | :----------------------------------------------------------------- |
 | `chunkFootprint` | [`Rectangle`](../interfaces/types_global_GlobalTypes.Rectangle.md) |
@@ -851,6 +1004,50 @@ choose to render themselves into this overlay container using React Portals.
 #### Returns
 
 `undefined` \| [`Chunk`](types_global_GlobalTypes.Chunk.md)
+=======
+---
+
+### getCaptureZonePointValues
+
+▸ **getCaptureZonePointValues**(): [`number`, `number`, `number`, `number`, `number`, `number`, `number`, `number`, `number`, `number`]
+
+#### Returns
+
+[`number`, `number`, `number`, `number`, `number`, `number`, `number`, `number`, `number`, `number`]
+>>>>>>> slytherin
+
+---
+
+### getCaptureZones
+
+▸ **getCaptureZones**(): `Set`<`CaptureZone`\>
+
+#### Returns
+
+`Set`<`CaptureZone`\>
+
+---
+
+### getChunk
+
+<<<<<<< HEAD
+▸ **getContractConstants**(): [`ContractConstants`](../interfaces/types_darkforest_api_ContractsAPITypes.ContractConstants.md)
+
+#### Returns
+
+[`ContractConstants`](../interfaces/types_darkforest_api_ContractsAPITypes.ContractConstants.md)
+=======
+▸ **getChunk**(`chunkFootprint`): `undefined` \| `Chunk`
+
+#### Parameters
+
+| Name             | Type        |
+| :--------------- | :---------- |
+| `chunkFootprint` | `Rectangle` |
+
+#### Returns
+
+`undefined` \| `Chunk`
 
 ---
 
@@ -864,13 +1061,20 @@ choose to render themselves into this overlay container using React Portals.
 
 ---
 
-### getContractConstants
+### getDefaultSpaceJunkForPlanetLevel
 
-▸ **getContractConstants**(): [`ContractConstants`](../interfaces/types_darkforest_api_ContractsAPITypes.ContractConstants.md)
+▸ **getDefaultSpaceJunkForPlanetLevel**(`level`): `number`
+
+#### Parameters
+
+| Name    | Type     |
+| :------ | :------- |
+| `level` | `number` |
 
 #### Returns
 
-[`ContractConstants`](../interfaces/types_darkforest_api_ContractsAPITypes.ContractConstants.md)
+`number`
+>>>>>>> slytherin
 
 ---
 
@@ -991,25 +1195,33 @@ choose to render themselves into this overlay container using React Portals.
 
 ### getExploredChunks
 
+<<<<<<< HEAD
 ▸ **getExploredChunks**(): `Iterable`<[`Chunk`](types_global_GlobalTypes.Chunk.md)\>
 
 #### Returns
 
 `Iterable`<[`Chunk`](types_global_GlobalTypes.Chunk.md)\>
+=======
+▸ **getExploredChunks**(): `Iterable`<`Chunk`\>
+
+#### Returns
+
+`Iterable`<`Chunk`\>
+>>>>>>> slytherin
 
 ---
 
 ### getForcesSending
 
-▸ **getForcesSending**(`planetId`): `number`
+▸ **getForcesSending**(`planetId?`): `number`
 
 Percent from 0 to 100.
 
 #### Parameters
 
-| Name       | Type         |
-| :--------- | :----------- |
-| `planetId` | `LocationId` |
+| Name        | Type         |
+| :---------- | :----------- |
+| `planetId?` | `LocationId` |
 
 #### Returns
 
@@ -1155,10 +1367,17 @@ state in some way
 
 `Object`
 
+<<<<<<< HEAD
 | Name            | Type                                                                                                             |
 | :-------------- | :--------------------------------------------------------------------------------------------------------------- |
 | `cachedPlanets` | `Map`<`LocationId`, [`PlanetRenderInfo`](../interfaces/Backend_GameLogic_ViewportEntities.PlanetRenderInfo.md)\> |
 | `chunks`        | `Set`<[`Chunk`](types_global_GlobalTypes.Chunk.md)\>                                                             |
+=======
+| Name            | Type                                     |
+| :-------------- | :--------------------------------------- |
+| `cachedPlanets` | `Map`<`LocationId`, `PlanetRenderInfo`\> |
+| `chunks`        | `Set`<`Chunk`\>                          |
+>>>>>>> slytherin
 
 ---
 
@@ -1179,6 +1398,16 @@ state in some way
 #### Returns
 
 `undefined` \| [`MiningPattern`](../interfaces/Backend_Miner_MiningPatterns.MiningPattern.md)
+
+---
+
+### getModalManager
+
+▸ **getModalManager**(): [`default`](Frontend_Game_ModalManager.default.md)
+
+#### Returns
+
+[`default`](Frontend_Game_ModalManager.default.md)
 
 ---
 
@@ -1252,6 +1481,16 @@ state in some way
 
 ---
 
+### getMyBalanceBn
+
+▸ **getMyBalanceBn**(): `BigNumber`
+
+#### Returns
+
+`BigNumber`
+
+---
+
 ### getMyPlanetMap
 
 ▸ **getMyPlanetMap**(): `Map`<`LocationId`, `Planet`\>
@@ -1284,14 +1523,34 @@ state in some way
 
 ### getOverlayContainer
 
-▸ **getOverlayContainer**(): `MutableRefObject`<`null` \| `HTMLDivElement`\>
+▸ **getOverlayContainer**(): `undefined` \| `HTMLDivElement`
 
 Gets the overlay container. See {@link GameUIManger.overlayContainer} for more information
 about what the overlay container is.
 
 #### Returns
 
-`MutableRefObject`<`null` \| `HTMLDivElement`\>
+`undefined` \| `HTMLDivElement`
+
+---
+
+### getPaused
+
+▸ **getPaused**(): `boolean`
+
+#### Returns
+
+`boolean`
+
+---
+
+### getPaused$
+
+▸ **getPaused$**(): `Monomitter`<`boolean`\>
+
+#### Returns
+
+`Monomitter`<`boolean`\>
 
 ---
 
@@ -1318,6 +1577,19 @@ about what the overlay container is.
 #### Returns
 
 [`number`, `number`, `number`]
+
+---
+
+### getPlanetHoveringInRenderer
+
+▸ **getPlanetHoveringInRenderer**(): `boolean`
+
+If there is a planet being hovered over, returns whether or not it's being hovered
+over in the renderer.
+
+#### Returns
+
+`boolean`
 
 ---
 
@@ -1467,6 +1739,26 @@ about what the overlay container is.
 
 ---
 
+### getRangeBuff
+
+▸ **getRangeBuff**(): `number`
+
+#### Returns
+
+`number`
+
+---
+
+### getRenderer
+
+▸ **getRenderer**(): `null` \| `Renderer`
+
+#### Returns
+
+`null` \| `Renderer`
+
+---
+
 ### getSelectedCoords
 
 ▸ **getSelectedCoords**(): `undefined` \| `WorldCoords`
@@ -1520,21 +1812,41 @@ about what the overlay container is.
 
 ---
 
+### getSilverScoreValue
+
+▸ **getSilverScoreValue**(): `number`
+
+#### Returns
+
+`number`
+
+---
+
 ### getSilverSending
 
-▸ **getSilverSending**(`planetId`): `number`
+▸ **getSilverSending**(`planetId?`): `number`
 
 Percent from 0 to 100.
 
 #### Parameters
 
-| Name       | Type         |
-| :--------- | :----------- |
-| `planetId` | `LocationId` |
+| Name        | Type         |
+| :---------- | :----------- |
+| `planetId?` | `LocationId` |
 
 #### Returns
 
 `number`
+
+---
+
+### getSpaceJunkEnabled
+
+▸ **getSpaceJunkEnabled**(): `boolean`
+
+#### Returns
+
+`boolean`
 
 ---
 
@@ -1555,15 +1867,25 @@ Percent from 0 to 100.
 
 ---
 
+### getSpeedBuff
+
+▸ **getSpeedBuff**(): `number`
+
+#### Returns
+
+`number`
+
+---
+
 ### getStringSetting
 
 ▸ **getStringSetting**(`setting`): `undefined` \| `string`
 
 #### Parameters
 
-| Name      | Type                                                          |
-| :-------- | :------------------------------------------------------------ |
-| `setting` | [`Setting`](../enums/Frontend_Utils_SettingsHooks.Setting.md) |
+| Name      | Type      |
+| :-------- | :-------- |
+| `setting` | `Setting` |
 
 #### Returns
 
@@ -1599,7 +1921,7 @@ Percent from 0 to 100.
 
 ### getUnconfirmedMoves
 
-▸ **getUnconfirmedMoves**(): `UnconfirmedMove`[]
+▸ **getUnconfirmedMoves**(): `Transaction`<`UnconfirmedMove`\>[]
 
 **`todo`** delete this. now that [GameObjects](Backend_GameLogic_GameObjects.GameObjects.md) is publically accessible, we shouldn't need to
 drill fields like this anymore.
@@ -1610,27 +1932,27 @@ drill fields like this anymore.
 
 #### Returns
 
-`UnconfirmedMove`[]
+`Transaction`<`UnconfirmedMove`\>[]
 
 ---
 
 ### getUnconfirmedUpgrades
 
-▸ **getUnconfirmedUpgrades**(): `UnconfirmedUpgrade`[]
+▸ **getUnconfirmedUpgrades**(): `Transaction`<`UnconfirmedUpgrade`\>[]
 
 #### Returns
 
-`UnconfirmedUpgrade`[]
+`Transaction`<`UnconfirmedUpgrade`\>[]
 
 ---
 
 ### getUnconfirmedWormholeActivations
 
-▸ **getUnconfirmedWormholeActivations**(): `UnconfirmedActivateArtifact`[]
+▸ **getUnconfirmedWormholeActivations**(): `Transaction`<`UnconfirmedActivateArtifact`\>[]
 
 #### Returns
 
-`UnconfirmedActivateArtifact`[]
+`Transaction`<`UnconfirmedActivateArtifact`\>[]
 
 ---
 
@@ -1693,11 +2015,19 @@ drill fields like this anymore.
 
 ### getWormholes
 
+<<<<<<< HEAD
 ▸ **getWormholes**(): `Iterable`<[`Wormhole`](../modules/types_global_GlobalTypes.md#wormhole)\>
 
 #### Returns
 
 `Iterable`<[`Wormhole`](../modules/types_global_GlobalTypes.md#wormhole)\>
+=======
+▸ **getWormholes**(): `Iterable`<`Wormhole`\>
+
+#### Returns
+
+`Iterable`<`Wormhole`\>
+>>>>>>> slytherin
 
 ---
 
@@ -1707,9 +2037,35 @@ drill fields like this anymore.
 
 #### Parameters
 
+<<<<<<< HEAD
 | Name            | Type                                                               |
 | :-------------- | :----------------------------------------------------------------- |
 | `chunkLocation` | [`Rectangle`](../interfaces/types_global_GlobalTypes.Rectangle.md) |
+=======
+| Name            | Type        |
+| :-------------- | :---------- |
+| `chunkLocation` | `Rectangle` |
+
+#### Returns
+
+`boolean`
+
+---
+
+### isAbandoning
+
+▸ **isAbandoning**(): `boolean`
+
+#### Returns
+
+`boolean`
+
+---
+
+### isAdmin
+
+▸ **isAdmin**(): `boolean`
+>>>>>>> slytherin
 
 #### Returns
 
@@ -1779,9 +2135,35 @@ drill fields like this anymore.
 
 ---
 
+### isSendingForces
+
+▸ **isSendingForces**(): `boolean`
+
+#### Returns
+
+`boolean`
+
+---
+
+### isSendingShip
+
+▸ **isSendingShip**(`planetId?`): `boolean`
+
+#### Parameters
+
+| Name        | Type         |
+| :---------- | :----------- |
+| `planetId?` | `LocationId` |
+
+#### Returns
+
+`boolean`
+
+---
+
 ### joinGame
 
-▸ **joinGame**(`beforeRetry`): [`default`](Backend_GameLogic_GameUIManager.default.md)
+▸ **joinGame**(`beforeRetry`): `Promise`<`void`\>
 
 #### Parameters
 
@@ -1791,7 +2173,7 @@ drill fields like this anymore.
 
 #### Returns
 
-[`default`](Backend_GameLogic_GameUIManager.default.md)
+`Promise`<`void`\>
 
 ---
 
@@ -1801,9 +2183,15 @@ drill fields like this anymore.
 
 #### Parameters
 
+<<<<<<< HEAD
 | Name    | Type                                         |
 | :------ | :------------------------------------------- |
 | `chunk` | [`Chunk`](types_global_GlobalTypes.Chunk.md) |
+=======
+| Name    | Type    |
+| :------ | :------ |
+| `chunk` | `Chunk` |
+>>>>>>> slytherin
 
 #### Returns
 
@@ -1921,6 +2309,22 @@ drill fields like this anymore.
 
 ---
 
+### onSendComplete
+
+▸ **onSendComplete**(`locationId`): `void`
+
+#### Parameters
+
+| Name         | Type         |
+| :----------- | :----------- |
+| `locationId` | `LocationId` |
+
+#### Returns
+
+`void`
+
+---
+
 ### onSendInit
 
 ▸ **onSendInit**(`planet`): `void`
@@ -1934,6 +2338,22 @@ drill fields like this anymore.
 #### Returns
 
 `void`
+
+---
+
+### potentialCaptureScore
+
+▸ **potentialCaptureScore**(`planetLevel`): `number`
+
+#### Parameters
+
+| Name          | Type     |
+| :------------ | :------- |
+| `planetLevel` | `number` |
+
+#### Returns
+
+`number`
 
 ---
 
@@ -1978,6 +2398,22 @@ drill fields like this anymore.
 | Name         | Type         |
 | :----------- | :----------- |
 | `locationId` | `LocationId` |
+
+#### Returns
+
+`void`
+
+---
+
+### setAbandoning
+
+▸ **setAbandoning**(`abandoning`): `void`
+
+#### Parameters
+
+| Name         | Type      |
+| :----------- | :-------- |
+| `abandoning` | `boolean` |
 
 #### Returns
 
@@ -2036,15 +2472,32 @@ drill fields like this anymore.
 
 ---
 
-### setHoveringOverPlanet
+### setHoveringOverArtifact
 
-▸ `Private` **setHoveringOverPlanet**(`planet`): `void`
+▸ **setHoveringOverArtifact**(`artifactId?`): `void`
 
 #### Parameters
 
-| Name     | Type                             |
-| :------- | :------------------------------- |
-| `planet` | `undefined` \| `LocatablePlanet` |
+| Name          | Type         |
+| :------------ | :----------- |
+| `artifactId?` | `ArtifactId` |
+
+#### Returns
+
+`void`
+
+---
+
+### setHoveringOverPlanet
+
+▸ **setHoveringOverPlanet**(`planet`, `inRenderer`): `void`
+
+#### Parameters
+
+| Name         | Type                             |
+| :----------- | :------------------------------- |
+| `planet`     | `undefined` \| `LocatablePlanet` |
+| `inRenderer` | `boolean`                        |
 
 #### Returns
 
@@ -2068,18 +2521,34 @@ drill fields like this anymore.
 
 ---
 
+### setModalManager
+
+▸ `Private` **setModalManager**(`modalManager`): `void`
+
+#### Parameters
+
+| Name           | Type                                               |
+| :------------- | :------------------------------------------------- |
+| `modalManager` | [`default`](Frontend_Game_ModalManager.default.md) |
+
+#### Returns
+
+`void`
+
+---
+
 ### setOverlayContainer
 
-▸ **setOverlayContainer**(`randomContainer`): `void`
+▸ **setOverlayContainer**(`randomContainer?`): `void`
 
 Sets the overlay container. See {@link GameUIManger.overlayContainer} for more information
 about what the overlay container is.
 
 #### Parameters
 
-| Name              | Type                                            |
-| :---------------- | :---------------------------------------------- |
-| `randomContainer` | `MutableRefObject`<`null` \| `HTMLDivElement`\> |
+| Name               | Type             |
+| :----------------- | :--------------- |
+| `randomContainer?` | `HTMLDivElement` |
 
 #### Returns
 
@@ -2112,6 +2581,22 @@ about what the overlay container is.
 | Name     | Type                             |
 | :------- | :------------------------------- |
 | `planet` | `undefined` \| `LocatablePlanet` |
+
+#### Returns
+
+`void`
+
+---
+
+### setSending
+
+▸ **setSending**(`sending`): `void`
+
+#### Parameters
+
+| Name      | Type      |
+| :-------- | :-------- |
+| `sending` | `boolean` |
 
 #### Returns
 
@@ -2179,12 +2664,25 @@ about what the overlay container is.
 ---
 
 ### stopExplore
+<<<<<<< HEAD
+=======
 
 ▸ **stopExplore**(): `void`
 
 #### Returns
 
 `void`
+
+---
+
+### timeUntilNextBroadcastAvailable
+>>>>>>> slytherin
+
+▸ **timeUntilNextBroadcastAvailable**(): `number`
+
+#### Returns
+
+`number`
 
 ---
 

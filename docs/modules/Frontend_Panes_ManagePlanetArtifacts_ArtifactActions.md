@@ -10,10 +10,11 @@
 
 ### ArtifactActions
 
-▸ **ArtifactActions**(`__namedParameters`): `Element`
+▸ **ArtifactActions**(`__namedParameters`): `null` \| `Element`
 
 #### Parameters
 
+<<<<<<< HEAD
 | Name                                    | Type                               |
 | :-------------------------------------- | :--------------------------------- |
 | `__namedParameters`                     | `Object`                           |
@@ -27,7 +28,14 @@
 | `__namedParameters.deactivate`          | (`artifact`: `Artifact`) => `void` |
 | `__namedParameters.deposit`             | (`artifact`: `Artifact`) => `void` |
 | `__namedParameters.withdraw`            | (`artifact`: `Artifact`) => `void` |
+=======
+| Name                           | Type         |
+| :----------------------------- | :----------- |
+| `__namedParameters`            | `Object`     |
+| `__namedParameters.artifactId` | `ArtifactId` |
+| `__namedParameters.depositOn?` | `LocationId` |
+>>>>>>> slytherin
 
 #### Returns
 
-`Element`
+`null` \| `Element`

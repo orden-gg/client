@@ -42,10 +42,12 @@
 | `colors.border`                | `string`                     |
 | `colors.borderDark`            | `string`                     |
 | `colors.borderDarker`          | `string`                     |
+| `colors.borderDarkest`         | `string`                     |
 | `colors.dfblue`                | `string`                     |
 | `colors.dfgreen`               | `string`                     |
 | `colors.dfgreendark`           | `string`                     |
 | `colors.dfgreenlight`          | `string`                     |
+| `colors.dforange`              | `string`                     |
 | `colors.dfpurple`              | `string`                     |
 | `colors.dfred`                 | `string`                     |
 | `colors.dfwhite`               | `string`                     |
@@ -73,6 +75,7 @@
 | `game.bonuscolors.energyCap`   | `string`                     |
 | `game.bonuscolors.energyGro`   | `string`                     |
 | `game.bonuscolors.range`       | `string`                     |
+| `game.bonuscolors.spaceJunk`   | `string`                     |
 | `game.bonuscolors.speed`       | `string`                     |
 | `game.canvasbg`                | `string`                     |
 | `game.fontSize`                | `string`                     |
@@ -102,12 +105,13 @@
 
 #### Type declaration
 
-| Name                     | Type                         |
-| :----------------------- | :--------------------------- |
-| `absoluteTopLeft`        | `FlattenSimpleInterpolation` |
-| `bigPadding`             | `FlattenSimpleInterpolation` |
-| `defaultBackground`      | `string`                     |
-| `defaultModalWidth`      | `FlattenSimpleInterpolation` |
-| `pane`                   | `string`                     |
-| `roundedBorders`         | `string`                     |
-| `roundedBordersWithEdge` | `FlattenSimpleInterpolation` |
+| Name                     | Type                                    |
+| :----------------------- | :-------------------------------------- |
+| `absoluteTopLeft`        | `FlattenSimpleInterpolation`            |
+| `bigPadding`             | `FlattenSimpleInterpolation`            |
+| `defaultBackground`      | `string`                                |
+| `defaultModalWidth`      | `FlattenSimpleInterpolation`            |
+| `destroyedBackground`    | `CSSStyleDeclaration` & `CSSProperties` |
+| `pane`                   | `string`                                |
+| `roundedBorders`         | `string`                                |
+| `roundedBordersWithEdge` | `FlattenSimpleInterpolation`            |

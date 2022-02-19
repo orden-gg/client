@@ -41,7 +41,11 @@ module.exports = {
       // because otherwise the module can't be imported in PluginManager
       {
         test: /\.[jt]sx?$/,
+<<<<<<< HEAD
         include: /(embedded_plugins|orden-plugins)/,
+=======
+        include: /embedded_plugins/,
+>>>>>>> slytherin
         type: 'javascript/auto',
         use: ['raw-loader', 'ts-loader'],
       },

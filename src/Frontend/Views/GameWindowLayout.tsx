@@ -1,4 +1,5 @@
-import React, { useCallback, useEffect, useRef, useState } from 'react';
+import { ModalId, ModalName, Setting } from '@darkforest_eth/types';
+import React, { useCallback, useEffect, useState } from 'react';
 import styled from 'styled-components';
 import { BorderlessPane } from '../Components/CoreUI';
 import {
@@ -9,36 +10,28 @@ import {
   WindowWrapper,
 } from '../Components/GameWindowComponents';
 import ControllableCanvas from '../Game/ControllableCanvas';
+import { ArtifactHoverPane } from '../Panes/ArtifactHoverPane';
 import { CoordsPane } from '../Panes/CoordsPane';
 import { DiagnosticsPane } from '../Panes/DiagnosticsPane';
 import { ExplorePane } from '../Panes/ExplorePane';
 import { HelpPane } from '../Panes/HelpPane';
 import { HoverPlanetPane } from '../Panes/HoverPlanetPane';
 import OnboardingPane from '../Panes/OnboardingPane';
-import { OrdenPane } from '../Panes/Orden/OrdenPane';
+import { OrdenPane } from '../Panes/OrdenPane';
 import { PlanetContextPane } from '../Panes/PlanetContextPane';
 import { PlanetDexPane } from '../Panes/PlanetDexPane';
 import { PlayerArtifactsPane } from '../Panes/PlayerArtifactsPane';
 import { PluginLibraryPane } from '../Panes/PluginLibraryPane';
 import { PrivatePane } from '../Panes/PrivatePane';
 import { SettingsPane } from '../Panes/SettingsPane';
+import { TransactionLogPane } from '../Panes/TransactionLogPane';
 import { TutorialPane } from '../Panes/TutorialPane';
 import { TwitterVerifyPane } from '../Panes/TwitterVerifyPane';
 import { ZoomPane } from '../Panes/ZoomPane';
 import { useSelectedPlanet, useUIManager } from '../Utils/AppHooks';
 import { useOnUp } from '../Utils/KeyEmitters';
-import { Setting, useBooleanSetting } from '../Utils/SettingsHooks';
-import {
-  TOGGLE_DIAGNOSTICS_PANE,
-  TOGGLE_EXPLORE,
-  TOGGLE_HELP_PANE,
-  TOGGLE_PLUGINS_PANE,
-  TOGGLE_SETTINGS_PANE,
-  TOGGLE_TARGETTING,
-  TOGGLE_YOUR_ARTIFACTS_PANE,
-  TOGGLE_YOUR_PLANETS_DEX_PANE,
-  TOGGLE_YOUR_ORDEN_PLANET_PANE
-} from '../Utils/ShortcutConstants';
+import { useBooleanSetting } from '../Utils/SettingsHooks';
+import { TOGGLE_DIAGNOSTICS_PANE } from '../Utils/ShortcutConstants';
 import { NotificationsPane } from './Notifications';
 import { SidebarPane } from './SidebarPane';
 import { TopBar } from './TopBar';
@@ -50,22 +43,56 @@ export function GameWindowLayout({
   terminalVisible: boolean;
   setTerminalVisible: (visible: boolean) => void;
 }) {
-  const helpHook = useState<boolean>(false);
-  const planetdexHook = useState<boolean>(false);
-  const yourArtifactsHook = useState<boolean>(false);
-  const twitterVerifyHook = useState<boolean>(false);
-  const settingsHook = useState<boolean>(false);
-  const privateHook = useState<boolean>(false);
-  const pluginsHook = useState<boolean>(false);
-  const modalsContainerRef = useRef<HTMLDivElement | null>(null);
   const uiManager = useUIManager();
-  const newPlayerHook = useBooleanSetting(uiManager, Setting.NewPlayer);
+  const modalManager = uiManager.getModalManager();
+  const modalPositions = modalManager.getModalPositions();
+
+  /**
+   * We use the existence of a window position for a given modal as an indicator
+   * that it should be opened on page load. This is to satisfy the feature of
+   * peristent modal positions across browser sessions for a given account.
+   */
+  const isModalOpen = useCallback(
+    (modalId: ModalId) => {
+      const pos = modalPositions.get(modalId);
+      if (pos) {
+        return pos.state !== 'closed';
+      } else {
+        return false;
+      }
+    },
+    [modalPositions]
+  );
+
+  const [helpVisible, setHelpVisible] = useState<boolean>(isModalOpen(ModalName.Help));
+  const [transactionLogVisible, setTransactionLogVisible] = useState<boolean>(
+    isModalOpen(ModalName.TransactionLog)
+  );
+  const [planetdexVisible, setPlanetdexVisible] = useState<boolean>(
+    isModalOpen(ModalName.PlanetDex)
+  );
+  const [playerArtifactsVisible, setPlayerArtifactsVisible] = useState<boolean>(
+    isModalOpen(ModalName.YourArtifacts)
+  );
+  const [twitterVerifyVisible, setTwitterVerifyVisible] = useState<boolean>(
+    isModalOpen(ModalName.TwitterVerify)
+  );
+  const [settingsVisible, setSettingsVisible] = useState<boolean>(isModalOpen(ModalName.Settings));
+  const [privateVisible, setPrivateVisible] = useState<boolean>(isModalOpen(ModalName.Private));
+  const [pluginsVisible, setPluginsVisible] = useState<boolean>(isModalOpen(ModalName.Plugins));
+  const [diagnosticsVisible, setDiagnosticsVisible] = useState<boolean>(
+    isModalOpen(ModalName.Diagnostics)
+  );
+  const [ordenVisible, setOrdenVisible] = useState<boolean>(isModalOpen(ModalName.Orden));
+
+  const [modalsContainer, setModalsContainer] = useState<HTMLDivElement | undefined>();
+  const modalsContainerCB = useCallback((node) => {
+    setModalsContainer(node);
+  }, []);
+  const [onboardingVisible, setOnboardingVisible] = useBooleanSetting(uiManager, Setting.NewPlayer);
   const tutorialHook = useBooleanSetting(uiManager, Setting.TutorialOpen);
   const selected = useSelectedPlanet(uiManager).value;
-  const selectedPlanetHook = useState<boolean>(!!selected);
-  const diagnosticsHook = useState<boolean>(false);
-  const ordenPaneHook = useState<boolean>(false);
-  const [, setSelectedPlanetVisible] = selectedPlanetHook;
+  const [selectedPlanetVisible, setSelectedPlanetVisible] = useState<boolean>(!!selected);
 
   const [userTerminalVisibleSetting, setTerminalVisibleSetting] = useBooleanSetting(
     uiManager,
@@ -73,8 +100,8 @@ export function GameWindowLayout({
   );
 
   useEffect(() => {
-    uiManager.setOverlayContainer(modalsContainerRef);
-  }, [uiManager, modalsContainerRef]);
+    uiManager.setOverlayContainer(modalsContainer);
+  }, [uiManager, modalsContainer]);
 
   const account = uiManager.getAccount();
   useEffect(() => {
@@ -91,98 +118,68 @@ export function GameWindowLayout({
 
   useEffect(() => setSelectedPlanetVisible(!!selected), [selected, setSelectedPlanetVisible]);
 
-  const setSettingsHookOpen = settingsHook[1];
-  useOnUp(
-    TOGGLE_SETTINGS_PANE,
-    useCallback(() => {
-      setSettingsHookOpen((value) => !value);
-    }, [setSettingsHookOpen])
-  );
-
-  const setHelpHookOpen = helpHook[1];
-  useOnUp(
-    TOGGLE_HELP_PANE,
-    useCallback(() => {
-      setHelpHookOpen((value) => !value);
-    }, [setHelpHookOpen])
-  );
-
-  const setPluginsHookOpen = pluginsHook[1];
-  useOnUp(
-    TOGGLE_PLUGINS_PANE,
-    useCallback(() => {
-      setPluginsHookOpen((value) => !value);
-    }, [setPluginsHookOpen])
-  );
-
-  const setPlanetDexOpen = planetdexHook[1];
-  useOnUp(
-    TOGGLE_YOUR_PLANETS_DEX_PANE,
-    useCallback(() => {
-      setPlanetDexOpen((value) => !value);
-    }, [setPlanetDexOpen])
-  );
-
-  const setYourArtifactsOpen = yourArtifactsHook[1];
-  useOnUp(
-    TOGGLE_YOUR_ARTIFACTS_PANE,
-    useCallback(() => {
-      setYourArtifactsOpen((value) => !value);
-    }, [setYourArtifactsOpen])
-  );
-
-  const setDiagnosticsHookOpen = diagnosticsHook[1];
   useOnUp(
     TOGGLE_DIAGNOSTICS_PANE,
     useCallback(() => {
-      setDiagnosticsHookOpen((value) => !value);
-    }, [setDiagnosticsHookOpen])
+      setDiagnosticsVisible((value) => !value);
+    }, [setDiagnosticsVisible])
   );
-  
-  const setOrdenPaneHookOpen = ordenPaneHook[1];
-  useOnUp(
-    TOGGLE_YOUR_ORDEN_PLANET_PANE,
-    useCallback(() => {
-      setOrdenPaneHookOpen((value) => !value);
-    }, [setOrdenPaneHookOpen])
-  );
-
-  useOnUp(TOGGLE_EXPLORE, uiManager.toggleExplore.bind(uiManager));
-  useOnUp(TOGGLE_TARGETTING, uiManager.toggleTargettingExplorer.bind(uiManager));
 
   return (
     <WindowWrapper>
       <TopBarPaneContainer>
         <BorderlessPane>
-          <TopBar twitterVerifyHook={twitterVerifyHook} />
+          <TopBar twitterVerifyHook={[twitterVerifyVisible, setTwitterVerifyVisible]} />
         </BorderlessPane>
       </TopBarPaneContainer>
 
       {/* all modals rendered into here */}
-      <div ref={modalsContainerRef}>
-        <HelpPane hook={helpHook} />
-        <PlanetDexPane hook={planetdexHook} />
-        <TwitterVerifyPane hook={twitterVerifyHook} />
+      <div ref={modalsContainerCB}>
+        <HelpPane visible={helpVisible} onClose={() => setHelpVisible(false)} />
+        <TransactionLogPane
+          visible={transactionLogVisible}
+          onClose={() => setTransactionLogVisible(false)}
+        />
+        <PlanetDexPane visible={planetdexVisible} onClose={() => setPlanetdexVisible(false)} />
+        <TwitterVerifyPane
+          visible={twitterVerifyVisible}
+          onClose={() => setTwitterVerifyVisible(false)}
+        />
         <SettingsPane
           ethConnection={uiManager.getEthConnection()}
-          hook={settingsHook}
-          privateHook={privateHook}
+          visible={settingsVisible}
+          onClose={() => setSettingsVisible(false)}
+          onOpenPrivate={() => setPrivateVisible(true)}
         />
-        <PrivatePane hook={privateHook} />
-        <PlayerArtifactsPane hook={yourArtifactsHook} />
-        <PlanetContextPane hook={selectedPlanetHook} />
-        <DiagnosticsPane hook={diagnosticsHook} />
-        <OrdenPane hook={ordenPaneHook} />
-        {modalsContainerRef.current && (
+        <PrivatePane visible={privateVisible} onClose={() => setPrivateVisible(false)} />
+        <PlayerArtifactsPane
+          visible={playerArtifactsVisible}
+          onClose={() => setPlayerArtifactsVisible(false)}
+        />
+        <PlanetContextPane
+          visible={selectedPlanetVisible}
+          onClose={() => setSelectedPlanetVisible(false)}
+        />
+        <DiagnosticsPane
+          visible={diagnosticsVisible}
+          onClose={() => setDiagnosticsVisible(false)}
+        />
+        <OrdenPane
+          visible={ordenVisible}
+          onClose={() => setOrdenVisible(false)}
+        />
+
+        {modalsContainer && (
           <PluginLibraryPane
-            modalsContainer={modalsContainerRef.current}
+            modalsContainer={modalsContainer}
             gameUIManager={uiManager}
-            hook={pluginsHook}
+            visible={pluginsVisible}
+            onClose={() => setPluginsVisible(false)}
           />
         )}
       </div>
 
-      <OnboardingPane newPlayerHook={newPlayerHook} />
+      <OnboardingPane visible={onboardingVisible} onClose={() => setOnboardingVisible(false)} />
 
       <MainWindow>
         <CanvasContainer>
@@ -190,12 +187,13 @@ export function GameWindowLayout({
             <ZoomPane />
           </UpperLeft>
           <SidebarPane
-            settingsHook={settingsHook}
-            helpHook={helpHook}
-            pluginsHook={pluginsHook}
-            yourArtifactsHook={yourArtifactsHook}
-            planetdexHook={planetdexHook}
-            ordenPaneHook={ordenPaneHook}
+            transactionLogHook={[transactionLogVisible, setTransactionLogVisible]}
+            settingsHook={[settingsVisible, setSettingsVisible]}
+            helpHook={[helpVisible, setHelpVisible]}
+            pluginsHook={[pluginsVisible, setPluginsVisible]}
+            yourArtifactsHook={[playerArtifactsVisible, setPlayerArtifactsVisible]}
+            planetdexHook={[planetdexVisible, setPlanetdexVisible]}
+            ordenHook={[ordenVisible, setOrdenVisible]}
           />
           <CanvasWrapper>
             <ControllableCanvas />
@@ -206,6 +204,7 @@ export function GameWindowLayout({
           <ExplorePane />
 
           <HoverPlanetPane />
+          <ArtifactHoverPane />
 
           <TutorialPane tutorialHook={tutorialHook} />
         </CanvasContainer>

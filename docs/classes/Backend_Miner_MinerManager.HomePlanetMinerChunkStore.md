@@ -70,9 +70,15 @@
 
 #### Parameters
 
+<<<<<<< HEAD
 | Name            | Type                                         |
 | :-------------- | :------------------------------------------- |
 | `exploredChunk` | [`Chunk`](types_global_GlobalTypes.Chunk.md) |
+=======
+| Name            | Type    |
+| :-------------- | :------ |
+| `exploredChunk` | `Chunk` |
+>>>>>>> slytherin
 
 #### Returns
 
@@ -86,9 +92,15 @@
 
 #### Parameters
 
+<<<<<<< HEAD
 | Name             | Type                                                               |
 | :--------------- | :----------------------------------------------------------------- |
 | `chunkFootprint` | [`Rectangle`](../interfaces/types_global_GlobalTypes.Rectangle.md) |
+=======
+| Name             | Type        |
+| :--------------- | :---------- |
+| `chunkFootprint` | `Rectangle` |
+>>>>>>> slytherin
 
 #### Returns
 

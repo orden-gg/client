@@ -36,10 +36,11 @@ particular user.
 
 ### constructor
 
-• `Private` **new default**(`viewer`, `addressTwitterMap`, `contractConstants`, `contractsAPI`, `persistentChunkStore`)
+• `Private` **new default**(`__namedParameters`)
 
 #### Parameters
 
+<<<<<<< HEAD
 | Name                   | Type                                                                                              |
 | :--------------------- | :------------------------------------------------------------------------------------------------ |
 | `viewer`               | `undefined` \| `EthAddress`                                                                       |
@@ -47,6 +48,11 @@ particular user.
 | `contractConstants`    | [`ContractConstants`](../interfaces/types_darkforest_api_ContractsAPITypes.ContractConstants.md)  |
 | `contractsAPI`         | [`ContractsAPI`](Backend_GameLogic_ContractsAPI.ContractsAPI.md)                                  |
 | `persistentChunkStore` | `undefined` \| [`default`](Backend_Storage_PersistentChunkStore.default.md)                       |
+=======
+| Name                | Type                    |
+| :------------------ | :---------------------- |
+| `__namedParameters` | `ReaderDataStoreConfig` |
+>>>>>>> slytherin
 
 ## Properties
 
@@ -198,15 +204,16 @@ particular user.
 
 ### create
 
-▸ `Static` **create**(`terminal`, `ethConnection`, `viewer`): `Promise`<[`default`](Backend_Storage_ReaderDataStore.default.md)\>
+▸ `Static` **create**(`__namedParameters`): `Promise`<[`default`](Backend_Storage_ReaderDataStore.default.md)\>
 
 #### Parameters
 
-| Name            | Type                                                                                                            |
-| :-------------- | :-------------------------------------------------------------------------------------------------------------- |
-| `terminal`      | `MutableRefObject`<`undefined` \| [`TerminalHandle`](../interfaces/Frontend_Views_Terminal.TerminalHandle.md)\> |
-| `ethConnection` | `EthConnection`                                                                                                 |
-| `viewer`        | `undefined` \| `EthAddress`                                                                                     |
+| Name                                | Type                        |
+| :---------------------------------- | :-------------------------- |
+| `__namedParameters`                 | `Object`                    |
+| `__namedParameters.connection`      | `EthConnection`             |
+| `__namedParameters.contractAddress` | `EthAddress`                |
+| `__namedParameters.viewer`          | `undefined` \| `EthAddress` |
 
 #### Returns
 

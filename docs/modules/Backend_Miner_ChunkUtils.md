@@ -38,6 +38,7 @@ for sibling chunks that existed prior to this function being called.
 
 #### Parameters
 
+<<<<<<< HEAD
 | Name             | Type                                                                                                                          |
 | :--------------- | :---------------------------------------------------------------------------------------------------------------------------- |
 | `existingChunks` | `Map`<[`ChunkId`](types_darkforest_api_ChunkStoreTypes.md#chunkid), [`Chunk`](../classes/types_global_GlobalTypes.Chunk.md)\> |
@@ -45,6 +46,15 @@ for sibling chunks that existed prior to this function being called.
 | `onAdd?`         | (`arg`: [`Chunk`](../classes/types_global_GlobalTypes.Chunk.md)) => `void`                                                    |
 | `onRemove?`      | (`arg`: [`Chunk`](../classes/types_global_GlobalTypes.Chunk.md)) => `void`                                                    |
 | `maxChunkSize?`  | `number`                                                                                                                      |
+=======
+| Name             | Type                                                                          |
+| :--------------- | :---------------------------------------------------------------------------- |
+| `existingChunks` | `Map`<[`ChunkId`](types_darkforest_api_ChunkStoreTypes.md#chunkid), `Chunk`\> |
+| `newChunk`       | `Chunk`                                                                       |
+| `onAdd?`         | (`arg`: `Chunk`) => `void`                                                    |
+| `onRemove?`      | (`arg`: `Chunk`) => `void`                                                    |
+| `maxChunkSize?`  | `number`                                                                      |
+>>>>>>> slytherin
 
 #### Returns
 
@@ -62,9 +72,15 @@ roughly evenly between the buckets.
 
 #### Parameters
 
+<<<<<<< HEAD
 | Name    | Type                                                               |
 | :------ | :----------------------------------------------------------------- |
 | `chunk` | [`Rectangle`](../interfaces/types_global_GlobalTypes.Rectangle.md) |
+=======
+| Name    | Type        |
+| :------ | :---------- |
+| `chunk` | `Rectangle` |
+>>>>>>> slytherin
 
 #### Returns
 
@@ -81,9 +97,15 @@ primary key by which chunks are identified.
 
 #### Parameters
 
+<<<<<<< HEAD
 | Name       | Type                                                               |
 | :--------- | :----------------------------------------------------------------- |
 | `chunkLoc` | [`Rectangle`](../interfaces/types_global_GlobalTypes.Rectangle.md) |
+=======
+| Name       | Type        |
+| :--------- | :---------- |
+| `chunkLoc` | `Rectangle` |
+>>>>>>> slytherin
 
 #### Returns
 
@@ -93,7 +115,11 @@ primary key by which chunks are identified.
 
 ### getChunkOfSideLengthContainingPoint
 
+<<<<<<< HEAD
 ▸ **getChunkOfSideLengthContainingPoint**(`coords`, `sideLength`): [`Rectangle`](../interfaces/types_global_GlobalTypes.Rectangle.md)
+=======
+▸ **getChunkOfSideLengthContainingPoint**(`coords`, `sideLength`): `Rectangle`
+>>>>>>> slytherin
 
 Returns the unique aligned chunk (for definition of "aligned" see comment on
 `getSiblingLocations`) with the given side length that contains the given point. A chunk contains
@@ -109,13 +135,21 @@ it does not contain points which are on its right or top edges.
 
 #### Returns
 
+<<<<<<< HEAD
 [`Rectangle`](../interfaces/types_global_GlobalTypes.Rectangle.md)
+=======
+`Rectangle`
+>>>>>>> slytherin
 
 ---
 
 ### getSiblingLocations
 
+<<<<<<< HEAD
 ▸ `Const` **getSiblingLocations**(`chunkLoc`): [[`Rectangle`](../interfaces/types_global_GlobalTypes.Rectangle.md), [`Rectangle`](../interfaces/types_global_GlobalTypes.Rectangle.md), [`Rectangle`](../interfaces/types_global_GlobalTypes.Rectangle.md)]
+=======
+▸ `Const` **getSiblingLocations**(`chunkLoc`): [`Rectangle`, `Rectangle`, `Rectangle`]
+>>>>>>> slytherin
 
 An aligned chunk is one whose corner's coordinates are multiples of its side length, and its side
 length is a power of two between [MIN_CHUNK_SIZE](Frontend_Utils_constants.md#min_chunk_size) and [MAX_CHUNK_SIZE](Frontend_Utils_constants.md#max_chunk_size) inclusive.
@@ -134,6 +168,7 @@ the given chunk.
 
 #### Parameters
 
+<<<<<<< HEAD
 | Name       | Type                                                               |
 | :--------- | :----------------------------------------------------------------- |
 | `chunkLoc` | [`Rectangle`](../interfaces/types_global_GlobalTypes.Rectangle.md) |
@@ -141,12 +176,25 @@ the given chunk.
 #### Returns
 
 [[`Rectangle`](../interfaces/types_global_GlobalTypes.Rectangle.md), [`Rectangle`](../interfaces/types_global_GlobalTypes.Rectangle.md), [`Rectangle`](../interfaces/types_global_GlobalTypes.Rectangle.md)]
+=======
+| Name       | Type        |
+| :--------- | :---------- |
+| `chunkLoc` | `Rectangle` |
+
+#### Returns
+
+[`Rectangle`, `Rectangle`, `Rectangle`]
+>>>>>>> slytherin
 
 ---
 
 ### toExploredChunk
 
+<<<<<<< HEAD
 ▸ `Const` **toExploredChunk**(`chunk`): [`Chunk`](../classes/types_global_GlobalTypes.Chunk.md)
+=======
+▸ `Const` **toExploredChunk**(`chunk`): `Chunk`
+>>>>>>> slytherin
 
 Converts from the persisted representation of a chunk to the in-game representation of a chunk.
 
@@ -158,7 +206,11 @@ Converts from the persisted representation of a chunk to the in-game representat
 
 #### Returns
 
+<<<<<<< HEAD
 [`Chunk`](../classes/types_global_GlobalTypes.Chunk.md)
+=======
+`Chunk`
+>>>>>>> slytherin
 
 ---
 
@@ -170,9 +222,15 @@ Converts from the in-game representation of a chunk to its persisted representat
 
 #### Parameters
 
+<<<<<<< HEAD
 | Name    | Type                                                    |
 | :------ | :------------------------------------------------------ |
 | `chunk` | [`Chunk`](../classes/types_global_GlobalTypes.Chunk.md) |
+=======
+| Name    | Type    |
+| :------ | :------ |
+| `chunk` | `Chunk` |
+>>>>>>> slytherin
 
 #### Returns
 

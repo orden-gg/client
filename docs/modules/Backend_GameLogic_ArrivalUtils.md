@@ -11,7 +11,6 @@
 - [applyUpgrade](Backend_GameLogic_ArrivalUtils.md#applyupgrade)
 - [arrive](Backend_GameLogic_ArrivalUtils.md#arrive)
 - [blocksLeftToProspectExpiration](Backend_GameLogic_ArrivalUtils.md#blockslefttoprospectexpiration)
-- [enoughEnergyToProspect](Backend_GameLogic_ArrivalUtils.md#enoughenergytoprospect)
 - [getEmojiMessage](Backend_GameLogic_ArrivalUtils.md#getemojimessage)
 - [getRange](Backend_GameLogic_ArrivalUtils.md#getrange)
 - [isFindable](Backend_GameLogic_ArrivalUtils.md#isfindable)
@@ -41,7 +40,7 @@
 
 ### arrive
 
-▸ `Const` **arrive**(`toPlanet`, `artifactsOnPlanet`, `arrival`, `contractConstants`): [`PlanetDiff`](../interfaces/Backend_GameLogic_ArrivalUtils.PlanetDiff.md)
+▸ `Const` **arrive**(`toPlanet`, `artifactsOnPlanet`, `arrival`, `arrivingArtifact`, `contractConstants`): [`PlanetDiff`](../interfaces/Backend_GameLogic_ArrivalUtils.PlanetDiff.md)
 
 #### Parameters
 
@@ -50,6 +49,10 @@
 | `toPlanet`          | `Planet`                                                                                         |
 | `artifactsOnPlanet` | `Artifact`[]                                                                                     |
 | `arrival`           | `QueuedArrival`                                                                                  |
+<<<<<<< HEAD
+=======
+| `arrivingArtifact`  | `undefined` \| `Artifact`                                                                        |
+>>>>>>> slytherin
 | `contractConstants` | [`ContractConstants`](../interfaces/types_darkforest_api_ContractsAPITypes.ContractConstants.md) |
 
 #### Returns
@@ -75,22 +78,6 @@
 
 ---
 
-### enoughEnergyToProspect
-
-▸ `Const` **enoughEnergyToProspect**(`p`): `boolean`
-
-#### Parameters
-
-| Name | Type     |
-| :--- | :------- |
-| `p`  | `Planet` |
-
-#### Returns
-
-`boolean`
-
----
-
 ### getEmojiMessage
 
 ▸ **getEmojiMessage**(`planet`): `PlanetMessage`<`EmojiFlagBody`\> \| `undefined`
@@ -112,16 +99,17 @@
 
 ### getRange
 
-▸ **getRange**(`planet`, `percentEnergySending?`): `number`
+▸ **getRange**(`planet`, `percentEnergySending?`, `rangeBoost?`): `number`
 
 **`todo`** - planet class
 
 #### Parameters
 
-| Name                   | Type     | Default value |
-| :--------------------- | :------- | :------------ |
-| `planet`               | `Planet` | `undefined`   |
-| `percentEnergySending` | `number` | `100`         |
+| Name                   | Type     | Default value | Description                                                                                                                  |
+| :--------------------- | :------- | :------------ | :--------------------------------------------------------------------------------------------------------------------------- |
+| `planet`               | `Planet` | `undefined`   | -                                                                                                                            |
+| `percentEnergySending` | `number` | `100`         | -                                                                                                                            |
+| `rangeBoost`           | `number` | `1`           | A multiplier to be applied to the resulting range. Currently used for calculating boost associated with abandoning a planet. |
 
 #### Returns
 

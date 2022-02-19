@@ -10,7 +10,6 @@
 - [Bottom](Frontend_Components_CoreUI.md#bottom)
 - [CenterBackgroundSubtext](Frontend_Components_CoreUI.md#centerbackgroundsubtext)
 - [CenterRow](Frontend_Components_CoreUI.md#centerrow)
-- [CenteredText](Frontend_Components_CoreUI.md#centeredtext)
 - [Display](Frontend_Components_CoreUI.md#display)
 - [DontShrink](Frontend_Components_CoreUI.md#dontshrink)
 - [EmSpacer](Frontend_Components_CoreUI.md#emspacer)
@@ -18,16 +17,12 @@
 - [Expand](Frontend_Components_CoreUI.md#expand)
 - [FloatRight](Frontend_Components_CoreUI.md#floatright)
 - [FullHeight](Frontend_Components_CoreUI.md#fullheight)
-- [FullWidth](Frontend_Components_CoreUI.md#fullwidth)
 - [HeaderText](Frontend_Components_CoreUI.md#headertext)
 - [Hidden](Frontend_Components_CoreUI.md#hidden)
 - [InlineBlock](Frontend_Components_CoreUI.md#inlineblock)
-- [KeyboardBtn](Frontend_Components_CoreUI.md#keyboardbtn)
 - [MaxWidth](Frontend_Components_CoreUI.md#maxwidth)
 - [Padded](Frontend_Components_CoreUI.md#padded)
-- [PaddedRecommendedModalWidth](Frontend_Components_CoreUI.md#paddedrecommendedmodalwidth)
 - [PluginElements](Frontend_Components_CoreUI.md#pluginelements)
-- [RecommendedModalWidth](Frontend_Components_CoreUI.md#recommendedmodalwidth)
 - [Section](Frontend_Components_CoreUI.md#section)
 - [SectionHeader](Frontend_Components_CoreUI.md#sectionheader)
 - [Select](Frontend_Components_CoreUI.md#select)
@@ -36,6 +31,7 @@
 - [Spread](Frontend_Components_CoreUI.md#spread)
 - [SpreadApart](Frontend_Components_CoreUI.md#spreadapart)
 - [TextButton](Frontend_Components_CoreUI.md#textbutton)
+- [Title](Frontend_Components_CoreUI.md#title)
 - [Truncate](Frontend_Components_CoreUI.md#truncate)
 - [Underline](Frontend_Components_CoreUI.md#underline)
 
@@ -43,8 +39,6 @@
 
 - [Link](Frontend_Components_CoreUI.md#link)
 - [SelectFrom](Frontend_Components_CoreUI.md#selectfrom)
-- [ShortcutButton](Frontend_Components_CoreUI.md#shortcutbutton)
-- [ShortcutKeyDown](Frontend_Components_CoreUI.md#shortcutkeydown)
 - [VerticalSplit](Frontend_Components_CoreUI.md#verticalsplit)
 
 ## Variables
@@ -88,12 +82,15 @@ be displayed. Think of it as a placeholder.
 ### CenterRow
 
 • **CenterRow**: `StyledComponent`<`"div"`, `any`, `Object`, `never`\>
+<<<<<<< HEAD
 
 ---
 
 ### CenteredText
 
 • **CenteredText**: `StyledComponent`<`"span"`, `any`, `Object`, `never`\>
+=======
+>>>>>>> slytherin
 
 ---
 
@@ -142,12 +139,15 @@ Expands to fill space in a flexbox.
 ### FullHeight
 
 • **FullHeight**: `StyledComponent`<`"div"`, `any`, `Object`, `never`\>
+<<<<<<< HEAD
 
 ---
 
 ### FullWidth
 
 • **FullWidth**: `StyledComponent`<`"div"`, `any`, `Object`, `never`\>
+=======
+>>>>>>> slytherin
 
 ---
 
@@ -166,12 +166,15 @@ Expands to fill space in a flexbox.
 ### InlineBlock
 
 • **InlineBlock**: `StyledComponent`<`"div"`, `any`, `Object`, `never`\>
+<<<<<<< HEAD
 
 ---
 
 ### KeyboardBtn
 
 • **KeyboardBtn**: `StyledComponent`<`"kbd"`, `any`, `Object`, `never`\>
+=======
+>>>>>>> slytherin
 
 ---
 
@@ -184,12 +187,15 @@ Expands to fill space in a flexbox.
 ### Padded
 
 • **Padded**: `StyledComponent`<`"div"`, `any`, `Object`, `never`\>
+<<<<<<< HEAD
 
 ---
 
 ### PaddedRecommendedModalWidth
 
 • **PaddedRecommendedModalWidth**: `StyledComponent`<`"div"`, `any`, `Object`, `never`\>
+=======
+>>>>>>> slytherin
 
 ---
 
@@ -205,12 +211,15 @@ way to do this.
 
 ---
 
+<<<<<<< HEAD
 ### RecommendedModalWidth
 
 • **RecommendedModalWidth**: `StyledComponent`<`"div"`, `any`, `Object`, `never`\>
 
 ---
 
+=======
+>>>>>>> slytherin
 ### Section
 
 • **Section**: `StyledComponent`<`"div"`, `any`, `Object`, `never`\>
@@ -262,6 +271,15 @@ horizontally.
 ### TextButton
 
 • **TextButton**: `StyledComponent`<`"span"`, `any`, `Object`, `never`\>
+<<<<<<< HEAD
+=======
+
+---
+
+### Title
+
+• **Title**: `StyledComponent`<`"div"`, `any`, `Object`, `never`\>
+>>>>>>> slytherin
 
 ---
 
@@ -313,6 +331,7 @@ given string values.
 | `__namedParameters.values`   | `string`[]                    |
 | `__namedParameters.wide?`    | `boolean`                     |
 | `__namedParameters.setValue` | (`value`: `string`) => `void` |
+<<<<<<< HEAD
 
 #### Returns
 
@@ -352,6 +371,8 @@ provided, this is just a normal button.
 | `__namedParameters.disabled?`    | `boolean` |
 | `__namedParameters.shortcutKey?` | `string`  |
 | `__namedParameters.text?`        | `string`  |
+=======
+>>>>>>> slytherin
 
 #### Returns
 

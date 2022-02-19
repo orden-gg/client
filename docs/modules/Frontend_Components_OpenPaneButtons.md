@@ -8,6 +8,7 @@
 - [OpenHatPaneButton](Frontend_Components_OpenPaneButtons.md#openhatpanebutton)
 - [OpenManagePlanetArtifactsButton](Frontend_Components_OpenPaneButtons.md#openmanageplanetartifactsbutton)
 - [OpenPaneButton](Frontend_Components_OpenPaneButtons.md#openpanebutton)
+- [OpenPlanetInfoButton](Frontend_Components_OpenPaneButtons.md#openplanetinfobutton)
 - [OpenUpgradeDetailsPaneButton](Frontend_Components_OpenPaneButtons.md#openupgradedetailspanebutton)
 
 ## Functions
@@ -18,12 +19,19 @@
 
 #### Parameters
 
+<<<<<<< HEAD
 | Name                                  | Type                                                                   |
 | :------------------------------------ | :--------------------------------------------------------------------- |
 | `__namedParameters`                   | `Object`                                                               |
 | `__namedParameters.modal`             | [`ModalHandle`](../interfaces/Frontend_Views_ModalPane.ModalHandle.md) |
 | `__namedParameters.planetId`          | `undefined` \| `LocationId`                                            |
 | `__namedParameters.shortcutDisabled?` | `boolean`                                                              |
+=======
+| Name                         | Type                                                                   |
+| :--------------------------- | :--------------------------------------------------------------------- |
+| `__namedParameters`          | `Object`                                                               |
+| `__namedParameters.modal`    | [`ModalHandle`](../interfaces/Frontend_Views_ModalPane.ModalHandle.md) |
+| `__namedParameters.planetId` | `undefined` \| `LocationId`                                            |
 
 #### Returns
 
@@ -37,12 +45,12 @@
 
 #### Parameters
 
-| Name                                  | Type                                                                   |
-| :------------------------------------ | :--------------------------------------------------------------------- |
-| `__namedParameters`                   | `Object`                                                               |
-| `__namedParameters.modal`             | [`ModalHandle`](../interfaces/Frontend_Views_ModalPane.ModalHandle.md) |
-| `__namedParameters.planetId`          | `undefined` \| `LocationId`                                            |
-| `__namedParameters.shortcutDisabled?` | `boolean`                                                              |
+| Name                         | Type                                                                   |
+| :--------------------------- | :--------------------------------------------------------------------- |
+| `__namedParameters`          | `Object`                                                               |
+| `__namedParameters.modal`    | [`ModalHandle`](../interfaces/Frontend_Views_ModalPane.ModalHandle.md) |
+| `__namedParameters.planetId` | `undefined` \| `LocationId`                                            |
+>>>>>>> slytherin
 
 #### Returns
 
@@ -56,12 +64,20 @@
 
 #### Parameters
 
+<<<<<<< HEAD
 | Name                                  | Type                                                                   |
 | :------------------------------------ | :--------------------------------------------------------------------- |
 | `__namedParameters`                   | `Object`                                                               |
 | `__namedParameters.modal`             | [`ModalHandle`](../interfaces/Frontend_Views_ModalPane.ModalHandle.md) |
 | `__namedParameters.planetId`          | `undefined` \| `LocationId`                                            |
 | `__namedParameters.shortcutDisabled?` | `boolean`                                                              |
+=======
+| Name                         | Type                                                                   |
+| :--------------------------- | :--------------------------------------------------------------------- |
+| `__namedParameters`          | `Object`                                                               |
+| `__namedParameters.modal`    | [`ModalHandle`](../interfaces/Frontend_Views_ModalPane.ModalHandle.md) |
+| `__namedParameters.planetId` | `undefined` \| `LocationId`                                            |
+>>>>>>> slytherin
 
 #### Returns
 
@@ -75,6 +91,37 @@
 
 #### Parameters
 
+<<<<<<< HEAD
+| Name                                  | Type                                                                   |
+| :------------------------------------ | :--------------------------------------------------------------------- |
+| `__namedParameters`                   | `Object`                                                               |
+| `__namedParameters.modal`             | [`ModalHandle`](../interfaces/Frontend_Views_ModalPane.ModalHandle.md) |
+| `__namedParameters.planetId`          | `undefined` \| `LocationId`                                            |
+| `__namedParameters.shortcutDisabled?` | `boolean`                                                              |
+=======
+| Name                             | Type                                                                      |
+| :------------------------------- | :------------------------------------------------------------------------ |
+| `__namedParameters`              | `Object`                                                                  |
+| `__namedParameters.helpContent?` | `ReactElement`<`any`, `string` \| `JSXElementConstructor`<`any`\>\>       |
+| `__namedParameters.modal`        | [`ModalHandle`](../interfaces/Frontend_Views_ModalPane.ModalHandle.md)    |
+| `__namedParameters.shortcut?`    | `string`                                                                  |
+| `__namedParameters.title`        | `string`                                                                  |
+| `__namedParameters.element`      | () => `ReactElement`<`any`, `string` \| `JSXElementConstructor`<`any`\>\> |
+>>>>>>> slytherin
+
+#### Returns
+
+`Element`
+
+---
+
+### OpenPlanetInfoButton
+
+▸ **OpenPlanetInfoButton**(`__namedParameters`): `Element`
+
+#### Parameters
+
+<<<<<<< HEAD
 | Name                                  | Type                                                                      |
 | :------------------------------------ | :------------------------------------------------------------------------ |
 | `__namedParameters`                   | `Object`                                                                  |
@@ -84,6 +131,13 @@
 | `__namedParameters.shortcutKey?`      | `string`                                                                  |
 | `__namedParameters.title`             | `string`                                                                  |
 | `__namedParameters.element`           | () => `ReactElement`<`any`, `string` \| `JSXElementConstructor`<`any`\>\> |
+=======
+| Name                         | Type                                                                   |
+| :--------------------------- | :--------------------------------------------------------------------- |
+| `__namedParameters`          | `Object`                                                               |
+| `__namedParameters.modal`    | [`ModalHandle`](../interfaces/Frontend_Views_ModalPane.ModalHandle.md) |
+| `__namedParameters.planetId` | `undefined` \| `LocationId`                                            |
+>>>>>>> slytherin
 
 #### Returns
 
@@ -97,12 +151,20 @@
 
 #### Parameters
 
+<<<<<<< HEAD
 | Name                                  | Type                                                                   |
 | :------------------------------------ | :--------------------------------------------------------------------- |
 | `__namedParameters`                   | `Object`                                                               |
 | `__namedParameters.modal`             | [`ModalHandle`](../interfaces/Frontend_Views_ModalPane.ModalHandle.md) |
 | `__namedParameters.planetId`          | `undefined` \| `LocationId`                                            |
 | `__namedParameters.shortcutDisabled?` | `boolean`                                                              |
+=======
+| Name                         | Type                                                                   |
+| :--------------------------- | :--------------------------------------------------------------------- |
+| `__namedParameters`          | `Object`                                                               |
+| `__namedParameters.modal`    | [`ModalHandle`](../interfaces/Frontend_Views_ModalPane.ModalHandle.md) |
+| `__namedParameters.planetId` | `undefined` \| `LocationId`                                            |
+>>>>>>> slytherin
 
 #### Returns
 

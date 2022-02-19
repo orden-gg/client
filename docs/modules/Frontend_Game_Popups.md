@@ -10,16 +10,22 @@
 
 ### openConfirmationWindowForTransaction
 
-▸ **openConfirmationWindowForTransaction**(`ethConnection`, `txRequest`, `from`, `gasFeeGwei`): `Promise`<`void`\>
+▸ **openConfirmationWindowForTransaction**(`__namedParameters`): `Promise`<`void`\>
 
 #### Parameters
 
+<<<<<<< HEAD
 | Name            | Type                |
 | :-------------- | :------------------ |
 | `ethConnection` | `EthConnection`     |
 | `txRequest`     | `QueuedTransaction` |
 | `from`          | `EthAddress`        |
 | `gasFeeGwei`    | `BigNumber`         |
+=======
+| Name                | Type                     |
+| :------------------ | :----------------------- |
+| `__namedParameters` | `OpenConfirmationConfig` |
+>>>>>>> slytherin
 
 #### Returns
 

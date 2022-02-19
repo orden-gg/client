@@ -48,7 +48,11 @@
 
 ### fromChunk
 
+<<<<<<< HEAD
 • **fromChunk**: [`Rectangle`](../interfaces/types_global_GlobalTypes.Rectangle.md)
+=======
+• **fromChunk**: `Rectangle`
+>>>>>>> slytherin
 
 #### Implementation of
 
@@ -86,6 +90,7 @@
 
 ### nextChunk
 
+<<<<<<< HEAD
 ▸ **nextChunk**(`chunk`): [`Rectangle`](../interfaces/types_global_GlobalTypes.Rectangle.md)
 
 #### Parameters
@@ -97,6 +102,19 @@
 #### Returns
 
 [`Rectangle`](../interfaces/types_global_GlobalTypes.Rectangle.md)
+=======
+▸ **nextChunk**(`chunk`): `Rectangle`
+
+#### Parameters
+
+| Name    | Type        |
+| :------ | :---------- |
+| `chunk` | `Rectangle` |
+
+#### Returns
+
+`Rectangle`
+>>>>>>> slytherin
 
 #### Implementation of
 

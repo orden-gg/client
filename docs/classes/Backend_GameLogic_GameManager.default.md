@@ -17,6 +17,7 @@
 ### Properties
 
 - [account](Backend_GameLogic_GameManager.default.md#account)
+- [captureZoneGenerator](Backend_GameLogic_GameManager.default.md#capturezonegenerator)
 - [contractConstants](Backend_GameLogic_GameManager.default.md#contractconstants)
 - [contractsAPI](Backend_GameLogic_GameManager.default.md#contractsapi)
 - [diagnostics](Backend_GameLogic_GameManager.default.md#diagnostics)
@@ -30,11 +31,14 @@
 - [minerManager](Backend_GameLogic_GameManager.default.md#minermanager)
 - [networkHealth$](Backend_GameLogic_GameManager.default.md#networkhealth$)
 - [networkHealthInterval](Backend_GameLogic_GameManager.default.md#networkhealthinterval)
+- [paused](Backend_GameLogic_GameManager.default.md#paused)
+- [paused$](Backend_GameLogic_GameManager.default.md#paused$)
 - [persistentChunkStore](Backend_GameLogic_GameManager.default.md#persistentchunkstore)
 - [planetHashMimc](Backend_GameLogic_GameManager.default.md#planethashmimc)
 - [playerInterval](Backend_GameLogic_GameManager.default.md#playerinterval)
 - [players](Backend_GameLogic_GameManager.default.md#players)
 - [playersUpdated$](Backend_GameLogic_GameManager.default.md#playersupdated$)
+- [safeMode](Backend_GameLogic_GameManager.default.md#safemode)
 - [scoreboardInterval](Backend_GameLogic_GameManager.default.md#scoreboardinterval)
 - [settingsSubscription](Backend_GameLogic_GameManager.default.md#settingssubscription)
 - [snarkHelper](Backend_GameLogic_GameManager.default.md#snarkhelper)
@@ -44,6 +48,7 @@
 
 ### Accessors
 
+- [captureZoneGeneratedEmitter](Backend_GameLogic_GameManager.default.md#capturezonegeneratedemitter)
 - [planetRarity](Backend_GameLogic_GameManager.default.md#planetrarity)
 
 ### Methods
@@ -55,6 +60,7 @@
 - [bulkAddNewChunks](Backend_GameLogic_GameManager.default.md#bulkaddnewchunks)
 - [bulkHardRefreshPlanets](Backend_GameLogic_GameManager.default.md#bulkhardrefreshplanets)
 - [buyHat](Backend_GameLogic_GameManager.default.md#buyhat)
+- [capturePlanet](Backend_GameLogic_GameManager.default.md#captureplanet)
 - [checkGameHasEnded](Backend_GameLogic_GameManager.default.md#checkgamehasended)
 - [clearEmoji](Backend_GameLogic_GameManager.default.md#clearemoji)
 - [deactivateArtifact](Backend_GameLogic_GameManager.default.md#deactivateartifact)
@@ -62,8 +68,10 @@
 - [destroy](Backend_GameLogic_GameManager.default.md#destroy)
 - [findArtifact](Backend_GameLogic_GameManager.default.md#findartifact)
 - [findRandomHomePlanet](Backend_GameLogic_GameManager.default.md#findrandomhomeplanet)
+- [forceTick](Backend_GameLogic_GameManager.default.md#forcetick)
 - [getAccount](Backend_GameLogic_GameManager.default.md#getaccount)
 - [getActiveArtifact](Backend_GameLogic_GameManager.default.md#getactiveartifact)
+- [getAddress](Backend_GameLogic_GameManager.default.md#getaddress)
 - [getAllOwnedPlanets](Backend_GameLogic_GameManager.default.md#getallownedplanets)
 - [getAllPlanets](Backend_GameLogic_GameManager.default.md#getallplanets)
 - [getAllPlayers](Backend_GameLogic_GameManager.default.md#getallplayers)
@@ -72,13 +80,18 @@
 - [getArtifactUpdated$](Backend_GameLogic_GameManager.default.md#getartifactupdated$)
 - [getArtifactWithId](Backend_GameLogic_GameManager.default.md#getartifactwithid)
 - [getArtifactsWithIds](Backend_GameLogic_GameManager.default.md#getartifactswithids)
+- [getCaptureZoneGenerator](Backend_GameLogic_GameManager.default.md#getcapturezonegenerator)
+- [getCaptureZones](Backend_GameLogic_GameManager.default.md#getcapturezones)
 - [getChunk](Backend_GameLogic_GameManager.default.md#getchunk)
 - [getChunkStore](Backend_GameLogic_GameManager.default.md#getchunkstore)
 - [getClaimedLocations](Backend_GameLogic_GameManager.default.md#getclaimedlocations)
 - [getConstructors](Backend_GameLogic_GameManager.default.md#getconstructors)
+- [getContract](Backend_GameLogic_GameManager.default.md#getcontract)
+- [getContractAPI](Backend_GameLogic_GameManager.default.md#getcontractapi)
 - [getContractAddress](Backend_GameLogic_GameManager.default.md#getcontractaddress)
 - [getContractConstants](Backend_GameLogic_GameManager.default.md#getcontractconstants)
 - [getCurrentlyExploringChunk](Backend_GameLogic_GameManager.default.md#getcurrentlyexploringchunk)
+- [getDefaultSpaceJunkForPlanetLevel](Backend_GameLogic_GameManager.default.md#getdefaultspacejunkforplanetlevel)
 - [getDiagnostics](Backend_GameLogic_GameManager.default.md#getdiagnostics)
 - [getDist](Backend_GameLogic_GameManager.default.md#getdist)
 - [getDistCoords](Backend_GameLogic_GameManager.default.md#getdistcoords)
@@ -100,6 +113,7 @@
 - [getMyArtifactMap](Backend_GameLogic_GameManager.default.md#getmyartifactmap)
 - [getMyArtifacts](Backend_GameLogic_GameManager.default.md#getmyartifacts)
 - [getMyArtifactsUpdated$](Backend_GameLogic_GameManager.default.md#getmyartifactsupdated$)
+- [getMyBalance](Backend_GameLogic_GameManager.default.md#getmybalance)
 - [getMyBalance$](Backend_GameLogic_GameManager.default.md#getmybalance$)
 - [getMyBalanceEth](Backend_GameLogic_GameManager.default.md#getmybalanceeth)
 - [getMyPlanetMap](Backend_GameLogic_GameManager.default.md#getmyplanetmap)
@@ -110,6 +124,8 @@
 - [getNextClaimAvailableTimestamp](Backend_GameLogic_GameManager.default.md#getnextclaimavailabletimestamp)
 - [getNextRevealCountdownInfo](Backend_GameLogic_GameManager.default.md#getnextrevealcountdowninfo)
 - [getNotificationsManager](Backend_GameLogic_GameManager.default.md#getnotificationsmanager)
+- [getPaused](Backend_GameLogic_GameManager.default.md#getpaused)
+- [getPaused$](Backend_GameLogic_GameManager.default.md#getpaused$)
 - [getPerlinThresholds](Backend_GameLogic_GameManager.default.md#getperlinthresholds)
 - [getPlanetLevel](Backend_GameLogic_GameManager.default.md#getplanetlevel)
 - [getPlanetMap](Backend_GameLogic_GameManager.default.md#getplanetmap)
@@ -122,12 +138,18 @@
 - [getPlanetsWithIds](Backend_GameLogic_GameManager.default.md#getplanetswithids)
 - [getPlayer](Backend_GameLogic_GameManager.default.md#getplayer)
 - [getPlayerScore](Backend_GameLogic_GameManager.default.md#getplayerscore)
+- [getPlayerSpaceJunk](Backend_GameLogic_GameManager.default.md#getplayerspacejunk)
+- [getPlayerSpaceJunkLimit](Backend_GameLogic_GameManager.default.md#getplayerspacejunklimit)
 - [getPrivateKey](Backend_GameLogic_GameManager.default.md#getprivatekey)
-- [getProcgenUtils](Backend_GameLogic_GameManager.default.md#getprocgenutils)
+- [getRangeBuff](Backend_GameLogic_GameManager.default.md#getrangebuff)
 - [getRevealedLocations](Backend_GameLogic_GameManager.default.md#getrevealedlocations)
+- [getSafeMode](Backend_GameLogic_GameManager.default.md#getsafemode)
 - [getSignedTwitter](Backend_GameLogic_GameManager.default.md#getsignedtwitter)
 - [getSilverCurveAtPercent](Backend_GameLogic_GameManager.default.md#getsilvercurveatpercent)
 - [getSilverOfPlayer](Backend_GameLogic_GameManager.default.md#getsilverofplayer)
+- [getSnarkHelper](Backend_GameLogic_GameManager.default.md#getsnarkhelper)
+- [getSpaceships](Backend_GameLogic_GameManager.default.md#getspaceships)
+- [getSpeedBuff](Backend_GameLogic_GameManager.default.md#getspeedbuff)
 - [getStalePlanetWithId](Backend_GameLogic_GameManager.default.md#getstaleplanetwithid)
 - [getTemperature](Backend_GameLogic_GameManager.default.md#gettemperature)
 - [getTimeForMove](Backend_GameLogic_GameManager.default.md#gettimeformove)
@@ -143,23 +165,25 @@
 - [getWorldSilver](Backend_GameLogic_GameManager.default.md#getworldsilver)
 - [getWormholeFactors](Backend_GameLogic_GameManager.default.md#getwormholefactors)
 - [getWormholes](Backend_GameLogic_GameManager.default.md#getwormholes)
-- [handleTxIntent](Backend_GameLogic_GameManager.default.md#handletxintent)
 - [hardRefreshArtifact](Backend_GameLogic_GameManager.default.md#hardrefreshartifact)
 - [hardRefreshPlanet](Backend_GameLogic_GameManager.default.md#hardrefreshplanet)
 - [hardRefreshPlayer](Backend_GameLogic_GameManager.default.md#hardrefreshplayer)
 - [hasJoinedGame](Backend_GameLogic_GameManager.default.md#hasjoinedgame)
 - [hasMinedChunk](Backend_GameLogic_GameManager.default.md#hasminedchunk)
 - [initMiningManager](Backend_GameLogic_GameManager.default.md#initminingmanager)
+- [invadePlanet](Backend_GameLogic_GameManager.default.md#invadeplanet)
+- [isAdmin](Backend_GameLogic_GameManager.default.md#isadmin)
 - [isMining](Backend_GameLogic_GameManager.default.md#ismining)
 - [isPlanetMineable](Backend_GameLogic_GameManager.default.md#isplanetmineable)
 - [isRoundOver](Backend_GameLogic_GameManager.default.md#isroundover)
 - [joinGame](Backend_GameLogic_GameManager.default.md#joingame)
+- [listenForNewBlock](Backend_GameLogic_GameManager.default.md#listenfornewblock)
 - [loadContract](Backend_GameLogic_GameManager.default.md#loadcontract)
 - [loadPlugins](Backend_GameLogic_GameManager.default.md#loadplugins)
 - [locationFromCoords](Backend_GameLogic_GameManager.default.md#locationfromcoords)
 - [move](Backend_GameLogic_GameManager.default.md#move)
+- [onTxCancelled](Backend_GameLogic_GameManager.default.md#ontxcancelled)
 - [onTxConfirmed](Backend_GameLogic_GameManager.default.md#ontxconfirmed)
-- [onTxIntentFail](Backend_GameLogic_GameManager.default.md#ontxintentfail)
 - [onTxReverted](Backend_GameLogic_GameManager.default.md#ontxreverted)
 - [onTxSubmit](Backend_GameLogic_GameManager.default.md#ontxsubmit)
 - [prospectPlanet](Backend_GameLogic_GameManager.default.md#prospectplanet)
@@ -174,6 +198,7 @@
 - [setPlanetEmoji](Backend_GameLogic_GameManager.default.md#setplanetemoji)
 - [setPlayerTwitters](Backend_GameLogic_GameManager.default.md#setplayertwitters)
 - [setRadius](Backend_GameLogic_GameManager.default.md#setradius)
+- [setSafeMode](Backend_GameLogic_GameManager.default.md#setsafemode)
 - [setSnarkCacheSize](Backend_GameLogic_GameManager.default.md#setsnarkcachesize)
 - [softRefreshPlanet](Backend_GameLogic_GameManager.default.md#softrefreshplanet)
 - [spaceTypeFromPerlin](Backend_GameLogic_GameManager.default.md#spacetypefromperlin)
@@ -182,8 +207,10 @@
 - [stopExplore](Backend_GameLogic_GameManager.default.md#stopexplore)
 - [submitDisconnectTwitter](Backend_GameLogic_GameManager.default.md#submitdisconnecttwitter)
 - [submitPlanetMessage](Backend_GameLogic_GameManager.default.md#submitplanetmessage)
+- [submitTransaction](Backend_GameLogic_GameManager.default.md#submittransaction)
 - [submitVerifyTwitter](Backend_GameLogic_GameManager.default.md#submitverifytwitter)
 - [testNotification](Backend_GameLogic_GameManager.default.md#testnotification)
+- [timeUntilNextBroadcastAvailable](Backend_GameLogic_GameManager.default.md#timeuntilnextbroadcastavailable)
 - [transferOwnership](Backend_GameLogic_GameManager.default.md#transferownership)
 - [updateDiagnostics](Backend_GameLogic_GameManager.default.md#updatediagnostics)
 - [upgrade](Backend_GameLogic_GameManager.default.md#upgrade)
@@ -198,7 +225,11 @@
 
 ### constructor
 
+<<<<<<< HEAD
 • `Private` **new default**(`terminal`, `account`, `players`, `touchedPlanets`, `allTouchedPlanetIds`, `revealedCoords`, `claimedCoords`, `worldRadius`, `unprocessedArrivals`, `unprocessedPlanetArrivalIds`, `contractsAPI`, `contractConstants`, `persistentChunkStore`, `snarkHelper`, `homeLocation`, `useMockHash`, `artifacts`, `ethConnection`)
+=======
+• `Private` **new default**(`terminal`, `account`, `players`, `touchedPlanets`, `allTouchedPlanetIds`, `revealedCoords`, `claimedCoords`, `worldRadius`, `unprocessedArrivals`, `unprocessedPlanetArrivalIds`, `contractsAPI`, `contractConstants`, `persistentChunkStore`, `snarkHelper`, `homeLocation`, `useMockHash`, `artifacts`, `ethConnection`, `paused`)
+>>>>>>> slytherin
 
 #### Parameters
 
@@ -222,6 +253,10 @@
 | `useMockHash`                 | `boolean`                                                                                                       |
 | `artifacts`                   | `Map`<`ArtifactId`, `Artifact`\>                                                                                |
 | `ethConnection`               | `EthConnection`                                                                                                 |
+<<<<<<< HEAD
+=======
+| `paused`                      | `boolean`                                                                                                       |
+>>>>>>> slytherin
 
 #### Overrides
 
@@ -236,6 +271,14 @@ EventEmitter.constructor
 The ethereum address of the player who is currently logged in. We support 'no account',
 represented by `undefined` in the case when you want to simply load the game state from the
 contract and view it without be able to make any moves.
+
+---
+
+### captureZoneGenerator
+
+• `Private` **captureZoneGenerator**: [`CaptureZoneGenerator`](Backend_GameLogic_CaptureZoneGenerator.CaptureZoneGenerator.md)
+
+Generates capture zones.
 
 ---
 
@@ -359,6 +402,8 @@ Manages the process of mining new space territory.
 ---
 
 ### networkHealth$
+<<<<<<< HEAD
+=======
 
 • **networkHealth$**: `Monomitter`<`NetworkHealthSummary`\>
 
@@ -372,6 +417,19 @@ diagnostics that the client sends up to the webserver as well.
 • `Private` **networkHealthInterval**: `Timer`
 
 Handle to an interval that periodically refreshes the network's health from our webserver.
+
+---
+
+### paused
+>>>>>>> slytherin
+
+• `Private` **paused**: `boolean`
+
+---
+
+### paused$
+
+• **paused$**: `Monomitter`<`boolean`\>
 
 ---
 
@@ -440,6 +498,16 @@ Whenever we refresh the players twitter accounts or scores, we publish an event 
 
 ---
 
+### safeMode
+
+• `Private` **safeMode**: `boolean`
+
+Setting to allow players to start game without plugins that were running during the previous
+run of the game client. By default, the game launches plugins that were running that were
+running when the game was last closed.
+
+---
+
 ### scoreboardInterval
 
 • `Private` **scoreboardInterval**: `Timer`
@@ -496,6 +564,18 @@ Sometimes the universe gets bigger... Sometimes it doesn't.
 
 ## Accessors
 
+### captureZoneGeneratedEmitter
+
+• `get` **captureZoneGeneratedEmitter**(): `Monomitter`<[`CaptureZonesGeneratedEvent`](../modules/Backend_GameLogic_CaptureZoneGenerator.md#capturezonesgeneratedevent)\>
+
+Emits when new capture zones are generated.
+
+#### Returns
+
+`Monomitter`<[`CaptureZonesGeneratedEvent`](../modules/Backend_GameLogic_CaptureZoneGenerator.md#capturezonesgeneratedevent)\>
+
+---
+
 ### planetRarity
 
 • `get` **planetRarity**(): `number`
@@ -508,7 +588,7 @@ Sometimes the universe gets bigger... Sometimes it doesn't.
 
 ### activateArtifact
 
-▸ **activateArtifact**(`locationId`, `artifactId`, `wormholeTo`, `bypassChecks?`): [`default`](Backend_GameLogic_GameManager.default.md)
+▸ **activateArtifact**(`locationId`, `artifactId`, `wormholeTo`, `bypassChecks?`): `Promise`<`Transaction`<`UnconfirmedActivateArtifact`\>\>
 
 #### Parameters
 
@@ -521,7 +601,7 @@ Sometimes the universe gets bigger... Sometimes it doesn't.
 
 #### Returns
 
-[`default`](Backend_GameLogic_GameManager.default.md)
+`Promise`<`Transaction`<`UnconfirmedActivateArtifact`\>\>
 
 ---
 
@@ -554,9 +634,15 @@ all of the information about those planets from the blockchain.
 
 #### Parameters
 
+<<<<<<< HEAD
 | Name    | Type                                         |
 | :------ | :------------------------------------------- |
 | `chunk` | [`Chunk`](types_global_GlobalTypes.Chunk.md) |
+=======
+| Name    | Type    |
+| :------ | :------ |
+| `chunk` | `Chunk` |
+>>>>>>> slytherin
 
 #### Returns
 
@@ -592,9 +678,15 @@ to load all of the associated planet data in an efficient manner.
 
 #### Parameters
 
+<<<<<<< HEAD
 | Name     | Type                                           |
 | :------- | :--------------------------------------------- |
 | `chunks` | [`Chunk`](types_global_GlobalTypes.Chunk.md)[] |
+=======
+| Name     | Type      |
+| :------- | :-------- |
+| `chunks` | `Chunk`[] |
+>>>>>>> slytherin
 
 #### Returns
 
@@ -620,12 +712,12 @@ to load all of the associated planet data in an efficient manner.
 
 ### buyHat
 
-▸ **buyHat**(`planetId`, `_bypassChecks?`): [`default`](Backend_GameLogic_GameManager.default.md)
+▸ **buyHat**(`planetId`, `_bypassChecks?`): `Promise`<`Transaction`<`UnconfirmedBuyHat`\>\>
 
-Submits a transaction to the blockchain to buy a hat for the given planet. You
-must own the planet. Warning costs real xdai. Hats are permanently locked to a
-planet. They are purely cosmetic and a great way to BM your opponents or just
-look your best. Just like in the real world, more money means more hat.
+Submits a transaction to the blockchain to buy a hat for the given planet. You must own the
+planet. Warning costs real xdai. Hats are permanently locked to a planet. They are purely
+cosmetic and a great way to BM your opponents or just look your best. Just like in the real
+world, more money means more hat.
 
 #### Parameters
 
@@ -636,7 +728,25 @@ look your best. Just like in the real world, more money means more hat.
 
 #### Returns
 
-[`default`](Backend_GameLogic_GameManager.default.md)
+`Promise`<`Transaction`<`UnconfirmedBuyHat`\>\>
+
+---
+
+### capturePlanet
+
+▸ **capturePlanet**(`locationId`): `Promise`<`Transaction`<`UnconfirmedCapturePlanet`\>\>
+
+#### Parameters
+
+| Name         | Type         |
+| :----------- | :----------- |
+| `locationId` | `LocationId` |
+
+#### Returns
+
+<<<<<<< HEAD
+=======
+`Promise`<`Transaction`<`UnconfirmedCapturePlanet`\>\>
 
 ---
 
@@ -650,6 +760,7 @@ look your best. Just like in the real world, more money means more hat.
 
 ---
 
+>>>>>>> slytherin
 ### clearEmoji
 
 ▸ **clearEmoji**(`locationId`): `Promise`<`void`\>
@@ -671,7 +782,7 @@ planet.
 
 ### deactivateArtifact
 
-▸ **deactivateArtifact**(`locationId`, `artifactId`, `bypassChecks?`): `undefined` \| [`default`](Backend_GameLogic_GameManager.default.md)
+▸ **deactivateArtifact**(`locationId`, `artifactId`, `bypassChecks?`): `Promise`<`Transaction`<`UnconfirmedDeactivateArtifact`\>\>
 
 #### Parameters
 
@@ -683,28 +794,27 @@ planet.
 
 #### Returns
 
-`undefined` \| [`default`](Backend_GameLogic_GameManager.default.md)
+`Promise`<`Transaction`<`UnconfirmedDeactivateArtifact`\>\>
 
 ---
 
 ### depositArtifact
 
-▸ **depositArtifact**(`locationId`, `artifactId`, `bypassChecks?`): [`default`](Backend_GameLogic_GameManager.default.md)
+▸ **depositArtifact**(`locationId`, `artifactId`): `Promise`<`Transaction`<`UnconfirmedDepositArtifact`\>\>
 
 Submits a transaction to the blockchain to deposit an artifact on a given planet.
 You must own the planet and you must own the artifact directly (can't be locked in contract)
 
 #### Parameters
 
-| Name           | Type         | Default value |
-| :------------- | :----------- | :------------ |
-| `locationId`   | `LocationId` | `undefined`   |
-| `artifactId`   | `ArtifactId` | `undefined`   |
-| `bypassChecks` | `boolean`    | `true`        |
+| Name         | Type         |
+| :----------- | :----------- |
+| `locationId` | `LocationId` |
+| `artifactId` | `ArtifactId` |
 
 #### Returns
 
-[`default`](Backend_GameLogic_GameManager.default.md)
+`Promise`<`Transaction`<`UnconfirmedDepositArtifact`\>\>
 
 ---
 
@@ -720,7 +830,7 @@ You must own the planet and you must own the artifact directly (can't be locked 
 
 ### findArtifact
 
-▸ **findArtifact**(`planetId`, `bypassChecks?`): [`default`](Backend_GameLogic_GameManager.default.md)
+▸ **findArtifact**(`planetId`, `bypassChecks?`): `Promise`<`Transaction`<`UnconfirmedFindArtifact`\>\>
 
 Calls the contract to find an artifact on the given planet.
 
@@ -733,7 +843,7 @@ Calls the contract to find an artifact on the given planet.
 
 #### Returns
 
-[`default`](Backend_GameLogic_GameManager.default.md)
+`Promise`<`Transaction`<`UnconfirmedFindArtifact`\>\>
 
 ---
 
@@ -744,6 +854,22 @@ Calls the contract to find an artifact on the given planet.
 #### Returns
 
 `Promise`<`LocatablePlanet`\>
+
+---
+
+### forceTick
+
+▸ **forceTick**(`locationId`): `void`
+
+#### Parameters
+
+| Name         | Type         |
+| :----------- | :----------- |
+| `locationId` | `LocationId` |
+
+#### Returns
+
+`void`
 
 ---
 
@@ -774,6 +900,16 @@ Gets the active artifact on this planet, if one exists.
 #### Returns
 
 `undefined` \| `Artifact`
+
+---
+
+### getAddress
+
+▸ **getAddress**(): `undefined` \| `EthAddress`
+
+#### Returns
+
+`undefined` \| `EthAddress`
 
 ---
 
@@ -852,15 +988,15 @@ Return a reference to the artifact map
 
 ### getArtifactWithId
 
-▸ **getArtifactWithId**(`artifactId`): `undefined` \| `Artifact`
+▸ **getArtifactWithId**(`artifactId?`): `undefined` \| `Artifact`
 
 Gets the artifact with the given id. Null if no artifact with id exists.
 
 #### Parameters
 
-| Name         | Type         |
-| :----------- | :----------- |
-| `artifactId` | `ArtifactId` |
+| Name          | Type         |
+| :------------ | :----------- |
+| `artifactId?` | `ArtifactId` |
 
 #### Returns
 
@@ -870,16 +1006,16 @@ Gets the artifact with the given id. Null if no artifact with id exists.
 
 ### getArtifactsWithIds
 
-▸ **getArtifactsWithIds**(`artifactIds`): (`undefined` \| `Artifact`)[]
+▸ **getArtifactsWithIds**(`artifactIds?`): (`undefined` \| `Artifact`)[]
 
 Gets the artifacts with the given ids, including ones we know exist but haven't been loaded,
 represented by `undefined`.
 
 #### Parameters
 
-| Name          | Type           |
-| :------------ | :------------- |
-| `artifactIds` | `ArtifactId`[] |
+| Name          | Type           | Default value |
+| :------------ | :------------- | :------------ |
+| `artifactIds` | `ArtifactId`[] | `[]`          |
 
 #### Returns
 
@@ -887,8 +1023,29 @@ represented by `undefined`.
 
 ---
 
+### getCaptureZoneGenerator
+
+▸ **getCaptureZoneGenerator**(): [`CaptureZoneGenerator`](Backend_GameLogic_CaptureZoneGenerator.CaptureZoneGenerator.md)
+
+#### Returns
+
+[`CaptureZoneGenerator`](Backend_GameLogic_CaptureZoneGenerator.CaptureZoneGenerator.md)
+
+---
+
+### getCaptureZones
+
+▸ **getCaptureZones**(): `Set`<`CaptureZone`\>
+
+#### Returns
+
+`Set`<`CaptureZone`\>
+
+---
+
 ### getChunk
 
+<<<<<<< HEAD
 ▸ **getChunk**(`chunkFootprint`): `undefined` \| [`Chunk`](types_global_GlobalTypes.Chunk.md)
 
 #### Parameters
@@ -900,6 +1057,19 @@ represented by `undefined`.
 #### Returns
 
 `undefined` \| [`Chunk`](types_global_GlobalTypes.Chunk.md)
+=======
+▸ **getChunk**(`chunkFootprint`): `undefined` \| `Chunk`
+
+#### Parameters
+
+| Name             | Type        |
+| :--------------- | :---------- |
+| `chunkFootprint` | `Rectangle` |
+
+#### Returns
+
+`undefined` \| `Chunk`
+>>>>>>> slytherin
 
 ---
 
@@ -945,12 +1115,39 @@ Returns constructors of classes that may be useful for developing plugins.
 
 ---
 
+### getContract
+
+▸ **getContract**(): `DarkForest`
+
+#### Returns
+
+`DarkForest`
+
+---
+
+### getContractAPI
+
+▸ **getContractAPI**(): [`ContractsAPI`](Backend_GameLogic_ContractsAPI.ContractsAPI.md)
+
+<<<<<<< HEAD
+▸ **getContractConstants**(): [`ContractConstants`](../interfaces/types_darkforest_api_ContractsAPITypes.ContractConstants.md)
+
+#### Returns
+
+=======
+Get the thing that handles contract interaction.
+
+#### Returns
+
+[`ContractsAPI`](Backend_GameLogic_ContractsAPI.ContractsAPI.md)
+
+---
+
 ### getContractAddress
 
 ▸ **getContractAddress**(): `EthAddress`
 
-Gets the address of the `DarkForestCore` contract, which is essentially
-the 'backend' of the game.
+Gets the address of the `DarkForest` contract, which is the 'backend' of the game.
 
 #### Returns
 
@@ -964,20 +1161,45 @@ the 'backend' of the game.
 
 #### Returns
 
+>>>>>>> slytherin
 [`ContractConstants`](../interfaces/types_darkforest_api_ContractsAPITypes.ContractConstants.md)
 
 ---
 
 ### getCurrentlyExploringChunk
 
+<<<<<<< HEAD
 ▸ **getCurrentlyExploringChunk**(): `undefined` \| [`Rectangle`](../interfaces/types_global_GlobalTypes.Rectangle.md)
+=======
+▸ **getCurrentlyExploringChunk**(): `undefined` \| `Rectangle`
+>>>>>>> slytherin
 
 Gets the rectangle bounding the chunk that the miner is currently in the process
 of hashing.
 
 #### Returns
 
+<<<<<<< HEAD
 `undefined` \| [`Rectangle`](../interfaces/types_global_GlobalTypes.Rectangle.md)
+=======
+`undefined` \| `Rectangle`
+
+---
+
+### getDefaultSpaceJunkForPlanetLevel
+
+▸ **getDefaultSpaceJunkForPlanetLevel**(`level`): `number`
+
+#### Parameters
+
+| Name    | Type     |
+| :------ | :------- |
+| `level` | `number` |
+
+#### Returns
+
+`number`
+>>>>>>> slytherin
 
 ---
 
@@ -1047,7 +1269,7 @@ in seconds from the epoch.
 
 ### getEnergyArrivingForMove
 
-▸ **getEnergyArrivingForMove**(`fromId`, `toId`, `distance`, `sentEnergy`): `number`
+▸ **getEnergyArrivingForMove**(`fromId`, `toId`, `distance`, `sentEnergy`, `abandoning?`): `number`
 
 Gets the amount of energy that would arrive if a voyage with the given parameters
 was to occur. The toPlanet is optional, in case you want an estimate that doesn't include
@@ -1055,12 +1277,13 @@ wormhole speedups.
 
 #### Parameters
 
-| Name         | Type                        |
-| :----------- | :-------------------------- |
-| `fromId`     | `LocationId`                |
-| `toId`       | `undefined` \| `LocationId` |
-| `distance`   | `undefined` \| `number`     |
-| `sentEnergy` | `number`                    |
+| Name         | Type                        | Default value |
+| :----------- | :-------------------------- | :------------ |
+| `fromId`     | `LocationId`                | `undefined`   |
+| `toId`       | `undefined` \| `LocationId` | `undefined`   |
+| `distance`   | `undefined` \| `number`     | `undefined`   |
+| `sentEnergy` | `number`                    | `undefined`   |
+| `abandoning` | `boolean`                   | `false`       |
 
 #### Returns
 
@@ -1090,18 +1313,19 @@ time may be in the past
 
 ### getEnergyNeededForMove
 
-▸ **getEnergyNeededForMove**(`fromId`, `toId`, `arrivingEnergy`): `number`
+▸ **getEnergyNeededForMove**(`fromId`, `toId`, `arrivingEnergy`, `abandoning?`): `number`
 
 Gets the amount of energy needed in order for a voyage from the given to the given
 planet to arrive with your desired amount of energy.
 
 #### Parameters
 
-| Name             | Type         |
-| :--------------- | :----------- |
-| `fromId`         | `LocationId` |
-| `toId`           | `LocationId` |
-| `arrivingEnergy` | `number`     |
+| Name             | Type         | Default value |
+| :--------------- | :----------- | :------------ |
+| `fromId`         | `LocationId` | `undefined`   |
+| `toId`           | `LocationId` | `undefined`   |
+| `arrivingEnergy` | `number`     | `undefined`   |
+| `abandoning`     | `boolean`    | `false`       |
 
 #### Returns
 
@@ -1139,14 +1363,22 @@ Gets the total amount of energy that lives on planets that the given player owns
 
 ### getExploredChunks
 
+<<<<<<< HEAD
 ▸ **getExploredChunks**(): `Iterable`<[`Chunk`](types_global_GlobalTypes.Chunk.md)\>
+=======
+▸ **getExploredChunks**(): `Iterable`<`Chunk`\>
+>>>>>>> slytherin
 
 Gets all the map chunks that this client is aware of. Chunks may have come from
 mining, or from importing map data.
 
 #### Returns
 
+<<<<<<< HEAD
 `Iterable`<[`Chunk`](types_global_GlobalTypes.Chunk.md)\>
+=======
+`Iterable`<`Chunk`\>
+>>>>>>> slytherin
 
 ---
 
@@ -1297,6 +1529,18 @@ gets both deposited artifacts that are on planets i own as well as artifacts i o
 
 ---
 
+### getMyBalance
+
+▸ **getMyBalance**(): `BigNumber`
+
+Gets the balance of the account
+
+#### Returns
+
+`BigNumber`
+
+---
+
 ### getMyBalance$
 
 ▸ **getMyBalance$**(): `Monomitter`<`BigNumber`\>
@@ -1313,7 +1557,7 @@ Returns the monomitter which publishes events whenever the player's balance chan
 
 ▸ **getMyBalanceEth**(): `number`
 
-Gets the balance of the account
+Gets the balance of the account measured in Eth (i.e. in full units of the chain).
 
 #### Returns
 
@@ -1392,6 +1636,10 @@ Gets the timestamp (ms) of the next time that we can claim a planet.
 ---
 
 ### getNextRevealCountdownInfo
+<<<<<<< HEAD
+
+▸ **getNextRevealCountdownInfo**(): [`RevealCountdownInfo`](../interfaces/types_global_GlobalTypes.RevealCountdownInfo.md)
+=======
 
 ▸ **getNextRevealCountdownInfo**(): [`RevealCountdownInfo`](../interfaces/types_global_GlobalTypes.RevealCountdownInfo.md)
 
@@ -1406,10 +1654,35 @@ Returns info about the next time you can broadcast coordinates
 ### getNotificationsManager
 
 ▸ **getNotificationsManager**(): [`default`](Frontend_Game_NotificationManager.default.md)
+>>>>>>> slytherin
 
 #### Returns
 
 [`default`](Frontend_Game_NotificationManager.default.md)
+
+---
+
+### getPaused
+
+▸ **getPaused**(): `boolean`
+
+#### Returns
+
+<<<<<<< HEAD
+[`RevealCountdownInfo`](../interfaces/types_global_GlobalTypes.RevealCountdownInfo.md)
+=======
+`boolean`
+>>>>>>> slytherin
+
+---
+
+### getPaused$
+
+▸ **getPaused$**(): `Monomitter`<`boolean`\>
+
+#### Returns
+
+`Monomitter`<`boolean`\>
 
 ---
 
@@ -1551,15 +1824,15 @@ left coordinate, width, and height) in the world and of a level that was passed 
 
 #### Parameters
 
-| Name                 | Type                                                                                   | Default value |
-| :------------------- | :------------------------------------------------------------------------------------- | :------------ |
-| `worldX`             | `number`                                                                               | `undefined`   |
-| `worldY`             | `number`                                                                               | `undefined`   |
-| `worldWidth`         | `number`                                                                               | `undefined`   |
-| `worldHeight`        | `number`                                                                               | `undefined`   |
-| `levels`             | `number`[]                                                                             | `undefined`   |
-| `planetLevelToRadii` | `Map`<`number`, [`Radii`](../interfaces/Backend_GameLogic_ViewportEntities.Radii.md)\> | `undefined`   |
-| `updateIfStale`      | `boolean`                                                                              | `true`        |
+| Name                 | Type                      | Default value |
+| :------------------- | :------------------------ | :------------ |
+| `worldX`             | `number`                  | `undefined`   |
+| `worldY`             | `number`                  | `undefined`   |
+| `worldWidth`         | `number`                  | `undefined`   |
+| `worldHeight`        | `number`                  | `undefined`   |
+| `levels`             | `number`[]                | `undefined`   |
+| `planetLevelToRadii` | `Map`<`number`, `Radii`\> | `undefined`   |
+| `updateIfStale`      | `boolean`                 | `true`        |
 
 #### Returns
 
@@ -1621,6 +1894,38 @@ this client.
 
 ---
 
+### getPlayerSpaceJunk
+
+▸ **getPlayerSpaceJunk**(`addr`): `undefined` \| `number`
+
+#### Parameters
+
+| Name   | Type         |
+| :----- | :----------- |
+| `addr` | `EthAddress` |
+
+#### Returns
+
+`undefined` \| `number`
+
+---
+
+### getPlayerSpaceJunkLimit
+
+▸ **getPlayerSpaceJunkLimit**(`addr`): `undefined` \| `number`
+
+#### Parameters
+
+| Name   | Type         |
+| :----- | :----------- |
+| `addr` | `EthAddress` |
+
+#### Returns
+
+`undefined` \| `number`
+
+---
+
 ### getPrivateKey
 
 ▸ **getPrivateKey**(): `undefined` \| `string`
@@ -1633,15 +1938,19 @@ Gets the private key of the burner wallet used by this account.
 
 ---
 
-### getProcgenUtils
+### getRangeBuff
 
-▸ **getProcgenUtils**(): typeof [`ProcgenUtils`](Backend_Procedural_ProcgenUtils.ProcgenUtils.md)
+▸ **getRangeBuff**(`abandoning`): `number`
 
-Helpful functions for getting the names, descriptions, and colors of in-game entities.
+#### Parameters
+
+| Name         | Type      |
+| :----------- | :-------- |
+| `abandoning` | `boolean` |
 
 #### Returns
 
-typeof [`ProcgenUtils`](Backend_Procedural_ProcgenUtils.ProcgenUtils.md)
+`number`
 
 ---
 
@@ -1654,6 +1963,16 @@ Gets a map of all location IDs whose coords have been publically revealed
 #### Returns
 
 `Map`<`LocationId`, `RevealedLocation`\>
+
+---
+
+### getSafeMode
+
+▸ **getSafeMode**(): `boolean`
+
+#### Returns
+
+`boolean`
 
 ---
 
@@ -1715,6 +2034,48 @@ Gets the total amount of silver that lives on planets that the given player owns
 
 ---
 
+### getSnarkHelper
+
+▸ **getSnarkHelper**(): [`default`](Backend_Utils_SnarkArgsHelper.default.md)
+
+#### Returns
+
+[`default`](Backend_Utils_SnarkArgsHelper.default.md)
+
+---
+
+### getSpaceships
+
+▸ `Private` **getSpaceships**(): `Promise`<`void`\>
+
+#### Returns
+
+`Promise`<`void`\>
+
+---
+
+### getSpeedBuff
+
+▸ **getSpeedBuff**(`abandoning`): `number`
+
+Right now the only buffs supported in this way are
+speed/range buffs from Abandoning a planet.
+
+The abandoning argument is used when interacting with
+this function programmatically.
+
+#### Parameters
+
+| Name         | Type      |
+| :----------- | :-------- |
+| `abandoning` | `boolean` |
+
+#### Returns
+
+`number`
+
+---
+
 ### getStalePlanetWithId
 
 ▸ **getStalePlanetWithId**(`planetId`): `undefined` \| `Planet`
@@ -1751,17 +2112,18 @@ Gets the temperature of a given location.
 
 ### getTimeForMove
 
-▸ **getTimeForMove**(`fromId`, `toId`): `number`
+▸ **getTimeForMove**(`fromId`, `toId`, `abandoning?`): `number`
 
 Gets the amount of time, in seconds that a voyage between from the first to the
 second planet would take.
 
 #### Parameters
 
-| Name     | Type         |
-| :------- | :----------- |
-| `fromId` | `LocationId` |
-| `toId`   | `LocationId` |
+| Name         | Type         | Default value |
+| :----------- | :----------- | :------------ |
+| `fromId`     | `LocationId` | `undefined`   |
+| `toId`       | `LocationId` | `undefined`   |
+| `abandoning` | `boolean`    | `false`       |
 
 #### Returns
 
@@ -1814,37 +2176,37 @@ Helpful for listening to user input events.
 
 ### getUnconfirmedMoves
 
-▸ **getUnconfirmedMoves**(): `UnconfirmedMove`[]
+▸ **getUnconfirmedMoves**(): `Transaction`<`UnconfirmedMove`\>[]
 
 Gets all moves that this client has queued to be uploaded to the contract, but
 have not been successfully confirmed yet.
 
 #### Returns
 
-`UnconfirmedMove`[]
+`Transaction`<`UnconfirmedMove`\>[]
 
 ---
 
 ### getUnconfirmedUpgrades
 
-▸ **getUnconfirmedUpgrades**(): `UnconfirmedUpgrade`[]
+▸ **getUnconfirmedUpgrades**(): `Transaction`<`UnconfirmedUpgrade`\>[]
 
 Gets all upgrades that this client has queued to be uploaded to the contract, but
 have not been successfully confirmed yet.
 
 #### Returns
 
-`UnconfirmedUpgrade`[]
+`Transaction`<`UnconfirmedUpgrade`\>[]
 
 ---
 
 ### getUnconfirmedWormholeActivations
 
-▸ **getUnconfirmedWormholeActivations**(): `UnconfirmedActivateArtifact`[]
+▸ **getUnconfirmedWormholeActivations**(): `Transaction`<`UnconfirmedActivateArtifact`\>[]
 
 #### Returns
 
-`UnconfirmedActivateArtifact`[]
+`Transaction`<`UnconfirmedActivateArtifact`\>[]
 
 ---
 
@@ -1927,6 +2289,7 @@ represent a multiplier.
 
 ### getWormholes
 
+<<<<<<< HEAD
 ▸ **getWormholes**(): `Iterable`<[`Wormhole`](../modules/types_global_GlobalTypes.md#wormhole)\>
 
 #### Returns
@@ -1948,6 +2311,13 @@ represent a multiplier.
 #### Returns
 
 `void`
+=======
+▸ **getWormholes**(): `Iterable`<`Wormhole`\>
+
+#### Returns
+
+`Iterable`<`Wormhole`\>
+>>>>>>> slytherin
 
 ---
 
@@ -1969,7 +2339,7 @@ represent a multiplier.
 
 ### hardRefreshPlanet
 
-▸ `Private` **hardRefreshPlanet**(`planetId`): `Promise`<`void`\>
+▸ **hardRefreshPlanet**(`planetId`): `Promise`<`void`\>
 
 #### Parameters
 
@@ -1985,13 +2355,13 @@ represent a multiplier.
 
 ### hardRefreshPlayer
 
-▸ `Private` **hardRefreshPlayer**(`address`): `Promise`<`void`\>
+▸ `Private` **hardRefreshPlayer**(`address?`): `Promise`<`void`\>
 
 #### Parameters
 
-| Name      | Type         |
-| :-------- | :----------- |
-| `address` | `EthAddress` |
+| Name       | Type         |
+| :--------- | :----------- |
+| `address?` | `EthAddress` |
 
 #### Returns
 
@@ -2019,9 +2389,15 @@ Whether or not the given rectangle has been mined.
 
 #### Parameters
 
+<<<<<<< HEAD
 | Name            | Type                                                               |
 | :-------------- | :----------------------------------------------------------------- |
 | `chunkLocation` | [`Rectangle`](../interfaces/types_global_GlobalTypes.Rectangle.md) |
+=======
+| Name            | Type        |
+| :-------------- | :---------- |
+| `chunkLocation` | `Rectangle` |
+>>>>>>> slytherin
 
 #### Returns
 
@@ -2043,6 +2419,32 @@ Whether or not the given rectangle has been mined.
 #### Returns
 
 `void`
+
+---
+
+### invadePlanet
+
+▸ **invadePlanet**(`locationId`): `Promise`<`Transaction`<`UnconfirmedInvadePlanet`\>\>
+
+#### Parameters
+
+| Name         | Type         |
+| :----------- | :----------- |
+| `locationId` | `LocationId` |
+
+#### Returns
+
+`Promise`<`Transaction`<`UnconfirmedInvadePlanet`\>\>
+
+---
+
+### isAdmin
+
+▸ **isAdmin**(): `boolean`
+
+#### Returns
+
+`boolean`
 
 ---
 
@@ -2090,7 +2492,7 @@ Returns whether or not the current round has ended.
 
 ### joinGame
 
-▸ **joinGame**(`beforeRetry`): [`default`](Backend_GameLogic_GameManager.default.md)
+▸ **joinGame**(`beforeRetry`): `Promise`<`void`\>
 
 Attempts to join the game. Should not be called once you've already joined.
 
@@ -2102,7 +2504,17 @@ Attempts to join the game. Should not be called once you've already joined.
 
 #### Returns
 
-[`default`](Backend_GameLogic_GameManager.default.md)
+`Promise`<`void`\>
+
+---
+
+### listenForNewBlock
+
+▸ **listenForNewBlock**(): `void`
+
+#### Returns
+
+`void`
 
 ---
 
@@ -2169,7 +2581,7 @@ very slow since it actually calculates the hash; do not use in render loop
 
 ### move
 
-▸ **move**(`from`, `to`, `forces`, `silver`, `artifactMoved?`, `bypassChecks?`): [`default`](Backend_GameLogic_GameManager.default.md)
+▸ **move**(`from`, `to`, `forces`, `silver`, `artifactMoved?`, `abandoning?`, `bypassChecks?`): `Promise`<`Transaction`<`UnconfirmedMove`\>\>
 
 Submits a transaction to the blockchain to move the given amount of resources from
 the given planet to the given planet.
@@ -2183,23 +2595,24 @@ the given planet to the given planet.
 | `forces`         | `number`     | `undefined`   |
 | `silver`         | `number`     | `undefined`   |
 | `artifactMoved?` | `ArtifactId` | `undefined`   |
+| `abandoning`     | `boolean`    | `false`       |
 | `bypassChecks`   | `boolean`    | `false`       |
 
 #### Returns
 
-[`default`](Backend_GameLogic_GameManager.default.md)
+`Promise`<`Transaction`<`UnconfirmedMove`\>\>
 
 ---
 
-### onTxConfirmed
+### onTxCancelled
 
-▸ `Private` **onTxConfirmed**(`unminedTx`): `void`
+▸ `Private` **onTxCancelled**(`tx`): `void`
 
 #### Parameters
 
-| Name        | Type          |
-| :---------- | :------------ |
-| `unminedTx` | `SubmittedTx` |
+| Name | Type                       |
+| :--- | :------------------------- |
+| `tx` | `Transaction`<`TxIntent`\> |
 
 #### Returns
 
@@ -2207,16 +2620,15 @@ the given planet to the given planet.
 
 ---
 
-### onTxIntentFail
+### onTxConfirmed
 
-▸ `Private` **onTxIntentFail**(`txIntent`, `e`): `void`
+▸ `Private` **onTxConfirmed**(`tx`): `void`
 
 #### Parameters
 
-| Name       | Type       |
-| :--------- | :--------- |
-| `txIntent` | `TxIntent` |
-| `e`        | `Error`    |
+| Name | Type                       |
+| :--- | :------------------------- |
+| `tx` | `Transaction`<`TxIntent`\> |
 
 #### Returns
 
@@ -2226,13 +2638,13 @@ the given planet to the given planet.
 
 ### onTxReverted
 
-▸ `Private` **onTxReverted**(`unminedTx`): `void`
+▸ `Private` **onTxReverted**(`tx`): `void`
 
 #### Parameters
 
-| Name        | Type          |
-| :---------- | :------------ |
-| `unminedTx` | `SubmittedTx` |
+| Name | Type                       |
+| :--- | :------------------------- |
+| `tx` | `Transaction`<`TxIntent`\> |
 
 #### Returns
 
@@ -2242,13 +2654,13 @@ the given planet to the given planet.
 
 ### onTxSubmit
 
-▸ `Private` **onTxSubmit**(`unminedTx`): `void`
+▸ `Private` **onTxSubmit**(`tx`): `void`
 
 #### Parameters
 
-| Name        | Type          |
-| :---------- | :------------ |
-| `unminedTx` | `SubmittedTx` |
+| Name | Type                       |
+| :--- | :------------------------- |
+| `tx` | `Transaction`<`TxIntent`\> |
 
 #### Returns
 
@@ -2258,7 +2670,7 @@ the given planet to the given planet.
 
 ### prospectPlanet
 
-▸ **prospectPlanet**(`planetId`, `bypassChecks?`): `Promise`<`undefined` \| [`default`](Backend_GameLogic_GameManager.default.md)\>
+▸ **prospectPlanet**(`planetId`, `bypassChecks?`): `Promise`<`Transaction`<`UnconfirmedProspectPlanet`\>\>
 
 #### Parameters
 
@@ -2269,7 +2681,11 @@ the given planet to the given planet.
 
 #### Returns
 
+<<<<<<< HEAD
 `Promise`<`undefined` \| [`default`](Backend_GameLogic_GameManager.default.md)\>
+=======
+`Promise`<`Transaction`<`UnconfirmedProspectPlanet`\>\>
+>>>>>>> slytherin
 
 ---
 
@@ -2328,7 +2744,7 @@ notifications system and sets the appropriate loading state values on the planet
 
 ### revealLocation
 
-▸ **revealLocation**(`planetId`): [`default`](Backend_GameLogic_GameManager.default.md)
+▸ **revealLocation**(`planetId`): `Promise`<`Transaction`<`UnconfirmedReveal`\>\>
 
 Reveals a planet's location on-chain.
 
@@ -2340,7 +2756,7 @@ Reveals a planet's location on-chain.
 
 #### Returns
 
-[`default`](Backend_GameLogic_GameManager.default.md)
+`Promise`<`Transaction`<`UnconfirmedReveal`\>\>
 
 ---
 
@@ -2448,6 +2864,22 @@ planet was signed by the owner.
 | Name          | Type     |
 | :------------ | :------- |
 | `worldRadius` | `number` |
+
+#### Returns
+
+`void`
+
+---
+
+### setSafeMode
+
+▸ **setSafeMode**(`safeMode`): `void`
+
+#### Parameters
+
+| Name       | Type      |
+| :--------- | :-------- |
+| `safeMode` | `boolean` |
 
 #### Returns
 
@@ -2590,6 +3022,29 @@ just one type of message. Their implementation leaves the door open to more off-
 
 ---
 
+### submitTransaction
+
+▸ **submitTransaction**<`T`\>(`txIntent`, `overrides?`): `Promise`<`Transaction`<`T`\>\>
+
+#### Type parameters
+
+| Name | Type               |
+| :--- | :----------------- |
+| `T`  | extends `TxIntent` |
+
+#### Parameters
+
+| Name         | Type                 |
+| :----------- | :------------------- |
+| `txIntent`   | `T`                  |
+| `overrides?` | `TransactionRequest` |
+
+#### Returns
+
+`Promise`<`Transaction`<`T`\>\>
+
+---
+
 ### submitVerifyTwitter
 
 ▸ **submitVerifyTwitter**(`twitter`): `Promise`<`boolean`\>
@@ -2619,9 +3074,21 @@ process by telling the Dark Forest webserver to look at that tweet.
 
 ---
 
+### timeUntilNextBroadcastAvailable
+
+▸ **timeUntilNextBroadcastAvailable**(): `number`
+
+Gets the amount of time (ms) until the next time the current player can broadcast a planet.
+
+#### Returns
+
+`number`
+
+---
+
 ### transferOwnership
 
-▸ **transferOwnership**(`planetId`, `newOwner`, `bypassChecks?`): [`default`](Backend_GameLogic_GameManager.default.md)
+▸ **transferOwnership**(`planetId`, `newOwner`, `bypassChecks?`): `Promise`<`Transaction`<`UnconfirmedPlanetTransfer`\>\>
 
 #### Parameters
 
@@ -2633,7 +3100,7 @@ process by telling the Dark Forest webserver to look at that tweet.
 
 #### Returns
 
-[`default`](Backend_GameLogic_GameManager.default.md)
+`Promise`<`Transaction`<`UnconfirmedPlanetTransfer`\>\>
 
 ---
 
@@ -2659,7 +3126,7 @@ convenient manner.
 
 ### upgrade
 
-▸ **upgrade**(`planetId`, `branch`, `_bypassChecks?`): [`default`](Backend_GameLogic_GameManager.default.md)
+▸ **upgrade**(`planetId`, `branch`, `_bypassChecks?`): `Promise`<`Transaction`<`UnconfirmedUpgrade`\>\>
 
 Submits a transaction to the blockchain to upgrade the given planet with the given
 upgrade branch. You must own the planet, and have enough silver on it to complete
@@ -2675,7 +3142,7 @@ the upgrade.
 
 #### Returns
 
-[`default`](Backend_GameLogic_GameManager.default.md)
+`Promise`<`Transaction`<`UnconfirmedUpgrade`\>\>
 
 ---
 
@@ -2742,7 +3209,7 @@ a promise that will resolve with results returned from the predicate function
 
 ### withdrawArtifact
 
-▸ **withdrawArtifact**(`locationId`, `artifactId`, `bypassChecks?`): [`default`](Backend_GameLogic_GameManager.default.md)
+▸ **withdrawArtifact**(`locationId`, `artifactId`, `bypassChecks?`): `Promise`<`Transaction`<`UnconfirmedWithdrawArtifact`\>\>
 
 Withdraws the artifact that is locked up on the given planet.
 
@@ -2756,13 +3223,13 @@ Withdraws the artifact that is locked up on the given planet.
 
 #### Returns
 
-[`default`](Backend_GameLogic_GameManager.default.md)
+`Promise`<`Transaction`<`UnconfirmedWithdrawArtifact`\>\>
 
 ---
 
 ### withdrawSilver
 
-▸ **withdrawSilver**(`locationId`, `amount`, `bypassChecks?`): `undefined` \| [`default`](Backend_GameLogic_GameManager.default.md)
+▸ **withdrawSilver**(`locationId`, `amount`, `bypassChecks?`): `Promise`<`Transaction`<`UnconfirmedWithdrawSilver`\>\>
 
 #### Parameters
 
@@ -2774,20 +3241,22 @@ Withdraws the artifact that is locked up on the given planet.
 
 #### Returns
 
-`undefined` \| [`default`](Backend_GameLogic_GameManager.default.md)
+`Promise`<`Transaction`<`UnconfirmedWithdrawSilver`\>\>
 
 ---
 
 ### create
 
-▸ `Static` **create**(`ethConnection`, `terminal`): `Promise`<[`default`](Backend_GameLogic_GameManager.default.md)\>
+▸ `Static` **create**(`__namedParameters`): `Promise`<[`default`](Backend_GameLogic_GameManager.default.md)\>
 
 #### Parameters
 
-| Name            | Type                                                                                                            |
-| :-------------- | :-------------------------------------------------------------------------------------------------------------- |
-| `ethConnection` | `EthConnection`                                                                                                 |
-| `terminal`      | `MutableRefObject`<`undefined` \| [`TerminalHandle`](../interfaces/Frontend_Views_Terminal.TerminalHandle.md)\> |
+| Name                                | Type                                                                                                            |
+| :---------------------------------- | :-------------------------------------------------------------------------------------------------------------- |
+| `__namedParameters`                 | `Object`                                                                                                        |
+| `__namedParameters.connection`      | `EthConnection`                                                                                                 |
+| `__namedParameters.contractAddress` | `EthAddress`                                                                                                    |
+| `__namedParameters.terminal`        | `MutableRefObject`<`undefined` \| [`TerminalHandle`](../interfaces/Frontend_Views_Terminal.TerminalHandle.md)\> |
 
 #### Returns
 

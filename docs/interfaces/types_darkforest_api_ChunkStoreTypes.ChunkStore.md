@@ -24,9 +24,15 @@ writes to IndexedDB, and one that simply throws away the data.
 
 #### Parameters
 
+<<<<<<< HEAD:docs/interfaces/types_darkforest_api_ChunkStoreTypes.ChunkStore.md
 | Name             | Type                                                 |
 | :--------------- | :--------------------------------------------------- |
 | `chunkFootprint` | [`Rectangle`](types_global_GlobalTypes.Rectangle.md) |
+=======
+| Name             | Type        |
+| :--------------- | :---------- |
+| `chunkFootprint` | `Rectangle` |
+>>>>>>> slytherin:docs/interfaces/_types_darkforest_api_ChunkStoreTypes.ChunkStore.md
 
 #### Returns
 

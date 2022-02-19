@@ -24,13 +24,13 @@
 
 #### Parameters
 
-| Name                         | Type                                                                                 |
-| :--------------------------- | :----------------------------------------------------------------------------------- |
-| `__namedParameters`          | `Object`                                                                             |
-| `__namedParameters.artifact` | `Artifact`                                                                           |
-| `__namedParameters.bgColor?` | [`ArtifactFileColor`](../enums/Backend_GameLogic_ArtifactUtils.ArtifactFileColor.md) |
-| `__namedParameters.size`     | `number`                                                                             |
-| `__namedParameters.thumb?`   | `boolean`                                                                            |
+| Name                         | Type                |
+| :--------------------------- | :------------------ |
+| `__namedParameters`          | `Object`            |
+| `__namedParameters.artifact` | `Artifact`          |
+| `__namedParameters.bgColor?` | `ArtifactFileColor` |
+| `__namedParameters.size`     | `number`            |
+| `__namedParameters.thumb?`   | `boolean`           |
 
 #### Returns
 

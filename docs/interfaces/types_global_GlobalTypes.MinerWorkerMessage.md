@@ -29,7 +29,11 @@
 
 ### chunkFootprint
 
+<<<<<<< HEAD
 • **chunkFootprint**: [`Rectangle`](types_global_GlobalTypes.Rectangle.md)
+=======
+• **chunkFootprint**: `Rectangle`
+>>>>>>> slytherin
 
 ---
 

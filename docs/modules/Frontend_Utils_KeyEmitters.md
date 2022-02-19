@@ -4,7 +4,6 @@
 
 ### Variables
 
-- [SpecialKey](Frontend_Utils_KeyEmitters.md#specialkey)
 - [keyDown$](Frontend_Utils_KeyEmitters.md#keydown$)
 - [keyUp$](Frontend_Utils_KeyEmitters.md#keyup$)
 
@@ -17,6 +16,7 @@
 
 ## Variables
 
+<<<<<<< HEAD
 ### SpecialKey
 
 • **SpecialKey**: `Object`
@@ -33,6 +33,8 @@
 
 ---
 
+=======
+>>>>>>> slytherin
 ### keyDown$
 
 • **keyDown$**: `Monomitter`<[`Wrapper`](../classes/Backend_Utils_Wrapper.Wrapper.md)<`string`\>\>
@@ -83,14 +85,15 @@
 
 ### useOnUp
 
-▸ **useOnUp**(`key?`, `onUp?`): `void`
+▸ **useOnUp**(`key`, `onUp`, `deps?`): `void`
 
 #### Parameters
 
-| Name    | Type         |
-| :------ | :----------- |
-| `key?`  | `string`     |
-| `onUp?` | () => `void` |
+| Name   | Type             | Default value |
+| :----- | :--------------- | :------------ |
+| `key`  | `string`         | `undefined`   |
+| `onUp` | () => `void`     | `undefined`   |
+| `deps` | `DependencyList` | `[]`          |
 
 #### Returns
 

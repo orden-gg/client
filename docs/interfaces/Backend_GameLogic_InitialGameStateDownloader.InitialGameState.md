@@ -16,6 +16,10 @@
 - [heldArtifacts](Backend_GameLogic_InitialGameStateDownloader.InitialGameState.md#heldartifacts)
 - [loadedPlanets](Backend_GameLogic_InitialGameStateDownloader.InitialGameState.md#loadedplanets)
 - [myArtifacts](Backend_GameLogic_InitialGameStateDownloader.InitialGameState.md#myartifacts)
+<<<<<<< HEAD
+=======
+- [paused](Backend_GameLogic_InitialGameStateDownloader.InitialGameState.md#paused)
+>>>>>>> slytherin
 - [pendingMoves](Backend_GameLogic_InitialGameStateDownloader.InitialGameState.md#pendingmoves)
 - [planetVoyageIdMap](Backend_GameLogic_InitialGameStateDownloader.InitialGameState.md#planetvoyageidmap)
 - [players](Backend_GameLogic_InitialGameStateDownloader.InitialGameState.md#players)
@@ -86,6 +90,15 @@
 
 ---
 
+<<<<<<< HEAD
+=======
+### paused
+
+• **paused**: `boolean`
+
+---
+
+>>>>>>> slytherin
 ### pendingMoves
 
 • **pendingMoves**: `QueuedArrival`[]

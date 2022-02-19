@@ -17,6 +17,7 @@
 - [account](Backend_Storage_PersistentChunkStore.default.md#account)
 - [chunkMap](Backend_Storage_PersistentChunkStore.default.md#chunkmap)
 - [confirmedTxHashes](Backend_Storage_PersistentChunkStore.default.md#confirmedtxhashes)
+- [contractAddress](Backend_Storage_PersistentChunkStore.default.md#contractaddress)
 - [db](Backend_Storage_PersistentChunkStore.default.md#db)
 - [diagnosticUpdater](Backend_Storage_PersistentChunkStore.default.md#diagnosticupdater)
 - [nUpdatesLastTwoMins](Backend_Storage_PersistentChunkStore.default.md#nupdateslasttwomins)
@@ -42,6 +43,7 @@
 - [getUnconfirmedSubmittedEthTxs](Backend_Storage_PersistentChunkStore.default.md#getunconfirmedsubmittedethtxs)
 - [hasMinedChunk](Backend_Storage_PersistentChunkStore.default.md#hasminedchunk)
 - [loadChunks](Backend_Storage_PersistentChunkStore.default.md#loadchunks)
+- [loadModalPositions](Backend_Storage_PersistentChunkStore.default.md#loadmodalpositions)
 - [loadPlugins](Backend_Storage_PersistentChunkStore.default.md#loadplugins)
 - [onEthTxComplete](Backend_Storage_PersistentChunkStore.default.md#onethtxcomplete)
 - [onEthTxSubmit](Backend_Storage_PersistentChunkStore.default.md#onethtxsubmit)
@@ -49,6 +51,7 @@
 - [recomputeSaveThrottleAfterUpdate](Backend_Storage_PersistentChunkStore.default.md#recomputesavethrottleafterupdate)
 - [removeKey](Backend_Storage_PersistentChunkStore.default.md#removekey)
 - [saveClaimedCoords](Backend_Storage_PersistentChunkStore.default.md#saveclaimedcoords)
+- [saveModalPositions](Backend_Storage_PersistentChunkStore.default.md#savemodalpositions)
 - [savePlugins](Backend_Storage_PersistentChunkStore.default.md#saveplugins)
 - [saveRevealedCoords](Backend_Storage_PersistentChunkStore.default.md#saverevealedcoords)
 - [saveTouchedPlanetIds](Backend_Storage_PersistentChunkStore.default.md#savetouchedplanetids)
@@ -60,14 +63,13 @@
 
 ### constructor
 
-• **new default**(`db`, `account`)
+• **new default**(`__namedParameters`)
 
 #### Parameters
 
-| Name      | Type                       |
-| :-------- | :------------------------- |
-| `db`      | `IDBPDatabase`<`unknown`\> |
-| `account` | `EthAddress`               |
+| Name                | Type                         |
+| :------------------ | :--------------------------- |
+| `__namedParameters` | `PersistentChunkStoreConfig` |
 
 ## Properties
 
@@ -79,13 +81,23 @@
 
 ### chunkMap
 
+<<<<<<< HEAD
 • `Private` **chunkMap**: `Map`<[`ChunkId`](../modules/types_darkforest_api_ChunkStoreTypes.md#chunkid), [`Chunk`](types_global_GlobalTypes.Chunk.md)\>
+=======
+• `Private` **chunkMap**: `Map`<[`ChunkId`](../modules/types_darkforest_api_ChunkStoreTypes.md#chunkid), `Chunk`\>
+>>>>>>> slytherin
 
 ---
 
 ### confirmedTxHashes
 
 • `Private` **confirmedTxHashes**: `Set`<`string`\>
+
+---
+
+### contractAddress
+
+• `Private` **contractAddress**: `EthAddress`
 
 ---
 
@@ -131,10 +143,17 @@ i.e. it already exists in persistent storage.
 
 #### Parameters
 
+<<<<<<< HEAD
 | Name           | Type                                         | Default value |
 | :------------- | :------------------------------------------- | :------------ |
 | `chunk`        | [`Chunk`](types_global_GlobalTypes.Chunk.md) | `undefined`   |
 | `persistChunk` | `boolean`                                    | `true`        |
+=======
+| Name           | Type      | Default value |
+| :------------- | :-------- | :------------ |
+| `chunk`        | `Chunk`   | `undefined`   |
+| `persistChunk` | `boolean` | `true`        |
+>>>>>>> slytherin
 
 #### Returns
 
@@ -160,11 +179,19 @@ i.e. it already exists in persistent storage.
 
 ### allChunks
 
+<<<<<<< HEAD
 ▸ **allChunks**(): `Iterable`<[`Chunk`](types_global_GlobalTypes.Chunk.md)\>
 
 #### Returns
 
 `Iterable`<[`Chunk`](types_global_GlobalTypes.Chunk.md)\>
+=======
+▸ **allChunks**(): `Iterable`<`Chunk`\>
+
+#### Returns
+
+`Iterable`<`Chunk`\>
+>>>>>>> slytherin
 
 ---
 
@@ -213,7 +240,11 @@ i.e. it already exists in persistent storage.
 
 ### getChunkByFootprint
 
+<<<<<<< HEAD
 ▸ **getChunkByFootprint**(`chunkLoc`): `undefined` \| [`Chunk`](types_global_GlobalTypes.Chunk.md)
+=======
+▸ **getChunkByFootprint**(`chunkLoc`): `undefined` \| `Chunk`
+>>>>>>> slytherin
 
 Returns the explored chunk data for the given rectangle if that chunk has been mined. If this
 chunk is entirely contained within another bigger chunk that has been mined, return that chunk.
@@ -222,6 +253,7 @@ function.
 
 #### Parameters
 
+<<<<<<< HEAD
 | Name       | Type                                                               |
 | :--------- | :----------------------------------------------------------------- |
 | `chunkLoc` | [`Rectangle`](../interfaces/types_global_GlobalTypes.Rectangle.md) |
@@ -229,12 +261,25 @@ function.
 #### Returns
 
 `undefined` \| [`Chunk`](types_global_GlobalTypes.Chunk.md)
+=======
+| Name       | Type        |
+| :--------- | :---------- |
+| `chunkLoc` | `Rectangle` |
+
+#### Returns
+
+`undefined` \| `Chunk`
+>>>>>>> slytherin
 
 ---
 
 ### getChunkById
 
+<<<<<<< HEAD
 ▸ `Private` **getChunkById**(`chunkId`): `undefined` \| [`Chunk`](types_global_GlobalTypes.Chunk.md)
+=======
+▸ `Private` **getChunkById**(`chunkId`): `undefined` \| `Chunk`
+>>>>>>> slytherin
 
 #### Parameters
 
@@ -244,7 +289,11 @@ function.
 
 #### Returns
 
+<<<<<<< HEAD
 `undefined` \| [`Chunk`](types_global_GlobalTypes.Chunk.md)
+=======
+`undefined` \| `Chunk`
+>>>>>>> slytherin
 
 ---
 
@@ -287,7 +336,11 @@ current configuration of the client.
 
 ### getMinedSubChunks
 
+<<<<<<< HEAD
 ▸ `Private` **getMinedSubChunks**(`chunk`): [`Chunk`](types_global_GlobalTypes.Chunk.md)[]
+=======
+▸ `Private` **getMinedSubChunks**(`chunk`): `Chunk`[]
+>>>>>>> slytherin
 
 Returns all the mined chunks with smaller sidelength strictly contained in the chunk.
 
@@ -296,6 +349,7 @@ the function named `addToChunkMap`.
 
 #### Parameters
 
+<<<<<<< HEAD
 | Name    | Type                                         |
 | :------ | :------------------------------------------- |
 | `chunk` | [`Chunk`](types_global_GlobalTypes.Chunk.md) |
@@ -303,6 +357,15 @@ the function named `addToChunkMap`.
 #### Returns
 
 [`Chunk`](types_global_GlobalTypes.Chunk.md)[]
+=======
+| Name    | Type    |
+| :------ | :------ |
+| `chunk` | `Chunk` |
+
+#### Returns
+
+`Chunk`[]
+>>>>>>> slytherin
 
 ---
 
@@ -338,11 +401,11 @@ the function named `addToChunkMap`.
 
 ### getUnconfirmedSubmittedEthTxs
 
-▸ **getUnconfirmedSubmittedEthTxs**(): `Promise`<`SubmittedTx`[]\>
+▸ **getUnconfirmedSubmittedEthTxs**(): `Promise`<`PersistedTransaction`<`TxIntent`\>[]\>
 
 #### Returns
 
-`Promise`<`SubmittedTx`[]\>
+`Promise`<`PersistedTransaction`<`TxIntent`\>[]\>
 
 ---
 
@@ -352,9 +415,15 @@ the function named `addToChunkMap`.
 
 #### Parameters
 
+<<<<<<< HEAD
 | Name       | Type                                                               |
 | :--------- | :----------------------------------------------------------------- |
 | `chunkLoc` | [`Rectangle`](../interfaces/types_global_GlobalTypes.Rectangle.md) |
+=======
+| Name       | Type        |
+| :--------- | :---------- |
+| `chunkLoc` | `Rectangle` |
+>>>>>>> slytherin
 
 #### Returns
 
@@ -378,6 +447,16 @@ This function loads all chunks persisted in the user's storage into the game.
 
 ---
 
+### loadModalPositions
+
+▸ **loadModalPositions**(): `Promise`<`Map`<`ModalId`, `ModalPosition`\>\>
+
+#### Returns
+
+`Promise`<`Map`<`ModalId`, `ModalPosition`\>\>
+
+---
+
 ### loadPlugins
 
 ▸ **loadPlugins**(): `Promise`<[`SerializedPlugin`](../interfaces/Backend_Plugins_SerializedPlugin.SerializedPlugin.md)[]\>
@@ -391,6 +470,8 @@ This function loads all chunks persisted in the user's storage into the game.
 ### onEthTxComplete
 
 ▸ **onEthTxComplete**(`txHash`): `Promise`<`void`\>
+
+Partner function to {@link PersistentChunkStore#onEthTxSubmit}
 
 #### Parameters
 
@@ -408,11 +489,16 @@ This function loads all chunks persisted in the user's storage into the game.
 
 ▸ **onEthTxSubmit**(`tx`): `Promise`<`void`\>
 
+Whenever a transaction is submitted, it is persisted. When the transaction either fails or
+succeeds, it is un-persisted. The reason we persist submitted transactions is to be able to
+wait for them upon a fresh start of the game if you close the game before a transaction
+confirms.
+
 #### Parameters
 
-| Name | Type          |
-| :--- | :------------ |
-| `tx` | `SubmittedTx` |
+| Name | Type                       |
+| :--- | :------------------------- |
+| `tx` | `Transaction`<`TxIntent`\> |
 
 #### Returns
 
@@ -470,6 +556,22 @@ indexed db.
 | Name                | Type              |
 | :------------------ | :---------------- |
 | `claimedCoordTupps` | `ClaimedCoords`[] |
+
+#### Returns
+
+`Promise`<`void`\>
+
+---
+
+### saveModalPositions
+
+▸ **saveModalPositions**(`modalPositions`): `Promise`<`void`\>
+
+#### Parameters
+
+| Name             | Type                               |
+| :--------------- | :--------------------------------- |
+| `modalPositions` | `Map`<`ModalId`, `ModalPosition`\> |
 
 #### Returns
 
@@ -566,13 +668,18 @@ current configuration of the client.
 
 ### create
 
-▸ `Static` **create**(`account`): `Promise`<[`default`](Backend_Storage_PersistentChunkStore.default.md)\>
+▸ `Static` **create**(`__namedParameters`): `Promise`<[`default`](Backend_Storage_PersistentChunkStore.default.md)\>
+
+NOTE! if you're creating a new object store, it will not be _added_ to existing dark forest
+accounts. This creation code runs once per account. Therefore, if you're adding a new object
+store, and need to test it out, you must either clear the indexed db databse for this account,
+or create a brand new account.
 
 #### Parameters
 
-| Name      | Type         |
-| :-------- | :----------- |
-| `account` | `EthAddress` |
+| Name                | Type                                          |
+| :------------------ | :-------------------------------------------- |
+| `__namedParameters` | `Omit`<`PersistentChunkStoreConfig`, `"db"`\> |
 
 #### Returns
 

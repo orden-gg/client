@@ -1,8 +1,9 @@
-import { perlin, PerlinConfig } from '@darkforest_eth/hashing';
+import { perlin } from '@darkforest_eth/hashing';
+import { Chunk, PerlinConfig, Rectangle } from '@darkforest_eth/types';
 import { EventEmitter } from 'events';
 import _ from 'lodash';
 import { ChunkStore } from '../../_types/darkforest/api/ChunkStoreTypes';
-import { Chunk, HashConfig, MinerWorkerMessage, Rectangle } from '../../_types/global/GlobalTypes';
+import { HashConfig, MinerWorkerMessage } from '../../_types/global/GlobalTypes';
 import { getChunkKey } from './ChunkUtils';
 import { MiningPattern } from './MiningPatterns';
 
@@ -299,7 +300,6 @@ class MinerManager extends EventEmitter {
         chunkFootprint: chunkToExplore,
         workerIndex,
         totalWorkers: this.workers.length,
-        planetRarity: this.planetRarity,
         jobId,
         useMockHash: this.useMockHash,
         ...this.hashConfig,

@@ -136,11 +136,19 @@
 
 #### Parameters
 
+<<<<<<< HEAD
 | Name                         | Type                                                    |
 | :--------------------------- | :------------------------------------------------------ |
 | `__namedParameters`          | `Object`                                                |
 | `__namedParameters.children` | `ReactNode`                                             |
 | `__namedParameters.chunk`    | [`Chunk`](../classes/types_global_GlobalTypes.Chunk.md) |
+=======
+| Name                         | Type        |
+| :--------------------------- | :---------- |
+| `__namedParameters`          | `Object`    |
+| `__namedParameters.children` | `ReactNode` |
+| `__namedParameters.chunk`    | `Chunk`     |
+>>>>>>> slytherin
 
 #### Returns
 
@@ -233,10 +241,10 @@
 
 #### Parameters
 
-| Name                   | Type          |
-| :--------------------- | :------------ |
-| `__namedParameters`    | `Object`      |
-| `__namedParameters.tx` | `SubmittedTx` |
+| Name                   | Type                       |
+| :--------------------- | :------------------------- |
+| `__namedParameters`    | `Object`                   |
+| `__namedParameters.tx` | `Transaction`<`TxIntent`\> |
 
 #### Returns
 

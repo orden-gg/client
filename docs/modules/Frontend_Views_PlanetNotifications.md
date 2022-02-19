@@ -69,15 +69,22 @@
 
 ### getNotifsForPlanet
 
-▸ **getNotifsForPlanet**(`planet`, `account`, `currentBlockNumber`): [`PlanetNotifType`](../enums/Frontend_Views_PlanetNotifications.PlanetNotifType.md)[]
+▸ **getNotifsForPlanet**(`planet`, `account`): [`PlanetNotifType`](../enums/Frontend_Views_PlanetNotifications.PlanetNotifType.md)[]
 
 #### Parameters
 
+<<<<<<< HEAD
 | Name                 | Type                        |
 | :------------------- | :-------------------------- |
 | `planet`             | `undefined` \| `Planet`     |
 | `account`            | `undefined` \| `EthAddress` |
 | `currentBlockNumber` | `undefined` \| `number`     |
+=======
+| Name      | Type                        |
+| :-------- | :-------------------------- |
+| `planet`  | `undefined` \| `Planet`     |
+| `account` | `undefined` \| `EthAddress` |
+>>>>>>> slytherin
 
 #### Returns
 

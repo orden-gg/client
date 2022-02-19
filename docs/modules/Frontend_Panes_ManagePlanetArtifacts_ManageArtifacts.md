@@ -14,6 +14,7 @@
 
 #### Parameters
 
+<<<<<<< HEAD
 | Name                                     | Type                                                                   |
 | :--------------------------------------- | :--------------------------------------------------------------------- |
 | `__namedParameters`                      | `Object`                                                               |
@@ -30,6 +31,16 @@
 | `__namedParameters.find`                 | () => `void`                                                           |
 | `__namedParameters.prospect`             | () => `void`                                                           |
 | `__namedParameters.withdraw`             | (`artifact`: `Artifact`) => `void`                                     |
+=======
+| Name                                  | Type                                                                   |
+| :------------------------------------ | :--------------------------------------------------------------------- |
+| `__namedParameters`                   | `Object`                                                               |
+| `__namedParameters.artifactsInWallet` | `Artifact`[]                                                           |
+| `__namedParameters.artifactsOnPlanet` | (`undefined` \| `Artifact`)[]                                          |
+| `__namedParameters.modal`             | [`ModalHandle`](../interfaces/Frontend_Views_ModalPane.ModalHandle.md) |
+| `__namedParameters.planet`            | `LocatablePlanet`                                                      |
+| `__namedParameters.playerAddress`     | `string`                                                               |
+>>>>>>> slytherin
 
 #### Returns
 

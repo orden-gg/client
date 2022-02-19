@@ -5,10 +5,14 @@
 ### Functions
 
 - [getEthConnection](Backend_Network_Blockchain.md#getethconnection)
+<<<<<<< HEAD
 - [loadCoreContract](Backend_Network_Blockchain.md#loadcorecontract)
 - [loadGettersContract](Backend_Network_Blockchain.md#loadgetterscontract)
 - [loadTokensContract](Backend_Network_Blockchain.md#loadtokenscontract)
 - [loadWhitelistContract](Backend_Network_Blockchain.md#loadwhitelistcontract)
+=======
+- [loadDiamondContract](Backend_Network_Blockchain.md#loaddiamondcontract)
+>>>>>>> slytherin
 
 ## Functions
 
@@ -22,14 +26,15 @@
 
 ---
 
-### loadCoreContract
+### loadDiamondContract
 
-▸ **loadCoreContract**(`address`, `provider`, `signer?`): `Promise`<`DarkForestCore`\>
+▸ **loadDiamondContract**<`T`\>(`address`, `provider`, `signer?`): `Promise`<`T`\>
 
-Loads the Core game contract, which is responsible for updating the state of the game.
+Loads the game contract, which is responsible for updating the state of the game.
 
-**`see`** https://github.com/darkforest-eth/eth/blob/master/contracts/DarkForestCore.sol
+#### Type parameters
 
+<<<<<<< HEAD
 #### Parameters
 
 | Name       | Type              |
@@ -96,6 +101,11 @@ Loads the Tokens contract, which contains utility view functions which handles a
 Loads the Whitelist contract, which keeps track of which players are allowed to play the game.
 
 **`see`** https://github.com/darkforest-eth/eth/blob/master/contracts/Whitelist.sol
+=======
+| Name | Type                     |
+| :--- | :----------------------- |
+| `T`  | extends `Contract`<`T`\> |
+>>>>>>> slytherin
 
 #### Parameters
 
@@ -107,4 +117,4 @@ Loads the Whitelist contract, which keeps track of which players are allowed to 
 
 #### Returns
 
-`Promise`<`Whitelist`\>
+`Promise`<`T`\>

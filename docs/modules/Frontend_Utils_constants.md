@@ -4,23 +4,25 @@
 
 ### Enumerations
 
-- [GameWindowZIndex](../enums/Frontend_Utils_constants.GameWindowZIndex.md)
+- [DFZIndex](../enums/Frontend_Utils_constants.DFZIndex.md)
 
 ### Variables
 
-- [HAT_SIZES](Frontend_Utils_constants.md#hat_sizes)
 - [LOCATION_ID_UB](Frontend_Utils_constants.md#location_id_ub)
 - [MAX_CHUNK_SIZE](Frontend_Utils_constants.md#max_chunk_size)
 - [MIN_CHUNK_SIZE](Frontend_Utils_constants.md#min_chunk_size)
 
 ## Variables
 
+<<<<<<< HEAD
 ### HAT_SIZES
 
 • **HAT_SIZES**: `string`[]
 
 ---
 
+=======
+>>>>>>> slytherin
 ### LOCATION_ID_UB
 
 • **LOCATION_ID_UB**: `BigInteger`

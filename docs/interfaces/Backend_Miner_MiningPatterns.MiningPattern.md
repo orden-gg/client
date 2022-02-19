@@ -24,7 +24,11 @@
 
 ### fromChunk
 
+<<<<<<< HEAD
 • **fromChunk**: [`Rectangle`](types_global_GlobalTypes.Rectangle.md)
+=======
+• **fromChunk**: `Rectangle`
+>>>>>>> slytherin
 
 ---
 
@@ -36,6 +40,7 @@
 
 ### nextChunk
 
+<<<<<<< HEAD
 ▸ **nextChunk**(`prevLoc`): [`Rectangle`](types_global_GlobalTypes.Rectangle.md)
 
 #### Parameters
@@ -47,3 +52,16 @@
 #### Returns
 
 [`Rectangle`](types_global_GlobalTypes.Rectangle.md)
+=======
+▸ **nextChunk**(`prevLoc`): `Rectangle`
+
+#### Parameters
+
+| Name      | Type        |
+| :-------- | :---------- |
+| `prevLoc` | `Rectangle` |
+
+#### Returns
+
+`Rectangle`
+>>>>>>> slytherin

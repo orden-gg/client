@@ -4,25 +4,11 @@
 
 ### Functions
 
-- [BroadcastPlanetIcon](Frontend_Views_ModalIcon.md#broadcastplaneticon)
-- [ModalAccountIcon](Frontend_Views_ModalIcon.md#modalaccounticon)
-- [ModalArtifactIcon](Frontend_Views_ModalIcon.md#modalartifacticon)
-- [ModalArtifactsConversationIcon](Frontend_Views_ModalIcon.md#modalartifactsconversationicon)
-- [ModalHelpIcon](Frontend_Views_ModalIcon.md#modalhelpicon)
-- [ModalLeaderboardIcon](Frontend_Views_ModalIcon.md#modalleaderboardicon)
-- [ModalMapShareIcon](Frontend_Views_ModalIcon.md#modalmapshareicon)
-- [ModalPlanetDetailsIcon](Frontend_Views_ModalIcon.md#modalplanetdetailsicon)
-- [ModalPlanetDexIcon](Frontend_Views_ModalIcon.md#modalplanetdexicon)
-- [ModalPluginIcon](Frontend_Views_ModalIcon.md#modalpluginicon)
-- [ModalSettingsIcon](Frontend_Views_ModalIcon.md#modalsettingsicon)
 - [ModalToggleButton](Frontend_Views_ModalIcon.md#modaltogglebutton)
-- [ModalTwitterVerifyIcon](Frontend_Views_ModalIcon.md#modaltwitterverifyicon)
-- [ModalUpgradeDetailsIcon](Frontend_Views_ModalIcon.md#modalupgradedetailsicon)
-- [ModalWithdrawIcon](Frontend_Views_ModalIcon.md#modalwithdrawicon)
-- [ModalYourArtifactsIcon](Frontend_Views_ModalIcon.md#modalyourartifactsicon)
 
 ## Functions
 
+<<<<<<< HEAD
 ### BroadcastPlanetIcon
 
 ▸ **BroadcastPlanetIcon**(`__namedParameters`): `Element`
@@ -243,14 +229,17 @@
 
 ---
 
+=======
+>>>>>>> slytherin
 ### ModalToggleButton
 
-▸ **ModalToggleButton**(`props`): `Element`
+▸ **ModalToggleButton**(`__namedParameters`): `Element`
 
 A button which allows you to open a modal.
 
 #### Parameters
 
+<<<<<<< HEAD
 | Name    | Type                                                                                                                                                                                                                                                                                                                                                                                                                                                              |
 | :------ | :---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | `props` | { `hook`: [`ModalHook`](Frontend_Views_ModalPane.md#modalhook) ; `modal`: [`ModalName`](../enums/Frontend_Views_ModalPane.ModalName.md) ; `shortcutKey?`: `string` ; `style?`: `CSSProperties` ; `text?`: `string` } & { `borderColor?`: `string` ; `color?`: `string` ; `disabled?`: `boolean` ; `forceActive?`: `boolean` ; `noBorder?`: `boolean` ; `small?`: `boolean` ; `textColor?`: `string` ; `wide?`: `boolean` } & `HTMLAttributes`<`HTMLSpanElement`\> |
@@ -330,6 +319,11 @@ A button which allows you to open a modal.
 | `__namedParameters.shortcutKey?` | `string`                                             |
 | `__namedParameters.style?`       | `CSSProperties`                                      |
 | `__namedParameters.text?`        | `string`                                             |
+=======
+| Name                | Type                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                              |
+| :------------------ | :-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `__namedParameters` | { `hook`: [`Hook`](types_global_GlobalTypes.md#hook)<`boolean`\> ; `modal`: `ModalName` ; `style?`: `CSSProperties` ; `text?`: `string` } & `Partial`<`Omit`<[`DarkForestButton`](../classes/Frontend_Components_Btn.DarkForestButton.md), `"children"`\>\> & `Events`<`Object`\> & `HTMLAttributes`<`HTMLElement`\> & {} & `RefAttributes`<`unknown`\> & { `hook`: [`Hook`](types_global_GlobalTypes.md#hook)<`boolean`\> ; `modal`: `ModalName` ; `style?`: `CSSProperties` ; `text?`: `string` } & `Partial`<`Omit`<[`DarkForestShortcutButton`](../classes/Frontend_Components_Btn.DarkForestShortcutButton.md), `"children"`\>\> & `Events`<`Object`\> & `HTMLAttributes`<`HTMLElement`\> & {} & `RefAttributes`<`unknown`\> |
+>>>>>>> slytherin
 
 #### Returns
 

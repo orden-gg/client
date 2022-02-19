@@ -12,7 +12,7 @@
 
 ### useEmitterSubscribe
 
-▸ **useEmitterSubscribe**<`T`\>(`emitter`, `callback`): `void`
+▸ **useEmitterSubscribe**<`T`\>(`emitter`, `callback`, `deps`): `void`
 
 Execute something on emitter callback
 
@@ -28,6 +28,7 @@ Execute something on emitter callback
 | :--------- | :----------------- | :--------------------------- |
 | `emitter`  | `Monomitter`<`T`\> | `Monomitter` to subscribe to |
 | `callback` | `Callback`<`T`\>   | callback to subscribe        |
+| `deps`     | `DependencyList`   | -                            |
 
 #### Returns
 

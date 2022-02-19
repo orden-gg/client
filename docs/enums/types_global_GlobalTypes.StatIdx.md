@@ -10,6 +10,10 @@
 - [EnergyCap](types_global_GlobalTypes.StatIdx.md#energycap)
 - [EnergyGro](types_global_GlobalTypes.StatIdx.md#energygro)
 - [Range](types_global_GlobalTypes.StatIdx.md#range)
+<<<<<<< HEAD
+=======
+- [SpaceJunk](types_global_GlobalTypes.StatIdx.md#spacejunk)
+>>>>>>> slytherin
 - [Speed](types_global_GlobalTypes.StatIdx.md#speed)
 
 ## Enumeration members
@@ -38,6 +42,15 @@
 
 ---
 
+<<<<<<< HEAD
+=======
+### SpaceJunk
+
+• **SpaceJunk** = `5`
+
+---
+
+>>>>>>> slytherin
 ### Speed
 
 • **Speed** = `3`

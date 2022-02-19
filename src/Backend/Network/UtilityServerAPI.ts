@@ -1,4 +1,9 @@
-import { EthAddress, SignedMessage } from '@darkforest_eth/types';
+import {
+  EthAddress,
+  RegisterResponse,
+  SignedMessage,
+  WhitelistStatusResponse,
+} from '@darkforest_eth/types';
 import * as EmailValidator from 'email-validator';
 import timeout from 'p-timeout';
 import { TerminalHandle } from '../../Frontend/Views/Terminal';
@@ -70,43 +75,94 @@ export const submitPlayerEmail = async (
   return success ? EmailResponse.Success : EmailResponse.ServerError;
 };
 
-type RegisterResponse = { inProgress: boolean; success?: boolean; txHash: string; error?: string };
-
 async function sleep(timeoutMs: number) {
   return new Promise<void>((resolve) => {
     setTimeout(() => resolve(), timeoutMs);
   });
 }
 
+export type RegisterConfirmationResponse = {
+  /**
+   * If the whitelist registration is successful,
+   * this is populated with the hash of the
+   * transaction.
+   */
+  txHash?: string;
+  /**
+   * If the whitelist registration is unsuccessful,
+   * this is populated with the error message explaining
+   * why.
+   */
+  errorMessage?: string;
+  /**
+   * If the whitelist registration is unsuccessful, this
+   * is true if the client is able to retry registration.
+   */
+  canRetry?: boolean;
+};
+
 /**
- * Attempts to register the given player into the game.
- *
- * - if the key is invalid, returns `undefined`
- * - if there is an error submitting the whitelist key, indicated by a null response, or if the
- *   response is not successful, tries again, until it succeeds.
+ * Starts the registration process for the user then
+ * polls for success.
  */
-export async function callRegisterUntilWhitelisted(
+export async function callRegisterAndWaitForConfirmation(
   key: string,
   address: EthAddress,
   terminal: React.MutableRefObject<TerminalHandle | undefined>
+<<<<<<< HEAD
 ): Promise<string | undefined> {
   if (!process.env.DF_WEBSERVER_URL) {
     return undefined;
+=======
+): Promise<RegisterConfirmationResponse> {
+  if (!process.env.DF_WEBSERVER_URL) {
+    return { errorMessage: 'Cannot connect to server.', canRetry: false };
+  }
+
+  const response = await submitWhitelistKey(key, address);
+
+  if (response?.error) {
+    return { errorMessage: response.error, canRetry: false };
+>>>>>>> slytherin
   }
 
   while (true) {
-    const response = await submitWhitelistKey(key, address);
-    if (response?.error) {
-      // returning undefined here indicates to the ui that the key was invalid
-      return undefined;
-    } else if (response !== null && response.success) {
-      return response.txHash ?? 'unknown';
+    const statusResponse = await whitelistStatus(address);
+    if (!statusResponse) return { errorMessage: 'Cannot connect to server.', canRetry: false };
+
+    terminal.current?.newline();
+    if (statusResponse.failedAt) {
+      return { errorMessage: 'Transaction failed.', canRetry: true };
+    } else if (statusResponse.txHash) {
+      return { txHash: statusResponse.txHash };
+    } else if (statusResponse.position) {
+      if (statusResponse.position !== '0') {
+        terminal.current?.print('Position in queue: ' + statusResponse.position + '\n');
+      } else {
+        terminal.current?.print('Position in queue: You are up next!');
+      }
     } else {
-      terminal.current?.print('.');
-      await sleep(3000);
+      terminal.current?.print('Entering queue...');
     }
+
+    await sleep(3000);
   }
 }
+
+export const whitelistStatus = async (
+  address: EthAddress
+): Promise<WhitelistStatusResponse | null> => {
+  if (!process.env.DF_WEBSERVER_URL) {
+    return null;
+  }
+
+  return await fetch(`${process.env.DF_WEBSERVER_URL}/whitelist/address/${address}/isWhitelisted`, {
+    method: 'GET',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+  }).then((x) => x.json());
+};
 
 /**
  * Submits a whitelist key to register the given player to the game. Returns null if there was an

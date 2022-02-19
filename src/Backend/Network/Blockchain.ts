@@ -1,4 +1,5 @@
 // These are loaded as URL paths by a webpack loader
+<<<<<<< HEAD
 import coreContractAbiUrl from '@darkforest_eth/contracts/abis/DarkForestCore.json';
 import gettersContractAbiUrl from '@darkforest_eth/contracts/abis/DarkForestGetters.json';
 import tokensContractAbiUrl from '@darkforest_eth/contracts/abis/DarkForestTokens.json';
@@ -9,20 +10,23 @@ import type {
   DarkForestTokens,
   Whitelist,
 } from '@darkforest_eth/contracts/typechain';
+=======
+import diamondContractAbiUrl from '@darkforest_eth/contracts/abis/DarkForest.json';
+>>>>>>> slytherin
 import { createContract, createEthConnection, EthConnection } from '@darkforest_eth/network';
-import type { providers, Wallet } from 'ethers';
+import type { Contract, providers, Wallet } from 'ethers';
 
 /**
- * Loads the Core game contract, which is responsible for updating the state of the game.
- * @see https://github.com/darkforest-eth/eth/blob/master/contracts/DarkForestCore.sol
+ * Loads the game contract, which is responsible for updating the state of the game.
  */
-export async function loadCoreContract(
+export async function loadDiamondContract<T extends Contract>(
   address: string,
   provider: providers.JsonRpcProvider,
   signer?: Wallet
-): Promise<DarkForestCore> {
-  const coreContractAbi = await fetch(coreContractAbiUrl).then((r) => r.json());
+): Promise<T> {
+  const abi = await fetch(diamondContractAbiUrl).then((r) => r.json());
 
+<<<<<<< HEAD
   return createContract<DarkForestCore>(address, coreContractAbi, provider, signer);
 }
 
@@ -67,6 +71,9 @@ export async function loadWhitelistContract(
   const whitelistContractAbi = await fetch(whitelistContractAbiUrl).then((r) => r.json());
 
   return createContract<Whitelist>(address, whitelistContractAbi, provider, signer);
+=======
+  return createContract<T>(address, abi, provider, signer);
+>>>>>>> slytherin
 }
 
 export function getEthConnection(): Promise<EthConnection> {
@@ -82,7 +89,11 @@ export function getEthConnection(): Promise<EthConnection> {
   }
 
   console.log(`GAME METADATA:`);
+<<<<<<< HEAD
   console.log(`rpc url:${url}`);
+=======
+  console.log(`rpc url: ${url}`);
+>>>>>>> slytherin
   console.log(`is production: ${isProd}`);
   console.log(`webserver url: ${process.env.DF_WEBSERVER_URL}`);
 

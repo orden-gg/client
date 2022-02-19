@@ -1,4 +1,5 @@
-import type { WorldCoords } from '@darkforest_eth/types';
+// organize-imports-ignore
+import type { Chunk, WorldCoords } from '@darkforest_eth/types';
 //@ts-ignore
 import { locationIdFromDecStr } from 'https://cdn.skypack.dev/@darkforest_eth/serde';
 import {
@@ -9,7 +10,7 @@ import {
   //@ts-ignore
 } from 'https://unpkg.com/htm/preact/standalone.module.js';
 import type MinerManager from '../src/Backend/Miner/MinerManager';
-import type { Chunk, MinerWorkerMessage } from '../src/_types/global/GlobalTypes';
+import type { MinerWorkerMessage } from '../src/_types/global/GlobalTypes';
 
 type ExtendedMinerManager = MinerManager & {
   url: string;
@@ -44,7 +45,11 @@ class RemoteWorker implements Worker {
   private url: string;
 
   constructor(url: string) {
+<<<<<<< HEAD
     this.url = url
+=======
+    this.url = url;
+>>>>>>> slytherin
   }
 
   async postMessage(msg: string) {
@@ -72,10 +77,14 @@ class RemoteWorker implements Worker {
     exploredChunk.perlin = df.spaceTypePerlin(chunkCenter, false);
     for (const planetLoc of exploredChunk.planetLocations) {
       planetLoc.hash = locationIdFromDecStr(planetLoc.hash);
+<<<<<<< HEAD
       planetLoc.perlin = df.spaceTypePerlin(
         { x: planetLoc.coords.x, y: planetLoc.coords.y },
         true
       );
+=======
+      planetLoc.perlin = df.spaceTypePerlin({ x: planetLoc.coords.x, y: planetLoc.coords.y }, true);
+>>>>>>> slytherin
       planetLoc.biomebase = df.biomebasePerlin(
         { x: planetLoc.coords.x, y: planetLoc.coords.y },
         true
@@ -295,19 +304,19 @@ function App({
         `
       )}
       <div style=${wrapper}>
-        <input
+        <df-text-input
           style=${input}
           value=${nextUrl}
-          onChange=${onChange}
+          onInput=${onChange}
           placeholder="URL for explore server"
-        />
+        ></df-text-input>
         <select style=${select} value=${patternType} onChange=${changePattern}>
           <option value="spiral">Spiral</option>
           <option value="swiss">Swiss</option>
           <option value="towardsCenter">TowardsCenter</option>
           <option value="towardsCenterV2">TowardsCenterV2</option>
         </select>
-        <button style=${button} onClick=${add}>Explore!</button>
+        <df-button style=${button} onClick=${add}>Explore!</df-button>
       </div>
     </div>
   `;
