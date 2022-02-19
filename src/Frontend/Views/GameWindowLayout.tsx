@@ -199,7 +199,7 @@ export function GameWindowLayout({
             <ControllableCanvas />
           </CanvasWrapper>
 
-          <NotificationsPane isTerminalVisible={terminalVisible}/>
+          <NotificationsPane />
           <CoordsPane />
           <ExplorePane />
 

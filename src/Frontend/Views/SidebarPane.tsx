@@ -101,11 +101,6 @@ export function SidebarPane({
           size='stretch'
           shortcutKey={TOGGLE_TRANSACTIONS_PANE}
           shortcutText={sidebarHovered ? TOGGLE_YOUR_ORDEN_PLANET_PANE : undefined}
-          style={{
-            width: '100%',
-            height: '2em',
-            padding: '4px 8px',
-          }}
         />
       </BorderlessPane>
     </WindowTogglesPaneContainer>

@@ -31,7 +31,6 @@ const icon = (modal: ModalName): React.ReactNode => {
   else if (modal === ModalName.YourArtifacts) return <Icon type={IconType.Artifact} />;
   else if (modal === ModalName.WithdrawSilver) return <Icon type={IconType.Withdraw} />;
   else if (modal === ModalName.TransactionLog) return <Icon type={IconType.DoubleArrows} />;
-  else if (modal === ModalName.Orden) return <Icon type={IconType.Planet} />;
   return <span>T</span>;
 };
 
@@ -66,27 +65,5 @@ export function ModalToggleButton({
         )}
       </ModalIconText>
     </MaybeShortcutButton>
-  );
-}
-
-export function ModalOrdenPaneIcon({
-  hook,
-  text,
-  style,
-  shortcutKey,
-}: {
-  hook: ModalHook;
-  text?: string;
-  style?: React.CSSProperties;
-  shortcutKey?: string;
-}) {
-  return (
-    <ModalToggleButton
-      hook={hook}
-      modal={ModalName.OrdenPane}
-      text={text}
-      style={style}
-      shortcutKey={shortcutKey}
-    />
   );
 }

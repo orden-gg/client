@@ -102,8 +102,8 @@ class GameUIManager extends EventEmitter {
   private minerLocation: WorldCoords | undefined;
   private extraMinerLocations: WorldCoords[] = [];
 
-  private forcesSending: number = 0; // this is a percentage
-  private silverSending: number = 0; // this is a percentage
+  private forcesSending: { [key: string]: number } = {}; // this is a percentage
+  private silverSending: { [key: string]: number } = {}; // this is a percentage
 
   private artifactSending: { [key: string]: Artifact | undefined } = {};
 
@@ -515,7 +515,7 @@ class GameUIManager extends EventEmitter {
           []) {
           effectiveEnergy -= unconfirmedMove.intent.forces;
         }
-        const effPercent = Math.min(this.getForcesSending(), 98);
+        const effPercent = Math.min(this.getForcesSending(from.locationId), 98);
         let forces = Math.floor((effectiveEnergy * effPercent) / 100);
 
         // make it so you leave one force behind
@@ -536,7 +536,7 @@ class GameUIManager extends EventEmitter {
           forces
         );
 
-        let effPercentSilver = this.getSilverSending();
+        let effPercentSilver = this.getSilverSending(from.locationId);
 
         if (
           effPercentSilver > 98 &&
