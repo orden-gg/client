@@ -964,59 +964,59 @@
     enabled "2.0.x"
     kuler "^2.0.0"
 
-"@darkforest_eth/constants@6.7.0":
-  version "6.7.0"
-  resolved "https://registry.yarnpkg.com/@darkforest_eth/constants/-/constants-6.7.0.tgz#6e67aba1beb53e18195acada244c20c74f5a37f8"
-  integrity sha512-gMZbtkBbbU189i+FgdaCbAYn43JWYgua4WgqTLxpXdlJ4FSduB1sbKqKbbt/se7cMMZC/6Ehu1G87QG5JUllng==
+"@darkforest_eth/constants@6.7.3":
+  version "6.7.3"
+  resolved "https://registry.yarnpkg.com/@darkforest_eth/constants/-/constants-6.7.3.tgz#635f36f7f24be315ac7c70eef4175ca250f2356d"
+  integrity sha512-0SI0dyr2EF047vxrNg+YBDbNqHkOW9iKIwi7qnBNuR8a8QMoswrUvhdRWnICQb70a6l514nmAtJ9Q4CLklFQIA==
   dependencies:
-    "@darkforest_eth/types" "6.7.0"
+    "@darkforest_eth/types" "6.7.3"
     big-integer "^1.6.48"
 
-"@darkforest_eth/contracts@6.7.0":
-  version "6.7.0"
-  resolved "https://registry.yarnpkg.com/@darkforest_eth/contracts/-/contracts-6.7.0.tgz#683c83d084752a0b3abfb965ce19e15372a3f707"
-  integrity sha512-RwH6X+Rtr2adiAkRxgJb+jOCIM+J/4N+AQU9Ye+n1Pt2P3XbC9Pk05G8WY4zb1Utd10Piao77GO5Vpk4GrxxUw==
+"@darkforest_eth/contracts@6.7.3":
+  version "6.7.3"
+  resolved "https://registry.yarnpkg.com/@darkforest_eth/contracts/-/contracts-6.7.3.tgz#3ef5ff8500baabb702af3cba646e6384bba3ab9f"
+  integrity sha512-N1lBe6DuOUYlBETkAM8vn6gtAKiwVogeRFgPx7V1y4Joxec7R6Sk3AQ/CMJpgOlW7trocVDnleI+AfWAnFjVDw==
 
-"@darkforest_eth/events@6.7.0":
-  version "6.7.0"
-  resolved "https://registry.yarnpkg.com/@darkforest_eth/events/-/events-6.7.0.tgz#1d4b7115159165518df2f293285c5500224aa8c0"
-  integrity sha512-MXPJhfnpJnFGuYz8UmDVhYVUGOW/npB+DNBlmZ3IdUpt2xgZ0oDrWAgkYyGYa1EFqgQPPqsxLnsIndcmD6swEA==
+"@darkforest_eth/events@6.7.3":
+  version "6.7.3"
+  resolved "https://registry.yarnpkg.com/@darkforest_eth/events/-/events-6.7.3.tgz#64bef3a8ec603f13a456a344e0734ca16ba9a4ef"
+  integrity sha512-cgp6b8OeZeq6zmGldc1+q9WkWNnyLwfFNvx3Fd3gTSmDXwuSUq8abzKFANtgMorHyD8nmFHuBoOe4AdenHtucg==
 
-"@darkforest_eth/gamelogic@6.7.0":
-  version "6.7.0"
-  resolved "https://registry.yarnpkg.com/@darkforest_eth/gamelogic/-/gamelogic-6.7.0.tgz#a2c0f57b8a4fc4f4a8291ef96d4eeb665b6d5f05"
-  integrity sha512-9TNyWIBcGadquKRfhEv1gjCfUXz8Qk3m2J2WBpaMhT0mqW7dx/RcObiKxqS+06+bqlYMlqxKQncdAPoGd25cwQ==
+"@darkforest_eth/gamelogic@6.7.3":
+  version "6.7.3"
+  resolved "https://registry.yarnpkg.com/@darkforest_eth/gamelogic/-/gamelogic-6.7.3.tgz#561c36c149f34d852522d338ae2d224783fef6b5"
+  integrity sha512-fDrpyvX1kBrCKg3aehQB5peIxyE5I1qE7B9F0odkZgL1xtLvUI4LeMVxve1oEsebnDsb+T3RGaXDClapqXCYYA==
   dependencies:
-    "@darkforest_eth/constants" "6.7.0"
-    "@darkforest_eth/serde" "6.7.0"
-    "@darkforest_eth/types" "6.7.0"
+    "@darkforest_eth/constants" "6.7.3"
+    "@darkforest_eth/serde" "6.7.3"
+    "@darkforest_eth/types" "6.7.3"
 
-"@darkforest_eth/hashing@6.7.0":
-  version "6.7.0"
-  resolved "https://registry.yarnpkg.com/@darkforest_eth/hashing/-/hashing-6.7.0.tgz#42760b67d62eadab2cd63358c7aba0699f3535e7"
-  integrity sha512-t1bucSl5JgOmPPnJk/cCNK+GTUlXvnli/0OzB3Ca/yHcplYLyJkcjsrxN27Gj6v8DZPLBVg9swOjmofcrkrJlg==
+"@darkforest_eth/hashing@6.7.3":
+  version "6.7.3"
+  resolved "https://registry.yarnpkg.com/@darkforest_eth/hashing/-/hashing-6.7.3.tgz#5f1a6654970d7ae3b35da65f2dce1de34995a422"
+  integrity sha512-pBXJjwTq4M4VnWaVrtFHDoNSHfZa6kc3e4r5XmuDrqfErMtPOFHvUrM10y2lHF69IsVl6asADB+3gnpY+vo+2A==
   dependencies:
-    "@darkforest_eth/types" "6.7.0"
+    "@darkforest_eth/types" "6.7.3"
     big-integer "^1.6.48"
 
-"@darkforest_eth/hexgen@6.7.0":
-  version "6.7.0"
-  resolved "https://registry.yarnpkg.com/@darkforest_eth/hexgen/-/hexgen-6.7.0.tgz#342a0f4c7fbcdde1d453cdf5a403594fdb6582f2"
-  integrity sha512-82sHLYick4AWCMLHQktjIi9Nx1oWBxUIApUp9mjaV+gLD/jzRJz2/Vu1BY1r3BH6jd5iLC9xGHo6STUVv4K5Hw==
+"@darkforest_eth/hexgen@6.7.3":
+  version "6.7.3"
+  resolved "https://registry.yarnpkg.com/@darkforest_eth/hexgen/-/hexgen-6.7.3.tgz#64083316375671f3333be618407dd055d7e17058"
+  integrity sha512-0pY5HWiWNdEKL+Foa2L3d9nAtVOcW3oMjH/KkINXBnB4DPMpXLMkH5RIosN3fqOE3sTYDhtq+9k83j400Smpuw==
   dependencies:
-    "@darkforest_eth/types" "6.7.0"
+    "@darkforest_eth/types" "6.7.3"
     big-integer "^1.6.48"
 
-"@darkforest_eth/network@6.7.0":
-  version "6.7.0"
-  resolved "https://registry.yarnpkg.com/@darkforest_eth/network/-/network-6.7.0.tgz#0614d4d37d914dc38b94241fcb6c5013cc29db68"
-  integrity sha512-cFhRfCFsoFRAGyLgB5ika3LJysbnNKz+0uWewVF1ehHYcnYcQrc9PrDE6N3K7n6JxfJzPkrmDhDIQbNoQO6XVA==
+"@darkforest_eth/network@6.7.3":
+  version "6.7.3"
+  resolved "https://registry.yarnpkg.com/@darkforest_eth/network/-/network-6.7.3.tgz#2957fde47800d8a92ca36af04279757934c2a749"
+  integrity sha512-ZLaiQ2BF8M5ADYO28WPIL1ITmcEgZqMhFwjDa/p92PDavkMcTsyAYcBVOpCDEmNCL6lWq4GvEuMBaZ+SpTiE0A==
   dependencies:
-    "@darkforest_eth/constants" "6.7.0"
-    "@darkforest_eth/contracts" "6.7.0"
-    "@darkforest_eth/events" "6.7.0"
-    "@darkforest_eth/serde" "6.7.0"
-    "@darkforest_eth/types" "6.7.0"
+    "@darkforest_eth/constants" "6.7.3"
+    "@darkforest_eth/contracts" "6.7.3"
+    "@darkforest_eth/events" "6.7.3"
+    "@darkforest_eth/serde" "6.7.3"
+    "@darkforest_eth/types" "6.7.3"
     async-mutex "^0.3.2"
     ethers "^5.5.1"
     json-stable-stringify "^1.0.1"
@@ -1027,62 +1027,62 @@
     p-timeout "^4.0.0"
     uuid "^8.3.2"
 
-"@darkforest_eth/procedural@6.7.0":
-  version "6.7.0"
-  resolved "https://registry.yarnpkg.com/@darkforest_eth/procedural/-/procedural-6.7.0.tgz#13a6a527f5605c57a2ef9ade243950c39e3d18f3"
-  integrity sha512-ZYumB0JwQu6RewFDjmGOv4Slp9UpGyMlxTs1T8yh+vIt7KCJQ5Arpl/+oba1i6nGuA5HfFioY3skG6UHhAIfVw==
+"@darkforest_eth/procedural@6.7.3":
+  version "6.7.3"
+  resolved "https://registry.yarnpkg.com/@darkforest_eth/procedural/-/procedural-6.7.3.tgz#f8e6f18a212aa69d21711648b973f7605f755237"
+  integrity sha512-gcEyl9f9ufjp0dn9P6lmNWEWHdYE5/MR/fyCRgFiJ1px4inPHj86hALXm1e+NXDb8/5iTU6gAYZOgYWxn6LmVw==
   dependencies:
-    "@darkforest_eth/constants" "6.7.0"
-    "@darkforest_eth/gamelogic" "6.7.0"
-    "@darkforest_eth/hashing" "6.7.0"
-    "@darkforest_eth/serde" "6.7.0"
-    "@darkforest_eth/types" "6.7.0"
+    "@darkforest_eth/constants" "6.7.3"
+    "@darkforest_eth/gamelogic" "6.7.3"
+    "@darkforest_eth/hashing" "6.7.3"
+    "@darkforest_eth/serde" "6.7.3"
+    "@darkforest_eth/types" "6.7.3"
     big-integer "^1.6.48"
 
-"@darkforest_eth/renderer@6.7.0":
-  version "6.7.0"
-  resolved "https://registry.yarnpkg.com/@darkforest_eth/renderer/-/renderer-6.7.0.tgz#ce116e8815edfd7898034ab68db9d0e5543449f8"
-  integrity sha512-+yP3VsLo/zMa23UG5p4BaQ4Y7BzvSm23E8lLhWPOTVDHrj+k8gutmiBKoCU7JXLQYsxIZJEqvS8XvChiOpOSYg==
+"@darkforest_eth/renderer@6.7.3":
+  version "6.7.3"
+  resolved "https://registry.yarnpkg.com/@darkforest_eth/renderer/-/renderer-6.7.3.tgz#830d02c40c207680b69e0749d5031f68c6a0c676"
+  integrity sha512-ZM03ssgmZ161+OwdAH7TtWh4zZlUesG9wT8/63RYciTL0h41MVmJbHkEgBAxlUFFqH5h+Y3N73A7XvCSrWhs/Q==
   dependencies:
-    "@darkforest_eth/constants" "6.7.0"
-    "@darkforest_eth/gamelogic" "6.7.0"
-    "@darkforest_eth/hashing" "6.7.0"
-    "@darkforest_eth/procedural" "6.7.0"
-    "@darkforest_eth/serde" "6.7.0"
-    "@darkforest_eth/types" "6.7.0"
+    "@darkforest_eth/constants" "6.7.3"
+    "@darkforest_eth/gamelogic" "6.7.3"
+    "@darkforest_eth/hashing" "6.7.3"
+    "@darkforest_eth/procedural" "6.7.3"
+    "@darkforest_eth/serde" "6.7.3"
+    "@darkforest_eth/types" "6.7.3"
     "@types/gl-matrix" "^3.2.0"
     "@types/webgl2" "^0.0.5"
     auto-bind "^4.0.0"
     gl-matrix "^3.3.0"
 
-"@darkforest_eth/serde@6.7.0":
-  version "6.7.0"
-  resolved "https://registry.yarnpkg.com/@darkforest_eth/serde/-/serde-6.7.0.tgz#ee27dbc22d972237c06d4aba30b22bf8608bb4c2"
-  integrity sha512-iBoEX44JfFYbNzjr2suuy26xv9r0JGHiLBPM+UWFdgFJBsMwSDXi5M/K98jc5kxMCFRJedmukDGF3CnqriVP3g==
+"@darkforest_eth/serde@6.7.3":
+  version "6.7.3"
+  resolved "https://registry.yarnpkg.com/@darkforest_eth/serde/-/serde-6.7.3.tgz#a7df785c15930c000638fb8faea5f8fd0e7cfaef"
+  integrity sha512-wgtb+or9d+uTfDWgqCd8TOYRSsntEcZhGgSEn619m1Ikd6aCjsqo9win2E4iNZ6hFRg5cRGblJYZVAk5+5E14Q==
   dependencies:
-    "@darkforest_eth/constants" "6.7.0"
-    "@darkforest_eth/contracts" "6.7.0"
-    "@darkforest_eth/hexgen" "6.7.0"
-    "@darkforest_eth/types" "6.7.0"
+    "@darkforest_eth/constants" "6.7.3"
+    "@darkforest_eth/contracts" "6.7.3"
+    "@darkforest_eth/hexgen" "6.7.3"
+    "@darkforest_eth/types" "6.7.3"
     big-integer "^1.6.48"
     ethers "^5.5.1"
 
-"@darkforest_eth/settings@6.7.0":
-  version "6.7.0"
-  resolved "https://registry.yarnpkg.com/@darkforest_eth/settings/-/settings-6.7.0.tgz#990a4a84c307b3cf9f6761b3c77e1feeebabc0b6"
-  integrity sha512-amxY948Ux8Leab5NB6ScQS8e2Qke+z22tRqXWx8UM1g1LmWiadcrl78iI07ZJ/ncIov25d1uVn6vEjtiQI+NGw==
+"@darkforest_eth/settings@6.7.3":
+  version "6.7.3"
+  resolved "https://registry.yarnpkg.com/@darkforest_eth/settings/-/settings-6.7.3.tgz#a4ff752c4e1ad6a45253d48bf256642783a0f6c7"
+  integrity sha512-HD7SG0CKvBpFzqdGLcAnKYg11310pLoM9NCkzYdrIqVu3h78cBZV1ac5caAPuWudU+gvMg0bRisWHRwZXJHySA==
   dependencies:
     decoders "^1.25.5"
 
-"@darkforest_eth/snarks@6.7.0":
-  version "6.7.0"
-  resolved "https://registry.yarnpkg.com/@darkforest_eth/snarks/-/snarks-6.7.0.tgz#0fd94c0f75c847d4505692db5124fa2790ce0703"
-  integrity sha512-FMfhctt8X1rPp5TfiF06z4yUFQi9LqYdkSxRk4cEcGlICwNRbmhAEj+Ka8zhgECAof3pQQ8x4JuDdvjFOdLOrg==
+"@darkforest_eth/snarks@6.7.3":
+  version "6.7.3"
+  resolved "https://registry.yarnpkg.com/@darkforest_eth/snarks/-/snarks-6.7.3.tgz#df9f31076ea7d0dd68b6d199ef3a7582440115c8"
+  integrity sha512-DeqkfSE15OBbZ1toJedeifAKtTHCGSuzUMS3RrDm668fDTUsUPE5EcCj69Jb0ySZR/N4YkdrqwtmbTC8+D+QFA==
 
-"@darkforest_eth/types@6.7.0":
-  version "6.7.0"
-  resolved "https://registry.yarnpkg.com/@darkforest_eth/types/-/types-6.7.0.tgz#3d3b858810a88390d1fbe7f0ec42ce649a9b8014"
-  integrity sha512-cYW27HkZeWDanLPGsnFQED9pWZAz+QzE5kXGkNLZ9C1CA9QMdu29gUd5CGkWW6HyCGk5nlt9tutdDf39rg+mXg==
+"@darkforest_eth/types@6.7.3":
+  version "6.7.3"
+  resolved "https://registry.yarnpkg.com/@darkforest_eth/types/-/types-6.7.3.tgz#31f45fb6b71e7625698ade4bf524552b27773582"
+  integrity sha512-cSOnjQVX7LOHL3Eb3CVg+F7As7B8U0KzFCGGAu2Ref7VxJOWy5CrJ6Bk5qPDZB2LkqVpfpxXlFrbw04I7P4cew==
   dependencies:
     "@types/gl-matrix" "^3.2.0"
     big-integer "^1.6.48"
@@ -1090,13 +1090,13 @@
     gl-matrix "^3.3.0"
     ts-toolbelt "^9.6.0"
 
-"@darkforest_eth/ui@6.7.0":
-  version "6.7.0"
-  resolved "https://registry.yarnpkg.com/@darkforest_eth/ui/-/ui-6.7.0.tgz#6ceb6960ccb3f28b37e6834d593391c0c1be3a8f"
-  integrity sha512-+lY4IB/mYIZC7tSjd1AhYiduaHzD9gCTsLWGQhjCY7ahPN22NT5q2c4sQUkChFHRslU7VsnmmlN+AZCDM1Jeeg==
+"@darkforest_eth/ui@6.7.3":
+  version "6.7.3"
+  resolved "https://registry.yarnpkg.com/@darkforest_eth/ui/-/ui-6.7.3.tgz#b2b86dbf8973b97cc42b91221eb6f400cb9ef179"
+  integrity sha512-AJcmmIcrON3KgNTmfhFk++Jh9g3yUjP3UAglnC1pZr0nU1+12yPVZ2IXMuwXu9LCL3o+e5cDHcH9zKTyWAk3jA==
   dependencies:
-    "@darkforest_eth/constants" "6.7.0"
-    "@darkforest_eth/types" "6.7.0"
+    "@darkforest_eth/constants" "6.7.3"
+    "@darkforest_eth/types" "6.7.3"
     "@spectrum-web-components/slider" "^0.12.3"
     "@spectrum-web-components/theme" "^0.9.3"
     color "^3.0.2"

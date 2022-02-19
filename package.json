@@ -59,6 +59,7 @@
     "lint": "eslint .",
     "format": "prettier --write .",
     "start": "webpack-dev-server --mode development --hot",
+    "start:prod": "NODE_ENV=production webpack-dev-server --mode development --open --hot",
     "build": "webpack --mode production",
     "clean": "del-cli dist node_modules declarations public/contracts",
     "docs": "typedoc && yarn format",

@@ -2,7 +2,7 @@
 
 [Backend/Plugins/EmbeddedPluginLoader](../modules/Backend_Plugins_EmbeddedPluginLoader.md).EmbeddedPlugin
 
-This interface represents an embedded plugin, which is stored in `embedded_plugins/`.
+This interface represents an embedded plugin, which is stored in `orden-plugins/`.
 
 ## Table of contents
 
