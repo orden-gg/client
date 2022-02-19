@@ -1,6 +1,3 @@
-<<<<<<< HEAD
-import { BLOCK_EXPLORER_URL, MIN_PLANET_LEVEL } from '@darkforest_eth/constants';
-=======
 import {
   BLOCK_EXPLORER_URL,
   CONTRACT_PRECISION,
@@ -8,7 +5,6 @@ import {
   MIN_PLANET_LEVEL,
 } from '@darkforest_eth/constants';
 import type { DarkForest } from '@darkforest_eth/contracts/typechain';
->>>>>>> slytherin
 import { monomitter, Monomitter, Subscription } from '@darkforest_eth/events';
 import {
   getRange,
@@ -75,11 +71,8 @@ import {
   Transaction,
   TxIntent,
   UnconfirmedActivateArtifact,
-<<<<<<< HEAD
-=======
   UnconfirmedBuyHat,
   UnconfirmedCapturePlanet,
->>>>>>> slytherin
   UnconfirmedDeactivateArtifact,
   UnconfirmedDepositArtifact,
   UnconfirmedFindArtifact,
@@ -124,18 +117,7 @@ import {
   ZKArgIdx,
 } from '../../_types/darkforest/api/ContractsAPITypes';
 import { AddressTwitterMap } from '../../_types/darkforest/api/UtilityServerAPITypes';
-<<<<<<< HEAD
-import {
-  Chunk,
-  HashConfig,
-  isLocatable,
-  Rectangle,
-  RevealCountdownInfo,
-  Wormhole,
-} from '../../_types/global/GlobalTypes';
-=======
 import { HashConfig, RevealCountdownInfo } from '../../_types/global/GlobalTypes';
->>>>>>> slytherin
 import MinerManager, { HomePlanetMinerChunkStore, MinerManagerEvent } from '../Miner/MinerManager';
 import {
   MiningPattern,
@@ -157,29 +139,9 @@ import { SerializedPlugin } from '../Plugins/SerializedPlugin';
 import PersistentChunkStore from '../Storage/PersistentChunkStore';
 import { easeInAnimation, emojiEaseOutAnimation } from '../Utils/Animation';
 import SnarkArgsHelper from '../Utils/SnarkArgsHelper';
-<<<<<<< HEAD
-import {
-  isUnconfirmedActivateArtifact,
-  isUnconfirmedBuyHat,
-  isUnconfirmedDeactivateArtifact,
-  isUnconfirmedDepositArtifact,
-  isUnconfirmedFindArtifact,
-  isUnconfirmedInit,
-  isUnconfirmedMove,
-  isUnconfirmedProspectPlanet,
-  isUnconfirmedReveal,
-  isUnconfirmedUpgrade,
-  isUnconfirmedWithdrawArtifact,
-  isUnconfirmedWithdrawSilver,
-} from '../Utils/TypeAssertions';
-import { getRandomActionId, hexifyBigIntNestedArray } from '../Utils/Utils';
-import { getEmojiMessage, getRange } from './ArrivalUtils';
-import { isActivated } from './ArtifactUtils';
-=======
 import { hexifyBigIntNestedArray } from '../Utils/Utils';
 import { getEmojiMessage } from './ArrivalUtils';
 import { CaptureZoneGenerator } from './CaptureZoneGenerator';
->>>>>>> slytherin
 import { ContractsAPI, makeContractsAPI } from './ContractsAPI';
 import { GameObjects } from './GameObjects';
 import { InitialGameStateDownloader } from './InitialGameStateDownloader';
@@ -410,12 +372,8 @@ class GameManager extends EventEmitter {
     homeLocation: WorldLocation | undefined,
     useMockHash: boolean,
     artifacts: Map<ArtifactId, Artifact>,
-<<<<<<< HEAD
-    ethConnection: EthConnection
-=======
     ethConnection: EthConnection,
     paused: boolean
->>>>>>> slytherin
   ) {
     super();
 
@@ -439,9 +397,6 @@ class GameManager extends EventEmitter {
     this.players = players;
     this.worldRadius = worldRadius;
     this.networkHealth$ = monomitter(true);
-<<<<<<< HEAD
-    this.playersUpdated$ = monomitter();
-=======
     this.paused$ = monomitter(true);
     this.playersUpdated$ = monomitter();
 
@@ -452,7 +407,6 @@ class GameManager extends EventEmitter {
         contractConstants.CAPTURE_ZONE_CHANGE_BLOCK_INTERVAL
       );
     }
->>>>>>> slytherin
 
     this.hashConfig = {
       planetHashKey: contractConstants.PLANETHASH_KEY,
@@ -716,12 +670,8 @@ class GameManager extends EventEmitter {
       homeLocation,
       useMockHash,
       knownArtifacts,
-<<<<<<< HEAD
-      ethConnection
-=======
       connection,
       initialState.paused
->>>>>>> slytherin
     );
 
     gameManager.setPlayerTwitters(initialState.twitters);
@@ -797,18 +747,12 @@ class GameManager extends EventEmitter {
           gameManager.emit(GameManagerEvent.PlanetUpdate);
         }
       )
-<<<<<<< HEAD
-      .on(ContractsAPIEvent.TxSubmitted, (unconfirmedTx: SubmittedTx) => {
-        gameManager.persistentChunkStore.onEthTxSubmit(unconfirmedTx);
-        gameManager.onTxSubmit(unconfirmedTx);
-=======
       .on(ContractsAPIEvent.TxQueued, (tx: Transaction) => {
         gameManager.entityStore.onTxIntent(tx);
       })
       .on(ContractsAPIEvent.TxSubmitted, (tx: Transaction) => {
         gameManager.persistentChunkStore.onEthTxSubmit(tx);
         gameManager.onTxSubmit(tx);
->>>>>>> slytherin
       })
       .on(ContractsAPIEvent.TxConfirmed, async (tx: Transaction) => {
         if (!tx.hash) return; // this should never happen
@@ -880,11 +824,6 @@ class GameManager extends EventEmitter {
             gameManager.hardRefreshPlayer(gameManager.getAccount()),
             gameManager.hardRefreshPlanet(tx.intent.locationId),
           ]);
-<<<<<<< HEAD
-        } else if (isUnconfirmedWithdrawSilver(unconfirmedTx)) {
-          await gameManager.softRefreshPlanet(unconfirmedTx.locationId);
-=======
->>>>>>> slytherin
         }
 
         gameManager.entityStore.clearUnconfirmedTxIntent(tx);
@@ -1034,13 +973,8 @@ class GameManager extends EventEmitter {
     this.entityStore.replaceArtifactFromContractData(artifact);
   }
 
-<<<<<<< HEAD
-  private onTxSubmit(unminedTx: SubmittedTx): void {
-    this.terminal.current?.print(`${unminedTx.methodName} transaction (`, TerminalTextStyle.Blue);
-=======
   private onTxSubmit(tx: Transaction): void {
     this.terminal.current?.print(`${tx.intent.methodName} transaction (`, TerminalTextStyle.Blue);
->>>>>>> slytherin
     this.terminal.current?.printLink(
       `${tx.hash?.slice(0, 6) ?? ''}`,
       () => {
@@ -1087,15 +1021,7 @@ class GameManager extends EventEmitter {
       TerminalTextStyle.White
     );
 
-<<<<<<< HEAD
-    if (autoClearRejectAfter >= 0) {
-      setTimeout(() => {
-        notifManager.clearNotification(txIntent.actionId);
-      }, autoClearRejectAfter * 1000);
-    }
-=======
     this.terminal.current?.println(`) cancelled`, TerminalTextStyle.Red);
->>>>>>> slytherin
   }
 
   /**
@@ -1793,13 +1719,6 @@ class GameManager extends EventEmitter {
     return (myLastClaimTimestamp + this.contractConstants.CLAIM_PLANET_COOLDOWN) * 1000;
   }
 
-<<<<<<< HEAD
-  /**
-   * Reveals a planet's location on-chain.
-   */
-  public revealLocation(planetId: LocationId): GameManager {
-    if (this.checkGameHasEnded()) return this;
-=======
   public getCaptureZones() {
     return this.captureZoneGenerator.getZones();
   }
@@ -1861,7 +1780,6 @@ class GameManager extends EventEmitter {
 
         return revealArgs;
       };
->>>>>>> slytherin
 
       const txIntent: UnconfirmedReveal = {
         methodName: ContractMethodName.REVEAL_LOCATION,
@@ -2976,10 +2894,6 @@ class GameManager extends EventEmitter {
         planet.hatLevel.toString()
       );
 
-<<<<<<< HEAD
-  private handleTxIntent(txIntent: TxIntent) {
-    this.entityStore.onTxIntent(txIntent);
-=======
       const txIntent: UnconfirmedBuyHat = {
         methodName: ContractMethodName.BUY_HAT,
         contract: this.contractsAPI.contract,
@@ -3044,7 +2958,6 @@ class GameManager extends EventEmitter {
       this.getNotificationsManager().txInitError(ContractMethodName.PLANET_TRANSFER, e.message);
       throw e;
     }
->>>>>>> slytherin
   }
 
   /**

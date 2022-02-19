@@ -9,11 +9,8 @@ import {
   Artifact,
   ArtifactId,
   Biome,
-<<<<<<< HEAD
-=======
   Chunk,
   CursorState,
->>>>>>> slytherin
   Diagnostics,
   EthAddress,
   LocatablePlanet,
@@ -437,13 +434,10 @@ class GameUIManager extends EventEmitter {
     return this.gameManager.getNextBroadcastAvailableTimestamp();
   }
 
-<<<<<<< HEAD
-=======
   public timeUntilNextBroadcastAvailable() {
     return this.gameManager.timeUntilNextBroadcastAvailable();
   }
 
->>>>>>> slytherin
   public getEnergyArrivingForMove(
     from: LocationId,
     to: LocationId | undefined,
@@ -618,14 +612,6 @@ class GameUIManager extends EventEmitter {
     else modalManager.setCursorState(CursorState.TargetingExplorer);
   }
 
-<<<<<<< HEAD
-  public setForcesSending(percentage: number) {
-    this.forcesSending = percentage;
-  }
-
-  public setSilverSending(percentage: number) {
-    this.silverSending = percentage;
-=======
   public setForcesSending(planetId: LocationId, percentage: number) {
     this.forcesSending[planetId] = percentage;
     this.gameManager.getGameObjects().forceTick(planetId);
@@ -653,7 +639,6 @@ class GameUIManager extends EventEmitter {
     this.abandoning = abandoning;
     this.isSending$.publish(abandoning);
     this.isAbandoning$.publish(abandoning);
->>>>>>> slytherin
   }
 
   public setArtifactSending(planetId: LocationId, artifact?: Artifact) {
@@ -1023,11 +1008,6 @@ class GameUIManager extends EventEmitter {
   /**
    * Percent from 0 to 100.
    */
-<<<<<<< HEAD
-  public getForcesSending(): number {
-    const forces = this.forcesSending;
-    return forces ?? 50;
-=======
   public getForcesSending(planetId?: LocationId): number {
     const defaultSending = 50;
     if (!planetId) return defaultSending;
@@ -1037,16 +1017,11 @@ class GameUIManager extends EventEmitter {
 
     const forces = this.forcesSending[planetId];
     return forces ?? defaultSending;
->>>>>>> slytherin
   }
 
   /**
    * Percent from 0 to 100.
    */
-<<<<<<< HEAD
-  public getSilverSending(): number {
-    return this.silverSending || 0;
-=======
   public getSilverSending(planetId?: LocationId): number {
     const defaultSending = 0;
     if (!planetId) return defaultSending;
@@ -1059,7 +1034,6 @@ class GameUIManager extends EventEmitter {
 
   public isAbandoning(): boolean {
     return this.abandoning;
->>>>>>> slytherin
   }
 
   public getArtifactSending(planetId?: LocationId): Artifact | undefined {

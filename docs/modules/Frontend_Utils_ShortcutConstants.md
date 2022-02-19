@@ -38,8 +38,6 @@
 ### EXIT_PANE
 
 • **EXIT_PANE**: `"Escape"`
-<<<<<<< HEAD
-=======
 
 ---
 
@@ -52,7 +50,6 @@
 ### MINE_ARTIFACT
 
 • **MINE_ARTIFACT**: `"f"`
->>>>>>> slytherin
 
 ---
 
@@ -64,15 +61,12 @@
 
 ### TOGGLE_ABANDON
 
-<<<<<<< HEAD
-=======
 • **TOGGLE_ABANDON**: `"r"`
 
 ---
 
 ### TOGGLE_BROADCAST_PANE
 
->>>>>>> slytherin
 • **TOGGLE_BROADCAST_PANE**: `"z"`
 
 ---
@@ -104,15 +98,12 @@
 ### TOGGLE_PLANET_ARTIFACTS_PANE
 
 • **TOGGLE_PLANET_ARTIFACTS_PANE**: `"s"`
-<<<<<<< HEAD
-=======
 
 ---
 
 ### TOGGLE_PLANET_INFO_PANE
 
 • **TOGGLE_PLANET_INFO_PANE**: `"c"`
->>>>>>> slytherin
 
 ---
 
@@ -137,15 +128,12 @@
 ### TOGGLE_TARGETTING
 
 • **TOGGLE_TARGETTING**: `` "`" ``
-<<<<<<< HEAD
-=======
 
 ---
 
 ### TOGGLE_TRANSACTIONS_PANE
 
 • **TOGGLE_TRANSACTIONS_PANE**: `"'"`
->>>>>>> slytherin
 
 ---
 

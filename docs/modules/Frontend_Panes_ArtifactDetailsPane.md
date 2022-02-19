@@ -22,13 +22,9 @@
 | `__namedParameters`                   | `Object`                                                                                         |
 | `__namedParameters.artifactId`        | `ArtifactId`                                                                                     |
 | `__namedParameters.contractConstants` | [`ContractConstants`](../interfaces/types_darkforest_api_ContractsAPITypes.ContractConstants.md) |
-<<<<<<< HEAD
-| `__namedParameters.modal`             | [`ModalHandle`](../interfaces/Frontend_Views_ModalPane.ModalHandle.md)                           |
-=======
 | `__namedParameters.depositOn?`        | `LocationId`                                                                                     |
 | `__namedParameters.modal?`            | [`ModalHandle`](../interfaces/Frontend_Views_ModalPane.ModalHandle.md)                           |
 | `__namedParameters.noActions?`        | `boolean`                                                                                        |
->>>>>>> slytherin
 
 #### Returns
 

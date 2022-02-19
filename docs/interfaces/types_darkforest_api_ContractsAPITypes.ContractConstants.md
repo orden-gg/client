@@ -6,20 +6,13 @@
 
 ### Properties
 
-<<<<<<< HEAD
-=======
 - [ABANDON_RANGE_CHANGE_PERCENT](types_darkforest_api_ContractsAPITypes.ContractConstants.md#abandon_range_change_percent)
 - [ABANDON_SPEED_CHANGE_PERCENT](types_darkforest_api_ContractsAPITypes.ContractConstants.md#abandon_speed_change_percent)
 - [ADMIN_CAN_ADD_PLANETS](types_darkforest_api_ContractsAPITypes.ContractConstants.md#admin_can_add_planets)
->>>>>>> slytherin
 - [ARTIFACT_POINT_VALUES](types_darkforest_api_ContractsAPITypes.ContractConstants.md#artifact_point_values)
 - [BIOMEBASE_KEY](types_darkforest_api_ContractsAPITypes.ContractConstants.md#biomebase_key)
 - [BIOME_THRESHOLD_1](types_darkforest_api_ContractsAPITypes.ContractConstants.md#biome_threshold_1)
 - [BIOME_THRESHOLD_2](types_darkforest_api_ContractsAPITypes.ContractConstants.md#biome_threshold_2)
-<<<<<<< HEAD
-- [CLAIM_PLANET_COOLDOWN](types_darkforest_api_ContractsAPITypes.ContractConstants.md#claim_planet_cooldown)
-- [DISABLE_ZK_CHECKS](types_darkforest_api_ContractsAPITypes.ContractConstants.md#disable_zk_checks)
-=======
 - [CAPTURE_ZONES_ENABLED](types_darkforest_api_ContractsAPITypes.ContractConstants.md#capture_zones_enabled)
 - [CAPTURE_ZONES_PER_5000_WORLD_RADIUS](types_darkforest_api_ContractsAPITypes.ContractConstants.md#capture_zones_per_5000_world_radius)
 - [CAPTURE_ZONE_CHANGE_BLOCK_INTERVAL](types_darkforest_api_ContractsAPITypes.ContractConstants.md#capture_zone_change_block_interval)
@@ -30,7 +23,6 @@
 - [CLAIM_PLANET_COOLDOWN](types_darkforest_api_ContractsAPITypes.ContractConstants.md#claim_planet_cooldown)
 - [DISABLE_ZK_CHECKS](types_darkforest_api_ContractsAPITypes.ContractConstants.md#disable_zk_checks)
 - [GAME_START_BLOCK](types_darkforest_api_ContractsAPITypes.ContractConstants.md#game_start_block)
->>>>>>> slytherin
 - [INIT_PERLIN_MAX](types_darkforest_api_ContractsAPITypes.ContractConstants.md#init_perlin_max)
 - [INIT_PERLIN_MIN](types_darkforest_api_ContractsAPITypes.ContractConstants.md#init_perlin_min)
 - [LOCATION_REVEAL_COOLDOWN](types_darkforest_api_ContractsAPITypes.ContractConstants.md#location_reveal_cooldown)
@@ -43,14 +35,6 @@
 - [PERLIN_THRESHOLD_3](types_darkforest_api_ContractsAPITypes.ContractConstants.md#perlin_threshold_3)
 - [PHOTOID_ACTIVATION_DELAY](types_darkforest_api_ContractsAPITypes.ContractConstants.md#photoid_activation_delay)
 - [PLANETHASH_KEY](types_darkforest_api_ContractsAPITypes.ContractConstants.md#planethash_key)
-<<<<<<< HEAD
-- [PLANET_RARITY](types_darkforest_api_ContractsAPITypes.ContractConstants.md#planet_rarity)
-- [PLANET_TYPE_WEIGHTS](types_darkforest_api_ContractsAPITypes.ContractConstants.md#planet_type_weights)
-- [SPACETYPE_KEY](types_darkforest_api_ContractsAPITypes.ContractConstants.md#spacetype_key)
-- [SPAWN_RIM_AREA](types_darkforest_api_ContractsAPITypes.ContractConstants.md#spawn_rim_area)
-- [TIME_FACTOR_HUNDREDTHS](types_darkforest_api_ContractsAPITypes.ContractConstants.md#time_factor_hundredths)
-- [TOKEN_MINT_END_SECONDS](types_darkforest_api_ContractsAPITypes.ContractConstants.md#token_mint_end_seconds)
-=======
 - [PLANET_LEVEL_JUNK](types_darkforest_api_ContractsAPITypes.ContractConstants.md#planet_level_junk)
 - [PLANET_LEVEL_THRESHOLDS](types_darkforest_api_ContractsAPITypes.ContractConstants.md#planet_level_thresholds)
 - [PLANET_RARITY](types_darkforest_api_ContractsAPITypes.ContractConstants.md#planet_rarity)
@@ -66,7 +50,6 @@
 - [WORLD_RADIUS_LOCKED](types_darkforest_api_ContractsAPITypes.ContractConstants.md#world_radius_locked)
 - [WORLD_RADIUS_MIN](types_darkforest_api_ContractsAPITypes.ContractConstants.md#world_radius_min)
 - [adminAddress](types_darkforest_api_ContractsAPITypes.ContractConstants.md#adminaddress)
->>>>>>> slytherin
 - [defaultBarbarianPercentage](types_darkforest_api_ContractsAPITypes.ContractConstants.md#defaultbarbarianpercentage)
 - [defaultDefense](types_darkforest_api_ContractsAPITypes.ContractConstants.md#defaultdefense)
 - [defaultPopulationCap](types_darkforest_api_ContractsAPITypes.ContractConstants.md#defaultpopulationcap)
@@ -81,8 +64,6 @@
 
 ## Properties
 
-<<<<<<< HEAD
-=======
 ### ABANDON_RANGE_CHANGE_PERCENT
 
 • **ABANDON_RANGE_CHANGE_PERCENT**: `number`
@@ -107,7 +88,6 @@ a planet.
 
 ---
 
->>>>>>> slytherin
 ### ARTIFACT_POINT_VALUES
 
 • **ARTIFACT_POINT_VALUES**: `ArtifactPointValues`
@@ -132,8 +112,6 @@ a planet.
 
 ---
 
-<<<<<<< HEAD
-=======
 ### CAPTURE_ZONES_ENABLED
 
 • **CAPTURE_ZONES_ENABLED**: `boolean`
@@ -176,7 +154,6 @@ a planet.
 
 ---
 
->>>>>>> slytherin
 ### CLAIM_PLANET_COOLDOWN
 
 • `Optional` **CLAIM_PLANET_COOLDOWN**: `number`
@@ -189,15 +166,12 @@ a planet.
 
 ---
 
-<<<<<<< HEAD
-=======
 ### GAME_START_BLOCK
 
 • **GAME_START_BLOCK**: `number`
 
 ---
 
->>>>>>> slytherin
 ### INIT_PERLIN_MAX
 
 • **INIT_PERLIN_MAX**: `number`
@@ -275,8 +249,6 @@ four ranges: `PERLIN_THRESHOLD_1`, `PERLIN_THRESHOLD_2`, `PERLIN_THRESHOLD_3`.
 
 ---
 
-<<<<<<< HEAD
-=======
 ### PLANET_LEVEL_JUNK
 
 • **PLANET_LEVEL_JUNK**: [`number`, `number`, `number`, `number`, `number`, `number`, `number`, `number`, `number`, `number`]
@@ -299,30 +271,24 @@ when it spawns.
 
 ---
 
->>>>>>> slytherin
 ### PLANET_RARITY
 
 • **PLANET_RARITY**: `number`
 
 ---
 
-<<<<<<< HEAD
-=======
 ### PLANET_TRANSFER_ENABLED
 
 • **PLANET_TRANSFER_ENABLED**: `boolean`
 
 ---
 
->>>>>>> slytherin
 ### PLANET_TYPE_WEIGHTS
 
 • **PLANET_TYPE_WEIGHTS**: [`PlanetTypeWeightsBySpaceType`](../modules/types_darkforest_api_ContractsAPITypes.md#planettypeweightsbyspacetype)
 
 ---
 
-<<<<<<< HEAD
-=======
 ### SILVER_SCORE_VALUE
 
 • **SILVER_SCORE_VALUE**: `number`
@@ -333,15 +299,12 @@ Expressed as a percentage integer.
 
 ---
 
->>>>>>> slytherin
 ### SPACETYPE_KEY
 
 • **SPACETYPE_KEY**: `number`
 
 ---
 
-<<<<<<< HEAD
-=======
 ### SPACE_JUNK_ENABLED
 
 • **SPACE_JUNK_ENABLED**: `boolean`
@@ -358,7 +321,6 @@ this value for a specific player in storage.
 
 ---
 
->>>>>>> slytherin
 ### SPAWN_RIM_AREA
 
 • **SPAWN_RIM_AREA**: `number`
@@ -377,8 +339,6 @@ this value for a specific player in storage.
 
 ---
 
-<<<<<<< HEAD
-=======
 ### WORLD_RADIUS_LOCKED
 
 • **WORLD_RADIUS_LOCKED**: `boolean`
@@ -397,7 +357,6 @@ this value for a specific player in storage.
 
 ---
 
->>>>>>> slytherin
 ### defaultBarbarianPercentage
 
 • **defaultBarbarianPercentage**: `number`[]

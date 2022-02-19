@@ -8,30 +8,20 @@
 
 - [ArrivalQueued](types_darkforest_api_ContractsAPITypes.ContractsAPIEvent.md#arrivalqueued)
 - [ArtifactUpdate](types_darkforest_api_ContractsAPITypes.ContractsAPIEvent.md#artifactupdate)
-<<<<<<< HEAD
-- [LocationRevealed](types_darkforest_api_ContractsAPITypes.ContractsAPIEvent.md#locationrevealed)
-=======
 - [LobbyCreated](types_darkforest_api_ContractsAPITypes.ContractsAPIEvent.md#lobbycreated)
 - [LocationRevealed](types_darkforest_api_ContractsAPITypes.ContractsAPIEvent.md#locationrevealed)
 - [PauseStateChanged](types_darkforest_api_ContractsAPITypes.ContractsAPIEvent.md#pausestatechanged)
->>>>>>> slytherin
 - [PlanetClaimed](types_darkforest_api_ContractsAPITypes.ContractsAPIEvent.md#planetclaimed)
 - [PlanetTransferred](types_darkforest_api_ContractsAPITypes.ContractsAPIEvent.md#planettransferred)
 - [PlanetUpdate](types_darkforest_api_ContractsAPITypes.ContractsAPIEvent.md#planetupdate)
 - [PlayerUpdate](types_darkforest_api_ContractsAPITypes.ContractsAPIEvent.md#playerupdate)
 - [RadiusUpdated](types_darkforest_api_ContractsAPITypes.ContractsAPIEvent.md#radiusupdated)
-<<<<<<< HEAD
-- [TxConfirmed](types_darkforest_api_ContractsAPITypes.ContractsAPIEvent.md#txconfirmed)
-- [TxInitFailed](types_darkforest_api_ContractsAPITypes.ContractsAPIEvent.md#txinitfailed)
-- [TxReverted](types_darkforest_api_ContractsAPITypes.ContractsAPIEvent.md#txreverted)
-=======
 - [TxCancelled](types_darkforest_api_ContractsAPITypes.ContractsAPIEvent.md#txcancelled)
 - [TxConfirmed](types_darkforest_api_ContractsAPITypes.ContractsAPIEvent.md#txconfirmed)
 - [TxErrored](types_darkforest_api_ContractsAPITypes.ContractsAPIEvent.md#txerrored)
 - [TxPrioritized](types_darkforest_api_ContractsAPITypes.ContractsAPIEvent.md#txprioritized)
 - [TxProcessing](types_darkforest_api_ContractsAPITypes.ContractsAPIEvent.md#txprocessing)
 - [TxQueued](types_darkforest_api_ContractsAPITypes.ContractsAPIEvent.md#txqueued)
->>>>>>> slytherin
 - [TxSubmitted](types_darkforest_api_ContractsAPITypes.ContractsAPIEvent.md#txsubmitted)
 
 ## Enumeration members
@@ -48,30 +38,24 @@
 
 ---
 
-<<<<<<< HEAD
-=======
 ### LobbyCreated
 
 • **LobbyCreated** = `"LobbyCreated"`
 
 ---
 
->>>>>>> slytherin
 ### LocationRevealed
 
 • **LocationRevealed** = `"LocationRevealed"`
 
 ---
 
-<<<<<<< HEAD
-=======
 ### PauseStateChanged
 
 • **PauseStateChanged** = `"PauseStateChanged"`
 
 ---
 
->>>>>>> slytherin
 ### PlanetClaimed
 
 • **PlanetClaimed** = `"PlanetClaimed"`
@@ -102,8 +86,6 @@
 
 ---
 
-<<<<<<< HEAD
-=======
 ### TxCancelled
 
 • **TxCancelled** = `"TxCancelled"`
@@ -112,24 +94,10 @@ The transaction was cancelled before it left the queue.
 
 ---
 
->>>>>>> slytherin
 ### TxConfirmed
 
 • **TxConfirmed** = `"TxConfirmed"`
 
-<<<<<<< HEAD
----
-
-### TxInitFailed
-
-• **TxInitFailed** = `"TxInitFailed"`
-
----
-
-### TxReverted
-
-• **TxReverted** = `"TxReverted"`
-=======
 The transaction has been confirmed.
 
 ---
@@ -168,16 +136,12 @@ calculating arguments in preparation for submission.
 • **TxQueued** = `"TxQueued"`
 
 The transaction has been queued for future execution.
->>>>>>> slytherin
 
 ---
 
 ### TxSubmitted
 
 • **TxSubmitted** = `"TxSubmitted"`
-<<<<<<< HEAD
-=======
 
 The transaction has been submitted and we are awaiting
 confirmation.
->>>>>>> slytherin

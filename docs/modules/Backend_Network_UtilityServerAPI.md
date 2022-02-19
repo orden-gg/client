@@ -6,13 +6,10 @@
 
 - [EmailResponse](../enums/Backend_Network_UtilityServerAPI.EmailResponse.md)
 
-<<<<<<< HEAD
-=======
 ### Type aliases
 
 - [RegisterConfirmationResponse](Backend_Network_UtilityServerAPI.md#registerconfirmationresponse)
 
->>>>>>> slytherin
 ### Functions
 
 - [callRegisterAndWaitForConfirmation](Backend_Network_UtilityServerAPI.md#callregisterandwaitforconfirmation)
@@ -27,9 +24,6 @@
 - [verifyTwitterHandle](Backend_Network_UtilityServerAPI.md#verifytwitterhandle)
 - [whitelistStatus](Backend_Network_UtilityServerAPI.md#whiteliststatus)
 
-<<<<<<< HEAD
-## Functions
-=======
 ## Type aliases
 
 ### RegisterConfirmationResponse
@@ -43,7 +37,6 @@
 | `canRetry?`     | `boolean` | If the whitelist registration is unsuccessful, this is true if the client is able to retry registration. |
 | `errorMessage?` | `string`  | If the whitelist registration is unsuccessful, this is populated with the error message explaining why.  |
 | `txHash?`       | `string`  | If the whitelist registration is successful, this is populated with the hash of the transaction.         |
->>>>>>> slytherin
 
 ## Functions
 

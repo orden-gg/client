@@ -1,21 +1,5 @@
-<<<<<<< HEAD
-import { CONTRACT_PRECISION, EMPTY_LOCATION_ID } from '@darkforest_eth/constants';
-import {
-  CORE_CONTRACT_ADDRESS,
-  GETTERS_CONTRACT_ADDRESS,
-  TOKENS_CONTRACT_ADDRESS,
-  WHITELIST_CONTRACT_ADDRESS,
-} from '@darkforest_eth/contracts';
-import type {
-  DarkForestCore,
-  DarkForestGetters,
-  DarkForestTokens,
-  Whitelist,
-} from '@darkforest_eth/contracts/typechain';
-=======
 import { EMPTY_LOCATION_ID } from '@darkforest_eth/constants';
 import { DarkForest } from '@darkforest_eth/contracts/typechain';
->>>>>>> slytherin
 import {
   aggregateBulkGetter,
   ContractCaller,
@@ -51,40 +35,12 @@ import {
   Player,
   QueuedArrival,
   RevealedCoords,
-<<<<<<< HEAD
-  SubmittedActivateArtifact,
-  SubmittedBuyHat,
-  SubmittedDeactivateArtifact,
-  SubmittedDepositArtifact,
-  SubmittedFindArtifact,
-  SubmittedInit,
-  SubmittedMove,
-  SubmittedPlanetTransfer,
-  SubmittedProspectPlanet,
-  SubmittedReveal,
-  SubmittedTx,
-  SubmittedUpgrade,
-  SubmittedWithdrawArtifact,
-  SubmittedWithdrawSilver,
-  UnconfirmedActivateArtifact,
-  UnconfirmedDeactivateArtifact,
-  UnconfirmedDepositArtifact,
-  UnconfirmedInit,
-  UnconfirmedReveal,
-  UnconfirmedWithdrawArtifact,
-  UnconfirmedWithdrawSilver,
-=======
   Setting,
   Transaction,
   TransactionId,
   TxIntent,
->>>>>>> slytherin
   VoyageId,
 } from '@darkforest_eth/types';
-<<<<<<< HEAD
-import bigInt from 'big-integer';
-=======
->>>>>>> slytherin
 import { BigNumber as EthersBN, ContractFunction, Event, providers } from 'ethers';
 import { EventEmitter } from 'events';
 import _ from 'lodash';
@@ -97,16 +53,7 @@ import {
   ContractsAPIEvent,
   PlanetTypeWeightsBySpaceType,
 } from '../../_types/darkforest/api/ContractsAPITypes';
-<<<<<<< HEAD
-import {
-  loadCoreContract,
-  loadGettersContract,
-  loadTokensContract,
-  loadWhitelistContract,
-} from '../Network/Blockchain';
-=======
 import { loadDiamondContract } from '../Network/Blockchain';
->>>>>>> slytherin
 import { eventLogger, EventType } from '../Network/EventLogger';
 
 interface ContractsApiConfig {
@@ -142,25 +89,6 @@ export class ContractsAPI extends EventEmitter {
    */
   public readonly ethConnection: EthConnection;
 
-<<<<<<< HEAD
-  get coreContract() {
-    return this.ethConnection.getContract<DarkForestCore>(CORE_CONTRACT_ADDRESS);
-  }
-
-  get tokensContract() {
-    return this.ethConnection.getContract<DarkForestTokens>(TOKENS_CONTRACT_ADDRESS);
-  }
-
-  get gettersContract() {
-    return this.ethConnection.getContract<DarkForestGetters>(GETTERS_CONTRACT_ADDRESS);
-  }
-
-  get whitelistContract() {
-    return this.ethConnection.getContract<Whitelist>(WHITELIST_CONTRACT_ADDRESS);
-  }
-
-  public constructor(ethConnection: EthConnection) {
-=======
   /**
    * The contract address is saved on the object upon construction
    */
@@ -171,7 +99,6 @@ export class ContractsAPI extends EventEmitter {
   }
 
   public constructor({ connection, contractAddress }: ContractsApiConfig) {
->>>>>>> slytherin
     super();
     this.contractCaller = new ContractCaller();
     this.ethConnection = connection;
@@ -451,398 +378,7 @@ export class ContractsAPI extends EventEmitter {
   }
 
   public getContractAddress(): EthAddress {
-<<<<<<< HEAD
-    return address(this.coreContract.address);
-  }
-
-  /**
-   * Given an unconfirmed (but submitted) transaction, emits the appropriate
-   * [[ContractsAPIEvent]].
-   */
-  public waitFor(
-    submitted: SubmittedTx,
-    receiptPromise: Promise<providers.TransactionReceipt>
-  ): Promise<void | providers.TransactionReceipt> {
-    this.emit(ContractsAPIEvent.TxSubmitted, submitted);
-
-    return receiptPromise
-      .then((receipt) => {
-        this.emit(ContractsAPIEvent.TxConfirmed, submitted);
-        return receipt;
-      })
-      .catch((_err) => {
-        this.emit(ContractsAPIEvent.TxReverted, submitted);
-      });
-  }
-
-  async reveal(
-    args: RevealSnarkContractCallArgs,
-    action: UnconfirmedReveal
-  ): Promise<void | providers.TransactionReceipt> {
-    if (!this.txExecutor) {
-      throw new Error('no signer, cannot execute tx');
-    }
-
-    const tx = this.txExecutor.queueTransaction(
-      action.actionId,
-      this.coreContract,
-      ContractMethodName.REVEAL_LOCATION,
-      args
-    );
-    const unminedRevealTx: SubmittedReveal = {
-      ...action,
-      txHash: (await tx.submitted).hash,
-      sentAtTimestamp: Math.floor(Date.now() / 1000),
-    };
-
-    return this.waitFor(unminedRevealTx, tx.confirmed);
-  }
-
-  async initializePlayer(
-    args: InitSnarkContractCallArgs,
-    action: UnconfirmedInit
-  ): Promise<void | providers.TransactionReceipt> {
-    if (!this.txExecutor) {
-      throw new Error('no signer, cannot execute tx');
-    }
-    const tx = this.txExecutor.queueTransaction(
-      action.actionId,
-      this.coreContract,
-      ContractMethodName.INIT,
-      args
-    );
-
-    const unminedInitTx: SubmittedInit = {
-      ...action,
-      txHash: (await tx.submitted).hash,
-      sentAtTimestamp: Math.floor(Date.now() / 1000),
-    };
-
-    return this.waitFor(unminedInitTx, tx.confirmed);
-  }
-
-  async transferOwnership(
-    planetId: LocationId,
-    newOwner: EthAddress,
-    actionId: string
-  ): Promise<void | providers.TransactionReceipt> {
-    if (!this.txExecutor) {
-      throw new Error('no signer, cannot execute tx');
-    }
-    const tx = this.txExecutor.queueTransaction(
-      actionId,
-      this.coreContract,
-      ContractMethodName.PLANET_TRANSFER,
-      [locationIdToDecStr(planetId), newOwner]
-    );
-
-    const unminedTransferTx: SubmittedPlanetTransfer = {
-      actionId,
-      methodName: ContractMethodName.PLANET_TRANSFER,
-      txHash: (await tx.submitted).hash,
-      sentAtTimestamp: Math.floor(Date.now() / 1000),
-      planetId,
-      newOwner,
-    };
-
-    return this.waitFor(unminedTransferTx, tx.confirmed);
-  }
-
-  // throws if tx initialization fails
-  // otherwise, returns a promise of a submtited (unmined) tx receipt
-  async upgradePlanet(
-    args: UpgradeArgs,
-    actionId: string
-  ): Promise<void | providers.TransactionReceipt> {
-    if (!this.txExecutor) {
-      throw new Error('no signer, cannot execute tx');
-    }
-    const tx = this.txExecutor.queueTransaction(
-      actionId,
-      this.coreContract,
-      ContractMethodName.UPGRADE,
-      args
-    );
-
-    const unminedUpgradeTx: SubmittedUpgrade = {
-      actionId,
-      methodName: ContractMethodName.UPGRADE,
-      txHash: (await tx.submitted).hash,
-      sentAtTimestamp: Math.floor(Date.now() / 1000),
-      locationId: locationIdFromDecStr(args[UpgradeArgIdxs.LOCATION_ID]),
-      upgradeBranch: parseInt(args[UpgradeArgIdxs.UPGRADE_BRANCH]),
-    };
-
-    return this.waitFor(unminedUpgradeTx, tx.confirmed);
-  }
-
-  async prospectPlanet(planetId: LocationId, actionId: string) {
-    if (!this.txExecutor) {
-      throw new Error('no signer, cannot execute tx');
-    }
-
-    const args = [locationIdToDecStr(planetId)];
-
-    const tx = this.txExecutor.queueTransaction(
-      actionId,
-      this.coreContract,
-      ContractMethodName.PROSPECT_PLANET,
-      args
-    );
-
-    const unminedFindArtifact: SubmittedProspectPlanet = {
-      actionId,
-      methodName: ContractMethodName.PROSPECT_PLANET,
-      txHash: (await tx.submitted).hash,
-      sentAtTimestamp: Math.floor(Date.now() / 1000),
-      planetId,
-    };
-
-    return this.waitFor(unminedFindArtifact, tx.confirmed);
-  }
-
-  // throws if tx initialization fails
-  // otherwise, returns a promise of a submtited (unmined) tx receipt
-  async findArtifact(
-    location: WorldLocation,
-    biomeSnarkArgs: BiomebaseSnarkContractCallArgs,
-    actionId: string
-  ): Promise<void | providers.TransactionReceipt> {
-    if (!this.txExecutor) {
-      throw new Error('no signer, cannot execute tx');
-    }
-    const tx = this.txExecutor.queueTransaction(
-      actionId,
-      this.coreContract,
-      ContractMethodName.FIND_ARTIFACT,
-      biomeSnarkArgs
-    );
-
-    const unminedFindArtifact: SubmittedFindArtifact = {
-      actionId,
-      methodName: ContractMethodName.FIND_ARTIFACT,
-      txHash: (await tx.submitted).hash,
-      sentAtTimestamp: Math.floor(Date.now() / 1000),
-      planetId: location.hash,
-    };
-
-    return this.waitFor(unminedFindArtifact, tx.confirmed);
-  }
-
-  async depositArtifact(
-    action: UnconfirmedDepositArtifact
-  ): Promise<void | providers.TransactionReceipt> {
-    if (!this.txExecutor) {
-      throw new Error('no signer, cannot execute tx');
-    }
-    const args: DepositArtifactArgs = [
-      locationIdToDecStr(action.locationId),
-      artifactIdToDecStr(action.artifactId),
-    ];
-
-    const tx = this.txExecutor.queueTransaction(
-      action.actionId,
-      this.coreContract,
-      ContractMethodName.DEPOSIT_ARTIFACT,
-      args
-    );
-
-    const submittedTx: SubmittedDepositArtifact = {
-      ...action,
-      txHash: (await tx.submitted).hash,
-      sentAtTimestamp: Math.floor(Date.now() / 1000),
-    };
-
-    return this.waitFor(submittedTx, tx.confirmed);
-  }
-
-  // throws if tx initialization fails
-  // otherwise, returns a promise of a submtited (unmined) tx receipt
-  async withdrawArtifact(
-    action: UnconfirmedWithdrawArtifact
-  ): Promise<void | providers.TransactionReceipt> {
-    if (!this.txExecutor) {
-      throw new Error('no signer, cannot execute tx');
-    }
-    const args: WithdrawArtifactArgs = [
-      locationIdToDecStr(action.locationId),
-      artifactIdToDecStr(action.artifactId),
-    ];
-
-    const tx = this.txExecutor.queueTransaction(
-      action.actionId,
-      this.coreContract,
-      ContractMethodName.WITHDRAW_ARTIFACT,
-      args
-    );
-
-    const submittedTx: SubmittedWithdrawArtifact = {
-      ...action,
-      txHash: (await tx.submitted).hash,
-      sentAtTimestamp: Math.floor(Date.now() / 1000),
-    };
-
-    return this.waitFor(submittedTx, tx.confirmed);
-  }
-
-  async activateArtifact(action: UnconfirmedActivateArtifact) {
-    if (!this.txExecutor) {
-      throw new Error('no signer, cannot execute tx');
-    }
-
-    const args = [
-      locationIdToDecStr(action.locationId),
-      artifactIdToDecStr(action.artifactId),
-      action.wormholeTo ? locationIdToDecStr(action.wormholeTo) : '0',
-    ];
-
-    const tx = this.txExecutor.queueTransaction(
-      action.actionId,
-      this.coreContract,
-      ContractMethodName.ACTIVATE_ARTIFACT,
-      args
-    );
-
-    const submittedTx: SubmittedActivateArtifact = {
-      ...action,
-      txHash: (await tx.submitted).hash,
-      sentAtTimestamp: Math.floor(Date.now() / 1000),
-    };
-
-    return this.waitFor(submittedTx, tx.confirmed);
-  }
-
-  async deactivateArtifact(action: UnconfirmedDeactivateArtifact) {
-    if (!this.txExecutor) {
-      throw new Error('no signer, cannot execute tx');
-    }
-
-    const args = [locationIdToDecStr(action.locationId)];
-
-    const tx = this.txExecutor.queueTransaction(
-      action.actionId,
-      this.coreContract,
-      ContractMethodName.DEACTIVATE_ARTIFACT,
-      args
-    );
-
-    const submittedTx: SubmittedDeactivateArtifact = {
-      ...action,
-      txHash: (await tx.submitted).hash,
-      sentAtTimestamp: Math.floor(Date.now() / 1000),
-    };
-
-    return this.waitFor(submittedTx, tx.confirmed);
-  }
-
-  // throws if tx initialization fails
-  // otherwise, returns a promise of a submtited (unmined) tx receipt
-  async move(
-    actionId: string,
-    snarkArgs: MoveSnarkContractCallArgs,
-    shipsMoved: number,
-    silverMoved: number,
-    artifactMoved?: ArtifactId
-  ): Promise<void | providers.TransactionReceipt> {
-    if (!this.txExecutor) {
-      throw new Error('no signer, cannot execute tx');
-    }
-    const args = [
-      snarkArgs[ZKArgIdx.PROOF_A],
-      snarkArgs[ZKArgIdx.PROOF_B],
-      snarkArgs[ZKArgIdx.PROOF_C],
-      [
-        ...snarkArgs[ZKArgIdx.DATA],
-        (shipsMoved * CONTRACT_PRECISION).toString(),
-        (silverMoved * CONTRACT_PRECISION).toString(),
-        '0',
-      ],
-    ] as MoveArgs;
-
-    if (artifactMoved) {
-      args[ZKArgIdx.DATA][MoveArgIdxs.ARTIFACT_SENT] = artifactIdToDecStr(artifactMoved);
-    }
-
-    const tx = this.txExecutor.queueTransaction(
-      actionId,
-      this.coreContract,
-      ContractMethodName.MOVE,
-      args
-    );
-
-    const forcesFloat = parseFloat(args[ZKArgIdx.DATA][MoveArgIdxs.SHIPS_SENT]);
-    const silverFloat = parseFloat(args[ZKArgIdx.DATA][MoveArgIdxs.SILVER_SENT]);
-
-    const unminedMoveTx: SubmittedMove = {
-      actionId,
-      methodName: ContractMethodName.MOVE,
-      txHash: (await tx.submitted).hash,
-      sentAtTimestamp: Math.floor(Date.now() / 1000),
-      from: locationIdFromDecStr(args[ZKArgIdx.DATA][MoveArgIdxs.FROM_ID]),
-      to: locationIdFromDecStr(args[ZKArgIdx.DATA][MoveArgIdxs.TO_ID]),
-      forces: forcesFloat / CONTRACT_PRECISION,
-      silver: silverFloat / CONTRACT_PRECISION,
-    };
-
-    if (artifactMoved) unminedMoveTx.artifact = artifactMoved;
-
-    return this.waitFor(unminedMoveTx, tx.confirmed);
-  }
-
-  async buyHat(planetIdDecStr: string, currentHatLevel: number, actionId: string) {
-    if (!this.txExecutor) {
-      throw new Error('no signer, cannot execute tx');
-    }
-    const overrides: providers.TransactionRequest = {
-      gasLimit: 500000,
-      value: bigInt(1000000000000000000)
-        .multiply(2 ** currentHatLevel)
-        .toString(),
-    };
-
-    const tx = this.txExecutor.queueTransaction(
-      actionId,
-      this.coreContract,
-      ContractMethodName.BUY_HAT,
-      [planetIdDecStr],
-      overrides
-    );
-
-    const unminedBuyHatTx: SubmittedBuyHat = {
-      actionId,
-      methodName: ContractMethodName.BUY_HAT,
-      txHash: (await tx.submitted).hash,
-      sentAtTimestamp: Math.floor(Date.now() / 1000),
-      locationId: locationIdFromDecStr(planetIdDecStr),
-    };
-
-    return this.waitFor(unminedBuyHatTx, tx.confirmed);
-  }
-
-  async withdrawSilver(
-    action: UnconfirmedWithdrawSilver
-  ): Promise<void | providers.TransactionReceipt> {
-    if (!this.txExecutor) {
-      throw new Error('no signer, cannot execute tx');
-    }
-
-    const args = [locationIdToDecStr(action.locationId), action.amount * CONTRACT_PRECISION];
-    const tx = this.txExecutor.queueTransaction(
-      action.actionId,
-      this.coreContract,
-      ContractMethodName.WITHDRAW_SILVER,
-      args
-    );
-    const unminedWithdrawSilverTx: SubmittedWithdrawSilver = {
-      ...action,
-      txHash: (await tx.submitted).hash,
-      sentAtTimestamp: Math.floor(Date.now() / 1000),
-    };
-
-    return this.waitFor(unminedWithdrawSilverTx, tx.confirmed);
-=======
     return this.contractAddress;
->>>>>>> slytherin
   }
 
   async getConstants(): Promise<ContractConstants> {
@@ -1346,20 +882,11 @@ export class ContractsAPI extends EventEmitter {
   }
 }
 
-<<<<<<< HEAD
-export async function makeContractsAPI(ethConnection: EthConnection): Promise<ContractsAPI> {
-  // Could turn this into an array and iterate, but I like the explicitness
-  await ethConnection.loadContract(CORE_CONTRACT_ADDRESS, loadCoreContract);
-  await ethConnection.loadContract(GETTERS_CONTRACT_ADDRESS, loadGettersContract);
-  await ethConnection.loadContract(WHITELIST_CONTRACT_ADDRESS, loadWhitelistContract);
-  await ethConnection.loadContract(TOKENS_CONTRACT_ADDRESS, loadTokensContract);
-=======
 export async function makeContractsAPI({
   connection,
   contractAddress,
 }: ContractsApiConfig): Promise<ContractsAPI> {
   await connection.loadContract(contractAddress, loadDiamondContract);
->>>>>>> slytherin
 
   return new ContractsAPI({ connection, contractAddress });
 }

@@ -1,19 +1,12 @@
 import { CONTRACT_ADDRESS } from '@darkforest_eth/contracts';
 import { address } from '@darkforest_eth/serde';
 import React from 'react';
-<<<<<<< HEAD
-import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
-=======
 import { BrowserRouter as Router, Redirect, Route, Switch } from 'react-router-dom';
->>>>>>> slytherin
 import { createGlobalStyle } from 'styled-components';
 import { Theme } from '../Components/Theme';
 import { LandingPageBackground } from '../Renderers/LandingPageCanvas';
 import dfstyles from '../Styles/dfstyles';
-<<<<<<< HEAD
-=======
 import { CreateLobby } from './CreateLobby';
->>>>>>> slytherin
 import { GameLandingPage } from './GameLandingPage';
 import { GifMaker } from './GifMaker';
 import LandingPage from './LandingPage';
@@ -33,23 +26,6 @@ function App() {
   return (
     <>
       <GlobalStyle />
-<<<<<<< HEAD
-      <Router>
-        <Switch>
-          <Route path='/play' component={GameLandingPage} />
-          <Route path='/' exact component={LandingPage} />
-          <Route path='/planet/:locationId' component={SharePlanet} />
-          <Route path='/artifact/:artifactId' component={ShareArtifact} />
-          <Route path='/wallet/:addr/:actionId/:balance/:method' component={TxConfirmPopup} />
-          <Route path='/unsubscribe' component={UnsubscribePage} />
-          <Route path='/valhalla' component={ValhallaPage} />
-          {!isProd && <Route path='/images' component={TestArtifactImages} />}
-          {!isProd && <Route path='/preview' component={PreviewPage} />}
-          {!isProd && <Route path='/gifs' component={GifMaker} />}
-          {!isProd && <Route path='/bg' component={LandingPageBackground} />}
-        </Switch>
-      </Router>
-=======
       {/* Provides theming for WebComponents from the `@darkforest_eth/ui` package */}
       <Theme color='dark' scale='medium'>
         <Router>
@@ -74,7 +50,6 @@ function App() {
           </Switch>
         </Router>
       </Theme>
->>>>>>> slytherin
     </>
   );
 }

@@ -45,11 +45,7 @@ class RemoteWorker implements Worker {
   private url: string;
 
   constructor(url: string) {
-<<<<<<< HEAD
-    this.url = url
-=======
     this.url = url;
->>>>>>> slytherin
   }
 
   async postMessage(msg: string) {
@@ -77,14 +73,7 @@ class RemoteWorker implements Worker {
     exploredChunk.perlin = df.spaceTypePerlin(chunkCenter, false);
     for (const planetLoc of exploredChunk.planetLocations) {
       planetLoc.hash = locationIdFromDecStr(planetLoc.hash);
-<<<<<<< HEAD
-      planetLoc.perlin = df.spaceTypePerlin(
-        { x: planetLoc.coords.x, y: planetLoc.coords.y },
-        true
-      );
-=======
       planetLoc.perlin = df.spaceTypePerlin({ x: planetLoc.coords.x, y: planetLoc.coords.y }, true);
->>>>>>> slytherin
       planetLoc.biomebase = df.biomebasePerlin(
         { x: planetLoc.coords.x, y: planetLoc.coords.y },
         true

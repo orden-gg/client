@@ -95,11 +95,7 @@
 - [getCaptureZones](Backend_GameLogic_GameUIManager.default.md#getcapturezones)
 - [getChunk](Backend_GameLogic_GameUIManager.default.md#getchunk)
 - [getContractAddress](Backend_GameLogic_GameUIManager.default.md#getcontractaddress)
-<<<<<<< HEAD
-- [getContractConstants](Backend_GameLogic_GameUIManager.default.md#getcontractconstants)
-=======
 - [getDefaultSpaceJunkForPlanetLevel](Backend_GameLogic_GameUIManager.default.md#getdefaultspacejunkforplanetlevel)
->>>>>>> slytherin
 - [getDiagnostics](Backend_GameLogic_GameUIManager.default.md#getdiagnostics)
 - [getDiscoverBiomeName](Backend_GameLogic_GameUIManager.default.md#getdiscoverbiomename)
 - [getDistCoords](Backend_GameLogic_GameUIManager.default.md#getdistcoords)
@@ -178,11 +174,8 @@
 - [getWorldSilver](Backend_GameLogic_GameUIManager.default.md#getworldsilver)
 - [getWormholes](Backend_GameLogic_GameUIManager.default.md#getwormholes)
 - [hasMinedChunk](Backend_GameLogic_GameUIManager.default.md#hasminedchunk)
-<<<<<<< HEAD
-=======
 - [isAbandoning](Backend_GameLogic_GameUIManager.default.md#isabandoning)
 - [isAdmin](Backend_GameLogic_GameUIManager.default.md#isadmin)
->>>>>>> slytherin
 - [isCurrentlyRevealing](Backend_GameLogic_GameUIManager.default.md#iscurrentlyrevealing)
 - [isMining](Backend_GameLogic_GameUIManager.default.md#ismining)
 - [isOverOwnPlanet](Backend_GameLogic_GameUIManager.default.md#isoverownplanet)
@@ -555,15 +548,9 @@ choose to render themselves into this overlay container using React Portals.
 
 #### Parameters
 
-<<<<<<< HEAD
-| Name    | Type                                         |
-| :------ | :------------------------------------------- |
-| `chunk` | [`Chunk`](types_global_GlobalTypes.Chunk.md) |
-=======
 | Name    | Type    |
 | :------ | :------ |
 | `chunk` | `Chunk` |
->>>>>>> slytherin
 
 #### Returns
 
@@ -577,15 +564,9 @@ choose to render themselves into this overlay container using React Portals.
 
 #### Parameters
 
-<<<<<<< HEAD
-| Name     | Type                                           |
-| :------- | :--------------------------------------------- |
-| `chunks` | [`Chunk`](types_global_GlobalTypes.Chunk.md)[] |
-=======
 | Name     | Type      |
 | :------- | :-------- |
 | `chunks` | `Chunk`[] |
->>>>>>> slytherin
 
 #### Returns
 
@@ -986,25 +967,12 @@ choose to render themselves into this overlay container using React Portals.
 
 ### getCaptureZoneGenerator
 
-<<<<<<< HEAD
-▸ **getChunk**(`chunkFootprint`): `undefined` \| [`Chunk`](types_global_GlobalTypes.Chunk.md)
-=======
 ▸ **getCaptureZoneGenerator**(): [`CaptureZoneGenerator`](Backend_GameLogic_CaptureZoneGenerator.CaptureZoneGenerator.md)
->>>>>>> slytherin
 
 #### Returns
 
 [`CaptureZoneGenerator`](Backend_GameLogic_CaptureZoneGenerator.CaptureZoneGenerator.md)
 
-<<<<<<< HEAD
-| Name             | Type                                                               |
-| :--------------- | :----------------------------------------------------------------- |
-| `chunkFootprint` | [`Rectangle`](../interfaces/types_global_GlobalTypes.Rectangle.md) |
-
-#### Returns
-
-`undefined` \| [`Chunk`](types_global_GlobalTypes.Chunk.md)
-=======
 ---
 
 ### getCaptureZonePointValues
@@ -1014,7 +982,6 @@ choose to render themselves into this overlay container using React Portals.
 #### Returns
 
 [`number`, `number`, `number`, `number`, `number`, `number`, `number`, `number`, `number`, `number`]
->>>>>>> slytherin
 
 ---
 
@@ -1030,13 +997,6 @@ choose to render themselves into this overlay container using React Portals.
 
 ### getChunk
 
-<<<<<<< HEAD
-▸ **getContractConstants**(): [`ContractConstants`](../interfaces/types_darkforest_api_ContractsAPITypes.ContractConstants.md)
-
-#### Returns
-
-[`ContractConstants`](../interfaces/types_darkforest_api_ContractsAPITypes.ContractConstants.md)
-=======
 ▸ **getChunk**(`chunkFootprint`): `undefined` \| `Chunk`
 
 #### Parameters
@@ -1074,7 +1034,6 @@ choose to render themselves into this overlay container using React Portals.
 #### Returns
 
 `number`
->>>>>>> slytherin
 
 ---
 
@@ -1195,19 +1154,11 @@ choose to render themselves into this overlay container using React Portals.
 
 ### getExploredChunks
 
-<<<<<<< HEAD
-▸ **getExploredChunks**(): `Iterable`<[`Chunk`](types_global_GlobalTypes.Chunk.md)\>
-
-#### Returns
-
-`Iterable`<[`Chunk`](types_global_GlobalTypes.Chunk.md)\>
-=======
 ▸ **getExploredChunks**(): `Iterable`<`Chunk`\>
 
 #### Returns
 
 `Iterable`<`Chunk`\>
->>>>>>> slytherin
 
 ---
 
@@ -1367,17 +1318,10 @@ state in some way
 
 `Object`
 
-<<<<<<< HEAD
-| Name            | Type                                                                                                             |
-| :-------------- | :--------------------------------------------------------------------------------------------------------------- |
-| `cachedPlanets` | `Map`<`LocationId`, [`PlanetRenderInfo`](../interfaces/Backend_GameLogic_ViewportEntities.PlanetRenderInfo.md)\> |
-| `chunks`        | `Set`<[`Chunk`](types_global_GlobalTypes.Chunk.md)\>                                                             |
-=======
 | Name            | Type                                     |
 | :-------------- | :--------------------------------------- |
 | `cachedPlanets` | `Map`<`LocationId`, `PlanetRenderInfo`\> |
 | `chunks`        | `Set`<`Chunk`\>                          |
->>>>>>> slytherin
 
 ---
 
@@ -2015,19 +1959,11 @@ drill fields like this anymore.
 
 ### getWormholes
 
-<<<<<<< HEAD
-▸ **getWormholes**(): `Iterable`<[`Wormhole`](../modules/types_global_GlobalTypes.md#wormhole)\>
-
-#### Returns
-
-`Iterable`<[`Wormhole`](../modules/types_global_GlobalTypes.md#wormhole)\>
-=======
 ▸ **getWormholes**(): `Iterable`<`Wormhole`\>
 
 #### Returns
 
 `Iterable`<`Wormhole`\>
->>>>>>> slytherin
 
 ---
 
@@ -2037,11 +1973,6 @@ drill fields like this anymore.
 
 #### Parameters
 
-<<<<<<< HEAD
-| Name            | Type                                                               |
-| :-------------- | :----------------------------------------------------------------- |
-| `chunkLocation` | [`Rectangle`](../interfaces/types_global_GlobalTypes.Rectangle.md) |
-=======
 | Name            | Type        |
 | :-------------- | :---------- |
 | `chunkLocation` | `Rectangle` |
@@ -2065,7 +1996,6 @@ drill fields like this anymore.
 ### isAdmin
 
 ▸ **isAdmin**(): `boolean`
->>>>>>> slytherin
 
 #### Returns
 
@@ -2183,15 +2113,9 @@ drill fields like this anymore.
 
 #### Parameters
 
-<<<<<<< HEAD
-| Name    | Type                                         |
-| :------ | :------------------------------------------- |
-| `chunk` | [`Chunk`](types_global_GlobalTypes.Chunk.md) |
-=======
 | Name    | Type    |
 | :------ | :------ |
 | `chunk` | `Chunk` |
->>>>>>> slytherin
 
 #### Returns
 
@@ -2664,8 +2588,6 @@ about what the overlay container is.
 ---
 
 ### stopExplore
-<<<<<<< HEAD
-=======
 
 ▸ **stopExplore**(): `void`
 
@@ -2676,7 +2598,6 @@ about what the overlay container is.
 ---
 
 ### timeUntilNextBroadcastAvailable
->>>>>>> slytherin
 
 ▸ **timeUntilNextBroadcastAvailable**(): `number`
 

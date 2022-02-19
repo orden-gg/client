@@ -81,11 +81,7 @@
 
 ### chunkMap
 
-<<<<<<< HEAD
-• `Private` **chunkMap**: `Map`<[`ChunkId`](../modules/types_darkforest_api_ChunkStoreTypes.md#chunkid), [`Chunk`](types_global_GlobalTypes.Chunk.md)\>
-=======
 • `Private` **chunkMap**: `Map`<[`ChunkId`](../modules/types_darkforest_api_ChunkStoreTypes.md#chunkid), `Chunk`\>
->>>>>>> slytherin
 
 ---
 
@@ -143,17 +139,10 @@ i.e. it already exists in persistent storage.
 
 #### Parameters
 
-<<<<<<< HEAD
-| Name           | Type                                         | Default value |
-| :------------- | :------------------------------------------- | :------------ |
-| `chunk`        | [`Chunk`](types_global_GlobalTypes.Chunk.md) | `undefined`   |
-| `persistChunk` | `boolean`                                    | `true`        |
-=======
 | Name           | Type      | Default value |
 | :------------- | :-------- | :------------ |
 | `chunk`        | `Chunk`   | `undefined`   |
 | `persistChunk` | `boolean` | `true`        |
->>>>>>> slytherin
 
 #### Returns
 
@@ -179,19 +168,11 @@ i.e. it already exists in persistent storage.
 
 ### allChunks
 
-<<<<<<< HEAD
-▸ **allChunks**(): `Iterable`<[`Chunk`](types_global_GlobalTypes.Chunk.md)\>
-
-#### Returns
-
-`Iterable`<[`Chunk`](types_global_GlobalTypes.Chunk.md)\>
-=======
 ▸ **allChunks**(): `Iterable`<`Chunk`\>
 
 #### Returns
 
 `Iterable`<`Chunk`\>
->>>>>>> slytherin
 
 ---
 
@@ -240,11 +221,7 @@ i.e. it already exists in persistent storage.
 
 ### getChunkByFootprint
 
-<<<<<<< HEAD
-▸ **getChunkByFootprint**(`chunkLoc`): `undefined` \| [`Chunk`](types_global_GlobalTypes.Chunk.md)
-=======
 ▸ **getChunkByFootprint**(`chunkLoc`): `undefined` \| `Chunk`
->>>>>>> slytherin
 
 Returns the explored chunk data for the given rectangle if that chunk has been mined. If this
 chunk is entirely contained within another bigger chunk that has been mined, return that chunk.
@@ -253,15 +230,6 @@ function.
 
 #### Parameters
 
-<<<<<<< HEAD
-| Name       | Type                                                               |
-| :--------- | :----------------------------------------------------------------- |
-| `chunkLoc` | [`Rectangle`](../interfaces/types_global_GlobalTypes.Rectangle.md) |
-
-#### Returns
-
-`undefined` \| [`Chunk`](types_global_GlobalTypes.Chunk.md)
-=======
 | Name       | Type        |
 | :--------- | :---------- |
 | `chunkLoc` | `Rectangle` |
@@ -269,17 +237,12 @@ function.
 #### Returns
 
 `undefined` \| `Chunk`
->>>>>>> slytherin
 
 ---
 
 ### getChunkById
 
-<<<<<<< HEAD
-▸ `Private` **getChunkById**(`chunkId`): `undefined` \| [`Chunk`](types_global_GlobalTypes.Chunk.md)
-=======
 ▸ `Private` **getChunkById**(`chunkId`): `undefined` \| `Chunk`
->>>>>>> slytherin
 
 #### Parameters
 
@@ -289,11 +252,7 @@ function.
 
 #### Returns
 
-<<<<<<< HEAD
-`undefined` \| [`Chunk`](types_global_GlobalTypes.Chunk.md)
-=======
 `undefined` \| `Chunk`
->>>>>>> slytherin
 
 ---
 
@@ -336,11 +295,7 @@ current configuration of the client.
 
 ### getMinedSubChunks
 
-<<<<<<< HEAD
-▸ `Private` **getMinedSubChunks**(`chunk`): [`Chunk`](types_global_GlobalTypes.Chunk.md)[]
-=======
 ▸ `Private` **getMinedSubChunks**(`chunk`): `Chunk`[]
->>>>>>> slytherin
 
 Returns all the mined chunks with smaller sidelength strictly contained in the chunk.
 
@@ -349,15 +304,6 @@ the function named `addToChunkMap`.
 
 #### Parameters
 
-<<<<<<< HEAD
-| Name    | Type                                         |
-| :------ | :------------------------------------------- |
-| `chunk` | [`Chunk`](types_global_GlobalTypes.Chunk.md) |
-
-#### Returns
-
-[`Chunk`](types_global_GlobalTypes.Chunk.md)[]
-=======
 | Name    | Type    |
 | :------ | :------ |
 | `chunk` | `Chunk` |
@@ -365,7 +311,6 @@ the function named `addToChunkMap`.
 #### Returns
 
 `Chunk`[]
->>>>>>> slytherin
 
 ---
 
@@ -415,15 +360,9 @@ the function named `addToChunkMap`.
 
 #### Parameters
 
-<<<<<<< HEAD
-| Name       | Type                                                               |
-| :--------- | :----------------------------------------------------------------- |
-| `chunkLoc` | [`Rectangle`](../interfaces/types_global_GlobalTypes.Rectangle.md) |
-=======
 | Name       | Type        |
 | :--------- | :---------- |
 | `chunkLoc` | `Rectangle` |
->>>>>>> slytherin
 
 #### Returns
 

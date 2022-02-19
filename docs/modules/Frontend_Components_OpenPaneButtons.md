@@ -19,14 +19,6 @@
 
 #### Parameters
 
-<<<<<<< HEAD
-| Name                                  | Type                                                                   |
-| :------------------------------------ | :--------------------------------------------------------------------- |
-| `__namedParameters`                   | `Object`                                                               |
-| `__namedParameters.modal`             | [`ModalHandle`](../interfaces/Frontend_Views_ModalPane.ModalHandle.md) |
-| `__namedParameters.planetId`          | `undefined` \| `LocationId`                                            |
-| `__namedParameters.shortcutDisabled?` | `boolean`                                                              |
-=======
 | Name                         | Type                                                                   |
 | :--------------------------- | :--------------------------------------------------------------------- |
 | `__namedParameters`          | `Object`                                                               |
@@ -50,7 +42,6 @@
 | `__namedParameters`          | `Object`                                                               |
 | `__namedParameters.modal`    | [`ModalHandle`](../interfaces/Frontend_Views_ModalPane.ModalHandle.md) |
 | `__namedParameters.planetId` | `undefined` \| `LocationId`                                            |
->>>>>>> slytherin
 
 #### Returns
 
@@ -64,20 +55,11 @@
 
 #### Parameters
 
-<<<<<<< HEAD
-| Name                                  | Type                                                                   |
-| :------------------------------------ | :--------------------------------------------------------------------- |
-| `__namedParameters`                   | `Object`                                                               |
-| `__namedParameters.modal`             | [`ModalHandle`](../interfaces/Frontend_Views_ModalPane.ModalHandle.md) |
-| `__namedParameters.planetId`          | `undefined` \| `LocationId`                                            |
-| `__namedParameters.shortcutDisabled?` | `boolean`                                                              |
-=======
 | Name                         | Type                                                                   |
 | :--------------------------- | :--------------------------------------------------------------------- |
 | `__namedParameters`          | `Object`                                                               |
 | `__namedParameters.modal`    | [`ModalHandle`](../interfaces/Frontend_Views_ModalPane.ModalHandle.md) |
 | `__namedParameters.planetId` | `undefined` \| `LocationId`                                            |
->>>>>>> slytherin
 
 #### Returns
 
@@ -91,14 +73,6 @@
 
 #### Parameters
 
-<<<<<<< HEAD
-| Name                                  | Type                                                                   |
-| :------------------------------------ | :--------------------------------------------------------------------- |
-| `__namedParameters`                   | `Object`                                                               |
-| `__namedParameters.modal`             | [`ModalHandle`](../interfaces/Frontend_Views_ModalPane.ModalHandle.md) |
-| `__namedParameters.planetId`          | `undefined` \| `LocationId`                                            |
-| `__namedParameters.shortcutDisabled?` | `boolean`                                                              |
-=======
 | Name                             | Type                                                                      |
 | :------------------------------- | :------------------------------------------------------------------------ |
 | `__namedParameters`              | `Object`                                                                  |
@@ -107,7 +81,6 @@
 | `__namedParameters.shortcut?`    | `string`                                                                  |
 | `__namedParameters.title`        | `string`                                                                  |
 | `__namedParameters.element`      | () => `ReactElement`<`any`, `string` \| `JSXElementConstructor`<`any`\>\> |
->>>>>>> slytherin
 
 #### Returns
 
@@ -121,23 +94,11 @@
 
 #### Parameters
 
-<<<<<<< HEAD
-| Name                                  | Type                                                                      |
-| :------------------------------------ | :------------------------------------------------------------------------ |
-| `__namedParameters`                   | `Object`                                                                  |
-| `__namedParameters.helpContent?`      | `ReactElement`<`any`, `string` \| `JSXElementConstructor`<`any`\>\>       |
-| `__namedParameters.modal`             | [`ModalHandle`](../interfaces/Frontend_Views_ModalPane.ModalHandle.md)    |
-| `__namedParameters.shortcutDisabled?` | `boolean`                                                                 |
-| `__namedParameters.shortcutKey?`      | `string`                                                                  |
-| `__namedParameters.title`             | `string`                                                                  |
-| `__namedParameters.element`           | () => `ReactElement`<`any`, `string` \| `JSXElementConstructor`<`any`\>\> |
-=======
 | Name                         | Type                                                                   |
 | :--------------------------- | :--------------------------------------------------------------------- |
 | `__namedParameters`          | `Object`                                                               |
 | `__namedParameters.modal`    | [`ModalHandle`](../interfaces/Frontend_Views_ModalPane.ModalHandle.md) |
 | `__namedParameters.planetId` | `undefined` \| `LocationId`                                            |
->>>>>>> slytherin
 
 #### Returns
 
@@ -151,20 +112,11 @@
 
 #### Parameters
 
-<<<<<<< HEAD
-| Name                                  | Type                                                                   |
-| :------------------------------------ | :--------------------------------------------------------------------- |
-| `__namedParameters`                   | `Object`                                                               |
-| `__namedParameters.modal`             | [`ModalHandle`](../interfaces/Frontend_Views_ModalPane.ModalHandle.md) |
-| `__namedParameters.planetId`          | `undefined` \| `LocationId`                                            |
-| `__namedParameters.shortcutDisabled?` | `boolean`                                                              |
-=======
 | Name                         | Type                                                                   |
 | :--------------------------- | :--------------------------------------------------------------------- |
 | `__namedParameters`          | `Object`                                                               |
 | `__namedParameters.modal`    | [`ModalHandle`](../interfaces/Frontend_Views_ModalPane.ModalHandle.md) |
 | `__namedParameters.planetId` | `undefined` \| `LocationId`                                            |
->>>>>>> slytherin
 
 #### Returns
 

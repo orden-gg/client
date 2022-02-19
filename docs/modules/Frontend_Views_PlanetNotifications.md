@@ -73,18 +73,10 @@
 
 #### Parameters
 
-<<<<<<< HEAD
-| Name                 | Type                        |
-| :------------------- | :-------------------------- |
-| `planet`             | `undefined` \| `Planet`     |
-| `account`            | `undefined` \| `EthAddress` |
-| `currentBlockNumber` | `undefined` \| `number`     |
-=======
 | Name      | Type                        |
 | :-------- | :-------------------------- |
 | `planet`  | `undefined` \| `Planet`     |
 | `account` | `undefined` \| `EthAddress` |
->>>>>>> slytherin
 
 #### Returns
 

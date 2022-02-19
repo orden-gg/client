@@ -16,25 +16,6 @@
 
 ## Variables
 
-<<<<<<< HEAD
-### SpecialKey
-
-• **SpecialKey**: `Object`
-
-#### Type declaration
-
-| Name      | Type        |
-| :-------- | :---------- |
-| `Control` | `"Control"` |
-| `Escape`  | `"Escape"`  |
-| `Shift`   | `"Shift"`   |
-| `Space`   | `" "`       |
-| `Tab`     | `"Tab"`     |
-
----
-
-=======
->>>>>>> slytherin
 ### keyDown$
 
 • **keyDown$**: `Monomitter`<[`Wrapper`](../classes/Backend_Utils_Wrapper.Wrapper.md)<`string`\>\>

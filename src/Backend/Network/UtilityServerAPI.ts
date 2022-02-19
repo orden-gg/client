@@ -109,11 +109,6 @@ export async function callRegisterAndWaitForConfirmation(
   key: string,
   address: EthAddress,
   terminal: React.MutableRefObject<TerminalHandle | undefined>
-<<<<<<< HEAD
-): Promise<string | undefined> {
-  if (!process.env.DF_WEBSERVER_URL) {
-    return undefined;
-=======
 ): Promise<RegisterConfirmationResponse> {
   if (!process.env.DF_WEBSERVER_URL) {
     return { errorMessage: 'Cannot connect to server.', canRetry: false };
@@ -123,7 +118,6 @@ export async function callRegisterAndWaitForConfirmation(
 
   if (response?.error) {
     return { errorMessage: response.error, canRetry: false };
->>>>>>> slytherin
   }
 
   while (true) {

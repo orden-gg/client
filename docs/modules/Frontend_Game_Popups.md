@@ -14,18 +14,9 @@
 
 #### Parameters
 
-<<<<<<< HEAD
-| Name            | Type                |
-| :-------------- | :------------------ |
-| `ethConnection` | `EthConnection`     |
-| `txRequest`     | `QueuedTransaction` |
-| `from`          | `EthAddress`        |
-| `gasFeeGwei`    | `BigNumber`         |
-=======
 | Name                | Type                     |
 | :------------------ | :----------------------- |
 | `__namedParameters` | `OpenConfirmationConfig` |
->>>>>>> slytherin
 
 #### Returns
 

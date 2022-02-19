@@ -26,10 +26,7 @@
 | `__namedParameters.alignments?`   | (`"r"` \| `"l"` \| `"c"`)[]                |
 | `__namedParameters.columns`       | (`t`: `T`, `i`: `number`) => `ReactNode`[] |
 | `__namedParameters.headers`       | `ReactNode`[]                              |
-<<<<<<< HEAD
-=======
 | `__namedParameters.paginated?`    | `boolean`                                  |
->>>>>>> slytherin
 | `__namedParameters.rows`          | `T`[]                                      |
 | `__namedParameters.sortFunctions` | (`left`: `T`, `right`: `T`) => `number`[]  |
 

@@ -55,12 +55,9 @@ export const enum ContractEvent {
   ArtifactActivated = 'ArtifactActivated',
   ArtifactDeactivated = 'ArtifactDeactivated',
   PlanetSilverWithdrawn = 'PlanetSilverWithdrawn',
-<<<<<<< HEAD
-=======
   AdminOwnershipChanged = 'AdminOwnershipChanged',
   PauseStateChanged = 'PauseStateChanged',
   LobbyCreated = 'LobbyCreated',
->>>>>>> slytherin
 }
 
 export const enum ContractsAPIEvent {
@@ -71,9 +68,6 @@ export const enum ContractsAPIEvent {
   ArtifactUpdate = 'ArtifactUpdate',
   RadiusUpdated = 'RadiusUpdated',
   LocationRevealed = 'LocationRevealed',
-<<<<<<< HEAD
-  TxInitFailed = 'TxInitFailed',
-=======
   /**
    * The transaction has been queued for future execution.
    */
@@ -92,7 +86,6 @@ export const enum ContractsAPIEvent {
    * The transaction has been submitted and we are awaiting
    * confirmation.
    */
->>>>>>> slytherin
   TxSubmitted = 'TxSubmitted',
   /**
    * The transaction has been confirmed.

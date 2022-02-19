@@ -32,18 +32,10 @@
 
 ### NumberInput
 
-<<<<<<< HEAD
-• **DFInput**: `StyledComponent`<`"input"`, `any`, `Object`, `never`\>
-=======
 • **NumberInput**: `ForwardRefExoticComponent`<`Partial`<`Omit`<[`DarkForestNumberInput`](../classes/Frontend_Components_Input.DarkForestNumberInput.md), `"children"`\>\> & `Events`<`Object`\> & `HTMLAttributes`<`HTMLElement`\> & {} & `RefAttributes`<`unknown`\>\>
->>>>>>> slytherin
 
 ---
 
 ### TextInput
 
-<<<<<<< HEAD
-• **Input**: `ForwardRefExoticComponent`<`Pick`<`ClassAttributes`<`HTMLInputElement`\> & `InputHTMLAttributes`<`HTMLInputElement`\> & `InputProps`, `"key"` \| `"wide"` \| keyof `InputHTMLAttributes`<`HTMLInputElement`\>\> & `RefAttributes`<`HTMLInputElement`\>\>
-=======
 • **TextInput**: `ForwardRefExoticComponent`<`Partial`<`Omit`<[`DarkForestTextInput`](../classes/Frontend_Components_Input.DarkForestTextInput.md), `"children"`\>\> & `Events`<`Object`\> & `HTMLAttributes`<`HTMLElement`\> & {} & `RefAttributes`<`unknown`\>\>
->>>>>>> slytherin

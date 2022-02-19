@@ -50,11 +50,7 @@
 
 ### MoveArgs
 
-<<<<<<< HEAD
-Ƭ **MoveArgs**: [[`string`, `string`], [[`string`, `string`], [`string`, `string`]], [`string`, `string`], [`string`, `string`, `string`, `string`, `string`, `string`, `string`, `string`, `string`, `string`, `string`, `string`, `string`]]
-=======
 Ƭ **MoveArgs**: [[`string`, `string`], [[`string`, `string`], [`string`, `string`]], [`string`, `string`], [`string`, `string`, `string`, `string`, `string`, `string`, `string`, `string`, `string`, `string`, `string`, `string`, `string`, `string`]]
->>>>>>> slytherin
 
 ---
 

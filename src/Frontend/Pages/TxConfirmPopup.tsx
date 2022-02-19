@@ -159,11 +159,6 @@ export function TxConfirmPopup({
   const hatPlanet = localStorage.getItem(`${account}-hatPlanet`);
   const hatLevel = localStorage.getItem(`${account}-hatLevel`);
   const hatCost: number = method === 'buyHat' && hatLevel ? 2 ** parseInt(hatLevel) : 0;
-<<<<<<< HEAD
-
-  const txCost: number = hatCost + 0.002 * weiToGwei(gasFee);
-=======
->>>>>>> slytherin
 
   const txCost: number = hatCost + 0.002 * weiToGwei(gasFee);
 
@@ -189,11 +184,8 @@ export function TxConfirmPopup({
 
   const withdrawSilverPlanet = localStorage.getItem(`${account}-withdrawSilverPlanet`);
 
-<<<<<<< HEAD
-=======
   const revealPlanet = localStorage.getItem(`${account}-revealLocationId`);
 
->>>>>>> slytherin
   return (
     <StyledTxConfirmPopup>
       <div className='section'>
@@ -316,19 +308,10 @@ export function TxConfirmPopup({
           </>
         )}
         {method === 'withdrawSilver' && (
-<<<<<<< HEAD
-          <>
-            <div>
-              <b>Planet ID</b>
-              <span className='mono'>{withdrawSilverPlanet}</span>
-            </div>
-          </>
-=======
           <Row>
             <b>Planet ID</b>
             <span className='mono'>{withdrawSilverPlanet}</span>
           </Row>
->>>>>>> slytherin
         )}
       </div>
 
@@ -376,19 +359,6 @@ export function TxConfirmPopup({
         <Row className='network'>
           <div>
             <ConfirmIcon /> DF connected to xDAI
-<<<<<<< HEAD
-          </span>
-          <span>
-            Auto-confirm all transactions except purchases. Currently, you can only purchase Hats,
-            or anything 3rd party plugins offer. <Spacer width={8} />
-            <input
-              type='checkbox'
-              checked={autoApproveChecked}
-              onChange={(e) => setAutoApprovedChecked(e.target.checked)}
-            />
-          </span>
-        </div>
-=======
           </div>
         </Row>
         <Row className='mtop'>
@@ -400,7 +370,6 @@ export function TxConfirmPopup({
             }
           />
         </Row>
->>>>>>> slytherin
       </div>
     </StyledTxConfirmPopup>
   );

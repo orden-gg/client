@@ -225,11 +225,7 @@
 
 ### constructor
 
-<<<<<<< HEAD
-• `Private` **new default**(`terminal`, `account`, `players`, `touchedPlanets`, `allTouchedPlanetIds`, `revealedCoords`, `claimedCoords`, `worldRadius`, `unprocessedArrivals`, `unprocessedPlanetArrivalIds`, `contractsAPI`, `contractConstants`, `persistentChunkStore`, `snarkHelper`, `homeLocation`, `useMockHash`, `artifacts`, `ethConnection`)
-=======
 • `Private` **new default**(`terminal`, `account`, `players`, `touchedPlanets`, `allTouchedPlanetIds`, `revealedCoords`, `claimedCoords`, `worldRadius`, `unprocessedArrivals`, `unprocessedPlanetArrivalIds`, `contractsAPI`, `contractConstants`, `persistentChunkStore`, `snarkHelper`, `homeLocation`, `useMockHash`, `artifacts`, `ethConnection`, `paused`)
->>>>>>> slytherin
 
 #### Parameters
 
@@ -253,10 +249,7 @@
 | `useMockHash`                 | `boolean`                                                                                                       |
 | `artifacts`                   | `Map`<`ArtifactId`, `Artifact`\>                                                                                |
 | `ethConnection`               | `EthConnection`                                                                                                 |
-<<<<<<< HEAD
-=======
 | `paused`                      | `boolean`                                                                                                       |
->>>>>>> slytherin
 
 #### Overrides
 
@@ -402,8 +395,6 @@ Manages the process of mining new space territory.
 ---
 
 ### networkHealth$
-<<<<<<< HEAD
-=======
 
 • **networkHealth$**: `Monomitter`<`NetworkHealthSummary`\>
 
@@ -421,7 +412,6 @@ Handle to an interval that periodically refreshes the network's health from our 
 ---
 
 ### paused
->>>>>>> slytherin
 
 • `Private` **paused**: `boolean`
 
@@ -634,15 +624,9 @@ all of the information about those planets from the blockchain.
 
 #### Parameters
 
-<<<<<<< HEAD
-| Name    | Type                                         |
-| :------ | :------------------------------------------- |
-| `chunk` | [`Chunk`](types_global_GlobalTypes.Chunk.md) |
-=======
 | Name    | Type    |
 | :------ | :------ |
 | `chunk` | `Chunk` |
->>>>>>> slytherin
 
 #### Returns
 
@@ -678,15 +662,9 @@ to load all of the associated planet data in an efficient manner.
 
 #### Parameters
 
-<<<<<<< HEAD
-| Name     | Type                                           |
-| :------- | :--------------------------------------------- |
-| `chunks` | [`Chunk`](types_global_GlobalTypes.Chunk.md)[] |
-=======
 | Name     | Type      |
 | :------- | :-------- |
 | `chunks` | `Chunk`[] |
->>>>>>> slytherin
 
 #### Returns
 
@@ -744,8 +722,6 @@ world, more money means more hat.
 
 #### Returns
 
-<<<<<<< HEAD
-=======
 `Promise`<`Transaction`<`UnconfirmedCapturePlanet`\>\>
 
 ---
@@ -760,7 +736,6 @@ world, more money means more hat.
 
 ---
 
->>>>>>> slytherin
 ### clearEmoji
 
 ▸ **clearEmoji**(`locationId`): `Promise`<`void`\>
@@ -1045,19 +1020,6 @@ represented by `undefined`.
 
 ### getChunk
 
-<<<<<<< HEAD
-▸ **getChunk**(`chunkFootprint`): `undefined` \| [`Chunk`](types_global_GlobalTypes.Chunk.md)
-
-#### Parameters
-
-| Name             | Type                                                               |
-| :--------------- | :----------------------------------------------------------------- |
-| `chunkFootprint` | [`Rectangle`](../interfaces/types_global_GlobalTypes.Rectangle.md) |
-
-#### Returns
-
-`undefined` \| [`Chunk`](types_global_GlobalTypes.Chunk.md)
-=======
 ▸ **getChunk**(`chunkFootprint`): `undefined` \| `Chunk`
 
 #### Parameters
@@ -1069,7 +1031,6 @@ represented by `undefined`.
 #### Returns
 
 `undefined` \| `Chunk`
->>>>>>> slytherin
 
 ---
 
@@ -1129,12 +1090,6 @@ Returns constructors of classes that may be useful for developing plugins.
 
 ▸ **getContractAPI**(): [`ContractsAPI`](Backend_GameLogic_ContractsAPI.ContractsAPI.md)
 
-<<<<<<< HEAD
-▸ **getContractConstants**(): [`ContractConstants`](../interfaces/types_darkforest_api_ContractsAPITypes.ContractConstants.md)
-
-#### Returns
-
-=======
 Get the thing that handles contract interaction.
 
 #### Returns
@@ -1161,27 +1116,19 @@ Gets the address of the `DarkForest` contract, which is the 'backend' of the gam
 
 #### Returns
 
->>>>>>> slytherin
 [`ContractConstants`](../interfaces/types_darkforest_api_ContractsAPITypes.ContractConstants.md)
 
 ---
 
 ### getCurrentlyExploringChunk
 
-<<<<<<< HEAD
-▸ **getCurrentlyExploringChunk**(): `undefined` \| [`Rectangle`](../interfaces/types_global_GlobalTypes.Rectangle.md)
-=======
 ▸ **getCurrentlyExploringChunk**(): `undefined` \| `Rectangle`
->>>>>>> slytherin
 
 Gets the rectangle bounding the chunk that the miner is currently in the process
 of hashing.
 
 #### Returns
 
-<<<<<<< HEAD
-`undefined` \| [`Rectangle`](../interfaces/types_global_GlobalTypes.Rectangle.md)
-=======
 `undefined` \| `Rectangle`
 
 ---
@@ -1199,7 +1146,6 @@ of hashing.
 #### Returns
 
 `number`
->>>>>>> slytherin
 
 ---
 
@@ -1363,22 +1309,14 @@ Gets the total amount of energy that lives on planets that the given player owns
 
 ### getExploredChunks
 
-<<<<<<< HEAD
-▸ **getExploredChunks**(): `Iterable`<[`Chunk`](types_global_GlobalTypes.Chunk.md)\>
-=======
 ▸ **getExploredChunks**(): `Iterable`<`Chunk`\>
->>>>>>> slytherin
 
 Gets all the map chunks that this client is aware of. Chunks may have come from
 mining, or from importing map data.
 
 #### Returns
 
-<<<<<<< HEAD
-`Iterable`<[`Chunk`](types_global_GlobalTypes.Chunk.md)\>
-=======
 `Iterable`<`Chunk`\>
->>>>>>> slytherin
 
 ---
 
@@ -1636,10 +1574,6 @@ Gets the timestamp (ms) of the next time that we can claim a planet.
 ---
 
 ### getNextRevealCountdownInfo
-<<<<<<< HEAD
-
-▸ **getNextRevealCountdownInfo**(): [`RevealCountdownInfo`](../interfaces/types_global_GlobalTypes.RevealCountdownInfo.md)
-=======
 
 ▸ **getNextRevealCountdownInfo**(): [`RevealCountdownInfo`](../interfaces/types_global_GlobalTypes.RevealCountdownInfo.md)
 
@@ -1654,7 +1588,6 @@ Returns info about the next time you can broadcast coordinates
 ### getNotificationsManager
 
 ▸ **getNotificationsManager**(): [`default`](Frontend_Game_NotificationManager.default.md)
->>>>>>> slytherin
 
 #### Returns
 
@@ -1668,11 +1601,7 @@ Returns info about the next time you can broadcast coordinates
 
 #### Returns
 
-<<<<<<< HEAD
-[`RevealCountdownInfo`](../interfaces/types_global_GlobalTypes.RevealCountdownInfo.md)
-=======
 `boolean`
->>>>>>> slytherin
 
 ---
 
@@ -2289,35 +2218,11 @@ represent a multiplier.
 
 ### getWormholes
 
-<<<<<<< HEAD
-▸ **getWormholes**(): `Iterable`<[`Wormhole`](../modules/types_global_GlobalTypes.md#wormhole)\>
-
-#### Returns
-
-`Iterable`<[`Wormhole`](../modules/types_global_GlobalTypes.md#wormhole)\>
-
----
-
-### handleTxIntent
-
-▸ `Private` **handleTxIntent**(`txIntent`): `void`
-
-#### Parameters
-
-| Name       | Type       |
-| :--------- | :--------- |
-| `txIntent` | `TxIntent` |
-
-#### Returns
-
-`void`
-=======
 ▸ **getWormholes**(): `Iterable`<`Wormhole`\>
 
 #### Returns
 
 `Iterable`<`Wormhole`\>
->>>>>>> slytherin
 
 ---
 
@@ -2389,15 +2294,9 @@ Whether or not the given rectangle has been mined.
 
 #### Parameters
 
-<<<<<<< HEAD
-| Name            | Type                                                               |
-| :-------------- | :----------------------------------------------------------------- |
-| `chunkLocation` | [`Rectangle`](../interfaces/types_global_GlobalTypes.Rectangle.md) |
-=======
 | Name            | Type        |
 | :-------------- | :---------- |
 | `chunkLocation` | `Rectangle` |
->>>>>>> slytherin
 
 #### Returns
 
@@ -2681,11 +2580,7 @@ the given planet to the given planet.
 
 #### Returns
 
-<<<<<<< HEAD
-`Promise`<`undefined` \| [`default`](Backend_GameLogic_GameManager.default.md)\>
-=======
 `Promise`<`Transaction`<`UnconfirmedProspectPlanet`\>\>
->>>>>>> slytherin
 
 ---
 

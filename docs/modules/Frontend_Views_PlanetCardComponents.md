@@ -17,11 +17,7 @@
 
 ### TitleBar
 
-<<<<<<< HEAD
-• **DestroyedMarker**: `StyledComponent`<`"div"`, `any`, `Object`, `never`\>
-=======
 • **TitleBar**: `StyledComponent`<`"div"`, `any`, `Object`, `never`\>
->>>>>>> slytherin
 
 ## Functions
 
@@ -29,11 +25,7 @@
 
 ▸ `Const` **Halved**(): `Element`
 
-<<<<<<< HEAD
-• **TitleBar**: `StyledComponent`<`"div"`, `any`, `Object`, `never`\>
-=======
 #### Returns
->>>>>>> slytherin
 
 `Element`
 

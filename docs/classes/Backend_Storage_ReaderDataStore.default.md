@@ -40,19 +40,9 @@ particular user.
 
 #### Parameters
 
-<<<<<<< HEAD
-| Name                   | Type                                                                                              |
-| :--------------------- | :------------------------------------------------------------------------------------------------ |
-| `viewer`               | `undefined` \| `EthAddress`                                                                       |
-| `addressTwitterMap`    | [`AddressTwitterMap`](../modules/types_darkforest_api_UtilityServerAPITypes.md#addresstwittermap) |
-| `contractConstants`    | [`ContractConstants`](../interfaces/types_darkforest_api_ContractsAPITypes.ContractConstants.md)  |
-| `contractsAPI`         | [`ContractsAPI`](Backend_GameLogic_ContractsAPI.ContractsAPI.md)                                  |
-| `persistentChunkStore` | `undefined` \| [`default`](Backend_Storage_PersistentChunkStore.default.md)                       |
-=======
 | Name                | Type                    |
 | :------------------ | :---------------------- |
 | `__namedParameters` | `ReaderDataStoreConfig` |
->>>>>>> slytherin
 
 ## Properties
 

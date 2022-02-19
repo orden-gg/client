@@ -29,10 +29,7 @@ React api for creating tables.
 | `__namedParameters.columns`      | (`t`: `T`, `i`: `number`) => `ReactNode`[] |
 | `__namedParameters.headerStyle?` | `CSSProperties`                            |
 | `__namedParameters.headers`      | `ReactNode`[]                              |
-<<<<<<< HEAD
-=======
 | `__namedParameters.paginated?`   | `boolean`                                  |
->>>>>>> slytherin
 | `__namedParameters.rows`         | `T`[]                                      |
 
 #### Returns

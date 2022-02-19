@@ -82,15 +82,6 @@ be displayed. Think of it as a placeholder.
 ### CenterRow
 
 • **CenterRow**: `StyledComponent`<`"div"`, `any`, `Object`, `never`\>
-<<<<<<< HEAD
-
----
-
-### CenteredText
-
-• **CenteredText**: `StyledComponent`<`"span"`, `any`, `Object`, `never`\>
-=======
->>>>>>> slytherin
 
 ---
 
@@ -139,15 +130,6 @@ Expands to fill space in a flexbox.
 ### FullHeight
 
 • **FullHeight**: `StyledComponent`<`"div"`, `any`, `Object`, `never`\>
-<<<<<<< HEAD
-
----
-
-### FullWidth
-
-• **FullWidth**: `StyledComponent`<`"div"`, `any`, `Object`, `never`\>
-=======
->>>>>>> slytherin
 
 ---
 
@@ -166,15 +148,6 @@ Expands to fill space in a flexbox.
 ### InlineBlock
 
 • **InlineBlock**: `StyledComponent`<`"div"`, `any`, `Object`, `never`\>
-<<<<<<< HEAD
-
----
-
-### KeyboardBtn
-
-• **KeyboardBtn**: `StyledComponent`<`"kbd"`, `any`, `Object`, `never`\>
-=======
->>>>>>> slytherin
 
 ---
 
@@ -187,15 +160,6 @@ Expands to fill space in a flexbox.
 ### Padded
 
 • **Padded**: `StyledComponent`<`"div"`, `any`, `Object`, `never`\>
-<<<<<<< HEAD
-
----
-
-### PaddedRecommendedModalWidth
-
-• **PaddedRecommendedModalWidth**: `StyledComponent`<`"div"`, `any`, `Object`, `never`\>
-=======
->>>>>>> slytherin
 
 ---
 
@@ -211,15 +175,6 @@ way to do this.
 
 ---
 
-<<<<<<< HEAD
-### RecommendedModalWidth
-
-• **RecommendedModalWidth**: `StyledComponent`<`"div"`, `any`, `Object`, `never`\>
-
----
-
-=======
->>>>>>> slytherin
 ### Section
 
 • **Section**: `StyledComponent`<`"div"`, `any`, `Object`, `never`\>
@@ -271,15 +226,12 @@ horizontally.
 ### TextButton
 
 • **TextButton**: `StyledComponent`<`"span"`, `any`, `Object`, `never`\>
-<<<<<<< HEAD
-=======
 
 ---
 
 ### Title
 
 • **Title**: `StyledComponent`<`"div"`, `any`, `Object`, `never`\>
->>>>>>> slytherin
 
 ---
 
@@ -331,48 +283,6 @@ given string values.
 | `__namedParameters.values`   | `string`[]                    |
 | `__namedParameters.wide?`    | `boolean`                     |
 | `__namedParameters.setValue` | (`value`: `string`) => `void` |
-<<<<<<< HEAD
-
-#### Returns
-
-`Element`
-
----
-
-### ShortcutButton
-
-▸ **ShortcutButton**(`props`): `Element`
-
-A button that also displays a {@code KeyboardBtn} directly next to it, which shows the user
-whether or not the given shortcut key is down. In the case that now {@code shortcutKey} was
-provided, this is just a normal button.
-
-#### Parameters
-
-| Name    | Type                                                                                                                                                                                                                                                                                                                                                             |
-| :------ | :--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `props` | { `children`: `ReactNode` ; `shortcutDisabled?`: `boolean` ; `shortcutKey?`: `string` ; `shortcutText?`: `string` } & { `borderColor?`: `string` ; `color?`: `string` ; `disabled?`: `boolean` ; `forceActive?`: `boolean` ; `noBorder?`: `boolean` ; `small?`: `boolean` ; `textColor?`: `string` ; `wide?`: `boolean` } & `HTMLAttributes`<`HTMLSpanElement`\> |
-
-#### Returns
-
-`Element`
-
----
-
-### ShortcutKeyDown
-
-▸ **ShortcutKeyDown**(`__namedParameters`): `Element`
-
-#### Parameters
-
-| Name                             | Type      |
-| :------------------------------- | :-------- |
-| `__namedParameters`              | `Object`  |
-| `__namedParameters.disabled?`    | `boolean` |
-| `__namedParameters.shortcutKey?` | `string`  |
-| `__namedParameters.text?`        | `string`  |
-=======
->>>>>>> slytherin
 
 #### Returns
 

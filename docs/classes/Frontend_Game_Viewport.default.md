@@ -184,11 +184,7 @@
 
 ### mousedownCoords
 
-<<<<<<< HEAD
-• **mousedownCoords**: `undefined` \| [`CanvasCoords`](../interfaces/Backend_Utils_Coordinates.CanvasCoords.md) = `undefined`
-=======
 • **mousedownCoords**: `undefined` \| `CanvasCoords` = `undefined`
->>>>>>> slytherin
 
 ---
 
@@ -318,15 +314,9 @@
 
 #### Parameters
 
-<<<<<<< HEAD
-| Name    | Type                                         |
-| :------ | :------------------------------------------- |
-| `chunk` | [`Chunk`](types_global_GlobalTypes.Chunk.md) |
-=======
 | Name    | Type    |
 | :------ | :------ |
 | `chunk` | `Chunk` |
->>>>>>> slytherin
 
 #### Returns
 
@@ -467,15 +457,9 @@
 
 #### Parameters
 
-<<<<<<< HEAD
-| Name    | Type                                         |
-| :------ | :------------------------------------------- |
-| `chunk` | [`Chunk`](types_global_GlobalTypes.Chunk.md) |
-=======
 | Name    | Type    |
 | :------ | :------ |
 | `chunk` | `Chunk` |
->>>>>>> slytherin
 
 #### Returns
 

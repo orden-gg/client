@@ -30,16 +30,7 @@ Representation of the objects which exist in the world.
 - [planets](Backend_GameLogic_GameObjects.GameObjects.md#planets)
 - [revealedLocations](Backend_GameLogic_GameObjects.GameObjects.md#revealedlocations)
 - [touchedPlanetIds](Backend_GameLogic_GameObjects.GameObjects.md#touchedplanetids)
-<<<<<<< HEAD
-- [unconfirmedBuyHats](Backend_GameLogic_GameObjects.GameObjects.md#unconfirmedbuyhats)
-- [unconfirmedMoves](Backend_GameLogic_GameObjects.GameObjects.md#unconfirmedmoves)
-- [unconfirmedPlanetTransfers](Backend_GameLogic_GameObjects.GameObjects.md#unconfirmedplanettransfers)
-- [unconfirmedReveal](Backend_GameLogic_GameObjects.GameObjects.md#unconfirmedreveal)
-- [unconfirmedUpgrades](Backend_GameLogic_GameObjects.GameObjects.md#unconfirmedupgrades)
-- [unconfirmedWormholeActivations](Backend_GameLogic_GameObjects.GameObjects.md#unconfirmedwormholeactivations)
-=======
 - [transactions](Backend_GameLogic_GameObjects.GameObjects.md#transactions)
->>>>>>> slytherin
 - [wormholes](Backend_GameLogic_GameObjects.GameObjects.md#wormholes)
 
 ### Methods
@@ -78,13 +69,6 @@ Representation of the objects which exist in the world.
 - [getPlanetsWithIds](Backend_GameLogic_GameObjects.GameObjects.md#getplanetswithids)
 - [getRevealedLocations](Backend_GameLogic_GameObjects.GameObjects.md#getrevealedlocations)
 - [getSilverCurveAtPercent](Backend_GameLogic_GameObjects.GameObjects.md#getsilvercurveatpercent)
-<<<<<<< HEAD
-- [getUnconfirmedMoves](Backend_GameLogic_GameObjects.GameObjects.md#getunconfirmedmoves)
-- [getUnconfirmedReveal](Backend_GameLogic_GameObjects.GameObjects.md#getunconfirmedreveal)
-- [getUnconfirmedUpgrades](Backend_GameLogic_GameObjects.GameObjects.md#getunconfirmedupgrades)
-- [getUnconfirmedWormholeActivations](Backend_GameLogic_GameObjects.GameObjects.md#getunconfirmedwormholeactivations)
-=======
->>>>>>> slytherin
 - [getWormholes](Backend_GameLogic_GameObjects.GameObjects.md#getwormholes)
 - [isGettingSpaceships](Backend_GameLogic_GameObjects.GameObjects.md#isgettingspaceships)
 - [isPlanetInContract](Backend_GameLogic_GameObjects.GameObjects.md#isplanetincontract)
@@ -123,11 +107,7 @@ Representation of the objects which exist in the world.
 | `revealedLocations`           | `Map`<`LocationId`, `RevealedLocation`\>                                                         |
 | `claimedLocations`            | `Map`<`LocationId`, `ClaimedLocation`\>                                                          |
 | `artifacts`                   | `Map`<`ArtifactId`, `Artifact`\>                                                                 |
-<<<<<<< HEAD
-| `allChunks`                   | `Iterable`<[`Chunk`](types_global_GlobalTypes.Chunk.md)\>                                        |
-=======
 | `allChunks`                   | `Iterable`<`Chunk`\>                                                                             |
->>>>>>> slytherin
 | `unprocessedArrivals`         | `Map`<`VoyageId`, `QueuedArrival`\>                                                              |
 | `unprocessedPlanetArrivalIds` | `Map`<`LocationId`, `VoyageId`[]\>                                                               |
 | `contractConstants`           | [`ContractConstants`](../interfaces/types_darkforest_api_ContractsAPITypes.ContractConstants.md) |
@@ -320,46 +300,7 @@ Set of all planet ids that we know have been interacted-with on-chain.
 
 ---
 
-<<<<<<< HEAD
-### unconfirmedBuyHats
-
-• `Private` `Readonly` **unconfirmedBuyHats**: `Record`<`string`, `UnconfirmedBuyHat`\>
-
----
-
-### unconfirmedMoves
-
-• `Private` `Readonly` **unconfirmedMoves**: `Record`<`string`, `UnconfirmedMove`\>
-
----
-
-### unconfirmedPlanetTransfers
-
-• `Private` `Readonly` **unconfirmedPlanetTransfers**: `Record`<`string`, `UnconfirmedPlanetTransfer`\>
-
----
-
-### unconfirmedReveal
-
-• `Private` `Optional` **unconfirmedReveal**: `UnconfirmedReveal`
-
-The following set of fields represent actions which the user has initiated on the blockchain,
-and have not yet completed. The nature of the blockchain is that transactions could take up to
-several minutes to confirm (depending on network congestion). This means that we need to make
-it clear to players that the action that they have initiated is indeed in progress, and that
-something is actually happening. See `Prospect.tsx` for example.
-
-The storage and retrieval of unconfirmed transactions could, and
-probablu should be abstracted into some sort of class which keeps in sync both _these_ fields
-and each of these fields counterparts in their corresponding entity objects (Planet, Artifact,
-etc.)
-
-**`todo`** these are good candidates for being in the `PlayerInfo` class.
-
----
-=======
 ### transactions
->>>>>>> slytherin
 
 • `Readonly` **transactions**: `TransactionCollection`
 
@@ -369,11 +310,7 @@ Transactions that are currently in flight.
 
 ### wormholes
 
-<<<<<<< HEAD
-• `Private` `Readonly` **wormholes**: `Map`<`ArtifactId`, [`Wormhole`](../modules/types_global_GlobalTypes.md#wormhole)\>
-=======
 • `Private` `Readonly` **wormholes**: `Map`<`ArtifactId`, `Wormhole`\>
->>>>>>> slytherin
 
 Map from artifact ids to wormholes.
 
@@ -944,31 +881,7 @@ returns undefined
 
 ---
 
-<<<<<<< HEAD
-### getUnconfirmedMoves
-
-▸ **getUnconfirmedMoves**(): `UnconfirmedMove`[]
-
-#### Returns
-
-`UnconfirmedMove`[]
-
----
-
-### getUnconfirmedReveal
-
-▸ **getUnconfirmedReveal**(): `undefined` \| `UnconfirmedReveal`
-
-#### Returns
-
-`undefined` \| `UnconfirmedReveal`
-
----
-
-### getUnconfirmedUpgrades
-=======
 ### getWormholes
->>>>>>> slytherin
 
 ▸ **getWormholes**(): `Iterable`<`Wormhole`\>
 
@@ -982,21 +895,11 @@ returns undefined
 
 ▸ **isGettingSpaceships**(): `boolean`
 
-<<<<<<< HEAD
-### getWormholes
-
-▸ **getWormholes**(): `Iterable`<[`Wormhole`](../modules/types_global_GlobalTypes.md#wormhole)\>
-
-#### Returns
-
-`Iterable`<[`Wormhole`](../modules/types_global_GlobalTypes.md#wormhole)\>
-=======
 Whether or not we're already asking the game to give us spaceships.
 
 #### Returns
 
 `boolean`
->>>>>>> slytherin
 
 ---
 

@@ -40,22 +40,6 @@ export function OpenPaneButton({
     });
   }, [title, element, helpContent, modal]);
 
-<<<<<<< HEAD
-  useOnUp(shortcutKey, open);
-
-  return (
-    <AlignCenterHorizontally style={{ width: '100%' }} key={shortcutKey}>
-      <ShortcutButton
-        style={{ flexGrow: 1 }}
-        wide
-        onClick={open}
-        shortcutKey={shortcutKey}
-        shortcutDisabled={shortcutDisabled}
-      >
-        <CenteredText>{title}</CenteredText>
-      </ShortcutButton>
-    </AlignCenterHorizontally>
-=======
   return (
     <MaybeShortcutButton
       size='stretch'
@@ -66,7 +50,6 @@ export function OpenPaneButton({
     >
       {title}
     </MaybeShortcutButton>
->>>>>>> slytherin
   );
 }
 

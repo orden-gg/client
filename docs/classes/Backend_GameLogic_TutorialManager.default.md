@@ -51,15 +51,12 @@ EventEmitter.constructor
 ### tutorialState
 
 • `Private` **tutorialState**: [`TutorialState`](../enums/Backend_GameLogic_TutorialManager.TutorialState.md) = `TutorialState.None`
-<<<<<<< HEAD
-=======
 
 ---
 
 ### uiManager
 
 • `Private` **uiManager**: [`default`](Backend_GameLogic_GameUIManager.default.md)
->>>>>>> slytherin
 
 ---
 

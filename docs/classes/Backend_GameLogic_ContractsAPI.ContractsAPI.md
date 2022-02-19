@@ -29,14 +29,7 @@ reading and writing to and from the blockchain.
 
 ### Accessors
 
-<<<<<<< HEAD
-- [coreContract](Backend_GameLogic_ContractsAPI.ContractsAPI.md#corecontract)
-- [gettersContract](Backend_GameLogic_ContractsAPI.ContractsAPI.md#getterscontract)
-- [tokensContract](Backend_GameLogic_ContractsAPI.ContractsAPI.md#tokenscontract)
-- [whitelistContract](Backend_GameLogic_ContractsAPI.ContractsAPI.md#whitelistcontract)
-=======
 - [contract](Backend_GameLogic_ContractsAPI.ContractsAPI.md#contract)
->>>>>>> slytherin
 
 ### Methods
 
@@ -46,13 +39,7 @@ reading and writing to and from the blockchain.
 - [bulkGetArtifacts](Backend_GameLogic_ContractsAPI.ContractsAPI.md#bulkgetartifacts)
 - [bulkGetArtifactsOnPlanets](Backend_GameLogic_ContractsAPI.ContractsAPI.md#bulkgetartifactsonplanets)
 - [bulkGetPlanets](Backend_GameLogic_ContractsAPI.ContractsAPI.md#bulkgetplanets)
-<<<<<<< HEAD
-- [buyHat](Backend_GameLogic_ContractsAPI.ContractsAPI.md#buyhat)
-- [deactivateArtifact](Backend_GameLogic_ContractsAPI.ContractsAPI.md#deactivateartifact)
-- [depositArtifact](Backend_GameLogic_ContractsAPI.ContractsAPI.md#depositartifact)
-=======
 - [cancelTransaction](Backend_GameLogic_ContractsAPI.ContractsAPI.md#canceltransaction)
->>>>>>> slytherin
 - [destroy](Backend_GameLogic_ContractsAPI.ContractsAPI.md#destroy)
 - [emitTransactionEvents](Backend_GameLogic_ContractsAPI.ContractsAPI.md#emittransactionevents)
 - [getAddress](Backend_GameLogic_ContractsAPI.ContractsAPI.md#getaddress)
@@ -139,35 +126,9 @@ Don't allow users to submit txs if balance falls below this amount/
 
 ## Accessors
 
-<<<<<<< HEAD
-### coreContract
-
-• `get` **coreContract**(): `DarkForestCore`
-
-#### Returns
-
-`DarkForestCore`
-
----
-
-### gettersContract
-
-• `get` **gettersContract**(): `DarkForestGetters`
-
-#### Returns
-
-`DarkForestGetters`
-
----
-
-### tokensContract
-
-• `get` **tokensContract**(): `DarkForestTokens`
-=======
 ### contract
 
 • `get` **contract**(): `DarkForest`
->>>>>>> slytherin
 
 #### Returns
 
@@ -288,29 +249,7 @@ interaction. To prevent the queued transaction from being submitted, throw an Er
 
 ---
 
-<<<<<<< HEAD
-### buyHat
-
-▸ **buyHat**(`planetIdDecStr`, `currentHatLevel`, `actionId`): `Promise`<`void` \| `TransactionReceipt`\>
-
-#### Parameters
-
-| Name              | Type     |
-| :---------------- | :------- |
-| `planetIdDecStr`  | `string` |
-| `currentHatLevel` | `number` |
-| `actionId`        | `string` |
-
-#### Returns
-
-`Promise`<`void` \| `TransactionReceipt`\>
-
----
-
-### deactivateArtifact
-=======
 ### cancelTransaction
->>>>>>> slytherin
 
 ▸ **cancelTransaction**(`tx`): `void`
 
@@ -700,70 +639,7 @@ Make sure this transaction is the next to be executed.
 
 ▸ **submitTransaction**<`T`\>(`txIntent`, `overrides?`): `Promise`<`Transaction`<`T`\>\>
 
-<<<<<<< HEAD
-#### Returns
-
-`Promise`<`void` \| `TransactionReceipt`\>
-
----
-
-### upgradePlanet
-
-▸ **upgradePlanet**(`args`, `actionId`): `Promise`<`void` \| `TransactionReceipt`\>
-
-#### Parameters
-
-| Name       | Type                                                                              |
-| :--------- | :-------------------------------------------------------------------------------- |
-| `args`     | [`UpgradeArgs`](../modules/types_darkforest_api_ContractsAPITypes.md#upgradeargs) |
-| `actionId` | `string`                                                                          |
-
-#### Returns
-
-`Promise`<`void` \| `TransactionReceipt`\>
-
----
-
-### waitFor
-
-▸ **waitFor**(`submitted`, `receiptPromise`): `Promise`<`void` \| `TransactionReceipt`\>
-
-Given an unconfirmed (but submitted) transaction, emits the appropriate
-[ContractsAPIEvent](../enums/types_darkforest_api_ContractsAPITypes.ContractsAPIEvent.md).
-
-#### Parameters
-
-| Name             | Type                             |
-| :--------------- | :------------------------------- |
-| `submitted`      | `SubmittedTx`                    |
-| `receiptPromise` | `Promise`<`TransactionReceipt`\> |
-
-#### Returns
-
-`Promise`<`void` \| `TransactionReceipt`\>
-
----
-
-### withdrawArtifact
-
-▸ **withdrawArtifact**(`action`): `Promise`<`void` \| `TransactionReceipt`\>
-
-#### Parameters
-
-| Name     | Type                          |
-| :------- | :---------------------------- |
-| `action` | `UnconfirmedWithdrawArtifact` |
-
-#### Returns
-
-`Promise`<`void` \| `TransactionReceipt`\>
-
----
-
-### withdrawSilver
-=======
 #### Type parameters
->>>>>>> slytherin
 
 | Name | Type               |
 | :--- | :----------------- |

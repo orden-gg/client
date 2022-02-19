@@ -423,10 +423,7 @@ Either 'yours' in green text,
 | Name                        | Type                        |
 | :-------------------------- | :-------------------------- |
 | `__namedParameters`         | `Object`                    |
-<<<<<<< HEAD
-=======
 | `__namedParameters.buff?`   | `number`                    |
->>>>>>> slytherin
 | `__namedParameters.planet`  | `undefined` \| `Planet`     |
 | `__namedParameters.style?`  | `CSSProperties`             |
 | `__namedParameters.getStat` | (`p`: `Planet`) => `number` |

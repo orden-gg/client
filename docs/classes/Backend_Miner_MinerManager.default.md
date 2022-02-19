@@ -95,11 +95,7 @@ EventEmitter.constructor
 
 #### Index signature
 
-<<<<<<< HEAD
-▪ [chunkKey: `string`]: [`Chunk`](types_global_GlobalTypes.Chunk.md)
-=======
 ▪ [chunkKey: `string`]: `Chunk`
->>>>>>> slytherin
 
 ---
 
@@ -185,11 +181,7 @@ EventEmitter.constructor
 
 ### chunkKeyToLocation
 
-<<<<<<< HEAD
-▸ `Private` **chunkKeyToLocation**(`chunkKey`): `undefined` \| [[`Rectangle`](../interfaces/types_global_GlobalTypes.Rectangle.md), `number`]
-=======
 ▸ `Private` **chunkKeyToLocation**(`chunkKey`): `undefined` \| [`Rectangle`, `number`]
->>>>>>> slytherin
 
 #### Parameters
 
@@ -199,11 +191,7 @@ EventEmitter.constructor
 
 #### Returns
 
-<<<<<<< HEAD
-`undefined` \| [[`Rectangle`](../interfaces/types_global_GlobalTypes.Rectangle.md), `number`]
-=======
 `undefined` \| [`Rectangle`, `number`]
->>>>>>> slytherin
 
 ---
 
@@ -213,17 +201,10 @@ EventEmitter.constructor
 
 #### Parameters
 
-<<<<<<< HEAD
-| Name            | Type                                                               |
-| :-------------- | :----------------------------------------------------------------- |
-| `chunkLocation` | [`Rectangle`](../interfaces/types_global_GlobalTypes.Rectangle.md) |
-| `jobId`         | `number`                                                           |
-=======
 | Name            | Type        |
 | :-------------- | :---------- |
 | `chunkLocation` | `Rectangle` |
 | `jobId`         | `number`    |
->>>>>>> slytherin
 
 #### Returns
 
@@ -247,17 +228,10 @@ EventEmitter.constructor
 
 #### Parameters
 
-<<<<<<< HEAD
-| Name        | Type                                                               |
-| :---------- | :----------------------------------------------------------------- |
-| `fromChunk` | [`Rectangle`](../interfaces/types_global_GlobalTypes.Rectangle.md) |
-| `jobId`     | `number`                                                           |
-=======
 | Name        | Type        |
 | :---------- | :---------- |
 | `fromChunk` | `Rectangle` |
 | `jobId`     | `number`    |
->>>>>>> slytherin
 
 #### Returns
 
@@ -267,19 +241,11 @@ EventEmitter.constructor
 
 ### getCurrentlyExploringChunk
 
-<<<<<<< HEAD
-▸ **getCurrentlyExploringChunk**(): `undefined` \| [`Rectangle`](../interfaces/types_global_GlobalTypes.Rectangle.md)
-
-#### Returns
-
-`undefined` \| [`Rectangle`](../interfaces/types_global_GlobalTypes.Rectangle.md)
-=======
 ▸ **getCurrentlyExploringChunk**(): `undefined` \| `Rectangle`
 
 #### Returns
 
 `undefined` \| `Rectangle`
->>>>>>> slytherin
 
 ---
 
@@ -325,15 +291,9 @@ EventEmitter.constructor
 
 #### Parameters
 
-<<<<<<< HEAD
-| Name            | Type                                                               |
-| :-------------- | :----------------------------------------------------------------- |
-| `chunkLocation` | [`Rectangle`](../interfaces/types_global_GlobalTypes.Rectangle.md) |
-=======
 | Name            | Type        |
 | :-------------- | :---------- |
 | `chunkLocation` | `Rectangle` |
->>>>>>> slytherin
 
 #### Returns
 
@@ -343,20 +303,6 @@ EventEmitter.constructor
 
 ### nextValidExploreTarget
 
-<<<<<<< HEAD
-▸ `Private` **nextValidExploreTarget**(`chunkLocation`, `jobId`): `Promise`<`undefined` \| [`Rectangle`](../interfaces/types_global_GlobalTypes.Rectangle.md)\>
-
-#### Parameters
-
-| Name            | Type                                                               |
-| :-------------- | :----------------------------------------------------------------- |
-| `chunkLocation` | [`Rectangle`](../interfaces/types_global_GlobalTypes.Rectangle.md) |
-| `jobId`         | `number`                                                           |
-
-#### Returns
-
-`Promise`<`undefined` \| [`Rectangle`](../interfaces/types_global_GlobalTypes.Rectangle.md)\>
-=======
 ▸ `Private` **nextValidExploreTarget**(`chunkLocation`, `jobId`): `Promise`<`undefined` \| `Rectangle`\>
 
 #### Parameters
@@ -369,7 +315,6 @@ EventEmitter.constructor
 #### Returns
 
 `Promise`<`undefined` \| `Rectangle`\>
->>>>>>> slytherin
 
 ---
 
@@ -379,17 +324,10 @@ EventEmitter.constructor
 
 #### Parameters
 
-<<<<<<< HEAD
-| Name            | Type                                         |
-| :-------------- | :------------------------------------------- |
-| `exploredChunk` | [`Chunk`](types_global_GlobalTypes.Chunk.md) |
-| `jobId`         | `number`                                     |
-=======
 | Name            | Type     |
 | :-------------- | :------- |
 | `exploredChunk` | `Chunk`  |
 | `jobId`         | `number` |
->>>>>>> slytherin
 
 #### Returns
 
@@ -403,17 +341,10 @@ EventEmitter.constructor
 
 #### Parameters
 
-<<<<<<< HEAD
-| Name             | Type                                                               |
-| :--------------- | :----------------------------------------------------------------- |
-| `chunkToExplore` | [`Rectangle`](../interfaces/types_global_GlobalTypes.Rectangle.md) |
-| `jobId`          | `number`                                                           |
-=======
 | Name             | Type        |
 | :--------------- | :---------- |
 | `chunkToExplore` | `Rectangle` |
 | `jobId`          | `number`    |
->>>>>>> slytherin
 
 #### Returns
 

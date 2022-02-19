@@ -51,18 +51,8 @@ import {
   Radii,
   RevealedLocation,
   SpaceType,
-<<<<<<< HEAD
-  TxIntent,
-  UnconfirmedActivateArtifact,
-  UnconfirmedBuyHat,
-  UnconfirmedMove,
-  UnconfirmedPlanetTransfer,
-  UnconfirmedReveal,
-  UnconfirmedUpgrade,
-=======
   Transaction,
   TransactionCollection,
->>>>>>> slytherin
   VoyageId,
   WorldCoords,
   WorldLocation,
@@ -81,25 +71,6 @@ import {
   setObjectSyncState,
 } from '../../Frontend/Utils/EmitterUtils';
 import { ContractConstants } from '../../_types/darkforest/api/ContractsAPITypes';
-<<<<<<< HEAD
-import { Chunk, isLocatable, Wormhole } from '../../_types/global/GlobalTypes';
-import {
-  isUnconfirmedActivateArtifact,
-  isUnconfirmedBuyHat,
-  isUnconfirmedDeactivateArtifact,
-  isUnconfirmedDepositArtifact,
-  isUnconfirmedFindArtifact,
-  isUnconfirmedMove,
-  isUnconfirmedProspectPlanet,
-  isUnconfirmedReveal,
-  isUnconfirmedTransfer,
-  isUnconfirmedUpgrade,
-  isUnconfirmedWithdrawArtifact,
-  isUnconfirmedWithdrawSilver,
-} from '../Utils/TypeAssertions';
-import { hasOwner } from '../Utils/Utils';
-=======
->>>>>>> slytherin
 import { arrive, PlanetDiff, updatePlanetToTime } from './ArrivalUtils';
 import { LayeredMap } from './LayeredMap';
 
@@ -226,17 +197,7 @@ export class GameObjects {
   /**
    * Transactions that are currently in flight.
    */
-<<<<<<< HEAD
-
-  private unconfirmedReveal?: UnconfirmedReveal; // at most one at a time
-  private readonly unconfirmedMoves: Record<string, UnconfirmedMove>;
-  private readonly unconfirmedUpgrades: Record<string, UnconfirmedUpgrade>;
-  private readonly unconfirmedBuyHats: Record<string, UnconfirmedBuyHat>;
-  private readonly unconfirmedPlanetTransfers: Record<string, UnconfirmedPlanetTransfer>;
-  private readonly unconfirmedWormholeActivations: UnconfirmedActivateArtifact[];
-=======
   public readonly transactions: TransactionCollection;
->>>>>>> slytherin
 
   /**
    * Event emitter which publishes whenever a planet is updated.
@@ -352,14 +313,6 @@ export class GameObjects {
 
     this.arrivals = arrivals;
     this.planetArrivalIds = planetArrivalIds;
-<<<<<<< HEAD
-    this.unconfirmedReveal = undefined;
-    this.unconfirmedMoves = {};
-    this.unconfirmedUpgrades = {};
-    this.unconfirmedBuyHats = {};
-    this.unconfirmedPlanetTransfers = {};
-=======
->>>>>>> slytherin
 
     for (const [_locId, claimedLoc] of claimedLocations) {
       this.updatePlanet(claimedLoc.hash, (p) => {
@@ -383,17 +336,12 @@ export class GameObjects {
     }, 120 * 1000);
   }
 
-<<<<<<< HEAD
-  public getArtifactById(artifactId: ArtifactId): Artifact | undefined {
-    return this.artifacts.get(artifactId);
-=======
   public getWormholes(): Iterable<Wormhole> {
     return this.wormholes.values();
   }
 
   public getArtifactById(artifactId?: ArtifactId): Artifact | undefined {
     return artifactId ? this.artifacts.get(artifactId) : undefined;
->>>>>>> slytherin
   }
 
   public getArtifactsOwnedBy(addr: EthAddress): Artifact[] {
@@ -729,13 +677,8 @@ export class GameObjects {
   public onTxIntent(tx: Transaction) {
     this.transactions.addTransaction(tx);
 
-<<<<<<< HEAD
-    if (isUnconfirmedReveal(txIntent)) {
-      const planet = this.getPlanetWithId(txIntent.locationId);
-=======
     if (isUnconfirmedRevealTx(tx)) {
       const planet = this.getPlanetWithId(tx.intent.locationId);
->>>>>>> slytherin
       if (planet) {
         planet.transactions?.addTransaction(tx);
         this.setPlanet(planet);
@@ -858,17 +801,11 @@ export class GameObjects {
    *
    * @todo Make this less tedious.
    */
-<<<<<<< HEAD
-  public clearUnconfirmedTxIntent(txIntent: TxIntent) {
-    if (isUnconfirmedReveal(txIntent)) {
-      const planet = this.getPlanetWithId(txIntent.locationId);
-=======
   public clearUnconfirmedTxIntent(tx: Transaction) {
     this.transactions.removeTransaction(tx);
 
     if (isUnconfirmedReveal(tx.intent)) {
       const planet = this.getPlanetWithId(tx.intent.locationId);
->>>>>>> slytherin
 
       if (planet) {
         planet.transactions?.removeTransaction(tx);
@@ -970,31 +907,6 @@ export class GameObjects {
         planet.transactions?.removeTransaction(tx);
         this.setPlanet(planet);
       }
-<<<<<<< HEAD
-    }
-  }
-
-  public getUnconfirmedMoves(): UnconfirmedMove[] {
-    return Object.values(this.unconfirmedMoves);
-  }
-
-  public getUnconfirmedWormholeActivations(): UnconfirmedActivateArtifact[] {
-    return this.unconfirmedWormholeActivations;
-  }
-
-  public getWormholes(): Iterable<Wormhole> {
-    return this.wormholes.values();
-  }
-
-  public getUnconfirmedUpgrades(): UnconfirmedUpgrade[] {
-    return Object.values(this.unconfirmedUpgrades);
-  }
-
-  public getUnconfirmedReveal(): UnconfirmedReveal | undefined {
-    return this.unconfirmedReveal;
-  }
-
-=======
     } else if (isUnconfirmedCapturePlanetTx(tx)) {
       const planet = this.getPlanetWithId(tx.intent.locationId);
       if (planet) {
@@ -1010,7 +922,6 @@ export class GameObjects {
     }
   }
 
->>>>>>> slytherin
   public getPlanetMap(): Map<LocationId, Planet> {
     return this.planets;
   }

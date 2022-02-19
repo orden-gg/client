@@ -502,17 +502,10 @@
 
 #### Parameters
 
-<<<<<<< HEAD
-| Name                     | Type                                                                                |
-| :----------------------- | :---------------------------------------------------------------------------------- |
-| `__namedParameters`      | `Object`                                                                            |
-| `__namedParameters.name` | `undefined` \| [`TooltipName`](../enums/Frontend_Game_WindowManager.TooltipName.md) |
-=======
 | Name                     | Type                         |
 | :----------------------- | :--------------------------- |
 | `__namedParameters`      | `Object`                     |
 | `__namedParameters.name` | `undefined` \| `TooltipName` |
->>>>>>> slytherin
 
 #### Returns
 

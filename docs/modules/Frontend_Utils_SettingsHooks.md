@@ -36,11 +36,7 @@
 
 ### settingChanged$
 
-<<<<<<< HEAD
-• **settingChanged$**: `Monomitter`<[`Setting`](../enums/Frontend_Utils_SettingsHooks.Setting.md)\>
-=======
 • **settingChanged$**: `Monomitter`<`Setting`\>
->>>>>>> slytherin
 
 Whenever a setting changes, we publish the setting's name to this event emitter.
 
@@ -102,11 +98,7 @@ several options.
 | :---------------------------- | :----------------------------------------------------------------- |
 | `__namedParameters`           | `Object`                                                           |
 | `__namedParameters.labels`    | `string`[]                                                         |
-<<<<<<< HEAD
-| `__namedParameters.setting`   | [`Setting`](../enums/Frontend_Utils_SettingsHooks.Setting.md)      |
-=======
 | `__namedParameters.setting`   | `Setting`                                                          |
->>>>>>> slytherin
 | `__namedParameters.style?`    | `CSSProperties`                                                    |
 | `__namedParameters.uiManager` | [`default`](../classes/Backend_GameLogic_GameUIManager.default.md) |
 | `__namedParameters.values`    | `string`[]                                                         |
@@ -163,17 +155,10 @@ Loads from local storage, and interprets as a boolean the setting with the given
 
 #### Parameters
 
-<<<<<<< HEAD
-| Name      | Type                                                          |
-| :-------- | :------------------------------------------------------------ |
-| `account` | `undefined` \| `EthAddress`                                   |
-| `setting` | [`Setting`](../enums/Frontend_Utils_SettingsHooks.Setting.md) |
-=======
 | Name      | Type                   |
 | :-------- | :--------------------- |
 | `config`  | `SettingStorageConfig` |
 | `setting` | `Setting`              |
->>>>>>> slytherin
 
 #### Returns
 
@@ -189,17 +174,10 @@ Each setting is stored in local storage. Each account has their own setting.
 
 #### Parameters
 
-<<<<<<< HEAD
-| Name      | Type                                                          |
-| :-------- | :------------------------------------------------------------ |
-| `account` | `undefined` \| `EthAddress`                                   |
-| `setting` | [`Setting`](../enums/Frontend_Utils_SettingsHooks.Setting.md) |
-=======
 | Name                | Type                   |
 | :------------------ | :--------------------- |
 | `__namedParameters` | `SettingStorageConfig` |
 | `setting`           | `Setting`              |
->>>>>>> slytherin
 
 #### Returns
 
@@ -215,17 +193,10 @@ Loads from local storage, and interprets as a boolean the setting with the given
 
 #### Parameters
 
-<<<<<<< HEAD
-| Name      | Type                                                          |
-| :-------- | :------------------------------------------------------------ |
-| `account` | `undefined` \| `EthAddress`                                   |
-| `setting` | [`Setting`](../enums/Frontend_Utils_SettingsHooks.Setting.md) |
-=======
 | Name      | Type                   |
 | :-------- | :--------------------- |
 | `config`  | `SettingStorageConfig` |
 | `setting` | `Setting`              |
->>>>>>> slytherin
 
 #### Returns
 
@@ -241,17 +212,10 @@ Read the local storage setting from local storage.
 
 #### Parameters
 
-<<<<<<< HEAD
-| Name      | Type                                                          |
-| :-------- | :------------------------------------------------------------ |
-| `account` | `undefined` \| `EthAddress`                                   |
-| `setting` | [`Setting`](../enums/Frontend_Utils_SettingsHooks.Setting.md) |
-=======
 | Name      | Type                   |
 | :-------- | :--------------------- |
 | `config`  | `SettingStorageConfig` |
 | `setting` | `Setting`              |
->>>>>>> slytherin
 
 #### Returns
 
@@ -270,17 +234,10 @@ local storage, and notify the rest of the game that it changed if it changed.
 
 #### Parameters
 
-<<<<<<< HEAD
-| Name      | Type                                                          |
-| :-------- | :------------------------------------------------------------ |
-| `account` | `undefined` \| `EthAddress`                                   |
-| `setting` | [`Setting`](../enums/Frontend_Utils_SettingsHooks.Setting.md) |
-=======
 | Name      | Type                   |
 | :-------- | :--------------------- |
 | `config`  | `SettingStorageConfig` |
 | `setting` | `Setting`              |
->>>>>>> slytherin
 
 #### Returns
 
@@ -296,19 +253,11 @@ Save the given setting to local storage. Publish an event to [settingChanged$](F
 
 #### Parameters
 
-<<<<<<< HEAD
-| Name      | Type                                                          |
-| :-------- | :------------------------------------------------------------ |
-| `account` | `undefined` \| `EthAddress`                                   |
-| `setting` | [`Setting`](../enums/Frontend_Utils_SettingsHooks.Setting.md) |
-| `value`   | `boolean`                                                     |
-=======
 | Name      | Type                   |
 | :-------- | :--------------------- |
 | `config`  | `SettingStorageConfig` |
 | `setting` | `Setting`              |
 | `value`   | `boolean`              |
->>>>>>> slytherin
 
 #### Returns
 
@@ -324,19 +273,11 @@ Save the given setting to local storage. Publish an event to [settingChanged$](F
 
 #### Parameters
 
-<<<<<<< HEAD
-| Name      | Type                                                          |
-| :-------- | :------------------------------------------------------------ |
-| `account` | `undefined` \| `EthAddress`                                   |
-| `setting` | [`Setting`](../enums/Frontend_Utils_SettingsHooks.Setting.md) |
-| `value`   | `number`                                                      |
-=======
 | Name      | Type                   |
 | :-------- | :--------------------- |
 | `config`  | `SettingStorageConfig` |
 | `setting` | `Setting`              |
 | `value`   | `number`               |
->>>>>>> slytherin
 
 #### Returns
 
@@ -352,19 +293,11 @@ Save the given setting to local storage. Publish an event to [settingChanged$](F
 
 #### Parameters
 
-<<<<<<< HEAD
-| Name      | Type                                                          |
-| :-------- | :------------------------------------------------------------ |
-| `account` | `undefined` \| `EthAddress`                                   |
-| `setting` | [`Setting`](../enums/Frontend_Utils_SettingsHooks.Setting.md) |
-| `value`   | `string`                                                      |
-=======
 | Name                | Type                   |
 | :------------------ | :--------------------- |
 | `__namedParameters` | `SettingStorageConfig` |
 | `setting`           | `Setting`              |
 | `value`             | `string`               |
->>>>>>> slytherin
 
 #### Returns
 
@@ -381,17 +314,10 @@ a boolean.
 
 #### Parameters
 
-<<<<<<< HEAD
-| Name        | Type                                                                              |
-| :---------- | :-------------------------------------------------------------------------------- |
-| `uiManager` | `undefined` \| [`default`](../classes/Backend_GameLogic_GameUIManager.default.md) |
-| `setting`   | [`Setting`](../enums/Frontend_Utils_SettingsHooks.Setting.md)                     |
-=======
 | Name        | Type                                                               |
 | :---------- | :----------------------------------------------------------------- |
 | `uiManager` | [`default`](../classes/Backend_GameLogic_GameUIManager.default.md) |
 | `setting`   | `Setting`                                                          |
->>>>>>> slytherin
 
 #### Returns
 
@@ -408,17 +334,10 @@ allow you to set the value of this setting to anything but a valid number.
 
 #### Parameters
 
-<<<<<<< HEAD
-| Name        | Type                                                                              |
-| :---------- | :-------------------------------------------------------------------------------- |
-| `uiManager` | `undefined` \| [`default`](../classes/Backend_GameLogic_GameUIManager.default.md) |
-| `setting`   | [`Setting`](../enums/Frontend_Utils_SettingsHooks.Setting.md)                     |
-=======
 | Name        | Type                                                               |
 | :---------- | :----------------------------------------------------------------- |
 | `uiManager` | [`default`](../classes/Backend_GameLogic_GameUIManager.default.md) |
 | `setting`   | `Setting`                                                          |
->>>>>>> slytherin
 
 #### Returns
 
@@ -434,17 +353,10 @@ Allows a react component to subscribe to changes and set the given setting.
 
 #### Parameters
 
-<<<<<<< HEAD
-| Name        | Type                                                                              |
-| :---------- | :-------------------------------------------------------------------------------- |
-| `uiManager` | `undefined` \| [`default`](../classes/Backend_GameLogic_GameUIManager.default.md) |
-| `setting`   | [`Setting`](../enums/Frontend_Utils_SettingsHooks.Setting.md)                     |
-=======
 | Name        | Type                                                               |
 | :---------- | :----------------------------------------------------------------- |
 | `uiManager` | [`default`](../classes/Backend_GameLogic_GameUIManager.default.md) |
 | `setting`   | `Setting`                                                          |
->>>>>>> slytherin
 
 #### Returns
 

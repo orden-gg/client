@@ -14,15 +14,6 @@
 
 ## Variables
 
-<<<<<<< HEAD
-### HAT_SIZES
-
-• **HAT_SIZES**: `string`[]
-
----
-
-=======
->>>>>>> slytherin
 ### LOCATION_ID_UB
 
 • **LOCATION_ID_UB**: `BigInteger`

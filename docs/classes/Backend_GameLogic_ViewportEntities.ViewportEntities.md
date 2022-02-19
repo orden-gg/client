@@ -48,11 +48,7 @@ visible planet to the mouse.
 
 ### cachedExploredChunks
 
-<<<<<<< HEAD
-• `Private` **cachedExploredChunks**: `Set`<[`Chunk`](types_global_GlobalTypes.Chunk.md)\>
-=======
 • `Private` **cachedExploredChunks**: `Set`<`Chunk`\>
->>>>>>> slytherin
 
 ---
 
@@ -125,17 +121,10 @@ viewport configuration, as well as the world radius.
 
 `Object`
 
-<<<<<<< HEAD
-| Name            | Type                                                                                                             |
-| :-------------- | :--------------------------------------------------------------------------------------------------------------- |
-| `cachedPlanets` | `Map`<`LocationId`, [`PlanetRenderInfo`](../interfaces/Backend_GameLogic_ViewportEntities.PlanetRenderInfo.md)\> |
-| `chunks`        | `Set`<[`Chunk`](types_global_GlobalTypes.Chunk.md)\>                                                             |
-=======
 | Name            | Type                                     |
 | :-------------- | :--------------------------------------- |
 | `cachedPlanets` | `Map`<`LocationId`, `PlanetRenderInfo`\> |
 | `chunks`        | `Set`<`Chunk`\>                          |
->>>>>>> slytherin
 
 ---
 

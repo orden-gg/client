@@ -49,10 +49,7 @@
 | `toPlanet`          | `Planet`                                                                                         |
 | `artifactsOnPlanet` | `Artifact`[]                                                                                     |
 | `arrival`           | `QueuedArrival`                                                                                  |
-<<<<<<< HEAD
-=======
 | `arrivingArtifact`  | `undefined` \| `Artifact`                                                                        |
->>>>>>> slytherin
 | `contractConstants` | [`ContractConstants`](../interfaces/types_darkforest_api_ContractsAPITypes.ContractConstants.md) |
 
 #### Returns

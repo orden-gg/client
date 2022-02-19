@@ -161,15 +161,9 @@ EventEmitter.constructor
 
 #### Parameters
 
-<<<<<<< HEAD
-| Name    | Type                                         |
-| :------ | :------------------------------------------- |
-| `chunk` | [`Chunk`](types_global_GlobalTypes.Chunk.md) |
-=======
 | Name    | Type    |
 | :------ | :------ |
 | `chunk` | `Chunk` |
->>>>>>> slytherin
 
 #### Returns
 
@@ -183,15 +177,9 @@ EventEmitter.constructor
 
 #### Parameters
 
-<<<<<<< HEAD
-| Name    | Type                                         |
-| :------ | :------------------------------------------- |
-| `chunk` | [`Chunk`](types_global_GlobalTypes.Chunk.md) |
-=======
 | Name    | Type    |
 | :------ | :------ |
 | `chunk` | `Chunk` |
->>>>>>> slytherin
 
 #### Returns
 
@@ -269,15 +257,9 @@ EventEmitter.constructor
 
 #### Parameters
 
-<<<<<<< HEAD
-| Name    | Type                                         |
-| :------ | :------------------------------------------- |
-| `chunk` | [`Chunk`](types_global_GlobalTypes.Chunk.md) |
-=======
 | Name    | Type    |
 | :------ | :------ |
 | `chunk` | `Chunk` |
->>>>>>> slytherin
 
 #### Returns
 
