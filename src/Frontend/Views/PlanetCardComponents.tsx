@@ -48,7 +48,7 @@ const StyledPlanetActiveArtifact = styled.div<{ planet: Planet | undefined }>`
   color: ${dfstyles.colors.text};
 `;
 
-const FOUR_HOURS_SECONDS = 60 * 60 * 4;
+const FOUR_HOURS_SECONDS = 60 * 60 * 3;
 
 function Countdown({ artifact}: { artifact: Artifact }) {
   const readyAtSeconds = artifact.lastActivated + FOUR_HOURS_SECONDS;
