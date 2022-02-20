@@ -142,34 +142,9 @@ class Renderer {
 
     if (Object.keys(ordenSettings).length === 0) {
       setOrdenSettings({
-        allies: {
-          text: 'Show Allies',
-          isShow: true
-        },
-        range: {
-          text: 'Show 2x Range',
-          isShow: true
-        },
-        energyGro: {
-          text: 'Show 2x Energy',
-          isShow: true
-        },
-        energyCap: {
-          text: 'Show 2x Energy Cap',
-          isShow: true
-        },
-        defense: {
-          text: 'Show 2x Defence',
-          isShow: true
-        },
-        speed: {
-          text: 'Show 2x Speed',
-          isShow: true
-        },
-        arrivalTime: {
-          text: 'Show arrival time',
-          isShow: true
-        }
+        alliesShow: true,
+        highLightsShow: true,
+        arrivalTimeShow: true
       });
     }
 

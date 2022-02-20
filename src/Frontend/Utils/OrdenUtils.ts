@@ -6,10 +6,7 @@ export const getOrdenSettings = (): OrdenSettings => {
 
 // TODO consider to move to a better place
 export interface OrdenSettings {
-  [key: string]: {
-    text: string;
-    isShow: boolean;
-  }
+  [key: string]: boolean
 }
 
 export const setOrdenSettings = (settings: OrdenSettings) => {

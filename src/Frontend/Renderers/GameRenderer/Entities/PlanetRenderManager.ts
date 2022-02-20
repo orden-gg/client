@@ -50,7 +50,7 @@ export default class PlanetRenderManager {
     const renderAtReducedQuality = renderInfo.radii.radiusPixels <= 5 && highPerfMode;
     const isHovering = uiManager.getHoveringOverPlanet()?.locationId === planet.locationId;
     const isSelected = uiManager.getSelectedPlanet()?.locationId === planet.locationId;
-    const { allies } = getOrdenSettings();
+    const { alliesShow } = getOrdenSettings();
 
     let textAlpha = 255;
     if (renderInfo.radii.radiusPixels < 2 * maxRadius) {
@@ -65,7 +65,7 @@ export default class PlanetRenderManager {
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
     const isAllie = ORDEN_ALLIES.some((allie: any) => allie.address === planet.owner);
     const color = uiManager.isOwnedByMe(planet) ?
-      whiteA : isAllie && allies.isShow ? alliesA : ProcgenUtils.getOwnerColorVec(planet);
+      whiteA : isAllie && alliesShow ? alliesA : ProcgenUtils.getOwnerColorVec(planet);
 
     // draw planet body
     this.queuePlanetBody(planet, planet.location.coords, renderInfo.radii.radiusWorld);
@@ -306,29 +306,30 @@ export default class PlanetRenderManager {
   private queueAsteroids(planet: Planet, center: WorldCoords, radius: number) {
     const { asteroidRenderer: aR, circleRenderer: cR } = this.renderer;
 
-    const { range, energyGro, energyCap, defense, speed } = getOrdenSettings();
+    // const { range, energyGro, energyCap, defense, speed } = getOrdenSettings();
 
     const { bonus } = engineConsts.colors;
 
     if (planet.bonus[0]) {
       aR.queueAsteroid(planet, center, radius, bonus.energyCap);
-      if(energyCap.isShow) cR.queueCircleBonus(center, radius * 1.3, [...bonus.energyCap, 255], 1);
+      // if(energyCap.isShow) cR.queueCircleBonus(center, radius * 1.3, [...bonus.energyCap, 255], 1);
     }
     if (planet.bonus[1]) {
       aR.queueAsteroid(planet, center, radius, bonus.energyGro);
-      if(energyGro.isShow) cR.queueCircleBonus(center, radius * 1.6, [...bonus.energyGro, 255], 1);
+      // if(energyGro.isShow) cR.queueCircleBonus(center, radius * 1.6, [...bonus.energyGro, 255], 1);
     }
     if (planet.bonus[2]) {
       aR.queueAsteroid(planet, center, radius, bonus.range);
-      if(range.isShow) cR.queueCircleBonus(center, radius * 1.9, [...bonus.range, 255], 1);
+      // if(range.isShow) cR.queueCircleBonus(center, radius * 1.9, [...bonus.range, 255], 1);
+      cR.queueCircleBonus(center, radius * 1.9, [...bonus.range, 255], 1);
     }
     if (planet.bonus[3]) {
       aR.queueAsteroid(planet, center, radius, bonus.speed);
-      if(speed.isShow) cR.queueCircleBonus(center, radius * 2.2, [...bonus.speed, 255], 1);
+      // if(speed.isShow) cR.queueCircleBonus(center, radius * 2.2, [...bonus.speed, 255], 1);
     }
     if (planet.bonus[4]) {
       aR.queueAsteroid(planet, center, radius, bonus.defense);
-      if(defense.isShow) cR.queueCircleBonus(center, radius * 2.5, [...bonus.defense, 255], 1);
+      // if(defense.isShow) cR.queueCircleBonus(center, radius * 2.5, [...bonus.defense, 255], 1);
     }
   }
 
@@ -413,8 +414,8 @@ export default class PlanetRenderManager {
         atkString += ` (-${formatNumber((myAtk * 100) / toPlanet.defense)})`;
       }
 
-      const { arrivalTime } = getOrdenSettings();
-      if (arrivalTime.isShow) {
+      const { arrivalTimeShow } = getOrdenSettings();
+      if (arrivalTimeShow) {
         if (fromPlanet && toPlanet) {
           const arrivalTimeInSeconds = Math.ceil(gameManager.getTimeForMove(fromPlanet?.locationId, toPlanet?.locationId));
 

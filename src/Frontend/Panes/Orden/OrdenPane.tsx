@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import styled from 'styled-components';
 
 import dfstyles from '../../Styles/dfstyles';
-import { getOrdenSettings, setOrdenSettings } from '../../Utils/OrdenUtils';
+import { getOrdenSettings, OrdenSettings, setOrdenSettings } from '../../Utils/OrdenUtils';
 import { ModalHook, ModalName, ModalPane } from '../../Views/ModalPane';
 import { Padded } from '../../Components/CoreUI';
 
@@ -20,26 +20,27 @@ const CheckboxGroup = styled(Padded)`
   color: ${dfstyles.colors.text};
 `;
 
-export function OrdenPane({ hook }: { hook: ModalHook }) {
+export function OrdenPane({ hook, onUpdateOrdenSettings }: { hook: ModalHook, onUpdateOrdenSettings: (settings: OrdenSettings ) => void }) {
   const [settings, setSettings] = useState(getOrdenSettings());
 
   const handleSettingChange = (settingName: string, isSettingChecked: boolean) => {
     const updatedSettings = {...settings};
     
-    updatedSettings[settingName].isShow = !isSettingChecked;
+    updatedSettings[settingName] = !isSettingChecked;
     
     setSettings(updatedSettings);
     setOrdenSettings(updatedSettings);
+    onUpdateOrdenSettings(updatedSettings);
   }
-  
+
   return (
     <ModalPane hook={hook} title='Orden Pane' name={ModalName.OrdenPane}>
       <HelpContent>
         {
-          Object.entries(settings).map(([key, item]) =>(
-              <CheckboxGroup key={key}>
+          Object.entries(settings).map( ([name, isShow]) => (
+              <CheckboxGroup key={name}>
                 <label>
-                  { item.text } <input type='checkbox' checked={item.isShow} onChange={() => handleSettingChange(key, item.isShow)} />
+                  { name } <input type='checkbox' checked={settings[name]} onChange={() => handleSettingChange(name, isShow)} />
                 </label>
               </CheckboxGroup>
             )

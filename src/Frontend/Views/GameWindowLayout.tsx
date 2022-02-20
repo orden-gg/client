@@ -15,6 +15,7 @@ import { ExplorePane } from '../Panes/ExplorePane';
 import { HelpPane } from '../Panes/HelpPane';
 import { HoverPlanetPane } from '../Panes/HoverPlanetPane';
 import OnboardingPane from '../Panes/OnboardingPane';
+import { OrdenInterface } from '../Panes/Orden/OrdenInterface';
 import { OrdenPane } from '../Panes/Orden/OrdenPane';
 import { PlanetContextPane } from '../Panes/PlanetContextPane';
 import { PlanetDexPane } from '../Panes/PlanetDexPane';
@@ -27,6 +28,7 @@ import { TwitterVerifyPane } from '../Panes/TwitterVerifyPane';
 import { ZoomPane } from '../Panes/ZoomPane';
 import { useSelectedPlanet, useUIManager } from '../Utils/AppHooks';
 import { useOnUp } from '../Utils/KeyEmitters';
+import { OrdenSettings } from '../Utils/OrdenUtils';
 import { Setting, useBooleanSetting } from '../Utils/SettingsHooks';
 import {
   TOGGLE_DIAGNOSTICS_PANE,
@@ -66,11 +68,18 @@ export function GameWindowLayout({
   const diagnosticsHook = useState<boolean>(false);
   const ordenPaneHook = useState<boolean>(false);
   const [, setSelectedPlanetVisible] = selectedPlanetHook;
+  const [ordenInterfaceSettings, setOrdenInterfaceSettings] = useState({});
 
   const [userTerminalVisibleSetting, setTerminalVisibleSetting] = useBooleanSetting(
     uiManager,
     Setting.TerminalVisible
   );
+
+
+  const onUpdateOrdenSettings = (settings: OrdenSettings) => {
+    setOrdenInterfaceSettings(settings);
+    
+  }
 
   useEffect(() => {
     uiManager.setOverlayContainer(modalsContainerRef);
@@ -172,7 +181,7 @@ export function GameWindowLayout({
         <PlayerArtifactsPane hook={yourArtifactsHook} />
         <PlanetContextPane hook={selectedPlanetHook} />
         <DiagnosticsPane hook={diagnosticsHook} />
-        <OrdenPane hook={ordenPaneHook} />
+        <OrdenPane hook={ordenPaneHook} onUpdateOrdenSettings={onUpdateOrdenSettings} />
         {modalsContainerRef.current && (
           <PluginLibraryPane
             modalsContainer={modalsContainerRef.current}
@@ -208,6 +217,8 @@ export function GameWindowLayout({
           <HoverPlanetPane />
 
           <TutorialPane tutorialHook={tutorialHook} />
+
+          <OrdenInterface ordenInterfaceSettings={ordenInterfaceSettings} />
         </CanvasContainer>
       </MainWindow>
     </WindowWrapper>
